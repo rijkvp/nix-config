@@ -1,8 +1,21 @@
+let
+  borgbackupMonitor = { config, pkgs, lib, ... }: with lib; {
+    key = "borgbackupMonitor";
+    _file = "borgbackupMonitor";
+    # See Nix Wiki: this ensures backups are made if device was powered off at scheduled time
+    config.systemd.timers = flip mapAttrs' config.services.borgbackup.jobs (name: value:
+      nameValuePair "borgbackup-job-${name}" {
+        timerConfig.Persistent = mkForce true;
+      }
+    );
+  };
+in
 { inputs, outputs, lib, config, pkgs, ... }: {
   imports =
     [
       ./hardware-configuration.nix
       ../common
+      borgbackupMonitor
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -70,6 +83,7 @@
       ".local/share/Steam"
       "*/.cache"
       "*/.git"
+      "**/target"
     ];
     encryption = {
       mode = "repokey-blake2";
@@ -85,12 +99,6 @@
       monthly = -1;
     };
   };
-  # this ensures backups are made if device was powered off at scheduled time
-  config.systemd.timers = flip mapAttrs' config.services.borgbackup.jobs (name: value:
-    nameValuePair "borgbackup-job-${name}" {
-      timerConfig.Persistent = true;
-    }
-  );
 
   # Steam
   programs.steam = {
