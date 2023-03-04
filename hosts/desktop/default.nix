@@ -30,8 +30,10 @@ in
   };
 
   # Network/wireguard
-  networking.hostName = "rnixpc";
-  networking.wg-quick.interfaces.wg-desktop.configFile = config.age.secrets.wg-desktop.path;
+  networking = {
+    hostName = "rnixpc";
+    wg-quick.interfaces.wg-desktop.configFile = config.age.secrets.wg-desktop.path;
+  };
 
   # Hardware
   hardware = {
@@ -99,6 +101,7 @@ in
       monthly = -1;
     };
   };
+
 
   # Steam
   programs.steam = {

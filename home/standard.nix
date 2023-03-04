@@ -60,6 +60,7 @@
     watchexec
     sshfs
     btop
+    sfz
 
     thunderbird
     obsidian
