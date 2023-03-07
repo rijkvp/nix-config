@@ -108,7 +108,11 @@
       "mp" = "ncmpcpp";
       "ns" = ''nix-shell --command "zsh"'';
       "nd" = ''nix develop --command "zsh"'';
+      # Duplicate folder
       "dupl" = "rsync -rlptDhP --delete-after --stats";
+      # yt-dlp
+      "dlaudio" = ''yt-dlp -f "ba[acodec=opus]/ba/b" --extract-audio --audio-format opus --embed-thumbnail --embed-metadata --xattrs -o "%(artist,channel,uploader)s %(title)s.%(ext)s"'';
+      "dlvid" = ''yt-dlp -f "(bv[vcodec^=vp9][height<=1080]/bv[height<=1080]/bv)+(ba[acodec=opus]/ba/b)" --merge-output-format mkv --embed-thumbnail --embed-metadata --xattrs -o "%(artist,channel,uploader)s %(title)s.%(ext)s"'';
     };
     profileExtra = ''
       tecw() {

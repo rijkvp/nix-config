@@ -1,7 +1,9 @@
 { inputs, outputs, lib, config, pkgs, ... }: {
   imports = [
     inputs.agenix.nixosModules.default
-  ];
+  ] ++ (builtins.attrValues outputs.nixosModules);
+
+  services.movebeam.enable = true;
 
   nixpkgs.config.allowUnfree = true;
 
@@ -21,8 +23,8 @@
       auto-optimise-store = true;
 
       # Hyprland Cache
-      substituters = ["https://hyprland.cachix.org"];
-      trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
+      substituters = [ "https://hyprland.cachix.org" ];
+      trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
     };
     gc = {
       automatic = true;
@@ -35,18 +37,18 @@
   time.timeZone = "Europe/Amsterdam";
   i18n.defaultLocale = "en_US.UTF-8";
   console = {
-     font = "Lat2-Terminus16";
-     useXkbConfig = true; # use xkbOptions in tty.
-   };
+    font = "Lat2-Terminus16";
+    useXkbConfig = true; # use xkbOptions in tty.
+  };
 
   # Users
   users.defaultUserShell = pkgs.zsh;
   users.users.rijk = {
-     isNormalUser = true;
-     extraGroups = [ "wheel" "video" "audio" "lp" "scanner" "docker" ];
-     initialPassword = "password";
-     shell = pkgs.zsh;
-   };
+    isNormalUser = true;
+    extraGroups = [ "wheel" "video" "audio" "lp" "scanner" "docker" ];
+    initialPassword = "password";
+    shell = pkgs.zsh;
+  };
 
   # Wayland variables
   environment.variables = {
@@ -68,11 +70,11 @@
     htop
     zsh
 
-    ((vim_configurable.override {  }).customize{
+    ((vim_configurable.override { }).customize {
       name = "vim";
       vimrcConfig.packages.myplugins = with pkgs.vimPlugins; {
         start = [ vim-nix vim-lastplace ];
-        opt = [];
+        opt = [ ];
       };
       vimrcConfig.customRC = ''
         set nocompatible
@@ -154,7 +156,8 @@
   services.greetd = {
     enable = true;
     settings = rec {
-      initial_session = { # Autologin
+      initial_session = {
+        # Autologin
         command = "Hyprland";
         user = "rijk";
       };
