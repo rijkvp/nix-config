@@ -1,4 +1,4 @@
-{ lib, config, ... }: {
+{ lib, config, pkgs, ... }: {
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland = {
@@ -135,8 +135,8 @@
       bind = SUPER CONTROL, r, movetoworkspacesilent, 6
   
       # Screenshot
-      bind = SUPER, s, exec, grim - | tee "$xdg_pictures_dir/$(date +"%y-%m-%d-%h:%m")-screenshot.png" | wl-copy -t image/png
-      bind = SUPER SHIFT, s, exec, grim -g "$(slurp)" - | tee "$xdg_pictures_dir/$(date +"%y-%m-%d-%h:%m")-screenshot.png" | wl-copy -t image/png
+      bind = SUPER, s, exec, grim - | tee "${config.xdg.userDirs.pictures}/$(date +"%Y-%m-%d-%H:%M:%S")-screenshot.png" | wl-copy -t image/png
+      bind = SUPER SHIFT, s, exec, grim -g "$(slurp)" - | tee "${config.xdg.userDirs.pictures}/$(date +"%Y-%m-%d-%H:%M:%S")-screenshot.png" | wl-copy -t image/png
 
       # dmenu menus (using rofi)
       bind = SUPER, D, exec, rofi -show drun -i -p Applications
