@@ -1,8 +1,10 @@
-{ inputs, outputs, lib, config, pkgs, ... }: {
+{ inputs, outputs, lib, config, pkgs, theme, ... }: {
   imports = [
     ./firefox.nix
     ./newsboat.nix
+    ./rofi
     ./nvim
+    ./waybar
   ];
   nixpkgs = {
     overlays = [
@@ -27,51 +29,22 @@
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
-    # GTK
-    glib
-
     # Desktop
+    glib # GTK
     wayland
-    wl-clipboard
-    swaybg
+    swww
     swaylock
     wtype
+    wl-clipboard
     libnotify
-
-    # screenshots
+    # Screenshots
     grim
     slurp
 
-    # Programs
-    brave
-    gimp
-    libreoffice
-    geeqie
-    signal-desktop
-    newsflash
-    yt-dlp
-    mpc-cli
-    restic
-    borgbackup
-    keepassxc
-    du-dust
-    xdg-utils
-    tectonic
-    watchexec
-    sshfs
-    btop
-    sfz
-
-    thunderbird
-    obsidian
-    # BitTorrent clients
-    qbittorrent
-    transmission-gtk
-
-    zola
-    appimage-run
+    # CLI Tools
     zip
     unzip
+    zola
     ffmpeg
     imagemagick
 
@@ -80,14 +53,41 @@
     tokei
     fd
 
-    python3
+    du-dust
+    xdg-utils
+    tectonic
+    watchexec
+    sshfs
+    btop
+    sfz
+
+    # Media
+    yt-dlp
+    mpc-cli
+
+    # Backup
+    restic
+    borgbackup
+
+    # GUI Programs
+    brave
+    gimp
+    geeqie
+    signal-desktop
+    libreoffice
+    thunderbird
+    obsidian
+    appimage-run
+    keepassxc
+    qbittorrent
+    transmission-gtk
 
     # Spell checker
     hunspell
     hunspellDicts.en_US
     hunspellDicts.nl_NL
 
-    # Manage commands
+    # Audio Management
     pavucontrol
     pulseaudio
   ];
@@ -135,11 +135,6 @@
     config = {
       theme = "TwoDark";
     };
-  };
-
-  programs.rofi = {
-    enable = true;
-    package = pkgs.rofi-wayland.override { plugins = [ pkgs.rofi-calc ]; };
   };
 
   programs.fzf = {
@@ -232,11 +227,21 @@
       };
       colors = {
         primary = {
-          background = "#000000";
-          foreground = "#ffffff";
+          background = theme.background;
+          foreground = theme.foreground;
         };
+        normal = theme.terminalColors.normal;
+        bright = theme.terminalColors.bright;
       };
     };
+  };
+
+  home.file."${config.home.homeDirectory}/.local/bin/lockscreen" = {
+    text = ''
+      #!/bin/sh
+      swaylock -eF --color '#000000' --font 'Iosevka Nerd Font'
+    '';
+    executable = true;
   };
 
   programs.tmux = {
@@ -259,16 +264,16 @@
       bind -r C-l resize-pane -R
 
       # Status bar
-      set -g status-style 'bg=#111111 fg=#eeeeee'
+      set -g status-style 'bg=${theme.background} fg=${theme.foreground}'
       set-option -g status-right '#(date +"%m-%d %H:%M")'
     '';
   };
 
-  programs.mako = {
+  services.mako = {
     enable = true;
     defaultTimeout = 10000;
     borderRadius = 7;
-    backgroundColor = "#00000077";
+    backgroundColor = "${theme.background}60";
     font = "Iosevka Nerd Font";
   };
 
@@ -346,57 +351,6 @@
   home.sessionPath = [
     "$HOME/.local/bin"
   ];
-  home.file."${config.home.homeDirectory}/.local/bin/lockscreen" = {
-    text = ''
-      #!/bin/sh
-      swaylock -eF --color '#000000' --font 'Iosevka Nerd Font'
-    '';
-    executable = true;
-  };
-  home.file."${config.home.homeDirectory}/.local/bin/powermenu" = {
-    text = ''
-      #!/bin/sh
-      choice="$(printf '%s\n' Lock Suspend Hibernate Poweroff Reboot | rofi -dmenu -i -p 'Powermenu')"
-      if [ "$choice" = "Lock" ]
-      then
-          lockscreen
-          exit 0
-      fi
-      if [ "$choice" = "Suspend" ]
-      then
-          systemctl suspend
-          exit 0
-      fi
-      if [ "$choice" = "Hibernate" ]
-      then
-          systemctl hibernate
-          exit 0
-      fi
-      if [ "$choice" = "Poweroff" ]
-      then
-          systemctl poweroff
-          exit 0
-      fi
-      if [ "$choice" = "Reboot" ]
-      then
-          systemctl reboot
-          exit 0
-      fi
-    '';
-    executable = true;
-  };
-
-  # Emoji picker
-  xdg.dataFile."emoji".source = ./emoji;
-  home.file."${config.home.homeDirectory}/.local/bin/emojipicker" = {
-    text = ''
-      #!/bin/sh
-      chosen=$(cut -d ';' -f1 ~/.local/share/emoji | rofi -dmenu -i -p Emoji | sed "s/ .*//")
-      [ -z "$chosen" ] && exit
-      wtype "$chosen"
-    '';
-    executable = true;
-  };
 
   gtk = {
     enable = true;

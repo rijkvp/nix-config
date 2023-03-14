@@ -34,6 +34,18 @@
       vim.keymap.set("n", "<leader>o", vim.cmd.Ex)
     '';
     plugins = with pkgs.vimPlugins; [
+      # Theme
+      {
+        plugin = tokyonight-nvim;
+        type = "lua";
+        config = ''
+          require("tokyonight").setup({
+            transparent = true
+          })
+          vim.cmd[[colorscheme tokyonight]]
+        '';
+      }
+
       plenary-nvim
       # Telescope
       {
@@ -46,20 +58,6 @@
           vim.keymap.set('n', '<leader>g', builtin.live_grep, {})
           vim.keymap.set('n', '<leader>b', builtin.buffers, {})
           vim.keymap.set('n', '<leader>h', builtin.help_tags, {})
-        '';
-      }
-
-      # Theme
-      {
-        plugin = onedarkpro-nvim;
-        type = "lua";
-        config = ''
-          require("onedarkpro").setup({
-            options = {
-              transparency = true
-            }
-          })
-          vim.cmd("colorscheme onedark")
         '';
       }
 

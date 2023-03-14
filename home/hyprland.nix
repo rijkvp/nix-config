@@ -1,4 +1,4 @@
-{ lib, config, pkgs, ... }: {
+{ lib, config, theme, ... }: {
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland = {
@@ -7,7 +7,7 @@
     };
     extraConfig = ''
       exec-once = hyprctl setcursor Quintom_Ink 24
-      exec-once = swaybg -i ~/pics/images/wallpapers/wallpaper.jpg
+      exec-once = swww init; swww img ~/pics/images/wallpapers/wallpaper.jpg
       exec-once = keepassxc
       exec-once = waybar
 
@@ -25,9 +25,9 @@
           repeat_delay = 400
       }
       general {
-          gaps_in = 5
-          gaps_out = 20
-          border_size = 2
+          gaps_in = 6
+          gaps_out = 12
+          border_size = ${theme.borderWidth}
           col.active_border = rgba(33ccffee) rgba(00ff99ee) 45deg
           col.inactive_border = rgba(595959aa)
 
@@ -35,17 +35,23 @@
       }
 
       decoration {
-          rounding = 7
-          blur = yes
-          blur_size = 5
-          blur_passes = 1
+        rounding=${theme.rounding}
+        multisample_edges = true
+        inactive_opacity=0.9
+        active_opacity=0.95
+        fullscreen_opacity=0.95
+        dim_inactive = false
+        dim_strength = 0.05
+        blur=true
+        blur_size=5
+        blur_passes=4
 
-          drop_shadow = yes
-          shadow_range=20
-          shadow_render_power=3
-          shadow_ignore_window=1
-          shadow_offset= 8 8
-          col.shadow=0x44000000
+        drop_shadow = yes
+        shadow_range=20
+        shadow_render_power=3
+        shadow_ignore_window=1
+        shadow_offset= 8 8
+        col.shadow=0x44000000
       }
 
       animations {
@@ -62,7 +68,7 @@
 
       dwindle {
           pseudotile = yes
-          preserve_split = yes
+          force_split = 2
       }
 
       master {
@@ -84,7 +90,6 @@
       windowrule = opacity 0.86 override 0.86 override,Signal
       windowrule = opacity 0.86 override 0.86 override,whatsapp
       windowrule = opacity 0.86 override 0.86 override,Element
-      windowrule = opacity 0.8 override 0.8 override,zathura
 
       # Workspace rules
       windowrule = workspace 4, firefox
@@ -139,9 +144,9 @@
       bind = SUPER SHIFT, s, exec, grim -g "$(slurp)" - | tee "${config.xdg.userDirs.pictures}/$(date +"%Y-%m-%d-%H:%M:%S")-screenshot.png" | wl-copy -t image/png
 
       # dmenu menus (using rofi)
-      bind = SUPER, D, exec, rofi -show drun -i -p Applications
+      bind = SUPER, D, exec, rofi -show drun -i
       bind = SUPER SHIFT, p, exec, ~/.local/bin/powermenu
-      bind = SUPER, p, exec, xdg-open $(rg --files | rofi -dmenu -i -p Files)
+      bind = SUPER, p, exec, xdg-open $(rg --files | rofi -dmenu -i -p ' ')
       bind = SUPER SHIFT, p, exec, ~/.local/bin/powermenu
       bind = SUPER, grave, exec, ~/.local/bin/emojipicker
       bind = SUPER, C, exec, rofi -modi calc -show calc -no-show-match -no-sort -calc-command 'wtype "{result}"'
