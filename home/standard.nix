@@ -52,6 +52,7 @@
     ripgrep
     tokei
     fd
+    sl
 
     du-dust
     xdg-utils
