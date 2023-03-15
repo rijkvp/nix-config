@@ -32,13 +32,13 @@
       padding: 0;
       spacing: 0;
 
-      bg: ${theme.background}60;
-      bg-alt: ${theme.backgroundAlt}60;
+      bg: ${theme.background}c0;
+      bg-alt: ${theme.backgroundAlt}b0;
       fg: ${theme.foreground};
       fg-alt: ${theme.foregroundAlt};
 
-      background-color: @bg;
       text-color: @fg;
+      background-color: transparent;
     }
 
     window {
@@ -46,6 +46,7 @@
     }
 
     mainbox {
+      border-radius: ${theme.rounding}px;
       children: [inputbar, listview];
     }
 
@@ -55,17 +56,16 @@
     }
 
     entry {
-      background-color: inherit;
       padding: 12px 3px;
     }
 
     prompt {
-      background-color: inherit;
       padding: 12px;
     }
 
     listview {
       lines: 20;
+      background-color: @bg;
     }
 
     element {

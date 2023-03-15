@@ -61,7 +61,7 @@
       theme = rec {
         themeName = "Tokyo Night";
         borderWidth = "0";
-        rounding = "5";
+        rounding = "7";
         # Colors from: https://github.com/enkia/tokyo-night-vscode-theme#tokyo-night-and-tokyo-night-storm
         background = "#1a1b26";
         backgroundAlt = "#24283b";

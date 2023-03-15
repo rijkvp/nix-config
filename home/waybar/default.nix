@@ -16,9 +16,9 @@
         layer = "top";
         position = "top";
         spacing = 8;
-        modules-left = [ "custom/themename" "wlr/workspaces" "hyprland/window" ];
+        modules-left = [ "wlr/workspaces" "hyprland/window" ];
         modules-center = [ ];
-        modules-right = [ "custom/movebeam" "mpd" "pulseaudio" "cpu" "memory" "battery" "backlight" "network" "clock" "tray" ];
+        modules-right = [ "mpd" "custom/movebeam" "pulseaudio" "cpu" "memory" "battery" "backlight" "network" "clock" "tray" ];
         "wlr/workspaces" = {
           format = "{icon}";
           on-click = "activate";
@@ -33,11 +33,8 @@
           };
           sort-by-number = true;
         };
-        "custom/themename" = {
-          format = "  ${theme.themeName}";
-        };
         "custom/movebeam" = {
-          exec = "movebeam-cli bar break -f '■ ' -e '□ ' -l '' -r '' -s 8";
+          exec = "movebeam-cli bar break -f '█' -e '░' -l '▕' -r '▏' -s 14";
           interval = 5;
         };
         "mpd" = {
@@ -106,6 +103,7 @@
         font-family: Iosevka Nerd Font;
         font-size: 14px;
         font-weight: bold;
+        color: ${theme.foreground};
       }
       tooltip {
         background: ${theme.backgroundAlt};
@@ -142,6 +140,25 @@
       #mpd {
         font-size: 13px;
         font-weight: normal;
+      }
+
+      #clock {
+        color: ${theme.red}
+      }
+      #network {
+        color: ${theme.orange}
+      }
+      #memory {
+        color: ${theme.green}
+      }
+      #cpu {
+        color: ${theme.cyan}
+      }
+      #pulseaudio {
+        color: ${theme.blue}
+      }
+      #custom-movebeam {
+        color: ${theme.magenta}
       }
     '';
   };
