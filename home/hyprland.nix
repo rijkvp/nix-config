@@ -50,8 +50,8 @@
         shadow_range=20
         shadow_render_power=3
         shadow_ignore_window=1
-        shadow_offset= 8 8
-        col.shadow=0x44000000
+        shadow_offset= 4 4
+        col.shadow=0x88000000
       }
 
       animations {
