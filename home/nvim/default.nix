@@ -27,6 +27,7 @@
       vim.opt.incsearch = true
 
       vim.opt.termguicolors = true
+      vim.opt.showmode = false
 
       vim.opt.updatetime = 50
       -- Remaps
@@ -58,6 +59,14 @@
           vim.keymap.set('n', '<leader>g', builtin.live_grep, {})
           vim.keymap.set('n', '<leader>b', builtin.buffers, {})
           vim.keymap.set('n', '<leader>h', builtin.help_tags, {})
+        '';
+      }
+      # Status line
+      {
+        plugin = lualine-nvim;
+        type = "lua";
+        config = ''
+          require('lualine').setup()
         '';
       }
 
