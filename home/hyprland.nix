@@ -146,7 +146,7 @@
       # dmenu menus (using rofi)
       bind = SUPER, D, exec, rofi -show drun -i
       bind = SUPER SHIFT, p, exec, ~/.local/bin/powermenu
-      bind = SUPER, p, exec, xdg-open $(rg --files | rofi -dmenu -i -p ' ')
+      bind = SUPER, p, exec, xdg-open "$(rg --files | rofi -dmenu -i -p ' ')"
       bind = SUPER SHIFT, p, exec, ~/.local/bin/powermenu
       bind = SUPER, grave, exec, ~/.local/bin/emojipicker
       bind = SUPER, C, exec, rofi -modi calc -show calc -no-show-match -no-sort -calc-command 'wtype "{result}"'
