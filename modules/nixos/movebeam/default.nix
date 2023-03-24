@@ -10,9 +10,17 @@ in
   };
 
   config = mkIf cfg.enable {
-    systemd.services.movebeam = {
+    # Root activity daemon
+    systemd.services.actived = {
+      description = "movebeam activity daemon";
       wantedBy = [ "multi-user.target" ];
-      serviceConfig.ExecStart = "${movebeam}/bin/movebeam";
+      serviceConfig.ExecStart = "${movebeam}/bin/actived";
+    };
+    # Userspace daemon
+    systemd.user.services.moved = {
+      description = "movebeam daemon";
+      wantedBy = [ "default.target" ];
+      serviceConfig.ExecStart = "${movebeam}/bin/moved";
     };
     environment.systemPackages = [ movebeam ];
   };

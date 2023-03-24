@@ -1,16 +1,16 @@
 with import <nixpkgs> { };
 { lib, rustPlatform, fetchFromGitHub }: rustPlatform.buildRustPackage rec {
   pname = "movebeam";
-  version = "v0.0.3";
+  version = "v0.0.4";
 
   src = fetchFromGitHub {
     owner = "rijkvp";
     repo = pname;
     rev = version;
-    sha256 = "sha256-llJIsDOBHRNPSExiie6MXX/ZunORbp/Sz+retvFIhd4=";
+    sha256 = "sha256-1CUx057JjRR1WBAWxlxVJvgUgtz+n1sTcmeZs2t+VVA=";
   };
 
-  cargoSha256 = "sha256-QTCVk8bzVmbxlcRPTVtkDWDdkTeYe0/HSLEVe8AaDCM=";
+  cargoSha256 = "sha256-R40nhkGhXWjKOpOfEc22JspQVEpNfLJnM81Byh/IAz0=";
 
   meta = with lib; {
     homepage = "https://github.com/rijkvp/movebeam";
