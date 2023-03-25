@@ -32,8 +32,8 @@
       padding: 0;
       spacing: 0;
 
-      bg: ${theme.background}c0;
-      bg-alt: ${theme.backgroundAlt}b0;
+      bg: ${theme.background}e0;
+      bg-alt: ${theme.backgroundAlt}d0;
       fg: ${theme.foreground};
       fg-alt: ${theme.foregroundAlt};
 
