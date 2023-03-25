@@ -106,6 +106,7 @@
           lspconfig.tsserver.setup{}
           lspconfig.clangd.setup{}
           lspconfig.rnix.setup{}
+          lspconfig.texlab.setup{}
 
           -- Goto
           vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Hover documentation" })
@@ -195,6 +196,8 @@
       # TypeScript
       nodePackages.typescript
       nodePackages.typescript-language-server
+      # LaTeX
+      texlab
     ];
   };
 }
