@@ -34,7 +34,7 @@
           sort-by-number = true;
         };
         "custom/movebeam" = {
-          exec = "movebeam-cli bar break -f '█' -e '░' -l '▕' -r '▏' -s 14";
+          exec = "movebeam bar break";
           interval = 5;
         };
         "mpd" = {
