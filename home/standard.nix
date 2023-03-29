@@ -111,6 +111,7 @@
       "ns" = ''nix-shell --command "zsh"'';
       "nd" = ''nix develop --command "zsh"'';
       "gc" = "git add . && git commit && git push";
+      "tm" =  "tmux new-session -A -D -s main";
       # Duplicate folder
       "dupl" = "rsync -rlptDhP --delete-after --stats";
       # yt-dlp
@@ -226,10 +227,6 @@
       mouse = {
         hide_when_typing = true;
       };
-      shell = {
-        program = "${pkgs.tmux}/bin/tmux";
-        args = [ "new-session" "-A" "-D" "-s" "main" ];
-      };
       colors = {
         primary = {
           background = theme.background;
@@ -271,6 +268,10 @@
       # Status bar
       set -g status-style 'bg=${theme.background} fg=${theme.foreground}'
       set-option -g status-right '#(date +"%m-%d %H:%M")'
+
+      # Set colors
+      set -g default-terminal "tmux-256color"
+      set -ag terminal-overrides ",xterm-256color:RGB"
     '';
   };
 
