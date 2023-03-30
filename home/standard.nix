@@ -2,6 +2,7 @@
   imports = [
     ./firefox.nix
     ./newsboat.nix
+    ./starship.nix
     ./rofi
     ./nvim
     ./waybar
@@ -111,7 +112,7 @@
       "ns" = ''nix-shell --command "zsh"'';
       "nd" = ''nix develop --command "zsh"'';
       "gc" = "git add . && git commit && git push";
-      "tm" =  "tmux new-session -A -D -s main";
+      "tm" = "tmux new-session -A -D -s main";
       # Duplicate folder
       "dupl" = "rsync -rlptDhP --delete-after --stats";
       # yt-dlp
@@ -126,11 +127,6 @@
         watchexec -e tex "tectonic -c minimal $1"
       }
     '';
-  };
-
-  programs.starship = {
-    enable = true;
-    enableZshIntegration = true;
   };
 
   programs.exa = {
