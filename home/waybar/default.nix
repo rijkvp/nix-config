@@ -34,8 +34,8 @@
           sort-by-number = true;
         };
         "custom/movebeam" = {
-          exec = "movebeam bar break";
-          interval = 5;
+          exec = "movebeam bar break --blink";
+          interval = 1;
         };
         "mpd" = {
           format = "{stateIcon} {artist} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S} {songPosition}|{queueLength})";
