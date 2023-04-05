@@ -26,6 +26,8 @@
       vim.opt.hlsearch = true
       vim.opt.incsearch = true
 
+      vim.cmd("set clipboard+=unnamedplus");
+
       vim.opt.termguicolors = true
       vim.opt.showmode = false
 
