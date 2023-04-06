@@ -82,7 +82,7 @@
         };
         "network" = {
           format-wifi = "  {essid} {signalStrength}%";
-          format-ethernet = "󰈀  {ifname}: {ipaddr}/{cidr}";
+          format-ethernet = "󰈀  {ipaddr}/{cidr}";
           format-disconnected = "  Disconnected";
           format = "  Disabled";
         };

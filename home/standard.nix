@@ -46,8 +46,9 @@
     zip
     unzip
     zola
-    ffmpeg
-    imagemagick
+    ffmpeg # Swiss knife for videos
+    imagemagick # Swiss knife for images
+    pandoc # Swiss knife for documents
 
     neofetch
     ripgrep
@@ -78,13 +79,13 @@
     gimp
     geeqie
     signal-desktop
-    libreoffice
     thunderbird
     obsidian
     appimage-run
     keepassxc
     qbittorrent
     transmission-gtk
+    libreoffice-fresh
 
     # Spell checker
     hunspell
