@@ -129,6 +129,10 @@
       tecw() {
         watchexec -e tex "tectonic -c minimal $1"
       }
+      mdw() {
+        out="$(basename $1 .md).pdf"
+        watchexec -e md "pandoc --pdf-engine tectonic -o $out $1"
+      }
     '';
   };
 
