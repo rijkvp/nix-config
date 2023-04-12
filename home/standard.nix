@@ -53,6 +53,7 @@
     neofetch
     ripgrep
     tokei
+    nodePackages.prettier
     fd
     difftastic
     sl
