@@ -142,8 +142,14 @@
     # Flatpak
     flatpak.enable = true;
 
-    # CUPS Printing
+    # Printing services
     printing.enable = true;
+    printing.drivers = [ pkgs.hplip ];
+    avahi = {
+      enable = true;
+      nssmdns = true;
+      openFirewall = true;
+    };
   };
 
   # XDG Portal

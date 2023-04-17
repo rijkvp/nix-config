@@ -11,6 +11,8 @@
       exec-once = keepassxc
       exec-once = waybar
 
+      monitor=,preferred,auto,1
+
       input {
           kb_layout = us
 
