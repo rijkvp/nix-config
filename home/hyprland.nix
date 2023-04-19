@@ -20,8 +20,6 @@
       env = QT_WAYLAND_DISABLE_WINDOWDECORATION,1
       env = QT_QPA_PLATFORMTHEME=qt5ct
 
-      monitor=,preferred,auto,1
-
       exec-once = hyprctl setcursor Quintom_Ink 24
       exec-once = swww init; swww img ~/pics/images/wallpapers/wallpaper.jpg
       exec-once = keepassxc

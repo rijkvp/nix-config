@@ -133,9 +133,15 @@
     };
     extraConfig = {
       gpg.format = "ssh";
+      pull.rebase = "true";
     };
     aliases = {
+      s = "status";
       st = "status";
+      d = "diff";
+      df = "diff";
+      a = "add";
+      c = "commit";
     };
   };
 
