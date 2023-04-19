@@ -6,6 +6,22 @@
       hidpi = true;
     };
     extraConfig = ''
+      env = XDG_CURRENT_DESKTOP,Hyprland
+      env = XDG_SESSION_TYPE,wayland
+      env = XDG_SESSION_DESKTOP,Hyprland
+
+      env = GDK_BACKEND,wayland,x11
+      env = GTK_USE_PORTAL,1
+      env = SDL_VIDEODRIVER=wayland
+      env = MOZ_ENABLE_WAYLAND,1
+
+      env = QT_AUTO_SCREEN_SCALE_FACTOR,1
+      env = QT_QPA_PLATFORM,wayland;kcb
+      env = QT_WAYLAND_DISABLE_WINDOWDECORATION,1
+      env = QT_QPA_PLATFORMTHEME=qt5ct
+
+      monitor=,preferred,auto,1
+
       exec-once = hyprctl setcursor Quintom_Ink 24
       exec-once = swww init; swww img ~/pics/images/wallpapers/wallpaper.jpg
       exec-once = keepassxc
@@ -151,6 +167,7 @@
       bind = SUPER, p, exec, xdg-open "$(rg --files | rofi -dmenu -i -p ' ')"
       bind = SUPER SHIFT, p, exec, ~/.local/bin/powermenu
       bind = SUPER, grave, exec, ~/.local/bin/emojipicker
+      bind = SUPER, V, exec, env | rofi -dmenu -p "Environment"
       bind = SUPER, C, exec, rofi -modi calc -show calc -no-show-match -no-sort -calc-command 'wtype "{result}"'
 
       bind = SUPER CONTROL, l, exec, ~/.local/bin/lockscreen

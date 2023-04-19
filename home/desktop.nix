@@ -8,9 +8,6 @@
 
   wayland.windowManager.hyprland = {
     nvidiaPatches = true;
-    extraConfig = ''
-      monitor=,1920x1200, 0x0, 1
-    '';
   };
 }
 

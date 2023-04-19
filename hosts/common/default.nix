@@ -50,16 +50,6 @@
     shell = pkgs.zsh;
   };
 
-  # Wayland variables
-  environment.variables = {
-    MOZ_ENABLE_WAYLAND = "1";
-    GTK_USE_PORTAL = "1";
-    GDK_BACKEND = "wayland,x11"; # Wayland with fallback to x11 (via xwayland)
-    XDG_SESSION_TYPE = "wayland";
-    QT_QPA_PLATFORM = "wayland";
-    QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
-  };
-
   # Sytem Packages
   environment.systemPackages = with pkgs; [
     # A few essential pacakges
