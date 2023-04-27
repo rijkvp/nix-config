@@ -16,7 +16,11 @@
 
       vim.opt.smartindent = true
 
-      vim.opt.wrap = false
+      
+      vim.opt.wrap = true
+      vim.opt.linebreak = true
+      vim.keymap.set('n', 'j', 'gj')
+      vim.keymap.set('n', 'k', 'gk')
 
       vim.opt.swapfile = false
       vim.opt.backup = false
