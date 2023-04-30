@@ -5,17 +5,17 @@
         id = 0;
         name = "Default";
         search = {
-          default = "DuckDuckGo";
+          default = "Brave Search";
           force = true;
           order = [
+            "Brave Search"
             "DuckDuckGo"
-            "Brave"
             "Nix Packages"
             "Nix Options"
             "NixOS Wiki"
           ];
           engines = {
-            "Brave" = {
+            "Brave Search" = {
               urls = [{
                 template = "https://search.brave.com/search";
                 params = [

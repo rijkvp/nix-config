@@ -47,12 +47,22 @@
         done
         return 1
       }
-      tmux-dev() {
-        dev_dir=$(fd -t d . | fzf)
-        echo "Start dev on $dev_dir"
-        tmux new -A -D -s dev -c "$dev_dir"
+      tmux-main() {
+        tmux new-session -A -D -s main
       }
+      tmux-dev() {
+        dev_dir="./$(fd -t d . | fzf)"
+        shell_name="dev-$(basename $dev_dir)"
+        echo "Starting dev session on $dev_dir"
+        if fileinparent flake.nix $dev_dir; then
+          tmux new -A -D -s "$shell_name" -c "$dev_dir" "nix develop --command zsh"
+        else
+          tmux new -A -D -s $shell_name -c "$dev_dir"
+        fi
+      }
+      zle -N tmux-main
       zle -N tmux-dev
+      bindkey -s ^n "tmux-main\n"
       bindkey -s ^f "tmux-dev\n"
     '';
   };

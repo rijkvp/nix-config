@@ -108,6 +108,8 @@
         plugin = nvim-lspconfig;
         type = "lua";
         config = ''
+          vim.lsp.set_log_level("debug")
+
           local lspconfig = require('lspconfig')
 
           -- Language servers
@@ -116,7 +118,8 @@
           lspconfig.clangd.setup{}
           lspconfig.rnix.setup{}
           lspconfig.texlab.setup{}
-          lspconfig.java_language_server.setup{}
+          -- jdtls is packaged as jdt-language-server in nixpkgs
+          lspconfig.jdtls.setup{ cmd = { 'jdt-language-server' } }
 
           -- Goto
           vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Hover documentation" })
@@ -209,7 +212,7 @@
       # LaTeX
       texlab
       # Java
-      java-language-server
+      jdt-language-server
     ];
   };
 }
