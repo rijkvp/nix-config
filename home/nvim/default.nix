@@ -16,9 +16,11 @@
 
       vim.opt.smartindent = true
 
-      
       vim.opt.wrap = true
       vim.opt.linebreak = true
+
+      vim.opt.spell = true
+      vim.opt.spelllang = { 'en_us' }
 
       vim.opt.swapfile = false
       vim.opt.backup = false
@@ -42,6 +44,7 @@
       vim.keymap.set('n', 'j', 'gj')
       vim.keymap.set('n', 'k', 'gk')
       vim.keymap.set('n', '<leader>w', ':set wrap!<CR>')
+      vim.keymap.set('n', '<leader>s', ':set spell!<CR>')
     '';
     plugins = with pkgs.vimPlugins; [
       # Theme
@@ -170,6 +173,7 @@
       cmp-cmdline
       cmp-nvim-lsp
       cmp-nvim-lua
+      cmp-spell
       lspkind-nvim
 
       # Other

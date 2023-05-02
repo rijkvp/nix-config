@@ -74,7 +74,6 @@
     beets
 
     # Backup
-    restic
     borgbackup
 
     # GUI Programs
