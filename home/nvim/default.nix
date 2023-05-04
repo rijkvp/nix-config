@@ -200,6 +200,7 @@
           vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
         '';
       }
+      copilot-vim
     ];
     extraPackages = with pkgs; [
       tree-sitter
