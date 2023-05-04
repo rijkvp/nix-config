@@ -57,7 +57,7 @@
         if fileinparent flake.nix $dev_dir; then
           tmux new -A -D -s "$shell_name" -c "$dev_dir" "nix develop --command zsh"
         else
-          tmux new -A -D -s $shell_name -c "$dev_dir"
+          tmux new -A -D -s "$shell_name" -c "$dev_dir"
         fi
       }
       zle -N tmux-main

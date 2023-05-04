@@ -3,6 +3,7 @@
     ./firefox.nix
     ./newsboat.nix
     ./shell.nix
+    ./fd.nix
     ./starship.nix
     ./rofi
     ./nvim
