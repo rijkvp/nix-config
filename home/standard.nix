@@ -230,11 +230,6 @@
     enable = true;
   };
 
-  programs.vscode = {
-    enable = true;
-    package = pkgs.vscodium;
-  };
-
   xdg = {
     enable = true;
     userDirs = {

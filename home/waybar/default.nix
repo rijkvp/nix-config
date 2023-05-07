@@ -72,7 +72,7 @@
         };
         "memory" = {
           interval = 1;
-          format = "  {percentage}%";
+          format = "󰍛  {percentage}%";
           tooltip-format = "{used:0.1f}/{total:0.1f}GiB RAM - {swapUsed:0.1f}/{swapTotal:0.1f}GiB swap";
         };
         "battery" = {
