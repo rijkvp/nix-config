@@ -78,16 +78,12 @@
     borgbackup
 
     # GUI Programs
-    brave
     gimp
     geeqie
     signal-desktop
     thunderbird
     appimage-run
     keepassxc
-    qbittorrent
-    transmission-gtk
-    libreoffice-fresh
 
     # Spell checker
     hunspell
