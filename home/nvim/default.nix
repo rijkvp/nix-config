@@ -49,13 +49,14 @@
     plugins = with pkgs.vimPlugins; [
       # Theme
       {
-        plugin = tokyonight-nvim;
+        plugin = catppuccin-nvim;
         type = "lua";
         config = ''
-          require("tokyonight").setup({
-            transparent = true
+          require("catppuccin").setup({
+            flavour = "mocha",
+            transparent_background = true,
           })
-          vim.cmd[[colorscheme tokyonight]]
+          vim.cmd[[colorscheme catppuccin]]
         '';
       }
 

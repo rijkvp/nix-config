@@ -44,18 +44,18 @@
           gaps_in = 6
           gaps_out = 12
           border_size = ${theme.borderWidth}
-          col.active_border = rgba(33ccffee) rgba(00ff99ee) 45deg
-          col.inactive_border = rgba(595959aa)
+          col.active_border = rgb(${builtins.substring 1 7 theme.borderActive})
+          col.inactive_border = rgb(${builtins.substring 1 7 theme.border})
 
-          layout = dwindle
+          layout = master
       }
 
       decoration {
         rounding=${theme.rounding}
         multisample_edges = true
         inactive_opacity=0.9
-        active_opacity=0.95
-        fullscreen_opacity=0.95
+        active_opacity=1
+        fullscreen_opacity=1
         dim_inactive = false
         dim_strength = 0.05
         blur=true
@@ -73,13 +73,13 @@
       animations {
           enabled = yes
 
-          bezier = myBezier, 0.05, 0.9, 0.1, 1.05
+          bezier=curve,0.05,0.9,0.1,1.1
 
-          animation = windows, 1, 7, myBezier
-          animation = windowsOut, 1, 7, default, popin 80%
-          animation = border, 1, 10, default
-          animation = fade, 1, 7, default
-          animation = workspaces, 1, 6, default
+          animation = windows, 1, 4, curve
+          animation = windowsOut, 1, 4, curve, popin 80%
+          animation = border, 1, 4, curve
+          animation = fade, 1, 4, curve
+          animation = workspaces, 1, 4, curve, fade
       }
 
       dwindle {
@@ -88,7 +88,7 @@
       }
 
       master {
-          new_is_master = true
+          no_gaps_when_only = true
       }
 
       gestures {
@@ -140,6 +140,8 @@
       bind = SUPER, w, workspace, 4
       bind = SUPER, e, workspace, 5
       bind = SUPER, r, workspace, 6
+      bind = SUPER, t, workspace, 7
+      bind = SUPER, y, workspace, 8
 
       bind = SUPER SHIFT, 1, movetoworkspace, 1
       bind = SUPER SHIFT, 2, movetoworkspace, 2
@@ -147,6 +149,8 @@
       bind = SUPER SHIFT, w, movetoworkspace, 4
       bind = SUPER SHIFT, e, movetoworkspace, 5
       bind = SUPER SHIFT, r, movetoworkspace, 6
+      bind = SUPER SHIFT, t, movetoworkspace, 7
+      bind = SUPER SHIFT, y, movetoworkspace, 8
 
       bind = SUPER CONTROL, 1, movetoworkspacesilent, 1
       bind = SUPER CONTROL, 2, movetoworkspacesilent, 2
@@ -154,6 +158,8 @@
       # bind = SUPER CONTROL, w, movetoworkspacesilent, 4
       bind = SUPER CONTROL, e, movetoworkspacesilent, 5
       bind = SUPER CONTROL, r, movetoworkspacesilent, 6
+      bind = SUPER CONTROL, t, movetoworkspacesilent, 7
+      bind = SUPER CONTROL, y, movetoworkspacesilent, 8
   
       # Screenshot
       bind = SUPER, s, exec, grim - | tee "${config.xdg.userDirs.pictures}/$(date +"%Y-%m-%d-%H:%M:%S")-screenshot.png" | wl-copy -t image/png

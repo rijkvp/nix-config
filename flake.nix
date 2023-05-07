@@ -54,7 +54,81 @@
         };
       };
 
-      theme = rec {
+
+      catppuccinTheme = rec {
+        themeName = "Catppuccin Mocha";
+        borderWidth = "1";
+        border = palette.overlay0;
+        borderActive = palette.lavender; 
+        rounding = "5";
+        # Colors from: https://github.com/catppuccin/catppuccin
+        palette = {
+          rosewater = "#f5e0dc";
+          flamingo = "#f2cdcd";
+          pink = "#f5c2e7";
+          mauve = "#cba6f7";
+          red = "#f38ba8";
+          maroon = "#eba0ac";
+          peach = "#fab387";
+          yellow = "#f9e2af";
+          green = "#a6e3a1";
+          teal = "#94e2d5";
+          sky = "#89dceb";
+          sapphire = "#74c7ec";
+          blue = "#89b4fa";
+          lavender = "#b4befe";
+          text = "#cdd6f4";
+          subtext1 = "#bac2de";
+          subtext0 = "#a6adc8";
+          overlay2 = "#9399b2";
+          overlay1 = "#7f849c";
+          overlay0 = "#6c7086";
+          surface2 = "#585b70";
+          surface1 = "#45475a";
+          surface0 = "#313244";
+          base = "#1e1e2e";
+          mantle = "#181825";
+          crust = "#11111b";
+        };
+        background = palette.base;
+        backgroundAlt = palette.mantle;
+        foreground = palette.text;
+        foregroundAlt = palette.subtext1;
+        black = palette.surface1;
+        white = palette.subtext1;
+        red = palette.red;
+        green = palette.green;
+        orange = palette.peach;
+        yellow = palette.yellow;
+        cyan = palette.teal;
+        blue = palette.blue;
+        purple = palette.mauve;
+        magenta = palette.pink;
+        primary = blue;
+        terminalColors = {
+          normal = {
+            black = theme.black;
+            red = theme.red;
+            green = theme.green;
+            yellow = theme.yellow;
+            blue = theme.blue;
+            magenta = theme.magenta;
+            cyan = theme.cyan;
+            white = theme.white;
+          };
+          bright = {
+            black = palette.surface2;
+            red = theme.red;
+            green = theme.green;
+            yellow = theme.yellow;
+            blue = theme.blue;
+            magenta = theme.magenta;
+            cyan = theme.cyan;
+            white = palette.subtext0;
+          };
+        };
+      };
+      tokyoNightTheme = rec {
         themeName = "Tokyo Night";
         borderWidth = "1";
         rounding = "7";
@@ -72,7 +146,7 @@
         cyan = "#449dab";
         blue = "#7aa2f7";
         magenta = "#bb9af7";
-        borderColor = "#9aa5ce";
+        border = "#9aa5ce";
         primary = blue;
         terminalColors = {
           normal = {
@@ -97,6 +171,8 @@
           };
         };
       };
+      # A theme can be set here
+      theme = catppuccinTheme;
 
       # home-manager configs: 'home-manager --flake .#your-username@your-hostname'
       homeConfigurations = {
