@@ -130,6 +130,7 @@
     extraConfig = {
       gpg.format = "ssh";
       pull.rebase = "true";
+      init.defaultBranch = "main";
     };
     aliases = {
       s = "status";
