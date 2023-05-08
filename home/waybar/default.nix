@@ -79,7 +79,7 @@
           tooltip-format = "{used:0.1f}/{total:0.1f}GiB RAM - {swapUsed:0.1f}/{swapTotal:0.1f}GiB swap";
         };
         "battery" = {
-          format = "<span color=\"${theme.foreground}\">{capacity}% {icon}</span>";
+          format = "{icon}<span color=\"${theme.foreground}\">{capacity}%</span>";
           format-icons = [ "  " "  " "  " "  " "  " ];
           format-charging = "󰂄  <span color=\"${theme.foreground}\">{capacity}%</span>";
         };
@@ -152,13 +152,21 @@
         color: ${theme.red};
         border-bottom: 1px solid ${theme.red};
       }
+      #backlight {
+        color: ${theme.yellow};
+        border-bottom: 1px solid ${theme.yellow};
+      }
       #network {
         color: ${theme.orange};
         border-bottom: 1px solid ${theme.orange};
       }
-      #memory {
+      #battery {
         color: ${theme.green};
         border-bottom: 1px solid ${theme.green};
+      }
+      #memory {
+        color: ${theme.cyan};
+        border-bottom: 1px solid ${theme.cyan};
       }
       #cpu {
         color: ${theme.cyan};
