@@ -60,7 +60,7 @@
         };
         "pulseaudio" = {
           format = "{icon} <span color=\"${theme.foreground}\">{volume}%</span>";
-          format-muted = "婢 ";
+          format-muted = "󰝟 ";
           format-icons = [ " " " " " " ];
         };
         "wireplumber" = {
