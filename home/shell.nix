@@ -38,7 +38,7 @@
       }
       fileinparent() {
         file=$1
-        dir=$2
+        dir=$(readlink -f "$2")
         while [ "$dir" != "/" ]; do
             if [ -e "$dir/$file" ]; then
                 return 0
@@ -48,22 +48,28 @@
         return 1
       }
       tmux-main() {
-        tmux new-session -A -D -s main
+        tmux new-session -A -D -c $HOME -s main
       }
       tmux-dev() {
         dev_dir="./$(fd -t d . | fzf)"
         shell_name="dev-$(basename $dev_dir)"
-        echo "Starting dev session on $dev_dir"
+        echo "Starting dev session '$shell_name' on $dev_dir"
         if fileinparent flake.nix $dev_dir; then
           tmux new -A -D -s "$shell_name" -c "$dev_dir" "nix develop --command zsh"
         else
-          tmux new -A -D -s "$shell_name" -c "$dev_dir"
+          tmux new -A -D -s "$shell_name" -c "$dev_dir" zsh
         fi
       }
-      zle -N tmux-main
       zle -N tmux-dev
+      zle -N tmux-main
+      bindkey -r ^f
+      bindkey -s ^f "fm\n"
+      bindkey -r ^g
+      bindkey -s ^g "tmux-dev\n"
+      bindkey -r ^n
       bindkey -s ^n "tmux-main\n"
-      bindkey -s ^f "tmux-dev\n"
+      bindkey -r ^b
+      bindkey -s ^b "mp\n"
     '';
   };
 
