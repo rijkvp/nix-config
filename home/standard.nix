@@ -78,10 +78,6 @@
     borgbackup
 
     # GUI Programs
-    gimp
-    geeqie
-    signal-desktop
-    thunderbird
     appimage-run
     keepassxc
 

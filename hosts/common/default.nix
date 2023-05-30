@@ -77,6 +77,7 @@
   ];
 
   # Fonts
+  fonts.fontDir.enable = true;
   fonts.fonts = with pkgs; [
     liberation_ttf
     fira
