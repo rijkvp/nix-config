@@ -54,13 +54,12 @@
         };
       };
 
-
       catppuccinTheme = rec {
         themeName = "Catppuccin Mocha";
         borderWidth = "1";
         border = palette.overlay0;
         borderActive = palette.lavender; 
-        rounding = "5";
+        rounding = "4";
         # Colors from: https://github.com/catppuccin/catppuccin
         palette = {
           rosewater = "#f5e0dc";
@@ -131,7 +130,9 @@
       tokyoNightTheme = rec {
         themeName = "Tokyo Night";
         borderWidth = "1";
-        rounding = "7";
+        rounding = "4";
+        border = "#9aa5ce";
+        borderActive = cyan;
         # Colors from: https://github.com/enkia/tokyo-night-vscode-theme#tokyo-night-and-tokyo-night-storm
         background = "#1a1b26";
         backgroundAlt = "#24283b";
@@ -146,7 +147,7 @@
         cyan = "#449dab";
         blue = "#7aa2f7";
         magenta = "#bb9af7";
-        border = "#9aa5ce";
+        purple = "#bb9af7";
         primary = blue;
         terminalColors = {
           normal = {

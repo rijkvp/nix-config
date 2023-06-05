@@ -108,14 +108,16 @@
       windowrule = opacity 0.86 override 0.86 override,Element
 
       # Workspace rules
-      windowrule = workspace 4, firefox
+      windowrule = workspace 4, brave
 
       # Applications
       bind = SUPER, RETURN, exec, alacritty
-      bind = SUPER_CTRL,W, exec, firefox
+      bind = SUPER_CTRL,W, exec, brave
       bind = SUPER_CTRL,F, exec, thunar
       bind = SUPER_CTRL,N, exec, keepassxc
       bind = SUPER_CTRL,M, exec, alacritty -e ncmpcpp
+      bind = SUPER_CTRL,K, exec, flatpak run org.signal.Signal
+      bind = SUPER_CTRL,C, exec, flatpak run --command=thunderbird org.mozilla.Thunderbird -calendar
 
       bind = SUPER_SHIFT, Q, killactive,
       bind = SUPER_SHIFT, X, exit,
