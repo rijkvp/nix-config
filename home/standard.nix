@@ -54,6 +54,7 @@
 
     neofetch
     ripgrep
+    jq
     tokei
     nodePackages.prettier
     fd

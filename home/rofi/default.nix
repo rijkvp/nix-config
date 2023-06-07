@@ -72,6 +72,9 @@
       children: [element-icon, element-text];
       margin: 2px 0;
     }
+    element.selected {
+      background-color: @bg-alt;
+    }
 
     element-icon {
       padding: 0 10px;
