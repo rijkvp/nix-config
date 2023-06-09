@@ -99,6 +99,9 @@
       bind = SUPER,N,togglespecialworkspace,kp
       windowrule = workspace special:kp,keepassxc
 
+      bind = SUPER,B, togglespecialworkspace, sp
+      bind = SUPER_SHIFT,B, movetoworkspace, special:sp
+
       # Transparent windows
       windowrule = opacity 0.8 override 0.8 override,Alacritty
       windowrule = opacity 0.7 override 0.7 override,thunar
