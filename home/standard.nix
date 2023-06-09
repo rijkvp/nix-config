@@ -130,6 +130,7 @@
       gpg.format = "ssh";
       pull.rebase = "true";
       init.defaultBranch = "main";
+      rebase.autoStash = "true";
     };
     aliases = {
       s = "status";

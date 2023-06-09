@@ -101,9 +101,4 @@ in
       monthly = -1;
     };
   };
-
-  # Steam
-  programs.steam = {
-    enable = true;
-  };
 }
