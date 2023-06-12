@@ -3,8 +3,6 @@
     inputs.agenix.nixosModules.default
   ] ++ (builtins.attrValues outputs.nixosModules);
 
-  services.movebeam.enable = true;
-
   nixpkgs.config.allowUnfree = true;
 
   nix = {

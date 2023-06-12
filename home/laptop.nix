@@ -12,4 +12,7 @@
         }
     '';
   };
+  home.packages = with pkgs; [
+    blueman
+  ];
 }
