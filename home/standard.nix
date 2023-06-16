@@ -150,7 +150,6 @@
       env.TERM = "xterm-256color";
       window = {
         decorations = "full";
-        title = "Alacritty";
         dynamic_title = true;
         class = {
           instance = "Alacritty";
@@ -164,11 +163,11 @@
       };
       font = {
         normal = {
-          family = "Iosevka Nerd Font";
+          family = "Comic Mono";
           style = "regular";
         };
         bold = {
-          family = "Iosevka Nerd Font";
+          family = "Comic Mono";
           style = "bold";
         };
         size = 12.0;
