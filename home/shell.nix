@@ -72,6 +72,8 @@
       bindkey -s ^n "tmux-main\n"
       bindkey -r ^b
       bindkey -s ^b "mp\n"
+      bindkey -r ^v
+      bindkey -s ^v "nvim .\n"
     '';
   };
 

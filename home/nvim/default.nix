@@ -5,6 +5,10 @@
     viAlias = true;
     vimAlias = true;
     extraLuaConfig = ''
+      -- Disable netrw (replaced by nvim-tree)
+      vim.g.loaded_netrw = 1
+      vim.g.loaded_netrwPlugin = 1
+
       vim.opt.nu = true
       vim.opt.relativenumber = true
       vim.opt.scrolloff = 8
@@ -39,7 +43,6 @@
 
       -- Remaps
       vim.g.mapleader = " "
-      vim.keymap.set('n', '<leader>o', vim.cmd.Ex)
 
       vim.keymap.set('n', 'j', 'gj')
       vim.keymap.set('n', 'k', 'gk')
@@ -147,6 +150,16 @@
       nvim-web-devicons
       trouble-nvim
 
+      # File manager
+      {
+        plugin = nvim-tree-lua;
+        type = "lua";
+        config = ''
+          require("nvim-tree").setup()
+          vim.keymap.set('n', '<leader>o', vim.cmd.NvimTreeToggle, { desc = "Toggle file tree" })
+        '';
+      }
+
       # Completion
       {
         plugin = nvim-cmp;
@@ -202,6 +215,22 @@
         '';
       }
       copilot-vim
+
+      {
+        plugin = nvim-colorizer-lua;
+        type = "lua";
+        config = ''
+          require('colorizer').setup()
+        '';
+      }
+      {
+        plugin = nvim-autopairs;
+        type = "lua";
+        config = ''
+          require('nvim-autopairs').setup()
+        '';
+      }
+
     ];
     extraPackages = with pkgs; [
       tree-sitter

@@ -84,8 +84,7 @@
     open-sans
     noto-fonts
     noto-fonts-emoji
-    comic-mono
-    (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "Iosevka" ]; })
+    (nerdfonts.override { fonts = [ "Iosevka" "CodeNewRoman" "ComicShannsMono" "JetBrainsMono" ]; })
   ];
 
   programs = {

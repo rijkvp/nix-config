@@ -163,11 +163,11 @@
       };
       font = {
         normal = {
-          family = "Comic Mono";
+          family = "CodeNewRoman Nerd Font";
           style = "regular";
         };
         bold = {
-          family = "Comic Mono";
+          family = "CodeNewRoman Nerd Font";
           style = "bold";
         };
         size = 12.0;
