@@ -122,6 +122,13 @@
       bind = SUPER_CTRL,K, exec, flatpak run org.signal.Signal
       bind = SUPER_CTRL,C, exec, flatpak run --command=thunderbird org.mozilla.Thunderbird -calendar
 
+      # Application worokspaces
+      windowrule = workspace 3, obsidian
+      windowrule = workspace 4, Brave-browser
+      windowrule = workspace 5, Signal
+      windowrule = workspace 5, Element
+      windowrule = workspace 5, whatsapp
+
       bind = SUPER_SHIFT, Q, killactive,
       bind = SUPER_SHIFT, X, exit,
 
