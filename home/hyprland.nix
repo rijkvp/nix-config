@@ -26,6 +26,8 @@
       exec-once = waybar
 
       monitor=,preferred,auto,1
+      monitor=,addreserved,0,0,32,0
+
 
       input {
           kb_layout = us
@@ -47,7 +49,7 @@
           col.active_border = rgb(${builtins.substring 1 7 theme.borderActive})
           col.inactive_border = rgb(${builtins.substring 1 7 theme.border})
 
-          layout = master
+          layout = dwindle
       }
 
       decoration {

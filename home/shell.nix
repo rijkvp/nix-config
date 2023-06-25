@@ -18,7 +18,7 @@
       "mp" = "ncmpcpp";
       "ns" = ''nix-shell --command "zsh"'';
       "nd" = ''nix develop --command "zsh"'';
-      "np" = ''nix-shell --command "zsh" -p'';
+      "," = ''nix-shell --command "zsh" -p'';
       "gp" = "git add . && git commit && git push";
       "tm" = "tmux new-session -A -D -s main";
       # Duplicate folder

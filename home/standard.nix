@@ -61,7 +61,6 @@
     fd
     difftastic
     sl
-    joshuto
 
     du-dust
     xdg-utils

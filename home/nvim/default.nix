@@ -230,7 +230,13 @@
           require('nvim-autopairs').setup()
         '';
       }
-
+      {
+        plugin = comment-nvim;
+        type = "lua";
+        config = ''
+          require('Comment').setup()
+        '';
+      }
     ];
     extraPackages = with pkgs; [
       tree-sitter
