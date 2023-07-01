@@ -125,6 +125,7 @@
           lspconfig.clangd.setup{}
           lspconfig.rnix.setup{}
           lspconfig.texlab.setup{}
+          lspconfig.ruff_lsp.setup{}
           -- jdtls is packaged as jdt-language-server in nixpkgs
           lspconfig.jdtls.setup{ cmd = { 'jdt-language-server' } }
 
@@ -254,6 +255,8 @@
       texlab
       # Java
       jdt-language-server
+      # Python
+      python311Packages.ruff-lsp
     ];
   };
 }

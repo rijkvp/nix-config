@@ -51,6 +51,19 @@ in
   # Nvidia
   services.xserver.videoDrivers = [ "nvidia" ];
 
+  # Extra XFCE desktop
+  services.xserver = {
+    enable = true;
+    desktopManager = {
+      xterm.enable = false;
+      xfce.enable = true;
+    };
+    displayManager = {
+      defaultSession = "xfce";
+      startx.enable = true;
+    };
+  };
+
   # Nvida support variables
   environment.variables = {
     LIBVA_DRIVER_NAME = "nvidia";

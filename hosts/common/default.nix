@@ -45,6 +45,8 @@
 
   # Sytem Packages
   environment.systemPackages = with pkgs; [
+    cage
+    greetd.gtkgreet
     # A few essential pacakges
     wget
     git
@@ -93,9 +95,7 @@
     dconf.enable = true;
     thunar = {
       enable = true;
-      plugins = with pkgs.xfce; [ thunar-archive-plugin thunar-volman ];
     };
-    kdeconnect.enable = true;
   };
 
   # Enable the OpenSSH daemon.
@@ -147,14 +147,17 @@
   services.greetd = {
     enable = true;
     settings = rec {
-      initial_session = {
-        # Autologin
-        command = "Hyprland";
-        user = "rijk";
+      default_session = {
+        command = "cage -s -- gtkgreet";
+        user = "greeter";
       };
-      default_session = initial_session;
     };
   };
+  environment.etc."greetd/environments".text = ''
+    Hyprland
+    startxfce4
+    zsh
+  '';
 
   # Security
   security.pam.services.swaylock = {

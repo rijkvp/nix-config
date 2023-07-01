@@ -272,8 +272,13 @@
       package = pkgs.fira;
     };
     theme = {
-      name = "Materia-dark";
-      package = pkgs.materia-theme;
+      name = "Catppuccin-Mocha-Compact-Sky-Dark";
+      package = pkgs.catppuccin-gtk.override {
+        accents = [ "sky" ];
+        size = "compact";
+        tweaks = [ "normal" ];
+        variant = "mocha";
+      };
     };
     iconTheme = {
       name = "Papirus-Dark";
