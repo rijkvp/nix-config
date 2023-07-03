@@ -1,0 +1,74 @@
+* {
+  all: unset;
+  margin: 0;
+  padding: 0;
+}
+
+.bar {
+  font-family: Iosevka Nerd Font;
+  font-weight: bold;
+  font-size: 14px;
+  opacity: 0.8;
+  color: #cdd6f4;
+}
+
+.bar-main {
+    margin: 32px 0px;
+    padding: 0 2px;
+}
+.workspaces {
+}
+.workspaces button {
+    font-size: 14px;
+    opacity: 1.0;
+    background-color: #1e1e2e;
+    padding: 8px 0;
+    border-radius: 4px;
+}
+.workspaces button:hover {
+    background-color: #1e1e2e;
+    box-shadow: 0 0 2px 4px #45475a;
+}
+
+.statslist {
+    padding: 12px;
+
+    .time {
+        font-weight: bold;
+        font-size: 32px;
+    }
+    .date {
+        font-weight: bold;
+        font-size: 16px;
+    }
+}
+
+.stats {
+    background-color: #1e1e2e;
+    opacity: 0.85;
+    border-radius: 4px;
+}
+
+.stat scale trough highlight {
+    all: unset;
+    background-color: #89b4fa;
+    border-radius: 2px 0px 0px 2px;
+}
+.stat scale trough {
+    all: unset;
+    background-color: #181825;
+    margin-left: 10px;
+    margin-right: 10px;
+    min-height: 12px;
+    min-width: 50px;
+    border-radius: 2px;
+}
+.stat scale slider {
+    background-color: rgba(0,0,0,0);
+    border: none;
+    box-shadow: none;
+}
+
+.stat .label {
+    font-weight: bold;
+}

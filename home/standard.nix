@@ -7,7 +7,7 @@
     ./starship.nix
     ./rofi
     ./nvim
-    ./waybar
+    ./eww
   ];
   nixpkgs = {
     overlays = [

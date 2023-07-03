@@ -1,0 +1,117 @@
+(defpoll time :interval "1s"
+  "date '+%H:%M'")
+(defpoll date :interval "30s"
+  "date '+%m-%d'")
+(defpoll fulldate :interval "30s"
+  "date '+%Y-%m-%d'")
+(defpoll volume :interval "0.5s" `wpctl get-volume @DEFAULT_AUDIO_SINK@ | cut -d' ' -f2-`)
+
+(defpoll active-workspace :interval "0.1s" `hyprctl activeworkspace -j | jq -r '.name'`)
+
+(defpoll workspaces-list :interval "0.1s" `$HOME/.config/eww/scripts/workspaces.sh`)
+
+(defwidget volume-mod []
+   (label :text volume))
+
+(defwidget datetime []
+  (box :class "datetime"
+       :orientation "v"
+       :space-evenly false
+       :valign "end"
+    time
+    date
+    ))
+
+(defwidget bottom []
+  (box 
+   :orientation "v"
+   :space-evenly true
+    (volume-mod)
+    (datetime))
+)
+
+(defwidget bar []
+  (box 
+   :class "bar-main"
+   :orientation "v"
+   :space-evenly true
+    (workspaces)
+    (bottom))
+)
+
+(defwidget workspaces []
+  (box :class "workspaces"
+       :orientation "v"
+       :space-evenly false
+       :spacing 10
+    (for ws in workspaces-list
+        (button :onclick "hyprctl dispatch workspace ${ws.name}"
+                {ws.icon})
+    )
+  )
+)
+
+
+(defwidget stat [label value]
+  (box :orientation "v"
+       :class "stat"
+       :space-evenly false
+       :spacing 8
+    (box :class "label" label)
+    (scale :min 0
+           :max 101
+           :value value
+           :onchange ""
+           :active false
+           )))
+
+
+(defwidget statslist []
+  (box 
+      :class "statslist" 
+      :orientation "v"
+      :space-evenly false
+      :spacing 10
+    (box
+      :class "clock" 
+      :orientation "v"
+      :space-evenly false
+        (box :class "time" time)
+        (box :class "date" fulldate))
+    (stat :label "CPU"
+            :value {EWW_CPU.avg})
+    (stat :label "RAM"
+            :value {EWW_RAM.used_mem_perc})
+    (stat :label "Disk"
+            :value {round((1 - (EWW_DISK["/"].free / EWW_DISK["/"].total)) * 100, 0)})
+    ))
+
+(defwindow bar
+  :monitor 0
+  :stacking "bottom"
+  :exclusive true
+  :geometry (geometry :x "0%"
+                      :y "0%"
+                      :width "36px"
+                      :height "100%"
+                      :anchor "top left")
+  (bar))
+
+(defwindow stats
+  :monitor 0
+  :stacking "bottom"
+  :geometry (geometry :x "70%"
+                      :y "20%"
+                      :width "14%"
+                      :height "28%"
+                      :anchor "top left")
+  (statslist))
+
+(defwindow calendar
+  :monitor 0
+  :geometry (geometry :x "0%"
+                      :y "0%"
+                      :width "20%"
+                      :height "20%"
+                      :anchor "top left")
+  (calendar))

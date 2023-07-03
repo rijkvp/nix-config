@@ -1,10 +1,20 @@
 { lib, config, theme, ... }: {
+
+  home.file."${config.home.homeDirectory}/.local/bin/nextwallpaper" = {
+    text = ''
+      #!/bin/sh
+      swww img "$(find $XDG_PICTURES_DIR/images/wallpapers/current/ -type f | shuf -n 1)"
+    '';
+    executable = true;
+  };
+
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland = {
       enable = true;
       hidpi = true;
     };
+
     extraConfig = ''
       env = XDG_CURRENT_DESKTOP,Hyprland
       env = XDG_SESSION_TYPE,wayland
@@ -20,14 +30,13 @@
       env = QT_WAYLAND_DISABLE_WINDOWDECORATION,1
       env = QT_QPA_PLATFORMTHEME=qt5ct
 
-      exec-once = hyprctl setcursor Quintom_Ink 24
-      exec-once = swww init; swww img ~/pics/images/wallpapers/wallpaper.jpg
-      exec-once = keepassxc
-      exec-once = waybar
-
       monitor=,preferred,auto,1
-      monitor=,addreserved,0,0,32,0
+      monitor=,addreserved,0,0,36,0
 
+      exec-once = swww init; nextwallpaper
+      exec-once = hyprctl setcursor Quintom_Ink 20
+      exec-once = eww daemon; eww open bar; eww open stats
+      exec-once = keepassxc
 
       input {
           kb_layout = us
@@ -43,8 +52,8 @@
           repeat_delay = 400
       }
       general {
-          gaps_in = 6
-          gaps_out = 12
+          gaps_in = 8
+          gaps_out = 16
           border_size = ${theme.borderWidth}
           col.active_border = rgb(${builtins.substring 1 7 theme.borderActive})
           col.inactive_border = rgb(${builtins.substring 1 7 theme.border})
@@ -60,33 +69,34 @@
         fullscreen_opacity=1
         dim_inactive = false
         dim_strength = 0.05
-        blur=true
-        blur_size=5
-        blur_passes=4
 
-        drop_shadow = yes
-        shadow_range=20
-        shadow_render_power=3
-        shadow_ignore_window=1
-        shadow_offset= 4 4
-        col.shadow=0x88000000
+        blur=true
+        blur_size=4
+        blur_passes=3
+
+        drop_shadow = true
+        shadow_ignore_window = true
+        shadow_offset = 3 6
+        shadow_range = 30
+        shadow_render_power = 3
+        col.shadow = rgba(00000099)
       }
 
       animations {
           enabled = yes
 
-          bezier=curve,0.05,0.9,0.1,1.1
-
-          animation = windows, 1, 4, curve
-          animation = windowsOut, 1, 4, curve, popin 80%
-          animation = border, 1, 4, curve
-          animation = fade, 1, 4, curve
-          animation = workspaces, 1, 4, curve, fade
+          animation = windows, 1, 7, default, slide
+          animation = windowsOut, 1, 7, default, slide
+          animation = border, 1, 6, default
+          animation = borderangle, 1, 6, default
+          animation = fade, 1, 3, default
+          animation = workspaces, 1, 4, default
+          animation = specialWorkspace, 1, 4,default, slidevert
       }
 
       dwindle {
-          pseudotile = yes
-          force_split = 2
+          pseudotile = true
+          preserve_split = true
       }
 
       master {
@@ -97,15 +107,18 @@
           workspace_swipe = true
       }
 
-      # KeePassXC special workspace
+      # KeePassXC (special workspace)
       bind = SUPER,N,togglespecialworkspace,kp
       windowrule = workspace special:kp,keepassxc
 
+      # Scratchpad (special workspace)
       bind = SUPER,B, togglespecialworkspace, sp
       bind = SUPER_SHIFT,B, movetoworkspace, special:sp
 
+      windowrule=float,title:^debug
+
       # Transparent windows
-      windowrule = opacity 0.8 override 0.8 override,Alacritty
+      windowrule = opacity 0.85 override 0.8 override,Alacritty
       windowrule = opacity 0.7 override 0.7 override,thunar
       windowrule = opacity 0.8 override 0.8 override,keepassxc
       windowrule = opacity 0.86 override 0.86 override,Signal
@@ -123,6 +136,7 @@
       bind = SUPER_CTRL,M, exec, alacritty -e ncmpcpp
       bind = SUPER_CTRL,K, exec, flatpak run org.signal.Signal
       bind = SUPER_CTRL,C, exec, flatpak run --command=thunderbird org.mozilla.Thunderbird -calendar
+      bind = SUPER_CTRL,O, exec, flatpak run md.obsidian.Obsidian
 
       # Application worokspaces
       windowrule = workspace 3, obsidian
@@ -175,6 +189,9 @@
       bind = SUPER CONTROL, t, movetoworkspacesilent, 7
       bind = SUPER CONTROL, y, movetoworkspacesilent, 8
   
+      # Next wallpaper
+      bind = SUPER_CTRL,V, exec, nextwallpaper
+
       # Screenshot
       bind = SUPER, s, exec, grim - | tee "${config.xdg.userDirs.pictures}/$(date +"%Y-%m-%d-%H:%M:%S")-screenshot.png" | wl-copy -t image/png
       bind = SUPER SHIFT, s, exec, grim -g "$(slurp)" - | tee "${config.xdg.userDirs.pictures}/$(date +"%Y-%m-%d-%H:%M:%S")-screenshot.png" | wl-copy -t image/png
@@ -185,7 +202,6 @@
       bind = SUPER, p, exec, xdg-open "$(fd -t f | rofi -dmenu -i -p ' ')"
       bind = SUPER SHIFT, p, exec, ~/.local/bin/powermenu
       bind = SUPER, grave, exec, ~/.local/bin/emojipicker
-      bind = SUPER, V, exec, env | rofi -dmenu -p "Environment"
       bind = SUPER, C, exec, rofi -modi calc -show calc -no-show-match -no-sort -calc-command 'wtype "{result}"'
 
       bind = SUPER CONTROL, l, exec, ~/.local/bin/lockscreen
