@@ -70,8 +70,6 @@
     btop
     sfz
 
-    brave
-
     # Media
     yt-dlp
     mpc-cli
@@ -162,11 +160,11 @@
       };
       font = {
         normal = {
-          family = "CodeNewRoman Nerd Font";
+          family = "Iosevka Nerd Font";
           style = "regular";
         };
         bold = {
-          family = "CodeNewRoman Nerd Font";
+          family = "Iosevka Nerd Font";
           style = "bold";
         };
         size = 12.0;
@@ -271,9 +269,9 @@
       enable = true;
       defaultApplications = {
         # Firefox web browser
-        "text/html" = [ "brave-browser.desktop" ];
-        "x-scheme-handler/http" = [ "brave-browser.desktop" ];
-        "x-scheme-handler/https" = [ "brave-browser.desktop" ];
+        "text/html" = [ "firefox.desktop" ];
+        "x-scheme-handler/http" = [ "firefox.desktop" ];
+        "x-scheme-handler/https" = [ "firefox.desktop" ];
         # GIMP image editor
         "image/png" = [ "gimp.desktop" ];
         "image/jpeg" = [ "gimp.desktop" ];

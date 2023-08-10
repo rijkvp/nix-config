@@ -126,11 +126,11 @@
       windowrule = opacity 0.86 override 0.86 override,Element
 
       # Workspace rules
-      windowrule = workspace 4, brave
+      windowrule = workspace 4, firefox
 
       # Applications
       bind = SUPER, RETURN, exec, alacritty
-      bind = SUPER_CTRL,W, exec, brave
+      bind = SUPER_CTRL,W, exec, firefox
       bind = SUPER_CTRL,F, exec, thunar
       bind = SUPER_CTRL,N, exec, keepassxc
       bind = SUPER_CTRL,M, exec, alacritty -e ncmpcpp
@@ -140,7 +140,7 @@
 
       # Application worokspaces
       windowrule = workspace 3, obsidian
-      windowrule = workspace 4, Brave-browser
+      windowrule = workspace 4, firefox
       windowrule = workspace 5, Signal
       windowrule = workspace 5, Element
       windowrule = workspace 5, whatsapp
