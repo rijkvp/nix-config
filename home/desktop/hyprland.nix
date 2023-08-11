@@ -33,8 +33,8 @@
       env = QT_WAYLAND_DISABLE_WINDOWDECORATION,1
       env = QT_QPA_PLATFORMTHEME=qt5ct
 
-      monitor=,preferred,auto,1
-      monitor=,addreserved,0,0,36,0
+      monitor = ,preferred,auto,1
+      monitor = ,addreserved,0,0,36,0
 
       exec-once = swww init; nextwallpaper
       exec-once = hyprctl setcursor Quintom_Ink 20
@@ -54,28 +54,30 @@
           repeat_rate = 40
           repeat_delay = 400
       }
+
       general {
           gaps_in = 8
           gaps_out = 16
           border_size = ${theme.borderWidth}
           col.active_border = rgb(${builtins.substring 1 7 theme.borderActive})
           col.inactive_border = rgb(${builtins.substring 1 7 theme.border})
-
           layout = dwindle
       }
 
       decoration {
-        rounding=${theme.rounding}
+        rounding = ${theme.rounding}
         multisample_edges = true
-        inactive_opacity=0.9
-        active_opacity=1
-        fullscreen_opacity=1
+        inactive_opacity = 0.9
+        active_opacity = 1
+        fullscreen_opacity = 1
         dim_inactive = false
         dim_strength = 0.05
 
-        blur=true
-        blur_size=4
-        blur_passes=3
+        blur {
+          enabled = true
+          size = 4
+          passes = 3
+        }
 
         drop_shadow = true
         shadow_ignore_window = true
@@ -214,19 +216,19 @@
       bindel = ,XF86MonBrightnessDown, exec, light -S "$(light -G | awk '{ print int($1 / 1.4) }')"
 
       # WipePlumber audio control
-      bindel=, XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-
-      bindel=, XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+
-      bindl=, XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+      bindel =, XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-
+      bindel =, XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+
+      bindl =, XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
 
-      bindel=SHIFT, F2, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-
-      bindel=SHIFT, F3, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+
-      bindl=SHIFT, F4, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+      bindel = SHIFT, F2, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-
+      bindel = SHIFT, F3, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+
+      bindl = SHIFT, F4, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
 
       # MPD control
-      bindel=SHIFT, F5, exec, mpc stop
-      bindel=SHIFT, F6, exec, mpc prev
-      bindel=SHIFT, F7, exec, mpc toggle
-      bindl=SHIFT, F8, exec, mpc next
+      bindel  =SHIFT, F5, exec, mpc stop
+      bindel = SHIFT, F6, exec, mpc prev
+      bindel = SHIFT, F7, exec, mpc toggle
+      bindl = SHIFT, F8, exec, mpc next
 
       # Move/resize windows with mainMod + LMB/RMB and dragging
       bindm = SUPER, mouse:272, movewindow

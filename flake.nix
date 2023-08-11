@@ -9,7 +9,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland.url = "github:hyprwm/Hyprland/v0.26.0";
+    hyprland.url = "github:hyprwm/Hyprland/v0.28.0";
     agenix.url = "github:ryantm/agenix";
   };
 
