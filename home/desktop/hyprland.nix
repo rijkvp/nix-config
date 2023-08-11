@@ -1,4 +1,7 @@
-{ lib, config, theme, ... }: {
+{ inputs, lib, config, theme, ... }: {
+  imports = [
+    inputs.hyprland.homeManagerModules.default
+  ];
 
   home.file."${config.home.homeDirectory}/.local/bin/nextwallpaper" = {
     text = ''

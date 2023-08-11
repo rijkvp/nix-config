@@ -1,8 +1,6 @@
-{ inputs, outputs, lib, config, pkgs, ... }: {
+{ pkgs, ... }: {
   imports = [
     ./standard.nix
-    inputs.hyprland.homeManagerModules.default
-    ./hyprland.nix
   ];
 
   wayland.windowManager.hyprland = {
@@ -12,6 +10,8 @@
         }
     '';
   };
+
+  # Packges for only for laptop
   home.packages = with pkgs; [
     blueman
   ];
