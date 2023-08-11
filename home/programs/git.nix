@@ -20,6 +20,7 @@
       df = "diff";
       a = "add";
       c = "commit";
+      p = "push";
     };
   };
 }

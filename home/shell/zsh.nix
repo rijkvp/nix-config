@@ -19,6 +19,7 @@
       "ns" = ''nix-shell --command "zsh"'';
       "nd" = ''nix develop --command "zsh"'';
       "," = ''nix-shell --command "zsh" -p'';
+      "gc" = "git add . && git commit";
       "gp" = "git add . && git commit && git push";
       "tm" = "tmux new-session -A -D -s main";
       # Duplicate folder
