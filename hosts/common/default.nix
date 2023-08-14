@@ -38,7 +38,7 @@
   users.defaultUserShell = pkgs.zsh;
   users.users.rijk = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "video" "audio" "lp" "scanner" "docker" ];
+    extraGroups = [ "wheel" "video" "audio" "lp" "scanner" "docker" "libvirtd" ];
     initialPassword = "password";
     shell = pkgs.zsh;
   };

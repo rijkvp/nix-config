@@ -66,13 +66,9 @@
       };
       # See ArkenFox: https://github.com/arkenfox/user.js/blob/master/user.js
       settings = {
-        # Startup/home
-        "browser.startup.homepage" = "http://home.local";
-        "browser.startup.page" = 1;
         "browser.newtabpage.enabled" = false;
         "browser.newtabpage.activity-stream.showSponsored" = false;
         "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
-        "browser.newtabpage.activity-stream.default.sites" = "http://home.local";
         # Disable telemetery
         "datareporting.policy.dataSubmissionEnabled" = false;
         "datareporting.healthreport.uploadEnabled" = false;

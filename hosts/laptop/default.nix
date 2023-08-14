@@ -20,7 +20,6 @@
   networking.wireless.enable = true;
   services.connman.enable = true;
 
-
   # Wireguard keys
   age.secrets.wg-laptop = {
     file = ../../secrets/wg-laptop.age;
