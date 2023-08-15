@@ -10,6 +10,10 @@
     ./zathura.nix
   ];
 
+  services.kdeconnect = {
+    enable = true;
+  };
+
   # Default programs
   xdg.mimeApps.defaultApplications = {
     # Firefox web browser

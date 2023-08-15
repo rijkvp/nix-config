@@ -34,12 +34,13 @@
       env = QT_QPA_PLATFORMTHEME=qt5ct
 
       monitor = ,preferred,auto,1
-      monitor = ,addreserved,0,0,36,0
 
       exec-once = swww init; nextwallpaper
       exec-once = hyprctl setcursor Quintom_Ink 20
-      exec-once = eww daemon; eww open bar; eww open stats
+      exec-once = eww daemon; eww open stats
+      exec-once = waybar
       exec-once = keepassxc
+      exec-once = kdeconnect-indicator
 
       input {
           kb_layout = us
@@ -56,8 +57,8 @@
       }
 
       general {
-          gaps_in = 8
-          gaps_out = 16
+          gaps_in = 6
+          gaps_out = 12
           border_size = ${theme.borderWidth}
           col.active_border = rgb(${builtins.substring 1 7 theme.borderActive})
           col.inactive_border = rgb(${builtins.substring 1 7 theme.border})
@@ -90,7 +91,7 @@
       animations {
           enabled = yes
 
-          animation = windows, 1, 7, default, slide
+          animation = windows, 1, 7, default,
           animation = windowsOut, 1, 7, default, slide
           animation = border, 1, 6, default
           animation = borderangle, 1, 6, default
@@ -198,8 +199,8 @@
       bind = SUPER_CTRL,V, exec, nextwallpaper
 
       # Screenshot
-      bind = SUPER, s, exec, grim - | tee "${config.xdg.userDirs.pictures}/$(date +"%Y-%m-%d-%H:%M:%S")-screenshot.png" | wl-copy -t image/png
-      bind = SUPER SHIFT, s, exec, grim -g "$(slurp)" - | tee "${config.xdg.userDirs.pictures}/$(date +"%Y-%m-%d-%H:%M:%S")-screenshot.png" | wl-copy -t image/png
+      bind = SUPER, s, exec, grim - | tee "${config.xdg.userDirs.pictures}/screenshots/$(date +"%Y-%m-%d-%H:%M:%S")-screenshot.png" | wl-copy -t image/png
+      bind = SUPER SHIFT, s, exec, grim -g "$(slurp)" - | tee "${config.xdg.userDirs.pictures}/screenshots/$(date +"%Y-%m-%d-%H:%M:%S")-screenshot.png" | wl-copy -t image/png
 
       # dmenu menus (using rofi)
       bind = SUPER, D, exec, rofi -show drun -i

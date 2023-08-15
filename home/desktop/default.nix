@@ -3,6 +3,7 @@
     ./eww
     ./rofi
     ./hyprland.nix
+    ./waybar.nix
   ];
 
   home.packages = with pkgs; [

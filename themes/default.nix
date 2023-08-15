@@ -48,7 +48,7 @@
     blue = palette.blue;
     purple = palette.mauve;
     magenta = palette.pink;
-    primary = blue;
+    primary = palette.lavender;
     terminalColors = {
       normal = {
         black = black;

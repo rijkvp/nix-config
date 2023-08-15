@@ -29,7 +29,7 @@
   # Network/wireguard
   networking = {
     hostName = "rnixlaptop";
-    wg-quick.interfaces.wg-laptop.configFile = config.age.secrets.wg-laptop.path;
+    # wg-quick.interfaces.wg-laptop.configFile = config.age.secrets.wg-laptop.path;
   };
 
   # OpenGL

@@ -2,32 +2,7 @@
   all: unset;
   margin: 0;
   padding: 0;
-}
-
-.bar {
   font-family: Iosevka Nerd Font;
-  font-weight: bold;
-  font-size: 14px;
-  opacity: 0.8;
-  color: #cdd6f4;
-}
-
-.bar-main {
-    margin: 32px 0px;
-    padding: 0 2px;
-}
-.workspaces {
-}
-.workspaces button {
-    font-size: 14px;
-    opacity: 1.0;
-    background-color: #1e1e2e;
-    padding: 8px 0;
-    border-radius: 4px;
-}
-.workspaces button:hover {
-    background-color: #1e1e2e;
-    box-shadow: 0 0 2px 4px #45475a;
 }
 
 .statslist {
@@ -39,8 +14,11 @@
     }
     .date {
         font-weight: bold;
-        font-size: 16px;
+        font-size: 18px;
     }
+}
+.clock {
+    margin-bottom: 12px;
 }
 
 .stats {
@@ -51,7 +29,7 @@
 
 .stat scale trough highlight {
     all: unset;
-    background-color: #89b4fa;
+    background-color: #b4befe;
     border-radius: 2px 0px 0px 2px;
 }
 .stat scale trough {

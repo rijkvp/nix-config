@@ -135,6 +135,8 @@
       nssmdns = true;
       openFirewall = true;
     };
+
+    kdeconnect.enable = true;
   };
 
   # XDG Portal
