@@ -1,6 +1,6 @@
 { pkgs, ... }: {
   imports = [
-    ./standard.nix
+    ./common.nix
   ];
 
   wayland.windowManager.hyprland = {

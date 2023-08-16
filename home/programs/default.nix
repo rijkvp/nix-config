@@ -1,13 +1,66 @@
-{ ... }: {
+{ pkgs, ... }: {
   imports = [
     ./alacritty.nix
     ./firefox.nix
     ./git.nix
+    ./joshuto.nix
     ./mpv.nix
     ./ncmpcpp.nix
     ./neovim.nix
     ./newsboat.nix
     ./zathura.nix
+  ];
+
+  home.packages = with pkgs; [
+    # CLI Tools
+    du-dust
+    jq
+    ripgrep
+    sl
+    tldr
+    trashy
+    unzip
+    watchexec
+    xdg-utils
+    zip
+
+    ffmpeg # Swiss knife for videos
+    imagemagick # Swiss knife for images
+
+    # Document editing / LaTeX
+    pandoc
+    tectonic
+
+    # Dev
+    difftastic
+    nodePackages.prettier
+    sfz
+    tokei
+    zola
+
+    sshfs
+    btop
+
+    # Media
+    yt-dlp
+    mpc-cli
+    beets
+
+    # Backup
+    borgbackup
+
+    # GUI Programs
+    appimage-run
+    keepassxc
+
+    # Spell checker
+    hunspell
+    hunspellDicts.en_US
+    hunspellDicts.nl_NL
+
+    # Audio Management
+    pavucontrol
+    pulseaudio
   ];
 
   services.kdeconnect = {

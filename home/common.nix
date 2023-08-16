@@ -15,67 +15,15 @@
       allowUnfreePredicate = (_: true);
     };
   };
+  programs.home-manager.enable = true;
 
   systemd.user.startServices = "sd-switch";
 
-  programs.home-manager.enable = true;
   home = {
     username = "rijk";
     homeDirectory = "/home/rijk";
     stateVersion = "23.05"; # Don't change
   };
-
-  home.packages = with pkgs; [
-    # CLI Tools
-    zip
-    unzip
-    jq
-    ripgrep
-    sl
-    tldr
-    du-dust
-    xdg-utils
-    neofetch
-    watchexec
-
-    ffmpeg # Swiss knife for videos
-    imagemagick # Swiss knife for images
-
-    # Document editing / LaTeX
-    pandoc
-    tectonic
-
-    # Dev
-    difftastic
-    nodePackages.prettier
-    sfz
-    tokei
-    zola
-
-    sshfs
-    btop
-
-    # Media
-    yt-dlp
-    mpc-cli
-    beets
-
-    # Backup
-    borgbackup
-
-    # GUI Programs
-    appimage-run
-    keepassxc
-
-    # Spell checker
-    hunspell
-    hunspellDicts.en_US
-    hunspellDicts.nl_NL
-
-    # Audio Management
-    pavucontrol
-    pulseaudio
-  ];
 
   xdg = {
     enable = true;
