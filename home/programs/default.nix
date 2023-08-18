@@ -14,6 +14,8 @@
   home.packages = with pkgs; [
     # CLI Tools
     du-dust
+    dua
+    file
     jq
     ripgrep
     sl
