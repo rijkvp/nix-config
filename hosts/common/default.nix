@@ -93,9 +93,8 @@
     zsh.enable = true;
     light.enable = true;
     dconf.enable = true;
-    thunar = {
-      enable = true;
-    };
+    thunar.enable = true;
+    kdeconnect.enable = true;
   };
 
   # Enable the OpenSSH daemon.
@@ -135,8 +134,6 @@
       nssmdns = true;
       openFirewall = true;
     };
-
-    kdeconnect.enable = true;
   };
 
   # XDG Portal
