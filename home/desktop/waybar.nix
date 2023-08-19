@@ -16,7 +16,7 @@
         layer = "top";
         position = "top";
         spacing = 8;
-        modules-left = [ "battery" "backlight" "pulseaudio" "mpd"  ];
+        modules-left = [ "pulseaudio" "battery" "backlight" "mpd" ];
         modules-center = [ "wlr/workspaces" ];
         modules-right = [ "network" "custom/movebeam" "clock" "tray" ];
         "wlr/workspaces" = {
