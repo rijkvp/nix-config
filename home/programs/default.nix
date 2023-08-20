@@ -1,6 +1,7 @@
 { pkgs, ... }: {
   imports = [
     ./alacritty.nix
+    ./beets.nix
     ./firefox.nix
     ./git.nix
     ./joshuto.nix
@@ -46,7 +47,6 @@
     # Media
     yt-dlp
     mpc-cli
-    beets
 
     # Backup
     borgbackup
