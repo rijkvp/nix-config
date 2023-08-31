@@ -40,6 +40,7 @@
       exec-once = waybar
       exec-once = keepassxc
       exec-once = kdeconnect-indicator
+      exec-once = nm-applet
 
       input {
           kb_layout = us

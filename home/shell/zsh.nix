@@ -18,7 +18,6 @@
       "mp" = "ncmpcpp";
       "ns" = ''nix-shell --command "zsh"'';
       "nd" = ''nix develop --command "zsh"'';
-      "," = ''nix shell nixpkgs#'';
       "gc" = "git add . && git commit";
       "gp" = "git add . && git commit && git push";
       "tm" = "tmux new-session -A -D -s main";
@@ -32,6 +31,9 @@
       "gitdt" = "GIT_EXTERNAL_DIFF=difft git diff";
     };
     initExtra = ''
+      ,() { 
+        nix shell "nixpkgs#$1"
+      }
       tecw() {
         watchexec -e tex "tectonic -c minimal $1"
       }

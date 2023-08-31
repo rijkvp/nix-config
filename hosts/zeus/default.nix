@@ -32,6 +32,7 @@ in
   # Network/wireguard
   networking = {
     hostName = "rnixpc";
+    networkmanager.enable = true;
     # wg-quick.interfaces.wg-desktop.configFile = config.age.secrets.wg-desktop.path;
   };
 

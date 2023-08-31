@@ -23,7 +23,6 @@
       vim.opt.wrap = false
       vim.opt.linebreak = true
 
-      vim.opt.spell = true
       vim.opt.spelllang = { 'en_us' }
 
       vim.opt.swapfile = false

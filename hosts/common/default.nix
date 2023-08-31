@@ -47,6 +47,7 @@
     neofetch
     htop
     zsh
+    wireguard-tools
 
     ((vim_configurable.override { }).customize {
       name = "vim";
