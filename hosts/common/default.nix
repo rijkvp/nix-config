@@ -1,23 +1,13 @@
 { inputs, outputs, lib, config, pkgs, ... }: {
   imports = [
     inputs.agenix.nixosModules.default
-  ] ++ (builtins.attrValues outputs.nixosModules);
+  ];
 
   nixpkgs.config.allowUnfree = true;
 
   nix = {
-    # This will add each flake input as a registry
-    # To make nix3 commands consistent with your flake
-    registry = lib.mapAttrs (_: value: { flake = value; }) inputs;
-
-    # This will additionally add your inputs to the system's legacy channels
-    # Making legacy nix commands consistent as well, awesome!
-    nixPath = lib.mapAttrsToList (key: value: "${key}=${value.to.path}") config.nix.registry;
-
     settings = {
-      # Enable flakes and new 'nix' command
       experimental-features = "nix-command flakes";
-      # Deduplicate and optimize nix store
       auto-optimise-store = true;
 
       # Hyprland Cache
@@ -35,12 +25,15 @@
   };
 
   # Users
-  users.defaultUserShell = pkgs.zsh;
-  users.users.rijk = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" "video" "audio" "lp" "scanner" "docker" "libvirtd" ];
-    initialPassword = "password";
-    shell = pkgs.zsh;
+  users = {
+    defaultUserShell = pkgs.zsh;
+    mutableUsers = false;
+    users.rijk = {
+      isNormalUser = true;
+      initialHashedPassword = "$y$j9T$nI4JsR4y7bWg3wAaplo4h1$ZLXayiNA2cAe/JaOnHnvy9w19eoBdb3pXmjQ.f88UR/";
+      extraGroups = [ "wheel" "video" "audio" "lp" "scanner" "docker" "libvirtd" "network" ];
+      shell = pkgs.zsh;
+    };
   };
 
   # Sytem Packages
@@ -97,7 +90,8 @@
     kdeconnect.enable = true;
   };
 
-  # Enable the OpenSSH daemon.
+  hardware.pulseaudio.enable = false;
+
   services = {
     dbus.enable = true;
     openssh = {
@@ -115,7 +109,6 @@
       ];
     };
     gvfs.enable = true;
-
     # PipeWire Audio
     pipewire = {
       enable = true;
@@ -140,7 +133,10 @@
   xdg.portal = {
     enable = true;
     wlr.enable = true;
-    extraPortals = with pkgs; [ xdg-desktop-portal-wlr xdg-desktop-portal-gtk ];
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-wlr
+      xdg-desktop-portal-gtk
+    ];
   };
 
   services.greetd = {
@@ -159,11 +155,13 @@
   '';
 
   # Security
-  security.pam.services.swaylock = {
-    text = "auth include login";
+  security = {
+    pam.services.swaylock = {
+      text = "auth include login";
+    };
+    rtkit.enable = true;
+    polkit.enable = true;
   };
-  security.rtkit.enable = true;
-  security.polkit.enable = true;
 
   system.stateVersion = "23.05"; # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
 }

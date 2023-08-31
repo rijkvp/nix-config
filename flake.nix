@@ -10,69 +10,54 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland.url = "github:hyprwm/Hyprland/v0.28.0";
+    hyprland.url = "github:hyprwm/Hyprland/v0.29.0";
     agenix.url = "github:ryantm/agenix";
+    impermanence.url = "github:nix-community/impermanence";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, flake-utils, home-manager, ... }@inputs:
     let
-      inherit (self) outputs;
-      forAllSystems = nixpkgs.lib.genAttrs [
-        "aarch64-linux"
-        "i686-linux"
-        "x86_64-linux"
-        "aarch64-darwin"
-        "x86_64-darwin"
-      ];
+      system = "x86_64-linux";
+      pkgs = import nixpkgs { inherit system; };
     in
     rec {
-      packages = forAllSystems (system:
-        let pkgs = nixpkgs.legacyPackages.${system};
-        in import ./pkgs { inherit pkgs; }
-      );
-      devShells = forAllSystems (system:
-        let pkgs = nixpkgs.legacyPackages.${system};
-        in import ./shell.nix { inherit pkgs; }
-      );
-
-      overlays = import ./overlays;
-      nixosModules = import ./modules/nixos;
-      homeManagerModules = import ./modules/home-manager;
-
-      # NixOS configs: 'nixos-rebuild --flake .#hostname'
-      nixosConfigurations = {
-        desktop = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs outputs; };
-          modules = [
-            ./hosts/desktop
-          ];
-        };
-        laptop = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs outputs; };
-          modules = [
-            ./hosts/laptop
-          ];
-        };
+      # devshell for bootstrapping
+      devShells."${system}".default = pkgs.mkShell {
+        buildInputs = with pkgs; [ just ];
       };
 
       # Set a theme here
       themes = import ./themes;
       theme = themes.catppuccin;
 
-      # home-manager configs: 'home-manager --flake .#your-username@your-hostname'
-      homeConfigurations = {
-        "rijk@desktop" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux;
-          extraSpecialArgs = { inherit inputs outputs theme ; };
+      nixosConfigurations = {
+        zeus = nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = { inherit inputs; };
           modules = [
-            ./home/desktop.nix
+            ./hosts/zeus
           ];
         };
-        "rijk@laptop" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux;
-          extraSpecialArgs = { inherit inputs outputs theme; };
+        poseidon = nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = { inherit inputs; };
           modules = [
-            ./home/laptop.nix
+            ./hosts/poseidon
+          ];
+        };
+        apollo = nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./hosts/apollo
+            inputs.impermanence.nixosModules.impermanence
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.rijk = import ./home/laptop.nix;
+              home-manager.extraSpecialArgs = { inherit inputs theme; };
+            }
           ];
         };
       };

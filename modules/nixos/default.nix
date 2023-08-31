@@ -1,3 +1,0 @@
-{
-  movebeam = import ./movebeam;
-}
