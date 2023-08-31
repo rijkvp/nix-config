@@ -1,25 +1,16 @@
-{ lib, config, pkgs, theme, ... }: {
-  nixpkgs = {
-    overlays = [
-      (self: super: {
-        waybar = super.waybar.overrideAttrs (oldAttrs: {
-          mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
-        });
-      })
-    ];
-  };
-
+{ lib, config, pkgs, theme, inputs, ... }: {
   programs.waybar = {
     enable = true;
+    package = inputs.nixpkgs-unstable.legacyPackages.${pkgs.system}.waybar;
     settings = {
       mainBar = {
         layer = "top";
         position = "top";
         spacing = 8;
         modules-left = [ "pulseaudio" "battery" "backlight" "mpd" ];
-        modules-center = [ "wlr/workspaces" ];
-        modules-right = [ "network" "custom/movebeam" "clock" "tray" ];
-        "wlr/workspaces" = {
+        modules-center = [ "hyprland/workspaces" ];
+        modules-right = [ "network" "clock" "tray" ];
+        "hyprland/workspaces" = {
           format = "{icon}";
           on-click = "activate";
           active-only = false;
@@ -34,11 +25,6 @@
             "8" = "VIII";
           };
           sort-by-number = true;
-        };
-        "custom/movebeam" = {
-          exec = "movebeam get break";
-          format = "󱎫 {}";
-          interval = 1;
         };
         "mpd" = {
           format = "{stateIcon} {artist} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S} {songPosition}|{queueLength})";
@@ -124,7 +110,7 @@
       tooltip label {
         color: ${theme.foreground};
       }
-      #workspaces, #window, #custom-movebeam, #mpd, #clock, #backlight, #battery, #cpu, #memory, #network, #pulseaudio, #tray, #mode {
+      #workspaces, #window, #mpd, #clock, #backlight, #battery, #cpu, #memory, #network, #pulseaudio, #tray, #mode {
         border-radius: ${theme.rounding}px;
         color: ${theme.foreground};
         margin: 4px 0px;
