@@ -149,6 +149,7 @@
       };
     };
   };
+
   environment.etc."greetd/environments".text = ''
     Hyprland
     startxfce4

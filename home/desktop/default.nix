@@ -18,6 +18,8 @@
     # Screenshots
     grim
     slurp
+    # Applets
+    networkmanagerapplet
   ];
 
   # Make scripts in ~/.local/bin executable form PATH
