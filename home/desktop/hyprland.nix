@@ -213,8 +213,8 @@
       bind = SUPER CONTROL, l, exec, ~/.local/bin/lockscreen
 
       # Monitor backlight (make sure light is installed)
-      bindel = ,XF86MonBrightnessUp, exec, light -S "$(light -G | awk '{ print int(($1 + .72) * 1.4) }')"
-      bindel = ,XF86MonBrightnessDown, exec, light -S "$(light -G | awk '{ print int($1 / 1.4) }')"
+      bindel = ,XF86MonBrightnessUp, exec, light -A 5
+      bindel = ,XF86MonBrightnessDown, exec, light -U 5
 
       # WipePlumber audio control
       bindel =, XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-
