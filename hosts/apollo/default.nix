@@ -12,6 +12,7 @@
       "/var/log"
       "/var/lib/cups"
       "/var/lib/fprint"
+      "/var/lib/flatpak"
       "/var/db/sudo/lectured"
     ];
     files = [
