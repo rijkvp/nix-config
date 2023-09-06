@@ -125,8 +125,7 @@
           lspconfig.rnix.setup{}
           lspconfig.texlab.setup{}
           lspconfig.ruff_lsp.setup{}
-          -- jdtls is packaged as jdt-language-server in nixpkgs
-          lspconfig.jdtls.setup{ cmd = { 'jdt-language-server' } }
+          lspconfig.hls.setup{}
 
           -- Goto
           vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Hover documentation" })
@@ -252,10 +251,10 @@
       nodePackages.typescript-language-server
       # LaTeX
       texlab
-      # Java
-      jdt-language-server
       # Python
       python311Packages.ruff-lsp
+      # Haskell
+      haskell-language-server
     ];
   };
 }
