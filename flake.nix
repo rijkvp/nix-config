@@ -30,36 +30,44 @@
       themes = import ./themes;
       theme = themes.catppuccin;
 
-      nixosConfigurations = {
-        zeus = nixpkgs.lib.nixosSystem {
-          inherit system;
-          specialArgs = { inherit inputs; };
-          modules = [
-            ./hosts/zeus
-          ];
+      nixosConfigurations =
+        {
+          zeus = nixpkgs.lib.nixosSystem {
+            inherit system;
+            specialArgs = { inherit inputs; };
+            modules = [
+              ./hosts/zeus
+              home-manager.nixosModules.home-manager
+              {
+                home-manager.useGlobalPkgs = true;
+                home-manager.useUserPackages = true;
+                home-manager.users.rijk = import ./home/desktop.nix;
+                home-manager.extraSpecialArgs = { inherit inputs theme; };
+              }
+            ];
+          };
+          poseidon = nixpkgs.lib.nixosSystem {
+            inherit system;
+            specialArgs = { inherit inputs; };
+            modules = [
+              ./hosts/poseidon
+            ];
+          };
+          apollo = nixpkgs.lib.nixosSystem {
+            inherit system;
+            specialArgs = { inherit inputs; };
+            modules = [
+              ./hosts/apollo
+              inputs.impermanence.nixosModules.impermanence
+              home-manager.nixosModules.home-manager
+              {
+                home-manager.useGlobalPkgs = true;
+                home-manager.useUserPackages = true;
+                home-manager.users.rijk = import ./home/laptop.nix;
+                home-manager.extraSpecialArgs = { inherit inputs theme; };
+              }
+            ];
+          };
         };
-        poseidon = nixpkgs.lib.nixosSystem {
-          inherit system;
-          specialArgs = { inherit inputs; };
-          modules = [
-            ./hosts/poseidon
-          ];
-        };
-        apollo = nixpkgs.lib.nixosSystem {
-          inherit system;
-          specialArgs = { inherit inputs; };
-          modules = [
-            ./hosts/apollo
-            inputs.impermanence.nixosModules.impermanence
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.rijk = import ./home/laptop.nix;
-              home-manager.extraSpecialArgs = { inherit inputs theme; };
-            }
-          ];
-        };
-      };
     };
 }
