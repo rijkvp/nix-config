@@ -9,6 +9,7 @@
     ./ncmpcpp.nix
     ./neovim.nix
     ./newsboat.nix
+    ./rstudio.nix
     ./zathura.nix
   ];
 
@@ -36,6 +37,7 @@
 
     # Dev
     difftastic
+    just
     nodePackages.prettier
     sfz
     tokei
