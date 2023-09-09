@@ -53,16 +53,21 @@
         return 1
       }
       tmux-main() {
-        tmux new-session -A -D -c $HOME -s main
+        tmux new-session -AD -c $HOME -s main
+      }
+      devopen() {
+        dev_dir="./$(fd -t d . | fzf)"
+        tmux-dev "$dev_dir"
       }
       tmux-dev() {
-        dev_dir="./$(fd -t d . | fzf)"
-        shell_name="dev-$(basename $dev_dir)"
-        echo "Starting dev session '$shell_name' on $dev_dir"
+        dev_dir=$(realpath "$1")
+        shell_name="$(basename $dev_dir)"
         if fileinparent flake.nix $dev_dir; then
-          tmux new -A -D -s "$shell_name" -c "$dev_dir" "nix develop --command zsh"
+          echo "Starting Nix devshell '$shell_name' on $dev_dir"
+          nix develop "$dev_dir" -c tmux new -AD -s "$shell_name" -c "$dev_dir"
         else
-          tmux new -A -D -s "$shell_name" -c "$dev_dir" zsh
+          echo "Starting shell '$shell_name' on $dev_dir"
+          tmux new -AD -s "$shell_name" -c "$dev_dir"
         fi
       }
       zle -N tmux-dev
@@ -70,7 +75,7 @@
       bindkey -r ^f
       bindkey -s ^f "fm\n"
       bindkey -r ^g
-      bindkey -s ^g "tmux-dev\n"
+      bindkey -s ^g "devopen\n"
       bindkey -r ^n
       bindkey -s ^n "tmux-main\n"
       bindkey -r ^b
