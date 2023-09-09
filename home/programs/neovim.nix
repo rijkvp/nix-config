@@ -236,6 +236,7 @@
           require('Comment').setup()
         '';
       }
+      todo-txt-vim
     ];
     extraPackages = with pkgs; [
       tree-sitter
