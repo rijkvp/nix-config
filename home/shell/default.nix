@@ -28,6 +28,7 @@
     node_modules/
     target/
     dist/
+    R/
   '';
 
   programs.zoxide = {
