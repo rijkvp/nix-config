@@ -9,7 +9,6 @@
     ./ncmpcpp.nix
     ./neovim.nix
     ./newsboat.nix
-    ./rstudio.nix
     ./zathura.nix
   ];
 

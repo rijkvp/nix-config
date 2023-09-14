@@ -13,6 +13,7 @@
       "/var/lib/cups"
       "/var/lib/fprint"
       "/var/lib/flatpak"
+      "/var/lib/libvirt"
       "/var/db/sudo/lectured"
     ];
     files = [
@@ -47,4 +48,8 @@
   # Laptop power management
   powerManagement.enable = true;
   services.tlp.enable = true;
+
+  # virt-manager
+  virtualisation.libvirtd.enable = true;
+  environment.systemPackages = with pkgs; [ virt-manager ];
 }
