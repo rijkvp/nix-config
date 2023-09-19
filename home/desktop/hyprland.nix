@@ -124,8 +124,8 @@
       windowrule=float,title:^debug
 
       # Transparent windows
-      windowrule = opacity 0.85 override 0.8 override,Alacritty
-      windowrule = opacity 0.7 override 0.7 override,thunar
+      windowrule = opacity 0.95 override 0.8 override,Alacritty
+      windowrule = opacity 0.8 override 0.75 override,thunar
       windowrule = opacity 0.8 override 0.8 override,keepassxc
       windowrule = opacity 0.86 override 0.86 override,Signal
       windowrule = opacity 0.86 override 0.86 override,whatsapp

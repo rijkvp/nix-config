@@ -213,7 +213,20 @@
           vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
         '';
       }
-      copilot-vim
+      {
+        plugin = copilot-vim;
+        type = "lua";
+        config = ''
+          vim.api.nvim_create_autocmd({ 'BufEnter' }, {
+              pattern = '*',
+              command = "Copilot disable"
+          })
+          vim.api.nvim_create_autocmd({ 'BufEnter' }, {
+              pattern = vim.fn.expand('~') .. '/repos/*',
+              command = "Copilot enable"
+          })
+        '';
+      }
 
       {
         plugin = nvim-colorizer-lua;
