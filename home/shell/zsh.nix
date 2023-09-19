@@ -41,7 +41,7 @@
       }
       mdw() {
         out="$(basename $1 .md).pdf"
-        watchexec -e md "pandoc --pdf-engine tectonic -o $out $1"
+        watchexec -e md "pandoc --pdf-engine tectonic -f markdown -o $out $1"
       }
       fileinparent() {
         file=$1
