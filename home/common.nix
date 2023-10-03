@@ -13,7 +13,6 @@
     homeDirectory = "/home/rijk";
     stateVersion = "23.05"; # Don't change
   };
-
   xdg = {
     enable = true;
     userDirs = {

@@ -1,6 +1,5 @@
 { config, pkgs, theme, ... }: {
   imports = [
-    ./eww
     ./rofi
     ./hyprland.nix
     ./waybar.nix

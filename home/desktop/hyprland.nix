@@ -36,7 +36,6 @@
 
       exec-once = swww init; nextwallpaper
       exec-once = hyprctl setcursor Quintom_Ink 20
-      exec-once = eww daemon; eww open stats
       exec-once = waybar
       exec-once = keepassxc
       exec-once = kdeconnect-indicator

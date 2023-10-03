@@ -16,20 +16,11 @@
     preLVM = true;
   };
 
-  # Use ConnMann as network manager
+  # Network: connman
   networking.wireless.enable = true;
   services.connman.enable = true;
-
-  # Wireguard keys
-  age.secrets.wg-laptop = {
-    file = ../../secrets/wg-laptop.age;
-    path = "/etc/wireguard/wg-laptop.conf";
-  };
-
-  # Network/wireguard
   networking = {
     hostName = "rnixlaptop";
-    # wg-quick.interfaces.wg-laptop.configFile = config.age.secrets.wg-laptop.path;
   };
 
   # OpenGL

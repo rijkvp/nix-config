@@ -41,7 +41,7 @@
               {
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
-                home-manager.users.rijk = import ./home/desktop.nix;
+                home-manager.users.rijk = import ./home/nvidia.nix;
                 home-manager.extraSpecialArgs = { inherit inputs theme; };
               }
             ];

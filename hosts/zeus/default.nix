@@ -23,17 +23,10 @@ in
   boot.loader.efi.canTouchEfiVariables = true;
   boot.supportedFilesystems = [ "btrfs" ];
 
-  # Wireguard keys
-  age.secrets.wg-desktop = {
-    file = ../../secrets/wg-desktop.age;
-    path = "/etc/wireguard/wg-desktop.conf";
-  };
-
-  # Network/wireguard
+  # Network
   networking = {
     hostName = "rnixpc";
     networkmanager.enable = true;
-    # wg-quick.interfaces.wg-desktop.configFile = config.age.secrets.wg-desktop.path;
   };
 
   # Hardware
