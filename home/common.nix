@@ -33,16 +33,16 @@
       name = "Fira Sans";
       package = pkgs.fira;
     };
-    theme = {
-      # GTK theme
-      name = "Catppuccin-Mocha-Compact-Sky-Dark";
-      package = pkgs.catppuccin-gtk.override {
-        accents = [ "sky" ];
-        size = "compact";
-        tweaks = [ "normal" ];
-        variant = "mocha";
-      };
-    };
+    # theme = {
+    #   # GTK theme
+    #   name = "Catppuccin-Mocha-Compact-Sky-Dark";
+    #   package = pkgs.catppuccin-gtk.override {
+    #     accents = [ "sky" ];
+    #     size = "compact";
+    #     tweaks = [ "normal" ];
+    #     variant = "mocha";
+    #   };
+    # };
     iconTheme = {
       name = "Papirus-Dark";
       package = pkgs.papirus-icon-theme;

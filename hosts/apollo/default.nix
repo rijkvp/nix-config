@@ -1,8 +1,22 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, nixosModules, ... }: {
   imports = [
     ./hardware-configuration.nix
     ../common
-  ];
+  ] ++ (builtins.attrValues nixosModules);
+
+  modules.kde.enable = true;
+  modules.gnome.enable = true;
+
+  services.xserver.displayManager = {
+    sddm.enable = true;
+    defaultSession = "plasmawayland";
+    sessionPackages = with pkgs; [
+      hyprland
+    ];
+  };
+
+  # FIX CONFLICT
+  programs.ssh.askPassword = pkgs.lib.mkForce "";
 
   # Persistent files
   environment.persistence."/persist" = {
@@ -47,7 +61,8 @@
 
   # Laptop power management
   powerManagement.enable = true;
-  services.tlp.enable = true;
+  # DISABLED FOR KDE, NOT SMART
+  # services.tlp.enable = true;
 
   # virt-manager
   virtualisation.libvirtd.enable = true;

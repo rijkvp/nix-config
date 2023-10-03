@@ -30,11 +30,12 @@
       themes = import ./themes;
       theme = themes.catppuccin;
 
+      nixosModules = import ./modules/nixos;
       nixosConfigurations =
         {
           zeus = nixpkgs.lib.nixosSystem {
             inherit system;
-            specialArgs = { inherit inputs; };
+            specialArgs = { inherit inputs nixosModules; };
             modules = [
               ./hosts/zeus
               home-manager.nixosModules.home-manager
@@ -48,14 +49,14 @@
           };
           poseidon = nixpkgs.lib.nixosSystem {
             inherit system;
-            specialArgs = { inherit inputs; };
+            specialArgs = { inherit inputs nixosModules; };
             modules = [
               ./hosts/poseidon
             ];
           };
           apollo = nixpkgs.lib.nixosSystem {
             inherit system;
-            specialArgs = { inherit inputs; };
+            specialArgs = { inherit inputs nixosModules; };
             modules = [
               ./hosts/apollo
               inputs.impermanence.nixosModules.impermanence

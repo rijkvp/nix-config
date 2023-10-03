@@ -142,26 +142,28 @@
     enable = true;
     wlr.enable = true;
     extraPortals = with pkgs; [
-      xdg-desktop-portal-wlr
-      xdg-desktop-portal-gtk
+      # THIS WON't WORK
+      # xdg-desktop-portal-gtk
     ];
   };
 
-  services.greetd = {
-    enable = true;
-    settings = rec {
-      default_session = {
-        command = "cage -s -- gtkgreet";
-        user = "greeter";
-      };
-    };
-  };
-
-  environment.etc."greetd/environments".text = ''
-    Hyprland
-    startxfce4
-    zsh
-  '';
+  # TEMPORARY DISABLED
+  #  services.greetd = {
+  #    enable = true;
+  #    settings = rec {
+  #      default_session = {
+  #        command = "cage -s -- gtkgreet";
+  #        user = "greeter";
+  #      };
+  #    };
+  #  };
+  #
+  #  environment.etc."greetd/environments".text = ''
+  #    Hyprland
+  #    plasmawayland
+  #    startxfce4
+  #    zsh
+  #  '';
 
   # Security
   security = {
