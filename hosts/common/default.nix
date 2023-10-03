@@ -120,14 +120,21 @@
     # Flatpak
     flatpak.enable = true;
 
-    # Printing services
-    printing.enable = true;
-    printing.drivers = [ pkgs.hplip ];
-    avahi = {
-      enable = true;
-      nssmdns = true;
-      openFirewall = true;
-    };
+  };
+
+  # Printing/scanning services
+  services.printing = {
+    enable = true;
+    drivers = [ pkgs.hplip ];
+  };
+  services.avahi = {
+    enable = true;
+    nssmdns = true;
+    openFirewall = true;
+  };
+  hardware.sane = {
+    enable = true;
+    extraBackends = [ pkgs.hplipWithPlugin ];
   };
 
   # XDG Portal
