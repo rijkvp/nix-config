@@ -250,6 +250,14 @@
         '';
       }
       todo-txt-vim
+
+      {
+        plugin = neogit;
+        type = "lua";
+        config = ''
+          require('neogit').setup()
+        '';
+      }
     ];
     extraPackages = with pkgs; [
       tree-sitter

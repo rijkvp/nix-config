@@ -44,7 +44,7 @@
     wget
     git
     gnupg
-    neofetch
+    macchina
     htop
     zsh
     wireguard-tools

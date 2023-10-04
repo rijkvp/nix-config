@@ -41,6 +41,7 @@
     sfz
     tokei
     zola
+    onefetch
 
     sshfs
     btop
