@@ -6,7 +6,7 @@
   home.file."${config.home.homeDirectory}/.local/bin/nextwallpaper" = {
     text = ''
       #!/bin/sh
-      swww img "$(find $XDG_PICTURES_DIR/images/wallpapers/current/ -type f | shuf -n 1)"
+      swww img "$(find $XDG_PICTURES_DIR/images/wallpapers/${theme.wallpapers}/ -type f | shuf -n 1)"
     '';
     executable = true;
   };
@@ -123,8 +123,8 @@
       windowrule=float,title:^debug
 
       # Transparent windows
-      windowrule = opacity 0.95 override 0.8 override,Alacritty
-      windowrule = opacity 0.8 override 0.75 override,thunar
+      windowrule = opacity 0.86 override 0.86 override,Alacritty
+      windowrule = opacity 0.8 override 0.8 override,thunar
       windowrule = opacity 0.8 override 0.8 override,keepassxc
       windowrule = opacity 0.86 override 0.86 override,Signal
       windowrule = opacity 0.86 override 0.86 override,whatsapp

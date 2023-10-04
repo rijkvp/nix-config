@@ -1,5 +1,5 @@
 {
-  description = "My NixOS configuration.";
+  description = "My NixOS configurations.";
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-23.05";
@@ -10,7 +10,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland.url = "github:hyprwm/Hyprland/v0.29.0";
+    hyprland.url = "github:hyprwm/Hyprland/v0.30.0";
     agenix.url = "github:ryantm/agenix";
     impermanence.url = "github:nix-community/impermanence";
   };
@@ -28,7 +28,7 @@
 
       # Set a theme here
       themes = import ./themes;
-      theme = themes.catppuccin;
+      theme = themes.tokyonight;
 
       nixosConfigurations =
         {

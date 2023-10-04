@@ -127,15 +127,6 @@
     enable = true;
     drivers = [ pkgs.hplip ];
   };
-  services.avahi = {
-    enable = true;
-    nssmdns = true;
-    openFirewall = true;
-  };
-  hardware.sane = {
-    enable = true;
-    extraBackends = [ pkgs.hplipWithPlugin ];
-  };
 
   # XDG Portal
   xdg.portal = {
