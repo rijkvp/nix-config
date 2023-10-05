@@ -45,6 +45,7 @@
     git
     gnupg
     macchina
+    freshfetch
     htop
     zsh
     wireguard-tools
@@ -69,6 +70,9 @@
       '';
     })
   ];
+  environment.interactiveShellInit = ''
+    alias neofetch=freshfetch
+  '';
 
   # Fonts
   fonts.fontDir.enable = true;
@@ -119,7 +123,6 @@
 
     # Flatpak
     flatpak.enable = true;
-
   };
 
   # Printing/scanning services

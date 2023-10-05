@@ -37,7 +37,9 @@
         nix shell "nixpkgs#$1"
       }
       tecw() {
-        watchexec -e tex "tectonic -c minimal $1"
+        while inotifywait -q "$1"; do
+          tectonic -c minimal "$1"
+        done
       }
       mdw() {
         out="$(basename $1 .md).pdf"

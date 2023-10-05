@@ -41,7 +41,7 @@
               {
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
-                home-manager.users.rijk = import ./home/nvidia.nix;
+                home-manager.users.rijk = import ./home/zeus.nix;
                 home-manager.extraSpecialArgs = { inherit inputs theme; };
               }
             ];
@@ -51,6 +51,14 @@
             specialArgs = { inherit inputs; };
             modules = [
               ./hosts/poseidon
+              inputs.impermanence.nixosModules.impermanence
+              home-manager.nixosModules.home-manager
+              {
+                home-manager.useGlobalPkgs = true;
+                home-manager.useUserPackages = true;
+                home-manager.users.rijk = import ./home/poseidon.nix;
+                home-manager.extraSpecialArgs = { inherit inputs theme; };
+              }
             ];
           };
           apollo = nixpkgs.lib.nixosSystem {
@@ -63,7 +71,7 @@
               {
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
-                home-manager.users.rijk = import ./home/laptop.nix;
+                home-manager.users.rijk = import ./home/apollo.nix;
                 home-manager.extraSpecialArgs = { inherit inputs theme; };
               }
             ];

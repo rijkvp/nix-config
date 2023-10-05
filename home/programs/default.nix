@@ -23,7 +23,7 @@
     tldr
     trashy
     unzip
-    watchexec
+    inotify-tools
     xdg-utils
     zip
 

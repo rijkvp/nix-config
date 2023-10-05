@@ -32,8 +32,6 @@
       env = QT_WAYLAND_DISABLE_WINDOWDECORATION,1
       env = QT_QPA_PLATFORMTHEME=qt5ct
 
-      monitor = ,preferred,auto,1
-
       exec-once = swww init; nextwallpaper
       exec-once = hyprctl setcursor Quintom_Ink 20
       exec-once = waybar

@@ -5,13 +5,13 @@
 
   wayland.windowManager.hyprland = {
     extraConfig = ''
+      monitor = ,preferred,auto,1.25
       input {
           sensitivity = -0.1;
         }
     '';
   };
 
-  # Packges for only for laptop
   home.packages = with pkgs; [
     blueman
   ];
