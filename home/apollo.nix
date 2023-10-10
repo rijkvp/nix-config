@@ -5,7 +5,7 @@
 
   wayland.windowManager.hyprland = {
     extraConfig = ''
-      monitor = ,preferred,auto,1.25
+      monitor = ,preferred,auto,1.0
       input {
           sensitivity = -0.1;
         }

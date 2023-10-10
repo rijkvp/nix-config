@@ -36,6 +36,9 @@
     };
   };
 
+
+  services.tailscale.enable = true;
+
   # Sytem Packages
   environment.systemPackages = with pkgs; [
     cage
@@ -156,6 +159,11 @@
     startxfce4
     zsh
   '';
+
+  # Boot animation
+  boot.plymouth = {
+    enable = true;
+  };
 
   # Security
   security = {
