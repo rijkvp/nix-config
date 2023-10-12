@@ -1,4 +1,4 @@
-{ inputs, outputs, lib, config, pkgs, ... }: {
+{ inputs, outputs, lib, config, pkgs, nixosModules, ... }: {
   imports = [
     inputs.agenix.nixosModules.default
   ];
@@ -156,7 +156,7 @@
 
   environment.etc."greetd/environments".text = ''
     Hyprland
-    startxfce4
+    wayfire
     zsh
   '';
 

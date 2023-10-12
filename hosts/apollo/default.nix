@@ -1,8 +1,10 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, nixosModules, ... }: {
   imports = [
     ./hardware-configuration.nix
     ../common
-  ];
+  ] ++ (builtins.attrValues nixosModules);
+
+  modules.virt-manager.enable = true;
 
   # Persistent files
   environment.persistence."/persist" = {
@@ -48,8 +50,4 @@
   # Laptop power management
   powerManagement.enable = true;
   services.tlp.enable = true;
-
-  # virt-manager
-  virtualisation.libvirtd.enable = true;
-  environment.systemPackages = with pkgs; [ virt-manager ];
 }

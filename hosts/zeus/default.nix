@@ -10,13 +10,16 @@ let
     );
   };
 in
-{ inputs, outputs, lib, config, pkgs, ... }: {
+{ inputs, outputs, lib, config, pkgs, nixosModules, ... }: {
   imports =
     [
       ./hardware-configuration.nix
       ../common
       borgbackupMonitor
-    ];
+    ] ++ (builtins.attrValues nixosModules);
+
+  modules.virt-manager.enable = true;
+  modules.gaming.enable = true;
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -42,18 +45,6 @@ in
   # Nvidia
   services.xserver.videoDrivers = [ "nvidia" ];
 
-  # Extra XFCE desktop
-  services.xserver = {
-    enable = true;
-    desktopManager = {
-      xterm.enable = false;
-      xfce.enable = true;
-    };
-    displayManager = {
-      defaultSession = "xfce";
-      startx.enable = true;
-    };
-  };
 
   # Nvida support variables
   environment.variables = {
@@ -74,10 +65,6 @@ in
   # Docker
   virtualisation.docker.enable = true;
   virtualisation.docker.storageDriver = "btrfs";
-
-  # Virt
-  virtualisation.libvirtd.enable = true;
-  environment.systemPackages = with pkgs; [ virt-manager ];
 
   # Internal Hard Drive
   boot.initrd.luks.devices."crypthdint".device = "/dev/disk/by-uuid/69f1b535-d8e7-496e-ab3e-53d78d45c0c5";
