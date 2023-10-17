@@ -1,8 +1,8 @@
 rec {
   themeName = "Tokyo Night";
-  wallpapers = "tokyonight";
+  id = "tokyonight";
   borderWidth = "2";
-  rounding = "0";
+  rounding = "4";
   border = backgroundAlt;
   borderActive = cyan;
   # Colors from: https://github.com/enkia/tokyo-night-vscode-theme#tokyo-night-and-tokyo-night-storm

@@ -6,7 +6,7 @@
   home.file."${config.home.homeDirectory}/.local/bin/nextwallpaper" = {
     text = ''
       #!/bin/sh
-      swww img "$(find $XDG_PICTURES_DIR/images/wallpapers/${theme.wallpapers}/ -type f | shuf -n 1)"
+      swww img "$(find $XDG_PICTURES_DIR/images/wallpapers/${theme.id}/ -type f | shuf -n 1)"
     '';
     executable = true;
   };

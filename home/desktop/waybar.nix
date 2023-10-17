@@ -46,8 +46,8 @@
         };
         "pulseaudio" = {
           format = "{icon} {volume}%";
-          format-muted = "󰝟";
-          format-icons = [ "" "" "" ];
+          format-muted = "󰝟 ";
+          format-icons = [ " " " " " " ];
         };
         "wireplumber" = {
           format = "󰕾  {volume}%";

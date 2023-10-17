@@ -1,6 +1,6 @@
 rec {
   themeName = "Catppuccin Mocha";
-  wallpapers = "catppuccin";
+  id = "catppuccin";
   borderWidth = "1";
   border = palette.overlay0;
   borderActive = palette.lavender;

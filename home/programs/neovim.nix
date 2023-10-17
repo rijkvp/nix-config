@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }: {
+{ config, pkgs, lib, theme, ... }: {
   programs.neovim = {
     enable = true;
     defaultEditor = true;
@@ -56,7 +56,17 @@
             flavour = "mocha",
             transparent_background = true,
           })
-          vim.cmd[[colorscheme catppuccin]]
+        '';
+      }
+      {
+        plugin = tokyonight-nvim;
+        type = "lua";
+        config = ''
+          require("tokyonight").setup({
+            style = "moon",
+            transparent = true,
+          })
+          vim.cmd[[colorscheme ${theme.id}]]
         '';
       }
 
