@@ -18,6 +18,8 @@
       bind -r C-h resize-pane -L
       bind -r C-l resize-pane -R
 
+      set -sg escape-time 0
+
       # Status bar
       set -g status-style 'bg=${theme.background} fg=${theme.foreground}'
       set-option -g status-right '#(date +"%m-%d %H:%M")'

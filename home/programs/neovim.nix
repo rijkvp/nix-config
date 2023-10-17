@@ -9,7 +9,7 @@
       vim.g.loaded_netrw = 1
       vim.g.loaded_netrwPlugin = 1
 
-      vim.opt.nu = true
+      vim.opt.number = true
       vim.opt.relativenumber = true
       vim.opt.scrolloff = 8
 
@@ -32,8 +32,6 @@
 
       vim.opt.hlsearch = true
       vim.opt.incsearch = true
-
-      vim.cmd("set clipboard+=unnamedplus");
 
       vim.opt.termguicolors = true
       vim.opt.showmode = false
