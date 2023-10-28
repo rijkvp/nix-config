@@ -60,6 +60,7 @@
           col.active_border = rgb(${builtins.substring 1 7 theme.borderActive})
           col.inactive_border = rgb(${builtins.substring 1 7 theme.border})
           layout = dwindle
+          cursor_inactive_timeout = 5
       }
 
       decoration {
@@ -100,6 +101,7 @@
       dwindle {
           pseudotile = true
           preserve_split = true
+          no_gaps_when_only = true
       }
 
       master {
@@ -128,9 +130,6 @@
       windowrule = opacity 0.86 override 0.86 override,whatsapp
       windowrule = opacity 0.86 override 0.86 override,Element
 
-      # Workspace rules
-      windowrule = workspace 4, firefox
-
       # Applications
       bind = SUPER, RETURN, exec, alacritty
       bind = SUPER_CTRL,W, exec, firefox
@@ -138,15 +137,16 @@
       bind = SUPER_CTRL,N, exec, keepassxc
       bind = SUPER_CTRL,M, exec, alacritty -e ncmpcpp
       bind = SUPER_CTRL,K, exec, flatpak run org.signal.Signal
-      bind = SUPER_CTRL,C, exec, flatpak run --command=thunderbird org.mozilla.Thunderbird -calendar
+      bind = SUPER_CTRL,C, exec, flatpak run org.mozilla.Thunderbird
       bind = SUPER_CTRL,O, exec, flatpak run md.obsidian.Obsidian
 
       # Application worokspaces
+      windowrule = workspace 1, firefox
       windowrule = workspace 3, obsidian
-      windowrule = workspace 4, firefox
-      windowrule = workspace 5, Signal
-      windowrule = workspace 5, Element
-      windowrule = workspace 5, whatsapp
+      windowrule = workspace 4, Signal
+      windowrule = workspace 4, Element
+      windowrule = workspace 4, whatsapp
+      windowrule = workspace 5, thunderbird
 
       bind = SUPER_SHIFT, Q, killactive,
       bind = SUPER_SHIFT, X, exit,

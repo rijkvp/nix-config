@@ -139,6 +139,7 @@
         "privacy.clearOnShutdown.sessions" = true; # only HTTP basic auth
         "privacy.clearOnShutdown.cookies" = true; # logs out of sites
         "privacy.clearOnShutdown.offlineApps" = true;
+        # The tems that are selected automatically when you bring up the Clear Browsing Data dialog
         "privacy.cpd.cache" = true;
         "privacy.cpd.formdata" = true;
         "privacy.cpd.history" = true;
