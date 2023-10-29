@@ -65,7 +65,6 @@
 
       decoration {
         rounding = ${theme.rounding}
-        multisample_edges = true
         inactive_opacity = 0.9
         active_opacity = 1
         fullscreen_opacity = 1
@@ -112,6 +111,10 @@
           workspace_swipe = true
       }
 
+      misc {
+        disable_hyprland_logo = true
+      }
+
       # KeePassXC (special workspace)
       bind = SUPER,N,togglespecialworkspace,kp
       windowrule = workspace special:kp,keepassxc
@@ -143,10 +146,10 @@
       # Application worokspaces
       windowrule = workspace 1, firefox
       windowrule = workspace 3, obsidian
-      windowrule = workspace 4, Signal
-      windowrule = workspace 4, Element
-      windowrule = workspace 4, whatsapp
-      windowrule = workspace 5, thunderbird
+      windowrule = workspace 5, Signal
+      windowrule = workspace 5, Element
+      windowrule = workspace 5, whatsapp
+      windowrule = workspace 6, thunderbird
 
       bind = SUPER_SHIFT, Q, killactive,
       bind = SUPER_SHIFT, X, exit,
