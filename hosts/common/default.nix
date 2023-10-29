@@ -128,6 +128,23 @@
     flatpak.enable = true;
   };
 
+  # Key remaps daemon
+  services.keyd = {
+    enable = true;
+    settings = {
+      main = {
+        capslock = "overload(control, esc)";
+        rightalt = "layer(rightalt)";
+      };
+      rightalt = {
+        h = "left";
+        j = "down";
+        k = "up";
+        l = "right";
+      };
+    };
+  };
+
   # Printing/scanning services
   services.printing = {
     enable = true;
