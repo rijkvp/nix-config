@@ -16,6 +16,7 @@
       "/var/lib/fprint"
       "/var/lib/flatpak"
       "/var/lib/libvirt"
+      "/var/lib/tailscale"
       "/var/db/sudo/lectured"
     ];
     files = [
