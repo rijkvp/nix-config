@@ -42,7 +42,6 @@
   # Sytem Packages
   environment.systemPackages = with pkgs; [
     cage
-    greetd.gtkgreet
     # A few essential pacakges
     wget
     git
@@ -164,18 +163,14 @@
   services.greetd = {
     enable = true;
     settings = rec {
-      default_session = {
-        command = "cage -s -- gtkgreet";
-        user = "greeter";
+      # Autologin
+      initial_session = {
+        command = "Hyprland";
+        user = "rijk";
       };
+      default_session = initial_session;
     };
   };
-
-  environment.etc."greetd/environments".text = ''
-    Hyprland
-    wayfire
-    zsh
-  '';
 
   # Boot animation
   boot.plymouth = {
