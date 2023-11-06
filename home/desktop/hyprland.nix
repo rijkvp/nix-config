@@ -134,7 +134,7 @@
       windowrule = opacity 0.86 override 0.86 override,Element
 
       # Applications
-      bind = SUPER, RETURN, exec, alacritty
+      bind = SUPER, RETURN, exec, foot
       bind = SUPER_CTRL,W, exec, firefox
       bind = SUPER_CTRL,F, exec, thunar
       bind = SUPER_CTRL,N, exec, keepassxc

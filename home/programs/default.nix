@@ -3,6 +3,7 @@
     ./alacritty.nix
     ./beets.nix
     ./firefox.nix
+    ./foot.nix
     ./git.nix
     ./joshuto.nix
     ./mpv.nix
