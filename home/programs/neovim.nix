@@ -266,6 +266,20 @@
           require('neogit').setup()
         '';
       }
+
+      {
+        plugin = nvim-ts-rainbow2;
+        type = "lua";
+        config = ''
+          require('nvim-treesitter.configs').setup {
+            rainbow = {
+              enable = true,
+              query = 'rainbow-parens',
+              strategy = require('ts-rainbow').strategy.global,
+            }
+          }
+        '';
+      }
     ];
     extraPackages = with pkgs; [
       tree-sitter

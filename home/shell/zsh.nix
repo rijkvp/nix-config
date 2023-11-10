@@ -45,34 +45,19 @@
         out="$(basename $1 .md).pdf"
         watchexec -e md "pandoc --pdf-engine tectonic -f markdown -o $out $1"
       }
-      fileinparent() {
-        file=$1
-        dir=$(readlink -f "$2")
-        while [ "$dir" != "/" ]; do
-            if [ -e "$dir/$file" ]; then
-                return 0
-            fi
-            dir=$(dirname "$dir")
-        done
-        return 1
-      }
-      tmux-main() {
+      tm() {
         tmux new-session -AD -c $HOME -s main
+      }
+      td() {
+        dev_dir=$(realpath "$PWD")
+        session_name="$(basename $dev_dir)"
+        echo "Starting session '$shell_name' on $dev_dir"
+        tmux new -AD -s "$session_name" -c "$dev_dir"
       }
       devopen() {
         dev_dir="./$(fd -t d . | fzf)"
-        tmux-dev "$dev_dir"
-      }
-      tmux-dev() {
-        dev_dir=$(realpath "$1")
-        shell_name="$(basename $dev_dir)"
-        if fileinparent flake.nix $dev_dir; then
-          echo "Starting Nix devshell '$shell_name' on $dev_dir"
-          nix develop "$dev_dir" -c tmux new -AD -s "$shell_name" -c "$dev_dir"
-        else
-          echo "Starting shell '$shell_name' on $dev_dir"
-          tmux new -AD -s "$shell_name" -c "$dev_dir"
-        fi
+        cd "$dev_dir"
+        td
       }
       zle -N tmux-dev
       zle -N tmux-main
