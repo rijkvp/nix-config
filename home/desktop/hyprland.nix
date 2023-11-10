@@ -238,6 +238,10 @@
       # Resize using i/o
       binde =  SUPER,i,resizeactive,-16 0
       binde =  SUPER,o,resizeactive,16 0
+
+      # Toggle animations
+      bind = SUPER, A, exec, hyprctl keyword animations:enabled true 
+      bind = SUPER SHIFT, A, exec, hyprctl keyword animations:enabled false 
     '';
   };
 }
