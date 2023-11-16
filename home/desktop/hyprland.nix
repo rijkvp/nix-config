@@ -86,7 +86,7 @@
       }
 
       animations {
-          enabled = yes
+          enabled = no
 
           animation = windows, 1, 7, default,
           animation = windowsOut, 1, 7, default, slide
