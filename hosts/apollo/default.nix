@@ -6,6 +6,10 @@
 
   modules.virt-manager.enable = true;
 
+  # Docker
+  virtualisation.docker.enable = true;
+  virtualisation.docker.storageDriver = "btrfs";
+
   # Persistent files
   environment.persistence."/persist" = {
     directories = [
