@@ -22,6 +22,7 @@
       "/var/lib/libvirt"
       "/var/lib/tailscale"
       "/var/db/sudo/lectured"
+      "/var/lib/docker"
     ];
     files = [
       "/etc/machine-id"
