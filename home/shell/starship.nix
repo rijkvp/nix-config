@@ -1,7 +1,8 @@
 { ... }: {
   programs.starship = {
     enable = true;
-    enableZshIntegration = true;
+    enableFishIntegration = true;
+    enableTransience = true;
     settings = {
       add_newline = false;
       nix_shell = {
@@ -22,7 +23,7 @@
       c.symbol = " ";
       conda.symbol = " ";
       dart.symbol = " ";
-      directory.read_only = " ";
+      directory.read_only = " 󰌾";
       docker_context.symbol = " ";
       elixir.symbol = " ";
       elm.symbol = " ";
@@ -31,21 +32,24 @@
       golang.symbol = " ";
       guix_shell.symbol = " ";
       haskell.symbol = " ";
-      haxe.symbol = "⌘ ";
+      haxe.symbol = " ";
       hg_branch.symbol = " ";
+      hostname.ssh_symbol = " ";
       java.symbol = " ";
       julia.symbol = " ";
       lua.symbol = " ";
-      memory_usage.symbol = " ";
-      meson.symbol = "喝 ";
-      nim.symbol = " ";
+      memory_usage.symbol = "󰍛 ";
+      meson.symbol = "󰔷 ";
+      nim.symbol = "󰆥 ";
       nix_shell.symbol = " ";
       nodejs.symbol = " ";
       os.symbols = {
+        Alpaquita = " ";
         Alpine = " ";
         Amazon = " ";
         Android = " ";
         Arch = " ";
+        Artix = " ";
         CentOS = " ";
         Debian = " ";
         DragonFly = " ";
@@ -53,11 +57,12 @@
         EndeavourOS = " ";
         Fedora = " ";
         FreeBSD = " ";
-        Garuda = "﯑ ";
+        Garuda = "󰛓 ";
         Gentoo = " ";
-        HardenedBSD = "ﲊ ";
-        Illumos = " ";
+        HardenedBSD = "󰞌 ";
+        Illumos = "󰈸 ";
         Linux = " ";
+        Mabox = " ";
         Macos = " ";
         Manjaro = " ";
         Mariner = " ";
@@ -65,28 +70,27 @@
         Mint = " ";
         NetBSD = " ";
         NixOS = " ";
-        OpenBSD = " ";
+        OpenBSD = "󰈺 ";
         openSUSE = " ";
-        OracleLinux = " ";
-        Pop = " ";
+        OracleLinux = "󰌷 ";
+        Pop = " ";
         Raspbian = " ";
         Redhat = " ";
         RedHatEnterprise = " ";
-        Redox = " ";
-        Solus = "ﴱ ";
+        Redox = "󰀘 ";
+        Solus = "󰠳 ";
         SUSE = " ";
         Ubuntu = " ";
         Unknown = " ";
-        Windows = " ";
+        Windows = "󰍲 ";
       };
-      package.symbol = " ";
-      pijul_channel.symbol = "🪺 ";
+      package.symbol = "󰏗 ";
+      pijul_channel.symbol = " ";
       python.symbol = " ";
-      rlang.symbol = "ﳒ ";
+      rlang.symbol = "󰟔 ";
       ruby.symbol = " ";
       rust.symbol = " ";
       scala.symbol = " ";
-      spack.symbol = "🅢 ";
     };
   };
 }

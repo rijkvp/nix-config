@@ -1,8 +1,5 @@
 { pkgs, inputs, config, ... }: {
-  # Use the package from unstable
-  home.packages = with inputs.nixpkgs-unstable.legacyPackages.${pkgs.system}; [
-    joshuto
-  ];
+  programs.joshuto.enable = true;
   xdg.configFile."joshuto/joshuto.toml".text = ''
     numbered_command = false
 

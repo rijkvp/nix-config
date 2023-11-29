@@ -2,7 +2,7 @@
   programs.tmux = {
     enable = true;
     keyMode = "vi";
-    shell = "${pkgs.zsh}/bin/zsh";
+    shell = "${pkgs.fish}/bin/fish";
     prefix = "C-a";
     extraConfig = ''
       unbind C-b

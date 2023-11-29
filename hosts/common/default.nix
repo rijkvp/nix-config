@@ -26,13 +26,13 @@
 
   # Users
   users = {
-    defaultUserShell = pkgs.zsh;
+    defaultUserShell = pkgs.fish;
     mutableUsers = false;
     users.rijk = {
       isNormalUser = true;
       initialHashedPassword = "$y$j9T$nI4JsR4y7bWg3wAaplo4h1$ZLXayiNA2cAe/JaOnHnvy9w19eoBdb3pXmjQ.f88UR/";
       extraGroups = [ "wheel" "video" "audio" "lp" "scanner" "docker" "libvirtd" "network" "lxd" ];
-      shell = pkgs.zsh;
+      shell = pkgs.fish;
     };
   };
 
@@ -49,7 +49,7 @@
     macchina
     freshfetch
     htop
-    zsh
+    fish
     wireguard-tools
 
     ((vim_configurable.override { }).customize {
@@ -72,13 +72,13 @@
       '';
     })
   ];
-  environment.interactiveShellInit = ''
-    alias neofetch=freshfetch
-  '';
+  environment.shellAliases = {
+    "ff" = "freshfetch";
+  };
 
   # Fonts
   fonts.fontDir.enable = true;
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
     liberation_ttf
     fira
     fira-code
@@ -90,7 +90,7 @@
   ];
 
   programs = {
-    zsh.enable = true;
+    fish.enable = true;
     light.enable = true;
     dconf.enable = true;
     thunar.enable = true;
@@ -130,16 +130,19 @@
   # Key remaps daemon
   services.keyd = {
     enable = true;
-    settings = {
-      main = {
-        capslock = "overload(control, esc)";
-        rightalt = "layer(rightalt)";
-      };
-      rightalt = {
-        h = "left";
-        j = "down";
-        k = "up";
-        l = "right";
+    keyboards.default = {
+      ids = [ "*" ];
+      settings = {
+        main = {
+          capslock = "overload(control, esc)";
+          rightalt = "layer(rightalt)";
+        };
+        rightalt = {
+          h = "left";
+          j = "down";
+          k = "up";
+          l = "right";
+        };
       };
     };
   };
@@ -158,6 +161,7 @@
       xdg-desktop-portal-wlr
       xdg-desktop-portal-gtk
     ];
+    config.common.default = "*";
   };
 
   services.greetd = {

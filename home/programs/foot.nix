@@ -13,9 +13,7 @@
       mouse = {
         hide-when-typing = "yes";
       };
-      cursor = {
-        beam-thickness="2px";
-      };
+
       colors = {
         alpha = 0.8;
         background = builtins.substring 1 6 theme.background;

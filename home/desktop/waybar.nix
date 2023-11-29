@@ -1,7 +1,6 @@
 { lib, config, pkgs, theme, inputs, ... }: {
   programs.waybar = {
     enable = true;
-    package = inputs.nixpkgs-unstable.legacyPackages.${pkgs.system}.waybar;
     settings = {
       mainBar = {
         layer = "top";

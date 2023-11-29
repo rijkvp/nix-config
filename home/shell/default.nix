@@ -2,11 +2,13 @@
   imports = [
     ./starship.nix
     ./tmux.nix
-    ./zsh.nix
+    ./fish.nix
   ];
 
-  programs.exa = {
+  programs.eza = {
     enable = true;
+    enableAliases = true;
+    icons = true;
   };
 
   programs.bat = {
@@ -18,7 +20,8 @@
 
   programs.fzf = {
     enable = true;
-    enableZshIntegration = true;
+    enableFishIntegration = true;
+    tmux.enableShellIntegration = true;
   };
 
   home.packages = [ pkgs.fd ];
@@ -33,6 +36,6 @@
 
   programs.zoxide = {
     enable = true;
-    enableZshIntegration = true;
+    enableFishIntegration = true;
   };
 }

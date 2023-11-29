@@ -2,8 +2,6 @@
   programs.neovim = {
     enable = true;
     defaultEditor = true;
-    viAlias = true;
-    vimAlias = true;
     extraLuaConfig = ''
       -- Disable netrw (replaced by nvim-tree)
       vim.g.loaded_netrw = 1
@@ -227,6 +225,7 @@
            let g:copilot_filetypes = {
             \ 'text': v:false,
             \ 'xml': v:false,
+            \ 'todo': v:false,
             \}
         '';
       }
