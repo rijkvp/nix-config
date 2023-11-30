@@ -25,52 +25,49 @@
       "dlvid" = ''yt-dlp -f "(bv[vcodec^=vp9][height<=1080]/bv[height<=1080]/bv)+(ba[acodec=opus]/ba/b)" --merge-output-format mkv --embed-thumbnail --embed-metadata --xattrs -o "%(artist,channel,uploader)s - %(title)s.%(ext)s"'';
       # Difftastic
       "gd" = "GIT_EXTERNAL_DIFF=difft git diff";
+      "gds" = "GIT_EXTERNAL_DIFF=difft git diff --staged";
       # To-Do
       "todo" = "nvim $XDG_DOCUMENTS_DIR/todo.txt";
     };
-    # TODO: Fix this
-    # shellInit = ''
-    #   ,() { 
-    #     nix shell "nixpkgs#$1"
-    #   }
-    #   tecw() {
-    #     while inotifywait -q "$1"; do
-    #       tectonic -c minimal "$1"
-    #     done
-    #   }
-    #   mdw() {
-    #     out="$(basename $1 .md).pdf"
-    #     watchexec -e md "pandoc --pdf-engine tectonic -f markdown -o $out $1"
-    #   }
-    #   tm() {
-    #     tmux new-session -AD -c $HOME -s main
-    #   }
-    #   td() {
-    #     dev_dir=$(realpath "$PWD")
-    #     session_name="$(basename $dev_dir)"
-    #     echo "Starting session '$shell_name' on $dev_dir"
-    #     tmux new -AD -s "$session_name" -c "$dev_dir"
-    #   }
-    #   devopen() {
-    #     dev_dir="./$(fd -t d . | fzf)"
-    #     cd "$dev_dir"
-    #     td
-    #   }
-    #   zle -N tmux-dev
-    #   zle -N tmux-main
-    #   bindkey -r ^f
-    #   bindkey -s ^f "fm\n"
-    #   bindkey -r ^g
-    #   bindkey -s ^g "devopen\n"
-    #   bindkey -r ^n
-    #   bindkey -s ^n "tmux-main\n"
-    #   bindkey -r ^b
-    #   bindkey -s ^b "mp\n"
-    #   bindkey -r ^v
-    #   bindkey -s ^v "nvim .\n"
-    # '';
-    loginShellInit = ''
-      echo "Welcome to NixOS, $USER!"
+    shellInit = ''
+      set -U fish_greeting
+      function ,
+        set -l pkgs
+        for arg in $argv
+            set pkgs $pkgs nixpkgs#$arg
+        end
+        nix shell $pkgs
+      end
+      function tecw
+        while inotifywait -q "$argv[1]"
+          tectonic -c minimal "$argv[1]"
+        end
+      end
+      function mdw
+        set out "$(basename $argv[1] .md).pdf"
+        watchexec -e md "pandoc --pdf-engine tectonic -f markdown -o $out $argv[1]"
+      end
+      function tm
+        tmux new-session -AD -c $HOME -s main
+      end
+      function td
+        set dev_dir $(realpath "$PWD")
+        set session_name "$(basename $dev_dir)"
+        echo "Starting session '$shell_name' on $dev_dir"
+        tmux new -AD -s "$session_name" -c "$dev_dir"
+      end
+      function devopen
+        set dev_dir "./$(fd -t d . | fzf)"
+        cd "$dev_dir"
+        td
+      end
+
+      # Keybindings
+      bind \cf 'fm'
+      bind \cg 'devopen'
+      bind \ce 'nvim'
+      bind --erase \cm
+      bind \cm 'mp'
     '';
   };
 }
