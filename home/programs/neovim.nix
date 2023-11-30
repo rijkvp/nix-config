@@ -3,13 +3,9 @@
     enable = true;
     defaultEditor = true;
     extraLuaConfig = ''
-      -- Disable netrw (replaced by nvim-tree)
-      vim.g.loaded_netrw = 1
-      vim.g.loaded_netrwPlugin = 1
-
       vim.opt.number = true
       vim.opt.relativenumber = true
-      vim.opt.scrolloff = 8
+      vim.opt.scrolloff = 6
 
       vim.opt.tabstop = 4
       vim.opt.softtabstop = 4
@@ -21,7 +17,7 @@
       vim.opt.wrap = false
       vim.opt.linebreak = true
 
-      vim.opt.spelllang = { 'en_us' }
+      vim.opt.spelllang = { 'en', 'nl' }
 
       vim.opt.swapfile = false
       vim.opt.backup = false
@@ -80,8 +76,30 @@
           vim.keymap.set('n', '<leader>g', builtin.live_grep, {})
           vim.keymap.set('n', '<leader>b', builtin.buffers, {})
           vim.keymap.set('n', '<leader>h', builtin.help_tags, {})
+          vim.keymap.set('n', '<leader>sd', builtin.diagnostics, {})
+          vim.keymap.set('n', '<leader>ss', builtin.spell_suggest, {})
+          require('telescope').setup{
+           defaults = {
+             sorting_strategy = "ascending",
+             layout_strategy = "horizontal",
+             layout_config = {
+               horizontal = {
+                 prompt_position = "top",
+                 preview_width = 0.5,
+               },
+             },
+           },
+          }
         '';
       }
+      {
+        plugin = telescope-file-browser-nvim;
+        type = "lua";
+        config = ''
+          vim.api.nvim_set_keymap("n", "<C-f>", ":Telescope file_browser<CR>", { noremap = true })
+        '';
+      }
+
       # Status line
       {
         plugin = lualine-nvim;
@@ -101,6 +119,60 @@
               enable = true,
               additional_vim_regex_highlighting = false,
             },
+            indent = { enable = true },
+            -- From kickstart.nvim
+            incremental_selection = {
+              enable = true,
+              keymaps = {
+                init_selection = '<c-space>',
+                node_incremental = '<c-space>',
+                scope_incremental = '<c-s>',
+                node_decremental = '<M-space>',
+              },
+            },
+            textobjects = {
+              select = {
+                enable = true,
+                lookahead = true,
+                keymaps = {
+                  ['aa'] = '@parameter.outer',
+                  ['ia'] = '@parameter.inner',
+                  ['af'] = '@function.outer',
+                  ['if'] = '@function.inner',
+                  ['ac'] = '@class.outer',
+                  ['ic'] = '@class.inner',
+                },
+              },
+              move = {
+                enable = true,
+                set_jumps = true,
+                goto_next_start = {
+                  [']m'] = '@function.outer',
+                  [']]'] = '@class.outer',
+                },
+                goto_next_end = {
+                  [']M'] = '@function.outer',
+                  [']['] = '@class.outer',
+                },
+                goto_previous_start = {
+                  ['[m'] = '@function.outer',
+                  ['[['] = '@class.outer',
+                },
+                goto_previous_end = {
+                  ['[M'] = '@function.outer',
+                  ['[]'] = '@class.outer',
+                },
+              },
+              swap = {
+                enable = true,
+                swap_next = {
+                  ['<leader>a'] = '@parameter.inner',
+                },
+                swap_previous = {
+                  ['<leader>A'] = '@parameter.inner',
+                },
+              },
+            }
           }
         '';
       }
@@ -133,13 +205,16 @@
           lspconfig.ruff_lsp.setup{}
           lspconfig.hls.setup{}
 
-          -- Goto
+          -- Documentation
           vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Hover documentation" })
+          vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, { desc = "Signature Documentation" })
+
+          -- Goto
           vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
           vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Go to declaration" })
-          vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { desc = "Go to implementation" })
+          vim.keymap.set("n", "gi", require('telescope.builtin').lsp_implementations, { desc = "Go to implementation" })
           vim.keymap.set("n", "go", vim.lsp.buf.type_definition, { desc = "Go to type definition" })
-          vim.keymap.set("n", "gr", vim.lsp.buf.references, { desc = "Go to references" })
+          vim.keymap.set("n", "gr", require('telescope.builtin').lsp_references, { desc = "Go to references" })
 
           -- Diagnostics
           vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Previous diagnostic" })
@@ -155,17 +230,20 @@
       nvim-web-devicons
       trouble-nvim
 
-      # File manager
       {
-        plugin = nvim-tree-lua;
+        plugin = alpha-nvim;
         type = "lua";
         config = ''
-          require("nvim-tree").setup()
-          vim.keymap.set('n', '<leader>o', vim.cmd.NvimTreeToggle, { desc = "Toggle file tree" })
+          require'alpha'.setup(require'alpha.themes.startify'.config)
         '';
       }
 
-      # Completion
+      # Completion plugins
+      cmp-nvim-lsp
+      cmp-buffer
+      cmp-path
+      cmp-spell
+      lspkind-nvim # for icons in completion
       {
         plugin = nvim-cmp;
         type = "lua";
@@ -178,22 +256,23 @@
               ['<C-p>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
               ['<C-e>'] = cmp.mapping.close(),
               ['<C-y>'] = cmp.mapping.confirm(),
+              ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+              ['<C-f>'] = cmp.mapping.scroll_docs(4),
+              ['<C-Space>'] = cmp.mapping.complete {},
+              ['<CR>'] = cmp.mapping.confirm {
+                behavior = cmp.ConfirmBehavior.Replace,
+                select = true,
+              },
             },
             sources = {
               { name='nvim_lsp' },
               { name='buffer', option = { get_bufnrs = vim.api.nvim_list_bufs } },
+              { name='path' },
+              { name='spell' },
             },
           }
         '';
       }
-      cmp-nvim-lsp
-      cmp-buffer
-      cmp-path
-      cmp-cmdline
-      cmp-nvim-lsp
-      cmp-nvim-lua
-      cmp-spell
-      lspkind-nvim
 
       # Other
       {
@@ -222,11 +301,11 @@
       {
         plugin = copilot-vim;
         config = ''
-           let g:copilot_filetypes = {
-            \ 'text': v:false,
-            \ 'xml': v:false,
-            \ 'todo': v:false,
-            \}
+          let g:copilot_filetypes = {
+           \ 'text': v:false,
+           \ 'xml': v:false,
+           \ 'todo': v:false,
+           \}
         '';
       }
 
@@ -290,7 +369,7 @@
       # LaTeX
       texlab
       # Python
-      python311Packages.ruff-lsp
+      python3Packages.ruff-lsp
       # Haskell
       haskell-language-server
     ];

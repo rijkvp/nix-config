@@ -26,7 +26,7 @@
       # Difftastic
       "gd" = "GIT_EXTERNAL_DIFF=difft git diff";
       # To-Do
-      "todo" = "vim $XDG_DOCUMENTS_DIR/todo.txt";
+      "todo" = "nvim $XDG_DOCUMENTS_DIR/todo.txt";
     };
     # TODO: Fix this
     # shellInit = ''
