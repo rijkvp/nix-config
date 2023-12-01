@@ -197,7 +197,7 @@
           local lspconfig = require('lspconfig')
 
           -- Language servers
-          lspconfig.rust_analyzer.setup{}
+          -- lspconfig.rust_analyzer.setup{} -- handled by rust-tools.nvim
           lspconfig.tsserver.setup{}
           lspconfig.clangd.setup{}
           lspconfig.rnix.setup{}
@@ -229,6 +229,13 @@
       }
       nvim-web-devicons
       trouble-nvim
+      {
+        plugin = rust-tools-nvim;
+        type = "lua";
+        config = ''
+          require('rust-tools').setup({ })
+        '';
+      }
 
       {
         plugin = alpha-nvim;
