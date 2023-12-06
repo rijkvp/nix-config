@@ -233,7 +233,7 @@
         plugin = rust-tools-nvim;
         type = "lua";
         config = ''
-          require('rust-tools').setup({ })
+          require('rust-tools').setup()
         '';
       }
 
