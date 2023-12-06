@@ -45,7 +45,9 @@
       end
       function mdw
         set out "$(basename $argv[1] .md).pdf"
-        watchexec -e md "pandoc --pdf-engine tectonic -f markdown -o $out $argv[1]"
+        while inotifywait -q "$argv[1]"
+          pandoc --pdf-engine tectonic -f markdown -o $out $argv[1]
+        end
       end
       function tm
         tmux new-session -AD -c $HOME -s main
