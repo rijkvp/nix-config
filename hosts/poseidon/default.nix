@@ -24,12 +24,13 @@
   };
 
   # OpenGL
-  hardware.opengl = {
-    enable = true;
-    driSupport = true;
+  hardware = {
+    enableAllFirmware = true;
+    opengl = {
+      enable = true;
+      driSupport = true;
+    };
   };
-  hardware.bluetooth.enable = true;
-  services.blueman.enable = true;
 
   services = {
     # Power management

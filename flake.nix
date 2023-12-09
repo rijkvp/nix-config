@@ -9,7 +9,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland.url = "github:hyprwm/Hyprland/v0.32.3";
+    hyprland.url = "github:hyprwm/Hyprland/v0.33.1";
     agenix.url = "github:ryantm/agenix";
     impermanence.url = "github:nix-community/impermanence";
   };
@@ -51,7 +51,6 @@
             specialArgs = { inherit inputs nixosModules; };
             modules = [
               ./hosts/poseidon
-              inputs.impermanence.nixosModules.impermanence
               home-manager.nixosModules.home-manager
               {
                 home-manager.useGlobalPkgs = true;
