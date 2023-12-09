@@ -8,12 +8,6 @@
       nix_shell = {
         format = "in [❄️ Nix ](bold blue)";
       };
-      right_format = "$time";
-      time = {
-        disabled = false;
-        style = "bold bright-black";
-        format = "[$time]($style)";
-      };
       line_break = {
         disabled = true;
       };
