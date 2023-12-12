@@ -4,10 +4,6 @@
   ];
 
   wayland.windowManager.hyprland = {
-    enableNvidiaPatches = true;
-  };
-
-  wayland.windowManager.hyprland = {
     extraConfig = ''
       monitor = ,preferred,auto,1
 
