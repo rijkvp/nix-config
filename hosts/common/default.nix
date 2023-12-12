@@ -38,6 +38,9 @@
 
 
   services.tailscale.enable = true;
+  # syncthing ports
+  networking.firewall.allowedTCPPorts = [ 22000 ];
+  networking.firewall.allowedUDPPorts = [ 22000 21027 ];
 
   # Sytem Packages
   environment.systemPackages = with pkgs; [
