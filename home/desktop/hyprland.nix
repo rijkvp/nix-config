@@ -35,7 +35,6 @@
       exec-once = swww init; nextwallpaper
       exec-once = hyprctl setcursor Quintom_Ink 20
       exec-once = waybar
-      exec-once = keepassxc
       exec-once = kdeconnect-indicator
       exec-once = nm-applet
 
@@ -118,10 +117,12 @@
       # KeePassXC (special workspace)
       bind = SUPER,N,togglespecialworkspace,kp
       windowrule = workspace special:kp,keepassxc
+      workspace = special:kp, on-created-empty:keepassxc, gapsout:80
 
       # Scratchpad (special workspace)
       bind = SUPER,B, togglespecialworkspace, sp
       bind = SUPER_SHIFT,B, movetoworkspace, special:sp
+      workspace = special:sp, on-created-empty:alacritty, gapsout:80
 
       windowrule=float,title:^debug
 
