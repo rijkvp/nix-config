@@ -6,5 +6,8 @@
       "ALT+k" = "add sub-scale +0.1";
       "ALT+j" = "add sub-scale -0.1";
     };
+    config = {
+      sub-auto = "all";
+    };
   };
 }
