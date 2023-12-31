@@ -6,24 +6,17 @@
         layer = "top";
         position = "top";
         spacing = 8;
-        modules-left = [ "pulseaudio" "battery" "backlight" "mpd" ];
-        modules-center = [ "hyprland/workspaces" ];
-        modules-right = [ "network" "clock" "tray" ];
+        modules-left = [ "hyprland/workspaces" "mpd" ];
+        modules-center = [ "hyprland/window" ];
+        modules-right = [ "wireplumber" "battery" "backlight" "network" "clock" "tray" ];
         "hyprland/workspaces" = {
           format = "{icon}";
           on-click = "activate";
           active-only = false;
-          format-icons = {
-            "1" = "I";
-            "2" = "II";
-            "3" = "III";
-            "4" = "IV";
-            "5" = "V";
-            "6" = "VI";
-            "7" = "VII";
-            "8" = "VIII";
-          };
           sort-by-number = true;
+        };
+        "hyprland/window" = {
+          separate-outputs = true;
         };
         "mpd" = {
           format = "{stateIcon} {artist} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S} {songPosition}|{queueLength})";
@@ -43,16 +36,10 @@
           format = "{icon} {percent}%";
           format-icons = [ "" "" ];
         };
-        "pulseaudio" = {
+        "wireplumber" = {
           format = "{icon} {volume}%";
           format-muted = "󰝟 ";
           format-icons = [ " " " " " " ];
-        };
-        "wireplumber" = {
-          format = "󰕾  {volume}%";
-          format-muted = "婢 ";
-          # icon does not work (yet): https://github.com/Alexays/Waybar/issues/1852
-          # format-icons = [" " " " " "];
         };
         "cpu" = {
           interval = 1;
@@ -109,14 +96,14 @@
       tooltip label {
         color: ${theme.foreground};
       }
-      #workspaces, #window, #mpd, #clock, #backlight, #battery, #cpu, #memory, #network, #pulseaudio, #tray, #mode {
+      #workspaces, #window, #mpd, #clock, #backlight, #battery, #cpu, #memory, #network, #wireplumber, #tray, #mode {
         border-radius: ${theme.rounding}px;
         color: ${theme.foreground};
         margin: 4px 0px;
         padding: 0px 6px;
       }
 
-      #clock, #pulseaudio, #workspaces {
+      #clock, #wireplumber, #workspaces {
         color: ${theme.background};
         background: ${theme.primary};
         box-shadow: 0px 0px 2px 3px ${theme.backgroundAlt};
@@ -125,8 +112,7 @@
       }
 
       #workspaces button {
-        padding: 0 6px;
-        margin: 0 4px;
+        padding: 0 4px;
         font-size: 14px;
         font-weight: 600;
         color: ${theme.background};
