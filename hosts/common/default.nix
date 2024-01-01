@@ -89,7 +89,7 @@
     open-sans
     noto-fonts
     noto-fonts-emoji
-    (nerdfonts.override { fonts = [ "Iosevka" "CodeNewRoman" "ComicShannsMono" "JetBrainsMono" ]; })
+    (nerdfonts.override { fonts = [ "Iosevka" "JetBrainsMono" "FiraCode" ]; })
   ];
 
   programs = {
@@ -180,9 +180,9 @@
   };
 
   # Boot animation
-  boot.plymouth = {
-    enable = true;
-  };
+#  boot.plymouth = {
+#    enable = true;
+#  };
 
   # Security
   security = {

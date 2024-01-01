@@ -5,8 +5,8 @@
       main = {
         term = "xterm-256color";
 
-        font = "Iosevka Nerd Font:pixelsize=16";
-        font-bold = "Iosevka Nerd Font:pixelsize=16:weight=bold";
+        font = "${theme.font}:pixelsize=16";
+        font-bold = "${theme.font}:pixelsize=16:weight=bold";
         pad = "12x6";
       };
 

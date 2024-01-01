@@ -75,7 +75,7 @@
       * {
         margin: 0;
         padding: 0;
-        font-family: Iosevka Nerd Font;
+        font-family: ${theme.font};
       }
       window#waybar {
          font-size: 13px;

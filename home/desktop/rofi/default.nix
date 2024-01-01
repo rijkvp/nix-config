@@ -7,7 +7,7 @@
 
   xdg.configFile."rofi/theme.rasi".text = ''
     configuration {
-      font: "Iosevka Nerd Font Medium 13";
+      font: "${theme.font} Medium 13";
 
       drun {
         display-name: "";

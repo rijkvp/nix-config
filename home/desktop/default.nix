@@ -2,6 +2,7 @@
   imports = [
     ./rofi
     ./hyprland.nix
+    ./sway.nix
     ./waybar.nix
   ];
 
@@ -30,7 +31,7 @@
   home.file."${config.home.homeDirectory}/.local/bin/lockscreen" = {
     text = ''
       #!/bin/sh
-      swaylock -eF --color '#000000' --font 'Iosevka Nerd Font'
+      swaylock -eF --color '#000000' --font '${theme.font}'
     '';
     executable = true;
   };
@@ -46,7 +47,7 @@
       defaultTimeout = 10000;
       borderRadius = 7;
       backgroundColor = "${theme.background}60";
-      font = "Iosevka Nerd Font";
+      font = "${theme.font}";
     };
     mpd = {
       enable = true;

@@ -18,11 +18,11 @@
       };
       font = {
         normal = {
-          family = "Iosevka Nerd Font";
+          family = "${theme.font}";
           style = "regular";
         };
         bold = {
-          family = "Iosevka Nerd Font";
+          family = "${theme.font}";
           style = "bold";
         };
         size = 12.0;
