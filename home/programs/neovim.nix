@@ -204,6 +204,7 @@
           lspconfig.texlab.setup{}
           lspconfig.ruff_lsp.setup{}
           lspconfig.hls.setup{}
+          lspconfig.svelte.setup{}
 
           -- Documentation
           vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Hover documentation" })
@@ -367,6 +368,7 @@
       # TypeScript
       nodePackages.typescript
       nodePackages.typescript-language-server
+      nodePackages.svelte-language-server # Svelte
       # LaTeX
       texlab
       # Python
