@@ -80,9 +80,9 @@
     "x-scheme-handler/http" = [ "firefox.desktop" ];
     "x-scheme-handler/https" = [ "firefox.desktop" ];
     # GIMP image editor
-    "image/png" = [ "org.gimp.GIMP.desktop" ];
-    "image/jpeg" = [ "org.gimp.GIMP.desktop" ];
-    "image/jpg" = [ "org.gimp.GIMP.desktop" ];
+    "image/png" = [ "gimp.desktop" ];
+    "image/jpeg" = [ "gimp.desktop" ];
+    "image/jpg" = [ "gimp.desktop" ];
     # Thunar file manager
     "inode/directory" = [ "thunar.desktop" ];
     # Zathura pdf reader

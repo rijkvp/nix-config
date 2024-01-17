@@ -5,7 +5,7 @@ rec {
   rounding = "4";
   border = backgroundAlt;
   borderActive = primary;
-  font = "JetBrainsMono Nerd Font";
+  font = "Iosevka Nerd Font";
   # Colors from: https://github.com/enkia/tokyo-night-vscode-theme#tokyo-night-and-tokyo-night-storm
   background = "#1a1b26";
   backgroundAlt = "#24283b";
