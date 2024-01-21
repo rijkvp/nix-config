@@ -1,6 +1,4 @@
 {
-  description = "My NixOS configurations.";
-
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-23.11";
 
@@ -9,32 +7,25 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland.url = "github:hyprwm/Hyprland/v0.33.1";
-    agenix.url = "github:ryantm/agenix";
+    hyprland.url = "github:hyprwm/Hyprland/v0.34.0";
     impermanence.url = "github:nix-community/impermanence";
   };
 
-  outputs = { self, nixpkgs, flake-utils, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, ... }@inputs:
     let
+      inherit (self) outputs;
       system = "x86_64-linux";
-      pkgs = import nixpkgs { inherit system; };
+      # pkgs = import nixpkgs { inherit system; };
     in
-    rec {
-      # devshell for bootstrapping
-      devShells."${system}".default = pkgs.mkShell {
-        buildInputs = with pkgs; [ just ];
-      };
+    {
+      # A theme can be set here
+      theme = import ./themes/tokyonight.nix;
 
-      # Set a theme here
-      themes = import ./themes;
-      theme = themes.tokyonight;
-
-      nixosModules = import ./modules/nixos;
-      nixosConfigurations =
-        {
-          zeus = nixpkgs.lib.nixosSystem {
+      nixosConfigurations = {
+        zeus = nixpkgs.lib.nixosSystem
+          {
             inherit system;
-            specialArgs = { inherit inputs nixosModules; };
+            specialArgs = { inherit inputs outputs; };
             modules = [
               ./hosts/zeus
               home-manager.nixosModules.home-manager
@@ -42,13 +33,14 @@
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
                 home-manager.users.rijk = import ./home/zeus.nix;
-                home-manager.extraSpecialArgs = { inherit inputs theme; };
+                home-manager.extraSpecialArgs = { inherit inputs outputs; theme = outputs.theme; };
               }
             ];
           };
-          poseidon = nixpkgs.lib.nixosSystem {
+        poseidon = nixpkgs.lib.nixosSystem
+          {
             inherit system;
-            specialArgs = { inherit inputs nixosModules; };
+            specialArgs = { inherit inputs outputs; };
             modules = [
               ./hosts/poseidon
               home-manager.nixosModules.home-manager
@@ -56,25 +48,25 @@
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
                 home-manager.users.rijk = import ./home/poseidon.nix;
-                home-manager.extraSpecialArgs = { inherit inputs theme; };
+                home-manager.extraSpecialArgs = { inherit inputs outputs; theme = outputs.theme; };
               }
             ];
           };
-          apollo = nixpkgs.lib.nixosSystem {
+        apollo = nixpkgs.lib.nixosSystem
+          {
             inherit system;
-            specialArgs = { inherit inputs nixosModules; };
+            specialArgs = { inherit inputs outputs; };
             modules = [
               ./hosts/apollo
-              inputs.impermanence.nixosModules.impermanence
               home-manager.nixosModules.home-manager
               {
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
                 home-manager.users.rijk = import ./home/apollo.nix;
-                home-manager.extraSpecialArgs = { inherit inputs theme; };
+                home-manager.extraSpecialArgs = { inherit inputs outputs; theme = outputs.theme; };
               }
             ];
           };
-        };
+      };
     };
 }

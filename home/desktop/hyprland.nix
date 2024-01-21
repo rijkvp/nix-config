@@ -141,8 +141,7 @@
       bind = SUPER_CTRL,N, exec, keepassxc
       bind = SUPER_CTRL,M, exec, alacritty -e ncmpcpp
       bind = SUPER_CTRL,K, exec, flatpak run org.signal.Signal
-      bind = SUPER_CTRL,C, exec, flatpak run org.mozilla.Thunderbird
-      bind = SUPER_CTRL,O, exec, flatpak run md.obsidian.Obsidian
+      bind = SUPER_CTRL,O, exec, flatpak run obsidian
 
       # Application worokspaces
       windowrule = workspace 1, firefox

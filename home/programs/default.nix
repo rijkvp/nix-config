@@ -79,6 +79,7 @@
     "text/html" = [ "firefox.desktop" ];
     "x-scheme-handler/http" = [ "firefox.desktop" ];
     "x-scheme-handler/https" = [ "firefox.desktop" ];
+    "x-scheme-handler/obsidian" = [ "obsidian.desktop" ];
     # GIMP image editor
     "image/png" = [ "gimp.desktop" ];
     "image/jpeg" = [ "gimp.desktop" ];

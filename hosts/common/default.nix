@@ -1,6 +1,6 @@
-{ inputs, outputs, lib, config, pkgs, nixosModules, ... }: {
+{ inputs, outputs, lib, config, pkgs, ... }: {
   imports = [
-    inputs.agenix.nixosModules.default
+    ./greetd.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -9,8 +9,6 @@
     settings = {
       experimental-features = "nix-command flakes";
       auto-optimise-store = true;
-
-      # Hyprland Cache
       substituters = [ "https://hyprland.cachix.org" ];
       trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
     };
@@ -89,7 +87,7 @@
     open-sans
     noto-fonts
     noto-fonts-emoji
-    (nerdfonts.override { fonts = [ "Iosevka" "JetBrainsMono" "FiraCode" ]; })
+    (nerdfonts.override { fonts = [ "Iosevka" "JetBrainsMono" "FiraCode" "CascadiaCode" ]; })
   ];
 
   programs = {
@@ -162,27 +160,15 @@
     wlr.enable = true;
     extraPortals = with pkgs; [
       xdg-desktop-portal-wlr
-      xdg-desktop-portal-gtk
+      # xdg-desktop-portal-gtk
     ];
     config.common.default = "*";
   };
 
-  services.greetd = {
-    enable = true;
-    settings = rec {
-      # Autologin
-      initial_session = {
-        command = "Hyprland";
-        user = "rijk";
-      };
-      default_session = initial_session;
-    };
-  };
-
   # Boot animation
-#  boot.plymouth = {
-#    enable = true;
-#  };
+  boot.plymouth = {
+    enable = true;
+  };
 
   # Security
   security = {
@@ -195,4 +181,3 @@
 
   system.stateVersion = "23.05"; # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
 }
-

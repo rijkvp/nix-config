@@ -2,13 +2,10 @@
   imports = [
     ./hardware-configuration.nix
     ../common
-  ] ++ (builtins.attrValues nixosModules);
-
-  modules.virt-manager.enable = true;
-
-  # Docker
-  virtualisation.docker.enable = true;
-  virtualisation.docker.storageDriver = "btrfs";
+    ../common/virt-manager.nix
+    ../common/docker.nix
+    inputs.impermanence.nixosModules.impermanence
+  ];
 
   # Persistent files
   environment.persistence."/persist" = {

@@ -1,25 +1,13 @@
-let
-  borgbackupMonitor = { config, pkgs, lib, ... }: with lib; {
-    key = "borgbackupMonitor";
-    _file = "borgbackupMonitor";
-    # See Nix Wiki: this ensures backups are made if device was powered off at scheduled time
-    config.systemd.timers = flip mapAttrs' config.services.borgbackup.jobs (name: value:
-      nameValuePair "borgbackup-job-${name}" {
-        timerConfig.Persistent = mkForce true;
-      }
-    );
-  };
-in
 { inputs, outputs, lib, config, pkgs, nixosModules, ... }: {
-  imports =
-    [
-      ./hardware-configuration.nix
-      ../common
-      borgbackupMonitor
-    ] ++ (builtins.attrValues nixosModules);
-
-  modules.virt-manager.enable = true;
-  modules.gaming.enable = true;
+  imports = [
+    ./hardware-configuration.nix
+    ../common
+    ../common/virt-manager.nix
+    ../common/steam.nix
+    ../common/backup.nix
+    ../common/gnome.nix
+    ../common/docker.nix
+  ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -38,13 +26,15 @@ in
     opengl = {
       enable = true;
       driSupport = true;
+      driSupport32Bit = true;
     };
     # Nvidia modesetting
-    nvidia.modesetting.enable = true;
+    nvidia = {
+      modesetting.enable = true;
+    };
   };
   # Nvidia
   services.xserver.videoDrivers = [ "nvidia" ];
-
 
   # Nvida support variables
   environment.variables = {
@@ -62,10 +52,6 @@ in
     LIBSEAT_BACKEND = "logind";
   };
 
-  # Docker
-  virtualisation.docker.enable = true;
-  virtualisation.docker.storageDriver = "btrfs";
-
   # Internal Hard Drive
   boot.initrd.luks.devices."crypthdint".device = "/dev/disk/by-uuid/69f1b535-d8e7-496e-ab3e-53d78d45c0c5";
   fileSystems."/mnt/hdint" = {
@@ -73,30 +59,5 @@ in
     mountPoint = "/mnt/hdint";
     fsType = "btrfs";
     options = [ "autodefrag" "compress=zstd" ];
-  };
-
-  # Borg Backup
-  services.borgbackup.jobs.home-backup = {
-    paths = "/home/rijk";
-    exclude = [
-      ".cache"
-      ".local/share/Steam"
-      "*/.cache"
-      "*/.git"
-      "**/target"
-    ];
-    encryption = {
-      mode = "repokey-blake2";
-      passCommand = "cat /etc/home-backup-passphrase";
-    };
-    repo = "/mnt/hdint/home-backup";
-    compression = "zstd,8";
-    startAt = "daily";
-    prune.keep = {
-      within = "1d";
-      daily = 7;
-      weekly = 4;
-      monthly = -1;
-    };
   };
 }

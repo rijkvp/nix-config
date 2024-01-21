@@ -27,21 +27,17 @@
     mimeApps.enable = true;
   };
 
+  # Dark theme
+  dconf = {
+    enable = true;
+    settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
+  };
+
   gtk = {
     enable = true;
     font = {
       name = "Fira Sans";
       package = pkgs.fira;
-    };
-    theme = {
-      # GTK theme
-      name = "Catppuccin-Mocha-Compact-Sky-Dark";
-      package = pkgs.catppuccin-gtk.override {
-        accents = [ "sky" ];
-        size = "compact";
-        tweaks = [ "normal" ];
-        variant = "mocha";
-      };
     };
     iconTheme = {
       name = "Papirus-Dark";

@@ -6,13 +6,13 @@
         layer = "top";
         position = "top";
         spacing = 8;
-        modules-left = [ "hyprland/workspaces" "mpd" ];
-        modules-center = [ "hyprland/window" ];
-        modules-right = [ "wireplumber" "battery" "backlight" "network" "clock" "tray" ];
+        modules-left = [ "hyprland/workspaces" "hyprland/window" "mpd" ];
+        modules-center = [ ];
+        modules-right = [ "tray" "wireplumber" "cpu" "memory" "network" "backlight" "battery" "clock" ];
         "hyprland/workspaces" = {
           format = "{icon}";
           on-click = "activate";
-          active-only = false;
+          all-outputs = true;
           sort-by-number = true;
         };
         "hyprland/window" = {
@@ -101,14 +101,6 @@
         color: ${theme.foreground};
         margin: 4px 0px;
         padding: 0px 6px;
-      }
-
-      #clock, #wireplumber, #workspaces {
-        color: ${theme.background};
-        background: ${theme.primary};
-        box-shadow: 0px 0px 2px 3px ${theme.backgroundAlt};
-        font-weight: 600;
-        font-size: 14px;
       }
 
       #workspaces button {
