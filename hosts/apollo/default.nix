@@ -4,6 +4,7 @@
     ../common
     ../common/virt-manager.nix
     ../common/docker.nix
+    ../common/gnome.nix
     inputs.impermanence.nixosModules.impermanence
   ];
 
@@ -52,5 +53,6 @@
 
   # Laptop power management
   powerManagement.enable = true;
-  services.tlp.enable = true;
+  # Use power-profiles-daemon to be compatible with GNOME
+  services.power-profiles-daemon.enable = true;
 }

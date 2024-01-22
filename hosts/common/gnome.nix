@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{ pkgs, ... }: {
   services.xserver = {
     enable = true;
     desktopManager.gnome.enable = true;
@@ -19,4 +18,21 @@
     geary
     gnome-calendar
   ]);
+
+  environment.etc = {
+    "greetd/sessions/gnome.desktop" = {
+      text = ''
+        [Desktop Entry]
+        Name=GNOME
+        Exec=/etc/greetd/scripts/gnome.sh
+      '';
+    };
+    "greetd/scripts/gnome.sh" = {
+      text = ''
+        #!/bin/sh
+        XDG_SESSION_TYPE=wayland dbus-run-session gnome-session
+      '';
+      mode = "555";
+    };
+  };
 }

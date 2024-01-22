@@ -12,7 +12,7 @@
       };
     };
   };
-  # Desktop files in 
+
   environment.etc = {
     "greetd/sessions/hyprland.desktop" = {
       text = ''
@@ -34,20 +34,6 @@
         Name=Sway (unsupported GPU)
         Exec=sway --unsupported-gpu
       '';
-    };
-    "greetd/sessions/gnome.desktop" = {
-      text = ''
-        [Desktop Entry]
-        Name=GNOME
-        Exec=/etc/greetd/scripts/gnome.sh
-      '';
-    };
-    "greetd/scripts/gnome.sh" = {
-      text = ''
-        #!/bin/sh
-        XDG_SESSION_TYPE=wayland dbus-run-session gnome-session
-      '';
-      mode = "555";
     };
   };
 }
