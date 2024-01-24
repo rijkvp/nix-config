@@ -5,6 +5,7 @@ rec {
   border = palette.overlay0;
   borderActive = palette.lavender;
   rounding = "4";
+  font = "Iosevka Nerd Font";
   # Colors from: https://github.com/catppuccin/catppuccin
   palette = {
     rosewater = "#f5e0dc";

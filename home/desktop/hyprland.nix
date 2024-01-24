@@ -53,8 +53,8 @@
       }
 
       general {
-          gaps_in = 6
-          gaps_out = 12
+          gaps_in = 12
+          gaps_out = 32
           border_size = ${theme.borderWidth}
           col.active_border = rgb(${builtins.substring 1 7 theme.borderActive})
           col.inactive_border = rgb(${builtins.substring 1 7 theme.border})
@@ -99,7 +99,7 @@
       dwindle {
           pseudotile = true
           preserve_split = true
-          no_gaps_when_only = true
+          # no_gaps_when_only = true
       }
 
       master {
@@ -117,12 +117,12 @@
       # KeePassXC (special workspace)
       bind = SUPER,N,togglespecialworkspace,kp
       windowrule = workspace special:kp,keepassxc
-      workspace = special:kp, on-created-empty:keepassxc, gapsout:80
+      workspace = special:kp, on-created-empty:keepassxc, gapsout:256
 
       # Scratchpad (special workspace)
       bind = SUPER,B, togglespecialworkspace, sp
       bind = SUPER_SHIFT,B, movetoworkspace, special:sp
-      workspace = special:sp, on-created-empty:alacritty, gapsout:80
+      workspace = special:sp, on-created-empty:alacritty, gapsout:256
 
       windowrule=float,title:^debug
 

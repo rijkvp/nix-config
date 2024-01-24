@@ -19,7 +19,7 @@
     in
     {
       # A theme can be set here
-      theme = import ./themes/tokyonight.nix;
+      theme = import ./themes/catppucin.nix;
 
       nixosConfigurations = {
         zeus = nixpkgs.lib.nixosSystem

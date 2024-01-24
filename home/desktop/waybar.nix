@@ -84,10 +84,10 @@
          opacity: 0.85;
       }
       .modules-left {
-        margin: 0 12px;
+        margin: 0 32px;
       }
       .modules-right {
-        margin: 0 12px;
+        margin: 0 32px;
       }
       tooltip {
         background: ${theme.backgroundAlt};

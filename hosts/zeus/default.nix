@@ -5,7 +5,6 @@
     ../common/virt-manager.nix
     ../common/steam.nix
     ../common/backup.nix
-    ../common/gnome.nix
     ../common/docker.nix
   ];
 
