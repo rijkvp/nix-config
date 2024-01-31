@@ -159,7 +159,9 @@
     enable = true;
     extraPortals = with pkgs; [
       xdg-desktop-portal-hyprland
-      xdg-desktop-portal-gtk
+      (pkgs.xdg-desktop-portal-gtk.override {
+        buildPortalsInGnome = false;
+      })
     ];
     config.common.default = "*";
   };
