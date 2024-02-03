@@ -125,12 +125,12 @@
 
         #workspaces button.focused {
           background: #${palette.base00};
-          border-bottom: 2px solid #${palette.base0A};
+          border-bottom: 2px solid #${palette.base0D};
         }
 
         #workspaces button.active {
           background: #${palette.base01};
-          border-bottom: 2px solid #${palette.base0A};
+          border-bottom: 2px solid #${palette.base0D};
         }
         #workspaces button.urgent {
           background: #${palette.base0B};

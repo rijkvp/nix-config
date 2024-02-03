@@ -11,7 +11,7 @@
   systemd.user.startServices = "sd-switch";
 
   # Nix Colors
-  colorScheme = inputs.nix-colors.colorSchemes.catppuccin-mocha;
+  colorScheme = inputs.nix-colors.colorSchemes.horizon-terminal-dark;
 
   home = {
     username = "rijk";

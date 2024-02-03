@@ -57,7 +57,7 @@
           gaps_out = ${toString settings.screenMargin}
           border_size = 1
           col.inactive_border = rgb(${config.colorScheme.palette.base01})
-          col.active_border = rgb(${config.colorScheme.palette.base0A})
+          col.active_border = rgb(${config.colorScheme.palette.base0D})
           layout = dwindle
           cursor_inactive_timeout = 5
       }

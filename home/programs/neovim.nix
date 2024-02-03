@@ -43,24 +43,11 @@
     plugins = with pkgs.vimPlugins; [
       # Theme
       {
-        plugin = catppuccin-nvim;
+        plugin = base16-vim;
         type = "lua";
         config = ''
-          require("catppuccin").setup({
-            flavour = "mocha",
-            transparent_background = true,
-          })
-        '';
-      }
-      {
-        plugin = tokyonight-nvim;
-        type = "lua";
-        config = ''
-          require("tokyonight").setup({
-            style = "moon",
-            transparent = true,
-          })
-          vim.cmd[[colorscheme ${config.colorScheme.slug}]]
+          vim.g.base16_background_transparent = 1
+          vim.cmd[[colorscheme base16-${config.colorScheme.slug}]]
         '';
       }
 
