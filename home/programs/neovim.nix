@@ -193,12 +193,12 @@
         plugin = nvim-lspconfig;
         type = "lua";
         config = ''
-          vim.lsp.set_log_level("debug")
+          vim.lsp.set_log_level("info")
 
           local lspconfig = require('lspconfig')
 
           -- Language servers
-          -- lspconfig.rust_analyzer.setup{} -- handled by rust-tools.nvim
+          -- lspconfig.rust_analyzer.setup{} -- handled by rustaceanvim
           lspconfig.tsserver.setup{}
           lspconfig.clangd.setup{}
           lspconfig.rnix.setup{}
@@ -207,35 +207,63 @@
           lspconfig.hls.setup{}
           lspconfig.svelte.setup{}
 
-          -- Documentation
-          vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Hover documentation" })
-          vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, { desc = "Signature Documentation" })
-
-          -- Goto
-          vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
-          vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Go to declaration" })
-          vim.keymap.set("n", "gi", require('telescope.builtin').lsp_implementations, { desc = "Go to implementation" })
-          vim.keymap.set("n", "go", vim.lsp.buf.type_definition, { desc = "Go to type definition" })
-          vim.keymap.set("n", "gr", require('telescope.builtin').lsp_references, { desc = "Go to references" })
-
           -- Diagnostics
           vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Previous diagnostic" })
           vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Next diagnostic" })
           vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, { desc = "Open diagnostics" })
 
-          -- Actions
-          vim.keymap.set("n", "<leader>c", vim.lsp.buf.code_action,  { desc = "LSP Action" })
-          vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, { desc = "Format code"})
-          vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, { desc = "Rename symbol" })
+          vim.api.nvim_create_autocmd('LspAttach', {
+            group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+            callback = function(ev)
+              local opts = { buffer = ev.buf }
+              -- Documentation
+              vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+              vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
+
+              -- Goto
+              vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+              vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+              vim.keymap.set("n", "gi", require('telescope.builtin').lsp_implementations, opts)
+              vim.keymap.set("n", "go", vim.lsp.buf.type_definition, opts)
+              vim.keymap.set("n", "gr", require('telescope.builtin').lsp_references, opts)
+
+              -- Actions
+              vim.keymap.set("n", "<leader>c", vim.lsp.buf.code_action, opts)
+              vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, opts)
+              vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, opts)
+            end,
+          })
         '';
       }
       nvim-web-devicons
       trouble-nvim
       {
-        plugin = rust-tools-nvim;
+        plugin = rustaceanvim;
         type = "lua";
         config = ''
-          require('rust-tools').setup()
+          vim.g.rustaceanvim = {
+            -- Plugin configuration
+            tools = {
+            },
+            -- LSP configuration
+            server = {
+              on_attach = function(client, bufnr)
+                -- Inlay hints
+                vim.lsp.inlay_hint.enable(bufnr, true)
+              end,
+              settings = {
+                -- rust-analyzer language server configuration
+                ['rust-analyzer'] = {
+                  rustfmt = {
+                      overrideCommand = { "leptosfmt", "--stdin", "--rustfmt" },
+                  },
+                },
+              },
+            },
+            -- DAP configuration
+            dap = {
+            },
+          }
         '';
       }
 
@@ -354,6 +382,13 @@
               strategy = require('ts-rainbow').strategy.global,
             }
           }
+        '';
+      }
+      {
+        plugin = flash-nvim;
+        type = "lua";
+        config = ''
+          require('flash').setup()
         '';
       }
     ];

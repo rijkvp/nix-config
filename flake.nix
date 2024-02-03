@@ -15,11 +15,12 @@
     let
       inherit (self) outputs;
       system = "x86_64-linux";
-      # pkgs = import nixpkgs { inherit system; };
     in
     {
       # A theme can be set here
       theme = import ./themes/catppucin.nix;
+
+      packages = import nixpkgs { inherit system; };
 
       nixosConfigurations = {
         zeus = nixpkgs.lib.nixosSystem

@@ -67,6 +67,11 @@
     # Audio Management
     pavucontrol
     pulseaudio
+
+    # Email
+    meli
+    msmtp # SMTP client
+    w3m # HTML viewer
   ];
 
   services.kdeconnect = {
