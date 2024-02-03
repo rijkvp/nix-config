@@ -75,19 +75,21 @@
       * {
         margin: 0;
         padding: 0;
-        font-family: ${theme.font};
+        border: none;
+        font-family: JetBrainsMono Nerd Font;
+        min-height: 0;
+        font-size: 13px;
       }
       window#waybar {
-         font-size: 13px;
          color: ${theme.foreground};
          background: ${theme.background};
          opacity: 0.85;
       }
       .modules-left {
-        margin: 0 32px;
+        margin: 0 12px;
       }
       .modules-right {
-        margin: 0 32px;
+        margin: 0 12px;
       }
       tooltip {
         background: ${theme.backgroundAlt};
@@ -96,26 +98,37 @@
       tooltip label {
         color: ${theme.foreground};
       }
-      #workspaces, #window, #mpd, #clock, #backlight, #battery, #cpu, #memory, #network, #wireplumber, #tray, #mode {
-        border-radius: ${theme.rounding}px;
+      #mpd, #clock, #backlight, #battery, #cpu, #memory, #network, #wireplumber, #tray, #mode {
         color: ${theme.foreground};
-        margin: 4px 0px;
-        padding: 0px 6px;
+        margin: 0px 4px;
+        padding: 2px 5px;
+      }
+
+      button, button:hover, button.focused {
+        box-shadow: none;
       }
 
       #workspaces button {
-        padding: 0 4px;
-        font-size: 14px;
-        font-weight: 600;
-        color: ${theme.background};
-      }
-      #workspaces button.active {
-        border-radius: ${theme.rounding}px;
-        background-color: ${theme.background};
+        padding: 2px 5px;
+        border-radius: 0;
+        background: ${theme.background};
         color: ${theme.foreground};
       }
+      #workspaces button:hover {
+        background: ${theme.backgroundAlt};
+      }
+
+      #workspaces button.focused {
+        background: ${theme.background};
+        border-bottom: 2px solid ${theme.primary};
+      }
+
+      #workspaces button.active {
+        background: ${theme.backgroundAlt};
+        border-bottom: 2px solid ${theme.primary};
+      }
       #workspaces button.urgent {
-        background-color: ${theme.yellow};
+        background: ${theme.yellow};
       }
     '';
   };
