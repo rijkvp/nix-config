@@ -1,4 +1,4 @@
-{ inputs, lib, config, theme, ... }: {
+{ inputs, lib, config, settings, ... }: {
   imports = [
     inputs.hyprland.homeManagerModules.default
   ];
@@ -6,7 +6,7 @@
   home.file."${config.home.homeDirectory}/.local/bin/nextwallpaper" = {
     text = ''
       #!/bin/sh
-      swww img "$(find $XDG_PICTURES_DIR/images/wallpapers/${theme.id}/ -type f | shuf -n 1)"
+      swww img "$(find $XDG_PICTURES_DIR/images/wallpapers/${config.colorScheme.slug}/ -type f | shuf -n 1)"
     '';
     executable = true;
   };
@@ -53,15 +53,17 @@
       }
 
       general {
-          border_size = ${theme.borderWidth}
-          col.active_border = rgb(${builtins.substring 1 7 theme.borderActive})
-          col.inactive_border = rgb(${builtins.substring 1 7 theme.border})
+          gaps_in = ${toString (settings.screenMargin / 2)}
+          gaps_out = ${toString settings.screenMargin}
+          border_size = 1
+          col.inactive_border = rgb(${config.colorScheme.palette.base01})
+          col.active_border = rgb(${config.colorScheme.palette.base0A})
           layout = dwindle
           cursor_inactive_timeout = 5
       }
 
       decoration {
-        rounding = ${theme.rounding}
+        rounding = 4
 
         blur {
           enabled = true
@@ -110,12 +112,12 @@
       # KeePassXC (special workspace)
       bind = SUPER,N,togglespecialworkspace,kp
       windowrule = workspace special:kp,keepassxc
-      workspace = special:kp, on-created-empty:keepassxc, gapsout:256
+      workspace = special:kp, on-created-empty:keepassxc, gapsout:${toString settings.scratchpadMargin}
 
       # Scratchpad (special workspace)
       bind = SUPER,B, togglespecialworkspace, sp
       bind = SUPER_SHIFT,B, movetoworkspace, special:sp
-      workspace = special:sp, on-created-empty:alacritty, gapsout:256
+      workspace = special:sp, on-created-empty:alacritty, gapsout:${toString settings.scratchpadMargin}
 
       windowrule=float,title:^debug
 

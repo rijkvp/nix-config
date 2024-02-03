@@ -1,4 +1,4 @@
-{ lib, config, pkgs, theme, inputs, ... }: {
+{ lib, config, pkgs, inputs, settings, ... }: {
   programs.waybar = {
     enable = true;
     settings = {
@@ -71,66 +71,70 @@
         };
       };
     };
-    style = ''
-      * {
-        margin: 0;
-        padding: 0;
-        border: none;
-        font-family: ${theme.font};
-        min-height: 0;
-        font-size: 13px;
-      }
-      window#waybar {
-         color: ${theme.foreground};
-         background: ${theme.background};
-         opacity: 0.85;
-      }
-      .modules-left {
-        margin: 0 12px;
-      }
-      .modules-right {
-        margin: 0 12px;
-      }
-      tooltip {
-        background: ${theme.backgroundAlt};
-        border-radius: ${theme.rounding}px;
-      }
-      tooltip label {
-        color: ${theme.foreground};
-      }
-      #mpd, #clock, #backlight, #battery, #cpu, #memory, #network, #wireplumber, #tray, #mode {
-        color: ${theme.foreground};
-        margin: 0px 4px;
-        padding: 2px 5px;
-      }
+    style =
+      let
+        palette = config.colorScheme.palette;
+      in
+      ''
+        * {
+          margin: 0;
+          padding: 0;
+          border: none;
+          font-family: ${settings.font};
+          min-height: 0;
+          font-size: 13px;
+        }
+        window#waybar {
+           color: #${palette.base05};
+           background: #${palette.base00};
+           opacity: 0.85;
+        }
+        .modules-left {
+          margin: 0 ${toString settings.screenMargin}px;
+        }
+        .modules-right {
+          margin: 0 ${toString settings.screenMargin}px;
+        }
+        tooltip {
+          background: #${palette.base01};
+          border-radius: 4px;
+        }
+        tooltip label {
+          color: #${palette.base05};
+        }
+        #mpd, #clock, #backlight, #battery, #cpu, #memory, #network, #wireplumber, #tray, #mode {
+          color: #${palette.base05};
+          margin: 0px 4px;
+          padding: 2px 5px;
+        }
 
-      button, button:hover, button.focused {
-        box-shadow: none;
-      }
+        button, button:hover, button.focused {
+          box-shadow: none;
+        }
 
-      #workspaces button {
-        padding: 2px 5px;
-        border-radius: 0;
-        background: ${theme.background};
-        color: ${theme.foreground};
-        border-bottom: 2px solid transparent;
-      }
-      #workspaces button:hover {
-        background: ${theme.backgroundAlt};
-      }
+        #workspaces button {
+          padding: 2px 5px;
+          border-radius: 0;
+          background: #${palette.base00};
+          color: #${palette.base05};
+          border-bottom: 2px solid transparent;
+        }
+        #workspaces button:hover {
+          background: #${palette.base01};
+        }
 
-      #workspaces button.focused {
-        background: ${theme.background};
-        border-bottom: 2px solid ${theme.primary};
-      }
+        #workspaces button.focused {
+          background: #${palette.base00};
+          border-bottom: 2px solid #${palette.base0A};
+        }
 
-      #workspaces button.active {
-        background: ${theme.backgroundAlt};
-        border-bottom: 2px solid ${theme.primary};
-      }
-      #workspaces button.urgent {
-        background: ${theme.yellow};
-      }
-    '';
+        #workspaces button.active {
+          background: #${palette.base01};
+          border-bottom: 2px solid #${palette.base0A};
+        }
+        #workspaces button.urgent {
+          background: #${palette.base0B};
+        }
+      '';
   };
 }

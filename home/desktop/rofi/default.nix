@@ -1,4 +1,4 @@
-{ lib, config, pkgs, theme, ... }: {
+{ lib, config, pkgs, settings, ... }: {
   programs.rofi = {
     enable = true;
     package = pkgs.rofi-wayland.override { plugins = [ pkgs.rofi-calc ]; };
@@ -7,7 +7,7 @@
 
   xdg.configFile."rofi/theme.rasi".text = ''
     configuration {
-      font: "${theme.font} Medium 13";
+      font: "${settings.font} Medium 13";
 
       drun {
         display-name: "";
@@ -32,10 +32,10 @@
       padding: 0;
       spacing: 0;
 
-      bg: ${theme.background}e0;
-      bg-alt: ${theme.backgroundAlt}d0;
-      fg: ${theme.foreground};
-      fg-alt: ${theme.foregroundAlt};
+      bg: #${config.colorScheme.palette.base00}e0;
+      bg-alt: #${config.colorScheme.palette.base01}d0;
+      fg: #${config.colorScheme.palette.base05};
+      fg-alt: #${config.colorScheme.palette.base06};
 
       text-color: @fg;
       background-color: transparent;
@@ -46,7 +46,7 @@
     }
 
     mainbox {
-      border-radius: ${theme.rounding}px;
+      border-radius: 4px;
       children: [inputbar, listview];
     }
 
@@ -83,7 +83,7 @@
     element-text {
       padding: 4px 0;
       text-color: @fg-alt;
-      highlight: bold underline ${theme.foreground};
+      highlight: bold underline #${config.colorScheme.palette.base0A};
     }
 
     element-text selected {

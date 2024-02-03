@@ -1,4 +1,4 @@
-{ pkgs, theme, ... }: {
+{ pkgs, config, ... }: {
   programs.tmux = {
     enable = true;
     keyMode = "vi";
@@ -21,7 +21,7 @@
       set -sg escape-time 0
 
       # Status bar
-      set -g status-style 'bg=${theme.background} fg=${theme.foreground}'
+      set -g status-style 'bg=#${config.colorScheme.palette.base00} fg=#${config.colorScheme.palette.base05}'
       set-option -g status-right '#(date +"%m-%d %H:%M")'
 
       # Set colors

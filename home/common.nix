@@ -1,12 +1,17 @@
-{ inputs, outputs, lib, config, pkgs, theme, ... }: {
+{ inputs, outputs, lib, config, pkgs, ... }: {
   imports = [
     ./desktop
     ./shell
     ./programs
+    inputs.nix-colors.homeManagerModules.default
   ];
+
   programs.home-manager.enable = true;
 
   systemd.user.startServices = "sd-switch";
+
+  # Nix Colors
+  colorScheme = inputs.nix-colors.colorSchemes.catppuccin-mocha;
 
   home = {
     username = "rijk";

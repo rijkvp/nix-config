@@ -12,11 +12,6 @@
       env = WLR_NO_HARDWARE_CURSORS,1
       # remove following if causes crashes
       env = GBM_BACKEND,nvidia-drm
-
-      general {
-          gaps_in = 12
-          gaps_out = 32
-      }
     '';
   };
 }

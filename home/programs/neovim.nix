@@ -1,4 +1,4 @@
-{ config, pkgs, lib, theme, ... }: {
+{ config, pkgs, lib, ... }: {
   programs.neovim = {
     enable = true;
     defaultEditor = true;
@@ -60,7 +60,7 @@
             style = "moon",
             transparent = true,
           })
-          vim.cmd[[colorscheme ${theme.id}]]
+          vim.cmd[[colorscheme ${config.colorScheme.slug}]]
         '';
       }
 
@@ -371,19 +371,6 @@
         '';
       }
 
-      {
-        plugin = nvim-ts-rainbow2;
-        type = "lua";
-        config = ''
-          require('nvim-treesitter.configs').setup {
-            rainbow = {
-              enable = true,
-              query = 'rainbow-parens',
-              strategy = require('ts-rainbow').strategy.global,
-            }
-          }
-        '';
-      }
       {
         plugin = flash-nvim;
         type = "lua";

@@ -1,4 +1,4 @@
-{ config, pkgs, theme, ... }: {
+{ config, pkgs, settings, ... }: {
   imports = [
     ./rofi
     ./hyprland.nix
@@ -31,7 +31,7 @@
   home.file."${config.home.homeDirectory}/.local/bin/lockscreen" = {
     text = ''
       #!/bin/sh
-      swaylock -eF --color '#000000' --font '${theme.font}'
+      swaylock -eF --color '#000000' --font '${settings.font}'
     '';
     executable = true;
   };
@@ -45,9 +45,9 @@
     mako = {
       enable = true;
       defaultTimeout = 10000;
-      borderRadius = 7;
-      backgroundColor = "${theme.background}60";
-      font = "${theme.font}";
+      borderRadius = 4;
+      backgroundColor = "${config.colorScheme.palette.base00}60";
+      font = "${settings.font}";
     };
     mpd = {
       enable = true;

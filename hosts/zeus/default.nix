@@ -13,6 +13,17 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.supportedFilesystems = [ "btrfs" ];
 
+  # boot.kernelPatches = [{
+  #   name = "firewire-support";
+  #   patch = null;
+  #   extraConfig = ''
+  #     IEEE1394 y
+  #     IEEE1394_RAWIO Y
+  #     IEEE1394_CMP Y
+  #     IEEE1394_AMDTP Y
+  #   '';
+  # }];
+
   # Network
   networking = {
     hostName = "rnixpc";

@@ -1,4 +1,4 @@
-{ lib, pkgs, theme, ... }: {
+{ lib, pkgs, ... }: {
   programs.fish = {
     enable = true;
     shellAliases = {
