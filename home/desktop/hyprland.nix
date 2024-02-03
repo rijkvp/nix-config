@@ -53,8 +53,6 @@
       }
 
       general {
-          gaps_in = 12
-          gaps_out = 32
           border_size = ${theme.borderWidth}
           col.active_border = rgb(${builtins.substring 1 7 theme.borderActive})
           col.inactive_border = rgb(${builtins.substring 1 7 theme.border})
@@ -64,15 +62,10 @@
 
       decoration {
         rounding = ${theme.rounding}
-        inactive_opacity = 0.9
-        active_opacity = 1
-        fullscreen_opacity = 1
-        dim_inactive = false
-        dim_strength = 0.05
 
         blur {
           enabled = true
-          size = 4
+          size = 8
           passes = 3
         }
 

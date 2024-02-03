@@ -113,6 +113,7 @@
         border-radius: 0;
         background: ${theme.background};
         color: ${theme.foreground};
+        border-bottom: 2px solid transparent;
       }
       #workspaces button:hover {
         background: ${theme.backgroundAlt};
