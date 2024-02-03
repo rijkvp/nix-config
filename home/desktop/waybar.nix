@@ -76,7 +76,7 @@
         margin: 0;
         padding: 0;
         border: none;
-        font-family: JetBrainsMono Nerd Font;
+        font-family: ${theme.font};
         min-height: 0;
         font-size: 13px;
       }
