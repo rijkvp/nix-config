@@ -35,7 +35,6 @@
       exec-once = swww init; nextwallpaper
       exec-once = hyprctl setcursor Quintom_Ink 20
       exec-once = waybar
-      exec-once = kdeconnect-indicator
       exec-once = nm-applet
 
       input {
