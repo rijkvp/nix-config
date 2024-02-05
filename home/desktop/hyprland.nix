@@ -122,12 +122,10 @@
       windowrule=float,title:^debug
 
       # Transparent windows
-      windowrule = opacity 0.86 override 0.86 override,Alacritty
-      windowrule = opacity 0.8 override 0.8 override,thunar
+      windowrule = opacity 0.9 override 0.86 override,Alacritty
+      windowrule = opacity 0.87 override 0.8 override,thunar
       windowrule = opacity 0.8 override 0.8 override,keepassxc
       windowrule = opacity 0.86 override 0.86 override,Signal
-      windowrule = opacity 0.86 override 0.86 override,whatsapp
-      windowrule = opacity 0.86 override 0.86 override,Element
 
       # Applications
       bind = SUPER, RETURN, exec, alacritty
@@ -136,7 +134,7 @@
       bind = SUPER_CTRL,N, exec, keepassxc
       bind = SUPER_CTRL,M, exec, alacritty -e ncmpcpp
       bind = SUPER_CTRL,K, exec, flatpak run org.signal.Signal
-      bind = SUPER_CTRL,O, exec, flatpak run obsidian
+      bind = SUPER_CTRL,O, exec, obsidian
 
       # Application worokspaces
       windowrule = workspace 1, firefox

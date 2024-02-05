@@ -41,13 +41,14 @@
       vim.keymap.set('n', '<leader>s', ':set spell!<CR>')
     '';
     plugins = with pkgs.vimPlugins; [
-      # Theme
       {
-        plugin = base16-vim;
+        plugin = oxocarbon-nvim;
         type = "lua";
         config = ''
-          vim.g.base16_background_transparent = 1
-          vim.cmd[[colorscheme base16-${config.colorScheme.slug}]]
+          vim.opt.background = "dark"
+          vim.cmd("colorscheme oxocarbon")
+          vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+          vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
         '';
       }
 
@@ -241,9 +242,10 @@
               settings = {
                 -- rust-analyzer language server configuration
                 ['rust-analyzer'] = {
-                  rustfmt = {
-                      overrideCommand = { "leptosfmt", "--stdin", "--rustfmt" },
-                  },
+                  -- TODO: Only do this per project
+                  -- rustfmt = {
+                  --     overrideCommand = { "leptosfmt", "--stdin", "--rustfmt" },
+                  -- },
                 },
               },
             },

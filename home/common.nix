@@ -11,7 +11,7 @@
   systemd.user.startServices = "sd-switch";
 
   # Nix Colors
-  colorScheme = inputs.nix-colors.colorSchemes.horizon-terminal-dark;
+  colorScheme = inputs.nix-colors.colorSchemes.oxocarbon-dark;
 
   home = {
     username = "rijk";
@@ -40,6 +40,10 @@
 
   gtk = {
     enable = true;
+    theme = {
+      name = "adw-gtk3-dark";
+      package = pkgs.adw-gtk3;
+    };
     font = {
       name = "Fira Sans";
       package = pkgs.fira;
