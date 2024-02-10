@@ -2,7 +2,6 @@
   imports = [
     ./rofi
     ./hyprland.nix
-    ./sway.nix
     ./waybar.nix
   ];
 

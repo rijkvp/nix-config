@@ -2,6 +2,7 @@
   imports = [
     ./hardware-configuration.nix
     ../common
+    ../common/sway.nix
   ];
 
   # BIOS boot with GRUB
