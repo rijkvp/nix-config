@@ -37,14 +37,7 @@
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
                 home-manager.users.rijk = import ./home/zeus.nix;
-                home-manager.extraSpecialArgs = {
-                  inherit inputs outputs;
-                  settings = {
-                    font = "Iosevka Nerd Font";
-                    screenMargin = 36;
-                    scratchpadMargin = 256;
-                  };
-                };
+                home-manager.extraSpecialArgs = { inherit inputs outputs settings; };
               }
             ];
           };

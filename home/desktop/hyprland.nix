@@ -30,7 +30,6 @@
       env = QT_AUTO_SCREEN_SCALE_FACTOR,1
       env = QT_QPA_PLATFORM,wayland;kcb
       env = QT_WAYLAND_DISABLE_WINDOWDECORATION,1
-      env = QT_QPA_PLATFORMTHEME=qt5ct
 
       exec-once = swww init; nextwallpaper
       exec-once = hyprctl setcursor Quintom_Ink 20

@@ -37,6 +37,11 @@
     enable = true;
     settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
   };
+  qt = {
+    enable = true;
+    platformTheme = "gnome";
+    style = "adwaita-dark";
+  };
 
   gtk = {
     enable = true;
