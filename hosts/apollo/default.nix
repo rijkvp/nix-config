@@ -3,8 +3,7 @@
     ./hardware-configuration.nix
     ../common
     ../common/virt-manager.nix
-    ../common/docker.nix
-    ../common/gnome.nix
+    ../common/podman.nix
     inputs.impermanence.nixosModules.impermanence
   ];
 
@@ -21,6 +20,10 @@
       "/var/lib/tailscale"
       "/var/db/sudo/lectured"
       "/var/lib/docker"
+      {
+        directory = "/var/cache/tuigreet";
+        user = "greeter";
+      }
     ];
     files = [
       "/etc/machine-id"

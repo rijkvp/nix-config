@@ -5,7 +5,7 @@
     ../common/virt-manager.nix
     ../common/steam.nix
     ../common/backup.nix
-    ../common/docker.nix
+    ../common/podman.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
