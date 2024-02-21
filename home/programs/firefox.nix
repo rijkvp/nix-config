@@ -1,8 +1,26 @@
-{ inputs, outputs, lib, config, pkgs, ... }: {
+{ inputs, outputs, lib, config, pkgs, ... }:
+let
+  # Lepton theme https://github.com/black7375/Firefox-UI-Fix
+  theme-dir = builtins.fetchGit {
+    url = "https://github.com/black7375/Firefox-UI-Fix.git";
+    rev = "d91f2822b4b9f71d6fc7f7d870526fcf56719348"; # must be updated for newer versions
+  };
+  user-js = theme-dir.outPath + "/user.js";
+
+  # From https://github.com/nix-community/home-manager/blob/master/modules/programs/firefox.nix
+  firefoxConfigPath = ".mozilla/firefox";
+  profileName = "default";
+in
+{
+  # Symlink the theme's chrome CSS directory
+  home.activation.firefox-user-chrome = ''
+    ln -sfT ${theme-dir.outPath} ${firefoxConfigPath}/${profileName}/chrome
+  '';
   programs.firefox = {
     enable = true;
-    profiles.default = {
+    profiles.${profileName} = {
       id = 0;
+      extraConfig = builtins.readFile user-js;
       name = "Default";
       search = {
         default = "Brave Search";
@@ -26,6 +44,7 @@
             updateInterval = 24 * 60 * 60 * 1000; # every day
             definedAliases = [ "@b" ];
           };
+          "DuckDuckGo".metaData.alias = "@d";
           "Nix Packages" = {
             urls = [{
               template = "https://search.nixos.org/packages";
@@ -56,11 +75,9 @@
             updateInterval = 24 * 60 * 60 * 1000; # every day
             definedAliases = [ "@nw" ];
           };
-          "DuckDuckGo".metaData.alias = "@d";
-          "Bing".metaData.hidden = true;
+          # Unwanted search engines
           "Amazon".metaData.hidden = true;
           "Amazon.nl".metaData.hidden = true;
-          "Google".metaData.hidden = true;
           "eBay".metaData.hidden = true;
         };
       };

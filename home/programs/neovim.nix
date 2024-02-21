@@ -256,14 +256,6 @@
         '';
       }
 
-      {
-        plugin = alpha-nvim;
-        type = "lua";
-        config = ''
-          require'alpha'.setup(require'alpha.themes.startify'.config)
-        '';
-      }
-
       # Completion plugins
       cmp-nvim-lsp
       cmp-buffer
@@ -351,22 +343,6 @@
         '';
       }
       todo-txt-vim
-
-      {
-        plugin = neogit;
-        type = "lua";
-        config = ''
-          require('neogit').setup()
-        '';
-      }
-
-      {
-        plugin = flash-nvim;
-        type = "lua";
-        config = ''
-          require('flash').setup()
-        '';
-      }
     ];
     extraPackages = with pkgs; [
       tree-sitter

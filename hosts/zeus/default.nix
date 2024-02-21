@@ -63,7 +63,7 @@
   };
 
   # Internal Hard Drive
-  boot.initrd.luks.devices."crypthdint".device = "/dev/disk/by-uuid/69f1b535-d8e7-496e-ab3e-53d78d45c0c5";
+  boot.initrd.luks.devices."crypthdint".device = "/dev/disk/by-uuid/57038b2d-ddf7-47b2-b253-7fd30605f4bf";
   fileSystems."/mnt/hdint" = {
     device = "/dev/mapper/crypthdint";
     mountPoint = "/mnt/hdint";
