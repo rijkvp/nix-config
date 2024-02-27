@@ -7,6 +7,9 @@
     extraConfig = ''
       unbind C-b
 
+      set -g mouse on
+      set -sg escape-time 0
+
       # Vim keys
       bind ^ last-window
       bind k select-pane -U
@@ -17,8 +20,6 @@
       bind -r C-j resize-pane -D
       bind -r C-h resize-pane -L
       bind -r C-l resize-pane -R
-
-      set -sg escape-time 0
 
       # Status bar
       set -g status-style 'bg=#${config.colorScheme.palette.base00} fg=#${config.colorScheme.palette.base05}'
