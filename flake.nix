@@ -7,7 +7,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland.url = "github:hyprwm/Hyprland/v0.34.0";
+    hyprland.url = "github:hyprwm/Hyprland/v0.36.0";
     impermanence.url = "github:nix-community/impermanence";
     nix-colors.url = "github:misterio77/nix-colors";
   };
@@ -37,7 +37,14 @@
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
                 home-manager.users.rijk = import ./home/zeus.nix;
-                home-manager.extraSpecialArgs = { inherit inputs outputs settings; };
+                home-manager.extraSpecialArgs = {
+                  inherit inputs outputs;
+                  settings = {
+                    font = "Iosevka Nerd Font";
+                    screenMargin = 36;
+                    scratchpadMargin = 256;
+                  };
+                };
               }
             ];
           };
