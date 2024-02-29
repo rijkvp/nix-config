@@ -35,6 +35,7 @@
       exec-once = hyprctl setcursor Quintom_Ink 20
       exec-once = waybar
       exec-once = nm-applet
+      exec-once = ollama serve
 
       input {
           kb_layout = us

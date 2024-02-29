@@ -26,6 +26,8 @@
       # Difftastic
       "gd" = "GIT_EXTERNAL_DIFF=difft git diff";
       "gds" = "GIT_EXTERNAL_DIFF=difft git diff --staged";
+      # AI
+      "ai" = "ollama run mistral-openorca";
       # To-Do
       "todo" = "nvim $XDG_DOCUMENTS_DIR/todo.txt";
     };
