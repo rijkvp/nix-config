@@ -72,6 +72,9 @@
     meli
     msmtp # SMTP client
     w3m # HTML viewer
+
+    # AI
+    ollama
   ];
 
   # Default programs
