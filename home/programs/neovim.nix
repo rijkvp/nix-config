@@ -223,6 +223,14 @@
           })
         '';
       }
+      {
+        plugin = lspsaga-nvim;
+        type = "lua";
+        config = ''
+          require('lspsaga').setup({})
+        '';
+      }
+
       nvim-web-devicons
       trouble-nvim
       {
