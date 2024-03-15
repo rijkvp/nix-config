@@ -16,6 +16,7 @@
 
       vim.opt.wrap = false
       vim.opt.linebreak = true
+      vim.opt.signcolumn = "yes"
 
       vim.opt.spelllang = { 'en', 'nl' }
 
@@ -214,6 +215,7 @@
               vim.keymap.set("n", "gi", require('telescope.builtin').lsp_implementations, opts)
               vim.keymap.set("n", "go", vim.lsp.buf.type_definition, opts)
               vim.keymap.set("n", "gr", require('telescope.builtin').lsp_references, opts)
+              vim.keymap.set("n", "gs", require('telescope.builtin').lsp_document_symbols, opts)
 
               -- Actions
               vim.keymap.set("n", "<leader>c", vim.lsp.buf.code_action, opts)
@@ -221,13 +223,6 @@
               vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, opts)
             end,
           })
-        '';
-      }
-      {
-        plugin = lspsaga-nvim;
-        type = "lua";
-        config = ''
-          require('lspsaga').setup({})
         '';
       }
 
