@@ -53,6 +53,11 @@
     fish
     wireguard-tools
 
+    # Man pages
+    man-pages
+    man-pages-posix
+
+    # Customized vim
     ((vim_configurable.override { }).customize {
       name = "vim";
       vimrcConfig.packages.myplugins = with pkgs.vimPlugins; {
