@@ -5,10 +5,12 @@
 
   wayland.windowManager.hyprland = {
     extraConfig = ''
-      monitor = ,preferred,auto,1.0
+      monitor = eDP-1,preferred,auto,1
+      monitor = ,preferred,auto,1,mirror,eDP-1
       input {
-          sensitivity = -0.1;
-        }
+        sensitivity = -0.1;
+      }
+      exec-once = powerprofilesctl set power-saver
     '';
   };
 
