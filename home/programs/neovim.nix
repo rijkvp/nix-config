@@ -190,7 +190,7 @@
           -- lspconfig.rust_analyzer.setup{} -- handled by rustaceanvim
           lspconfig.tsserver.setup{}
           lspconfig.clangd.setup{}
-          lspconfig.rnix.setup{}
+          lspconfig.nil_ls.setup{}
           lspconfig.texlab.setup{}
           lspconfig.ruff_lsp.setup{}
           lspconfig.hls.setup{}
@@ -350,7 +350,7 @@
     extraPackages = with pkgs; [
       tree-sitter
       # Nix
-      rnix-lsp
+      nil
       # C
       clang-tools
       # Rust

@@ -51,14 +51,37 @@
           pandoc --pdf-engine tectonic -f markdown -o $out $argv[1]
         end
       end
+      function has_flake
+          set dir (pwd)
+          while test $dir != "/"
+              if test -e $dir/flake.nix
+                  set -g FLAKE_DIR (realpath $dir)
+                  return 0
+              end
+              set dir (dirname $dir)
+          end
+          return 1
+      end
       function tm
-        tmux new-session -AD -c $HOME -s main
+        tmux new-session -A -c $HOME -s main
       end
       function td
         set dev_dir $(realpath "$PWD")
         set session_name "$(basename $dev_dir)"
+        set start_cmd "fish"
         echo "Starting session '$shell_name' on $dev_dir"
-        tmux new -AD -s "$session_name" -c "$dev_dir"
+        if has_flake
+          echo "Entering Nix dev shell '$FLAKE_DIR'"
+          set start_cmd "nix develop "$FLAKE_DIR" --command fish"
+        end
+        if set -q TMUX
+          # Detach & switch if already in tmux
+          tmux new -AD -s "$session_name" -c "$dev_dir" -d "$start_cmd"
+          tmux switch -t "$session_name"
+        else
+          tmux new -AD -s "$session_name" -c "$dev_dir" "$start_cmd"
+        end
+        # tmux send-keys -t "$session_name" "nvim" C-m
       end
       function devopen
         set dev_dir "./$(fd -t d . | fzf)"
@@ -72,6 +95,12 @@
       bind \ce 'nvim'
       bind --erase \cm
       bind \cm 'mp'
+
+      if status is-interactive
+      and not set -q TMUX
+      and not set -q IN_NIX_SHELL
+        tm
+      end
     '';
   };
 }

@@ -5,7 +5,6 @@
     ./firefox.nix
     ./foot.nix
     ./git.nix
-    ./joshuto.nix
     ./mpv.nix
     ./ncmpcpp.nix
     ./neovim.nix
