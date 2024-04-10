@@ -1,4 +1,4 @@
-{ inputs, lib, config, settings, ... }: {
+{ config, settings, ... }: {
 
   home.file."${config.home.homeDirectory}/.local/bin/nextwallpaper" = {
     text = ''
