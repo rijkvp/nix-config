@@ -20,6 +20,9 @@
     useXkbConfig = true; # use xkbOptions in tty.
   };
 
+  # ADB
+  programs.adb.enable = true;
+
   # Users
   users = {
     defaultUserShell = pkgs.fish;
@@ -27,7 +30,7 @@
     users.rijk = {
       isNormalUser = true;
       initialHashedPassword = "$y$j9T$nI4JsR4y7bWg3wAaplo4h1$ZLXayiNA2cAe/JaOnHnvy9w19eoBdb3pXmjQ.f88UR/";
-      extraGroups = [ "wheel" "video" "audio" "lp" "scanner" "docker" "libvirtd" "network" "lxd" ];
+      extraGroups = [ "wheel" "video" "audio" "lp" "scanner" "docker" "libvirtd" "kvm" "network" "lxd" "plugdev" "adbusers"];
       shell = pkgs.fish;
     };
   };

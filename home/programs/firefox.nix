@@ -23,11 +23,11 @@ in
       extraConfig = builtins.readFile user-js;
       name = "Default";
       search = {
-        default = "Brave Search";
+        default = "DuckDuckGo";
         force = true;
         order = [
-          "Brave Search"
           "DuckDuckGo"
+          "Brave Search"
           "Nix Packages"
           "Nix Options"
           "NixOS Wiki"

@@ -31,7 +31,7 @@
     nvidia = {
       modesetting.enable = true;
       # Testing open drivers
-      open = true;
+      # open = true;
     };
   };
   # Nvidia
