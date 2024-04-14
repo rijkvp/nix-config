@@ -105,7 +105,6 @@
     light.enable = true;
     dconf.enable = true;
     thunar.enable = true;
-    kdeconnect.enable = true;
   };
 
   hardware.pulseaudio.enable = false;

@@ -1,4 +1,4 @@
-{ inputs, outputs, lib, config, pkgs, ... }: {
+{ inputs, config, pkgs, ... }: {
   imports = [
     ./desktop
     ./shell
@@ -11,7 +11,29 @@
   systemd.user.startServices = "sd-switch";
 
   # Nix Colors
-  colorScheme = inputs.nix-colors.colorSchemes.oxocarbon-dark;
+  colorScheme = {
+    slug = "my-theme";
+    name = "my-theme";
+    author = "rijkvp";
+    palette = {
+      base00 = "#161616";
+      base01 = "#262626";
+      base02 = "#393939";
+      base03 = "#525252";
+      base04 = "#dde1e6";
+      base05 = "#f2f4f8";
+      base06 = "#ffffff";
+      base07 = "#ffffff";
+      base08 = "#ed4553"; #e06c75
+      base09 = "#ee9949"; #d19a66
+      base0A = "#edb245"; #e5c07b
+      base0B = "#8ed85a"; #98c379
+      base0C = "#1cd1e9"; #56b6c2
+      base0D = "#4dacf9"; #61afef
+      base0E = "#cd5def"; #c678dd
+      base0F = "#c63b2f"; #be5046
+    };
+  };
 
   home = {
     username = "rijk";
