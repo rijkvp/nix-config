@@ -9,6 +9,11 @@
 
     impermanence.url = "github:nix-community/impermanence";
     nix-colors.url = "github:misterio77/nix-colors";
+
+    movebeam = {
+      url = "github:rijkvp/movebeam";
+      # inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs:
@@ -23,6 +28,8 @@
     in
     {
       packages = import nixpkgs { inherit system; };
+
+      nixosModules = import ./modules;
 
       nixosConfigurations = {
         zeus = nixpkgs.lib.nixosSystem

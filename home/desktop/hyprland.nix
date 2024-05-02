@@ -32,6 +32,7 @@
       exec-once = hyprctl setcursor Quintom_Ink 20
       exec-once = waybar
       exec-once = nm-applet
+      exec-once = beeper --hidden
       exec-once = ollama serve
 
       input {
@@ -137,6 +138,7 @@
       windowrule = workspace 3, obsidian
       windowrule = workspace 5, Signal
       windowrule = workspace 5, Element
+      windowrule = workspace 5, Beeper
       windowrule = workspace 5, whatsapp
       windowrule = workspace 6, thunderbird
 

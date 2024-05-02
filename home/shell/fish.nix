@@ -29,7 +29,7 @@
       # AI
       "ai" = "ollama run mistral-openorca";
       # To-Do
-      "todo" = "nvim $XDG_DOCUMENTS_DIR/todo.txt";
+      "todo" = "nvim $XDG_DOCUMENTS_DIR/TODO.txt";
     };
     shellInit = ''
       set -U fish_greeting

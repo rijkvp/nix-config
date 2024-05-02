@@ -1,6 +1,7 @@
-{ pkgs, ... }: {
+{ pkgs, outputs, ... }: {
   imports = [
     ./greetd.nix
+    outputs.nixosModules.movebeam
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -10,6 +11,9 @@
       experimental-features = "nix-command flakes";
       auto-optimise-store = true;
     };
+    extraOptions = ''
+      use-xdg-base-directories = true
+    '';
   };
 
   # Time/locale
@@ -35,6 +39,9 @@
     };
   };
 
+
+  # Movebeam service
+  services.movebeam.enable = true;
 
   services.tailscale.enable = true;
   # syncthing ports

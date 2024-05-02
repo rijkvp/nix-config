@@ -43,11 +43,16 @@
     '';
     plugins = with pkgs.vimPlugins; [
       {
-        plugin = oxocarbon-nvim;
+        plugin = nightfox-nvim;
         type = "lua";
         config = ''
+          require('nightfox').setup({
+            options = {
+              transparent = true,
+            }
+          })
           vim.opt.background = "dark"
-          vim.cmd("colorscheme oxocarbon")
+          vim.cmd("colorscheme nightfox")
           vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
           vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
         '';

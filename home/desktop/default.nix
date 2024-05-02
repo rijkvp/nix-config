@@ -45,7 +45,7 @@
       enable = true;
       defaultTimeout = 10000;
       borderRadius = 4;
-      backgroundColor = "${config.colorScheme.palette.base00}60";
+      backgroundColor = "#${config.colorScheme.palette.base00}60";
       font = "${settings.font}";
     };
     mpd = {
