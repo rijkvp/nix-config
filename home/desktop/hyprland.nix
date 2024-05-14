@@ -130,7 +130,7 @@
       bind = SUPER_CTRL,F, exec, thunar
       bind = SUPER_CTRL,N, exec, keepassxc
       bind = SUPER_CTRL,M, exec, alacritty -e ncmpcpp
-      bind = SUPER_CTRL,K, exec, flatpak run org.signal.Signal
+      bind = SUPER_CTRL,K, exec, beeper
       bind = SUPER_CTRL,O, exec, obsidian
 
       # Application worokspaces
@@ -196,7 +196,7 @@
       # dmenu menus (using rofi)
       bind = SUPER, D, exec, rofi -show drun -i
       bind = SUPER SHIFT, p, exec, ~/.local/bin/powermenu
-      bind = SUPER, p, exec, xdg-open "$(fd -t f | rofi -dmenu -i -p ' ')"
+      bind = SUPER, p, exec, xdg-open "$(fd | rofi -dmenu -i -p ' ')"
       bind = SUPER SHIFT, p, exec, ~/.local/bin/powermenu
       bind = SUPER, grave, exec, ~/.local/bin/emojipicker
       bind = SUPER, C, exec, rofi -modi calc -show calc -no-show-match -no-sort -calc-command 'wtype "{result}"'
