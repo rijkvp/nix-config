@@ -16,11 +16,16 @@
     aliases = {
       s = "status";
       st = "status";
+      ch = "checkout";
       d = "diff";
       df = "diff";
       a = "add";
       c = "commit";
       p = "push";
+      pl = "pull";
+      rt = "restore";
+      rs = "reset";
+      m = "merge";
     };
   };
 }
