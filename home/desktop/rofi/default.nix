@@ -1,4 +1,4 @@
-{ lib, config, pkgs, settings, ... }: {
+{ config, pkgs, settings, ... }: {
   programs.rofi = {
     enable = true;
     package = pkgs.rofi-wayland.override { plugins = [ pkgs.rofi-calc ]; };

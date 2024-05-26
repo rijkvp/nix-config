@@ -3,6 +3,7 @@
     ./starship.nix
     ./tmux.nix
     ./fish.nix
+    ./zellij
   ];
 
   programs.eza = {

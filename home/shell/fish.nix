@@ -30,6 +30,8 @@
       "ai" = "ollama run mistral-openorca";
       # To-Do
       "todo" = "nvim $XDG_DOCUMENTS_DIR/TODO.txt";
+      # Zellij main session
+      "zj" = "zellij attach main --create";
     };
     shellInit = ''
       set -U fish_greeting
@@ -94,13 +96,14 @@
       bind \cg 'devopen'
       bind \ce 'nvim'
       bind --erase \cm
+      bind \co 'tm'
       bind \cm 'mp'
 
-      if status is-interactive
-      and not set -q TMUX
-      and not set -q IN_NIX_SHELL
-        tm
-      end
+      # if status is-interactive
+      # and not set -q TMUX
+      # and not set -q IN_NIX_SHELL
+      #   tm
+      # end
     '';
   };
 }
