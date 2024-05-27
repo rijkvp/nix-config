@@ -1,7 +1,7 @@
 {
   programs.zellij = {
     enable = true;
-    enableFishIntegration = true;
+#    enableFishIntegration = true; # auto start in fish
   };
 
   xdg.configFile."zellij/config.kdl".source = ./config.kdl;

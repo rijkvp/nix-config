@@ -6,6 +6,7 @@
     ../common/steam.nix
     ../common/backup.nix
     ../common/podman.nix
+    ../common/niri.nix
   ];
 
   # Use the systemd-boot EFI boot loader.

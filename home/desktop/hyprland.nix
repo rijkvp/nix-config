@@ -200,8 +200,8 @@
       bind = SUPER SHIFT, p, exec, ~/.local/bin/powermenu
       bind = SUPER, grave, exec, ~/.local/bin/emojipicker
       bind = SUPER, C, exec, rofi -modi calc -show calc -no-show-match -no-sort -calc-command 'wtype "{result}"'
-
-      bind = SUPER CONTROL, l, exec, ~/.local/bin/lockscreen
+      bind = SUPER, V, exec, alacritty -e nvim 
+      bind = SUPER, M, exec, ~/.local/bin/bookmarkmenu
 
       # Monitor backlight (make sure light is installed)
       bindel = ,XF86MonBrightnessUp, exec, light -A 5

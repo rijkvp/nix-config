@@ -140,4 +140,13 @@
     '';
     executable = true;
   };
+
+  # Bookmark menu
+  home.file."${config.home.homeDirectory}/.local/bin/bookmarkmenu" = {
+    text = ''
+      #!/bin/sh
+      grep -vE '^(#|$)' ~/docs/BOOKMARKS | rofi -dmenu -i -p '🔖' | grep -oE '[^ ]+$' | wtype -
+    '';
+    executable = true;
+  };
 }

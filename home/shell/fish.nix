@@ -96,7 +96,6 @@
       bind \cg 'devopen'
       bind \ce 'nvim'
       bind --erase \cm
-      bind \co 'tm'
       bind \cm 'mp'
 
       # if status is-interactive

@@ -40,6 +40,14 @@
       vim.keymap.set('n', 'k', 'gk')
       vim.keymap.set('n', '<leader>w', ':set wrap!<CR>')
       vim.keymap.set('n', '<leader>s', ':set spell!<CR>')
+
+      -- Clipboard
+      vim.keymap.set('n', '<leader>y', '"+y')
+      vim.keymap.set('v', '<leader>y', '"+y')
+      vim.keymap.set('n', '<leader>p', '"+p')
+      vim.keymap.set('n', '<leader>P', '"+P')
+      vim.keymap.set('v', '<leader>p', '"+p')
+      vim.keymap.set('v', '<leader>P', '"+P')
     '';
     plugins = with pkgs.vimPlugins; [
       {
