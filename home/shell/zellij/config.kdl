@@ -13,8 +13,11 @@ keybinds {
         bind "Alt s" { SwitchToMode "scroll"; }
         bind "Alt m" { SwitchToMode "move"; }
 
-        // new pane or resize pane
+        // new or close pane
         bind "Alt n" { NewPane; }
+        bind "Alt q" { CloseFocus; }
+
+        // resize pane
         bind "Alt >" { Resize "Increase"; }
         bind "Alt <" { Resize "Decrease"; }
 
@@ -235,7 +238,7 @@ plugins {
 //    - true
 //    - false (Default)
 //
-simplified_ui true
+// simplified_ui true
 
 // Choose the path to the default shell that zellij will use for opening new panes
 // Default: $SHELL
