@@ -37,10 +37,7 @@
 
   # Desktop services
   services = {
-    gpg-agent = {
-      enable = true;
-      enableSshSupport = true;
-    };
+    ssh-agent.enable = true;
     mako = {
       enable = true;
       defaultTimeout = 10000;

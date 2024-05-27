@@ -124,13 +124,6 @@
         PasswordAuthentication = false;
         PermitRootLogin = "no";
       };
-      hostKeys = [
-        {
-          path = "/etc/nixconf-key";
-          rounds = 100;
-          type = "ed25519";
-        }
-      ];
     };
     gvfs.enable = true;
     # PipeWire Audio

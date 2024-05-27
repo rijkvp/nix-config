@@ -4,7 +4,6 @@
   ];
 
   wayland.windowManager.hyprland = {
-    enableNvidiaPatches = true;
     extraConfig = ''
       monitor=,highrr,auto,1
 
