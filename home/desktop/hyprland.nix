@@ -35,6 +35,10 @@
       exec-once = beeper --hidden
       exec-once = ollama serve
 
+      debug {
+        disable_logs = false
+      }
+
       input {
           kb_layout = us
 

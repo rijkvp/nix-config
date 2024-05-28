@@ -5,7 +5,8 @@
 
   wayland.windowManager.hyprland = {
     extraConfig = ''
-      monitor=,highrr,auto,1
+      monitor=DP-1,highrr,auto,1
+      monitor=Unknown-1,disable
 
       env = LIBVA_DRIVER_NAME,nvidia
       env = __GLX_VENDOR_LIBRARY_NAME,nvidia

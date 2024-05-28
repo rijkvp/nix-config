@@ -1,6 +1,7 @@
 { pkgs, outputs, ... }: {
   imports = [
     ./greetd.nix
+    ./hyprland.nix
     outputs.nixosModules.movebeam
   ];
 
@@ -161,16 +162,6 @@
   services.printing = {
     enable = true;
     drivers = [ pkgs.hplip ];
-  };
-
-  # XDG Portal
-  xdg.portal = {
-    enable = true;
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-hyprland
-      xdg-desktop-portal-gtk
-    ];
-    config.common.default = "*";
   };
 
   # Boot animation
