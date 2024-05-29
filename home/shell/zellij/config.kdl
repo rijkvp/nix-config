@@ -24,7 +24,7 @@ keybinds {
         // move between panes (moves tabs if at the last pane)
         bind "Alt h" { MoveFocusOrTab "Left"; }
         bind "Alt j" { MoveFocus "Down"; }
-        bind "Alt k" { MoveFocus "Up"; }
+        bind "Alt k" { MoveFocus "Up"; }zell
         bind "Alt l" { MoveFocusOrTab "Right"; }
 
         // swap layouts
@@ -268,7 +268,7 @@ pane_frames false
 //   - true (default)
 //   - false
 //
-// session_serialization false
+session_serialization false
 
 // Whether pane viewports are serialized along with the session, default is false
 // Options:
@@ -323,7 +323,7 @@ theme "tokyo-night-dark"
 // The name of the default layout to load on startup
 // Default: "default"
 //
-default_layout "compact-top"
+// default_layout "compact-top"
 
 // Choose the mode that zellij uses when starting up.
 // Default: normal

@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }: {
+{  ... }: {
   programs.fish = {
     enable = true;
     shellAliases = {
@@ -76,10 +76,11 @@
           echo "Entering Nix dev shell '$FLAKE_DIR'"
           set start_cmd "nix develop "$FLAKE_DIR" --command fish"
         end
-        if set -q TMUX
+        if set -q ZELLIJ
           # Detach & switch if already in tmux
-          tmux new -AD -s "$session_name" -c "$dev_dir" -d "$start_cmd"
-          tmux switch -t "$session_name"
+          # tmux attach -AD -s "$session_name" -c "$dev_dir" -d "$start_cmd"
+          # zellij switch -t "$session_name"
+          echo "Already in session!"
         else
           tmux new -AD -s "$session_name" -c "$dev_dir" "$start_cmd"
         end
@@ -97,12 +98,6 @@
       bind \ce 'nvim'
       bind --erase \cm
       bind \cm 'mp'
-
-      # if status is-interactive
-      # and not set -q TMUX
-      # and not set -q IN_NIX_SHELL
-      #   tm
-      # end
     '';
   };
 }
