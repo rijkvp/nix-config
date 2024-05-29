@@ -1,7 +1,7 @@
 { ... }: {
   programs.git = {
     enable = true;
-    userName = "rijkvp";
+    userName = "Rijk van Putten";
     userEmail = "rijk@rijkvp.nl";
     signing = {
       key = "~/.ssh/id_ed25519";
