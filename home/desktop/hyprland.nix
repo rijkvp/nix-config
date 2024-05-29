@@ -149,7 +149,7 @@
       windowrule = workspace 5, whatsapp
       windowrule = workspace 6, thunderbird
 
-      bind = SUPER_SHIFT, Q, killactive,
+      bind = SUPER, Q, killactive,
       bind = SUPER_SHIFT, X, exit,
 
       bind = SUPER, F, fullscreen
