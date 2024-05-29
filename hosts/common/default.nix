@@ -95,6 +95,16 @@
     ELECTRON_OZONE_PLATFORM_HINT = "wayland";
   };
 
+  # Desktop portal
+  # (The Hyprland module adds the hyprland portal to the list)
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-gtk
+    ];
+  };
+
+
   # Fonts
   fonts.fontDir.enable = true;
   fonts.packages = with pkgs; [
