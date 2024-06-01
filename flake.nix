@@ -12,7 +12,7 @@
 
     movebeam = {
       url = "github:rijkvp/movebeam";
-      # inputs.nixpkgs.follows = "nixpkgs";
+      #inputs.nixpkgs.follows = "nixpkgs";
     };
     niri.url = "github:sodiboo/niri-flake";
   };
