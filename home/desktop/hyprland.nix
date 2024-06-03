@@ -67,12 +67,14 @@
         rounding = 4
 
         blur {
-          enabled = true
+          # saves battery
+          enabled = false
           size = 8
           passes = 3
         }
 
-        drop_shadow = true
+        # saves battery
+        drop_shadow = false
         shadow_ignore_window = true
         shadow_offset = 3 6
         shadow_range = 30

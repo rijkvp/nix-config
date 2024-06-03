@@ -37,6 +37,6 @@
     # Power management
     tlp.enable = true;
     # Touchpad support
-    xserver.libinput.enable = true;
+    libinput.enable = true;
   };
 }

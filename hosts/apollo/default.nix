@@ -42,7 +42,7 @@
   networking.networkmanager.enable = true;
 
   # Touchpad support
-  services.xserver.libinput.enable = true;
+  services.libinput.enable = true;
 
   # OpenGL
   hardware.opengl = {
