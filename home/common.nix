@@ -9,30 +9,33 @@
   programs.home-manager.enable = true;
 
   systemd.user.startServices = "sd-switch";
-  nixpkgs.config.allowUnfree = true;
+
+  nixpkgs.config = import ./nixpkgs-config.nix;
+  xdg.configFile."nixpkgs/config.nix".source = ./nixpkgs-config.nix;
 
   # Nix Colors
+  # https://github.com/EdenEast/nightfox.nvim
   colorScheme = {
-    slug = "my-theme";
-    name = "my-theme";
-    author = "rijkvp";
-    palette = {
-      base00 = "#161616";
-      base01 = "#262626";
-      base02 = "#393939";
-      base03 = "#525252";
-      base04 = "#dde1e6";
-      base05 = "#f2f4f8";
-      base06 = "#ffffff";
-      base07 = "#ffffff";
-      base08 = "#ed4553"; #e06c75
-      base09 = "#ee9949"; #d19a66
-      base0A = "#edb245"; #e5c07b
-      base0B = "#8ed85a"; #98c379
-      base0C = "#1cd1e9"; #56b6c2
-      base0D = "#4dacf9"; #61afef
-      base0E = "#cd5def"; #c678dd
-      base0F = "#c63b2f"; #be5046
+    slug =  "nightfox";
+    name =  "nightfox";
+    author= "EdenEast";
+    palette= {
+      base00= "#192330";
+      base01= "#212e3f";
+      base02= "#29394f";
+      base03= "#575860";
+      base04= "#71839b";
+      base05= "#cdcecf";
+      base06= "#aeafb0";
+      base07= "#e4e4e5";
+      base08= "#c94f6d";
+      base09= "#f4a261";
+      base0A= "#dbc074";
+      base0B= "#81b29a";
+      base0C= "#63cdcf";
+      base0D= "#719cd6";
+      base0E= "#9d79d6";
+      base0F= "#d67ad2";
     };
   };
 

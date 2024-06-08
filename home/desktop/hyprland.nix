@@ -28,7 +28,7 @@
       env = QT_QPA_PLATFORM,wayland;kcb
       env = QT_WAYLAND_DISABLE_WINDOWDECORATION,1
 
-      exec-once = swww init; nextwallpaper
+      # exec-once = swww init; nextwallpaper
       exec-once = hyprctl setcursor Quintom_Ink 20
       exec-once = waybar
       exec-once = nm-applet
@@ -110,6 +110,7 @@
 
       misc {
         disable_hyprland_logo = true
+        background_color = rgb(${config.colorScheme.palette.base00})
       }
 
       # KeePassXC (special workspace)

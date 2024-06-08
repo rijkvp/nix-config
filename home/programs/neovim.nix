@@ -330,6 +330,7 @@
         plugin = copilot-vim;
         config = ''
           let g:copilot_filetypes = {
+           \ 'markdown': v:false,
            \ 'text': v:false,
            \ 'xml': v:false,
            \ 'todo': v:false,
