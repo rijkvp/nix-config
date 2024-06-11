@@ -56,7 +56,7 @@
       general {
           gaps_in = ${toString (settings.screenMargin / 2)}
           gaps_out = ${toString settings.screenMargin}
-          border_size = 1
+          border_size = 2
           col.inactive_border = rgb(${config.colorScheme.palette.base01})
           col.active_border = rgb(${config.colorScheme.palette.base0D})
           layout = dwindle
@@ -204,7 +204,6 @@
       bind = SUPER, D, exec, rofi -show drun -i
       bind = SUPER SHIFT, p, exec, ~/.local/bin/powermenu
       bind = SUPER, p, exec, xdg-open "$(fd | rofi -dmenu -i -p ' ')"
-      bind = SUPER SHIFT, p, exec, ~/.local/bin/powermenu
       bind = SUPER, grave, exec, ~/.local/bin/emojipicker
       bind = SUPER, C, exec, rofi -modi calc -show calc -no-show-match -no-sort -calc-command 'wtype "{result}"'
       bind = SUPER, V, exec, alacritty -e nvim 
