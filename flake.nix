@@ -48,7 +48,7 @@
                   inherit inputs outputs;
                   settings = {
                     font = "Iosevka Nerd Font";
-                    screenMargin = 36;
+                    screenMargin = 20;
                     scratchpadMargin = 256;
                   };
                 };
