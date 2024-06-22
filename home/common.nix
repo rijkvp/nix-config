@@ -80,8 +80,8 @@
       package = pkgs.fira;
     };
     iconTheme = {
-      name = "Papirus-Dark";
-      package = pkgs.papirus-icon-theme;
+      name = "Adwaita";
+      package = pkgs.gnome.adwaita-icon-theme;
     };
     cursorTheme = {
       name = "Quintom_Ink";

@@ -129,6 +129,7 @@
 
   services = {
     dbus.enable = true;
+    resolved.enable = true;
     openssh = {
       enable = true;
       settings = {
