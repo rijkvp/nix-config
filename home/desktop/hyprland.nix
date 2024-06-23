@@ -95,9 +95,7 @@
       }
 
       dwindle {
-          pseudotile = true
-          preserve_split = true
-          # no_gaps_when_only = true
+        force_split = 2
       }
 
       master {

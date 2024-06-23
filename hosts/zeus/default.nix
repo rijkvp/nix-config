@@ -6,6 +6,7 @@
     ../common/steam.nix
     ../common/backup.nix
     ../common/podman.nix
+#    ../common/kde.nix
 #    ../common/niri.nix
 #    ../common/gnome.nix
   ];
@@ -24,11 +25,7 @@
   # Hardware
   hardware = {
     enableAllFirmware = true;
-    opengl = {
-      enable = true;
-      driSupport = true;
-      driSupport32Bit = true;
-    };
+    opengl.enable = true;
     # Nvidia modesetting
     nvidia = {
       modesetting.enable = true;
