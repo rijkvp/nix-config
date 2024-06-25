@@ -1,4 +1,4 @@
-{
+{ pkgs, ... }: {
   imports = [
     ./hardware-configuration.nix
     ../common
@@ -26,31 +26,19 @@
   hardware = {
     enableAllFirmware = true;
     opengl.enable = true;
-    # Nvidia modesetting
-    nvidia = {
-      modesetting.enable = true;
-      # Testing open drivers
-      # open = true;
-    };
   };
+
   # Nvidia
-  services.xserver.videoDrivers = [ "nvidia" ];
-
-  # Nvida support variables
-  environment.variables = {
-    LIBVA_DRIVER_NAME = "nvidia";
-    GBM_BACKEND = "nvidia-drm";
-    __GL_GSYNC_ALLOWED = "0";
-    __GL_VRR_ALLOWED = "0";
-    WLR_DRM_NO_ATOMIC = "1";
-    WLR_NO_HARDWARE_CURSORS = "1";
-    __GLX_VENDOR_LIBRARY_NAME = "nvidia";
-
-    _JAVA_AWT_WM_NONREPARENTING = "1";
-    XCURSOR_SIZE = "24";
-
-    LIBSEAT_BACKEND = "logind";
+  hardware.nvidia = {
+    modesetting.enable = true;
+    open = false;
+    powerManagement.enable = true;
   };
+  services.xserver.videoDrivers = [ "nvidia" ];
+  boot.kernelParams = [ "nvidia.NVreg_PreserveVideoMemoryAllocations=1" ];
+  environment.systemPackages = with pkgs; [
+    egl-wayland
+  ];
 
   # Internal Hard Drive
   boot.initrd.luks.devices."crypthdint".device = "/dev/disk/by-uuid/57038b2d-ddf7-47b2-b253-7fd30605f4bf";

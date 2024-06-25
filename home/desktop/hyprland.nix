@@ -19,6 +19,9 @@
       env = XDG_SESSION_TYPE,wayland
       env = XDG_SESSION_DESKTOP,Hyprland
 
+      env = NIXOS_OZONE_WL = "1";
+      env = ELECTRON_OZONE_PLATFORM_HINT = "wayland";
+
       env = GDK_BACKEND,wayland,x11
       env = GTK_USE_PORTAL,1
       env = SDL_VIDEODRIVER=wayland
@@ -28,7 +31,7 @@
       env = QT_QPA_PLATFORM,wayland;kcb
       env = QT_WAYLAND_DISABLE_WINDOWDECORATION,1
 
-      # exec-once = swww init; nextwallpaper
+      exec-once = swww init; nextwallpaper
       exec-once = hyprctl setcursor Quintom_Ink 20
       exec-once = waybar
       exec-once = nm-applet
