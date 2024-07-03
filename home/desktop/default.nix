@@ -1,4 +1,8 @@
-{ config, pkgs, settings, ... }: {
+{ config, pkgs, settings, inputs, ... }:
+let
+    launcher-pkg = inputs.launcher.packages.${pkgs.system}.default;
+in
+{
   imports = [
     ./rofi
     ./hyprland.nix
@@ -6,6 +10,7 @@
   ];
 
   home.packages = with pkgs; [
+    launcher-pkg
     # Desktop
     glib # GTK
     wayland

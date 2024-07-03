@@ -63,7 +63,9 @@
           col.inactive_border = rgb(${config.colorScheme.palette.base01})
           col.active_border = rgb(${config.colorScheme.palette.base0D})
           layout = dwindle
-          cursor_inactive_timeout = 5
+      }
+      cursor {
+        inactive_timeout = 5
       }
 
       decoration {
