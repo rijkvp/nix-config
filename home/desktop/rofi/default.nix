@@ -134,7 +134,7 @@
   home.file."${config.home.homeDirectory}/.local/bin/emojipicker" = {
     text = ''
       #!/bin/sh
-      chosen=$(cut -d ';' -f1 ~/.local/share/emoji | rofi -dmenu -i -p Emoji | sed "s/ .*//")
+      chosen=$(cut -d ';' -f1 ~/.local/share/emoji | launcher -d | sed "s/ .*//")
       [ -z "$chosen" ] && exit
       wtype "$chosen"
     '';
@@ -145,7 +145,7 @@
   home.file."${config.home.homeDirectory}/.local/bin/bookmarkmenu" = {
     text = ''
       #!/bin/sh
-      grep -vE '^(#|$)' ~/docs/BOOKMARKS | rofi -dmenu -i -p '🔖' | grep -oE '[^ ]+$' | wtype -
+      grep -vE '^(#|$)' ~/docs/BOOKMARKS | launcher -d | grep -oE '[^ ]+$' | wtype -
     '';
     executable = true;
   };

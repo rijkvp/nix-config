@@ -137,11 +137,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1720009356,
-        "narHash": "sha256-AS0gTphzYR9IH74d9nbkyasaQ0fX8inc7NktqEnIajE=",
+        "lastModified": 1720012719,
+        "narHash": "sha256-5vUs6T+nR1Wi8T6t6+Q0irwDICFbvV3CWTl2GjMVvfc=",
         "ref": "refs/heads/main",
-        "rev": "2667dc7b9ae0feb0572d85c0c44cfe9baa7f5035",
-        "revCount": 28,
+        "rev": "5ec32606cb21ba86486dd5c8468e8f3ee81b5805",
+        "revCount": 29,
         "type": "git",
         "url": "ssh://git@github.com/rijkvp/launcher.git"
       },

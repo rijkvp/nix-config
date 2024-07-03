@@ -204,11 +204,11 @@
       bind = SUPER SHIFT, s, exec, grim -g "$(slurp)" - | tee "${config.xdg.userDirs.pictures}/screenshots/$(date +"%Y-%m-%d-%H:%M:%S")-screenshot.png" | wl-copy -t image/png
 
       # dmenu menus (using rofi)
-      bind = SUPER, D, exec, rofi -show drun -i
+      bind = SUPER, D, exec, launcher -m apps
       bind = SUPER SHIFT, p, exec, ~/.local/bin/powermenu
-      bind = SUPER, p, exec, xdg-open "$(fd | rofi -dmenu -i -p ' ')"
+      bind = SUPER, p, exec, xdg-open "$(fd | launcher -d)"
       bind = SUPER, grave, exec, ~/.local/bin/emojipicker
-      bind = SUPER, C, exec, rofi -modi calc -show calc -no-show-match -no-sort -calc-command 'wtype "{result}"'
+      bind = SUPER, C, exec, alacritty -e 
       bind = SUPER, V, exec, alacritty -e nvim 
       bind = SUPER, M, exec, ~/.local/bin/bookmarkmenu
 
