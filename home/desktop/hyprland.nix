@@ -60,9 +60,9 @@
           gaps_in = ${toString (settings.screenMargin / 2)}
           gaps_out = ${toString settings.screenMargin}
           border_size = 2
-          col.inactive_border = rgb(${config.colorScheme.palette.base01})
-          col.active_border = rgb(${config.colorScheme.palette.base0D})
-          layout = dwindle
+          col.inactive_border = rgb(${config.colorScheme.palette.base04})
+          col.active_border = rgb(${config.colorScheme.palette.base0C})
+          layout = master
       }
       cursor {
         inactive_timeout = 5
@@ -104,7 +104,7 @@
       }
 
       master {
-          no_gaps_when_only = true
+          no_gaps_when_only = false
       }
 
       gestures {
@@ -236,6 +236,7 @@
       bindm = SUPER, mouse:273, resizewindow
 
       # Resize using i/o
+      bind = SUPER, u, layoutmsg, orientationcycle left top
       binde =  SUPER,i,resizeactive,-16 0
       binde =  SUPER,o,resizeactive,16 0
 
