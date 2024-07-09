@@ -127,6 +127,7 @@
       workspace = special:sp, on-created-empty:alacritty, gapsout:${toString settings.scratchpadMargin}
 
       windowrule=float,title:^debug
+      windowrulev2=float,class:launcher
 
       # Transparent windows
       windowrule = opacity 0.9 override 0.86 override,Alacritty
