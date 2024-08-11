@@ -118,6 +118,7 @@
         type = "lua";
         config = ''
           require'nvim-treesitter.configs'.setup {
+            ignore_install = { 'org' }, -- Solves conflict with nvim-orgmode
             highlight = {
               enable = true,
               additional_vim_regex_highlighting = false,
@@ -332,6 +333,7 @@
           let g:copilot_filetypes = {
            \ 'markdown': v:false,
            \ 'text': v:false,
+           \ 'tex': v:false,
            \ 'xml': v:false,
            \ 'todo': v:false,
            \}
@@ -359,7 +361,13 @@
           require('Comment').setup()
         '';
       }
-      todo-txt-vim
+      {
+        plugin = orgmode;
+        type = "lua";
+        config = ''
+          require('orgmode').setup{}
+        '';
+      }
     ];
     extraPackages = with pkgs; [
       tree-sitter
