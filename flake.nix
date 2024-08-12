@@ -1,6 +1,7 @@
 {
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-24.05";
+    nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-24.05";
@@ -23,6 +24,10 @@
         screenMargin = 12;
         scratchpadMargin = 64;
       };
+      unstable-pkgs = import inputs.nixpkgs-unstable {
+         inherit system;
+         config.allowUnfree = true;
+      };
     in
     {
       packages = import nixpkgs { inherit system; };
@@ -42,7 +47,7 @@
                 home-manager.useUserPackages = true;
                 home-manager.users.rijk = import ./home/zeus.nix;
                 home-manager.extraSpecialArgs = {
-                  inherit inputs outputs;
+                  inherit inputs outputs unstable-pkgs;
                   settings = {
                     font = "Iosevka Nerd Font";
                     screenMargin = 20;
@@ -63,7 +68,7 @@
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
                 home-manager.users.rijk = import ./home/poseidon.nix;
-                home-manager.extraSpecialArgs = { inherit inputs outputs settings; };
+                home-manager.extraSpecialArgs = { inherit inputs outputs settings unstable-pkgs; };
               }
             ];
           };
@@ -78,7 +83,7 @@
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
                 home-manager.users.rijk = import ./home/apollo.nix;
-                home-manager.extraSpecialArgs = { inherit inputs outputs settings; };
+                home-manager.extraSpecialArgs = { inherit inputs outputs settings unstable-pkgs; };
               }
             ];
           };

@@ -1,6 +1,11 @@
-{ pkgs, ... }: {
+{ unstable-pkgs, ... }: 
+# let
+#   unstable-pkgs = inputs.nixpkgs-unstable.legacyPackages."${pkgs.system}";
+# in
+{
   programs.neovim = {
     enable = true;
+    package = unstable-pkgs.neovim-unwrapped;
     defaultEditor = true;
     extraLuaConfig = ''
       vim.opt.number = true
@@ -49,7 +54,7 @@
       vim.keymap.set('v', '<leader>p', '"+p')
       vim.keymap.set('v', '<leader>P', '"+P')
     '';
-    plugins = with pkgs.vimPlugins; [
+    plugins = with unstable-pkgs.vimPlugins; [
       {
         plugin = nightfox-nvim;
         type = "lua";
@@ -336,6 +341,7 @@
            \ 'tex': v:false,
            \ 'xml': v:false,
            \ 'todo': v:false,
+           \ 'org': v:false,
            \}
         '';
       }
@@ -365,11 +371,15 @@
         plugin = orgmode;
         type = "lua";
         config = ''
-          require('orgmode').setup{}
+          require('orgmode').setup{
+            org_default_notes_file = '~/docs/notes.org',
+            org_startup_indented = true,
+            org_hide_leading_stars = true,
+          }
         '';
       }
     ];
-    extraPackages = with pkgs; [
+    extraPackages = with unstable-pkgs; [
       tree-sitter
       # Nix
       nil
