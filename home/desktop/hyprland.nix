@@ -1,4 +1,4 @@
-{ unstable-pkgs, config, settings, ... }: {
+{ config, settings, ... }: {
 
   home.file."${config.home.homeDirectory}/.local/bin/nextwallpaper" = {
     text = ''
@@ -10,7 +10,6 @@
 
   wayland.windowManager.hyprland = {
     enable = true;
-    package = unstable-pkgs.hyprland;
     xwayland = {
       enable = true;
     };

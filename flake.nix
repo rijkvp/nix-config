@@ -12,7 +12,7 @@
     nix-colors.url = "github:misterio77/nix-colors";
 
     movebeam.url = "github:rijkvp/movebeam";
-    launcher.url = "git+ssh://git@github.com/rijkvp/launcher.git";
+    #    launcher.url = "git+ssh://git@github.com/rijkvp/launcher.git";
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs:
