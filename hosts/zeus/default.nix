@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ config, pkgs, ... }: {
   imports = [
     ./hardware-configuration.nix
     ../common
@@ -33,6 +33,15 @@
     modesetting.enable = true;
     open = false;
     powerManagement.enable = true;
+    # Special config to load the newer 555 driver, see https://github.com/NixOS/nixpkgs/blob/c3aa7b8938b17aebd2deecf7be0636000d62a2b9/pkgs/os-specific/linux/nvidia-x11/default.nix#L44
+    package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
+      version = "555.58.02";
+      sha256_64bit = "sha256-xctt4TPRlOJ6r5S54h5W6PT6/3Zy2R4ASNFPu8TSHKM=";
+      sha256_aarch64 = "sha256-wb20isMrRg8PeQBU96lWJzBMkjfySAUaqt4EgZnhyF8=";
+      openSha256 = "sha256-8hyRiGB+m2hL3c9MDA/Pon+Xl6E788MZ50WrrAGUVuY=";
+      settingsSha256 = "sha256-ZpuVZybW6CFN/gz9rx+UJvQ715FZnAOYfHn5jt5Z2C8=";
+      persistencedSha256 = "sha256-a1D7ZZmcKFWfPjjH1REqPM5j/YLWKnbkP9qfRyIyxAw=";
+   };
   };
   services.xserver.videoDrivers = [ "nvidia" ];
   boot.kernelParams = [ "nvidia.NVreg_PreserveVideoMemoryAllocations=1" ];
