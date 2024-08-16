@@ -1,4 +1,4 @@
-{ config, settings, ... }: {
+{ unstable-pkgs, config, settings, ... }: {
 
   home.file."${config.home.homeDirectory}/.local/bin/nextwallpaper" = {
     text = ''
@@ -10,6 +10,7 @@
 
   wayland.windowManager.hyprland = {
     enable = true;
+    package = unstable-pkgs.hyprland;
     xwayland = {
       enable = true;
     };
@@ -157,7 +158,7 @@
       bind = SUPER_SHIFT, X, exit,
 
       bind = SUPER, F, fullscreen
-      bind = SUPER SHIFT, F, fakefullscreen
+      bind = SUPER SHIFT, F, fullscreenstate
       bind = SUPER, g, togglefloating
 
       bind = SUPER, h, movefocus, l
