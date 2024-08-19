@@ -372,7 +372,8 @@
         type = "lua";
         config = ''
           require('orgmode').setup{
-            org_default_notes_file = '~/docs/notes.org',
+            org_agenda_files = {'~/docs/org/**/*'},
+            org_default_notes_file = '~/docs/org/notes.org',
             org_startup_indented = true,
             org_hide_leading_stars = true,
           }
