@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, unstable-pkgs, ... }: {
   imports = [
     ./alacritty.nix
     ./beets.nix
@@ -73,7 +73,7 @@
     w3m # HTML viewer
 
     # AI
-    ollama
+    unstable-pkgs.ollama
   ];
 
   # Default programs

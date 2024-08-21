@@ -27,9 +27,9 @@
       "gd" = "GIT_EXTERNAL_DIFF=difft git diff";
       "gds" = "GIT_EXTERNAL_DIFF=difft git diff --staged";
       # AI
-      "ai" = "ollama run mistral-openorca";
+      "ai" = "ollama run llama3.1";
       # To-Do
-      "todo" = "nvim $XDG_DOCUMENTS_DIR/TODO.txt";
+      "todo" = "nvim $XDG_DOCUMENTS_DIR/org/todo.org";
       # Zellij main session
       "zj" = "zellij attach main --create";
     };
