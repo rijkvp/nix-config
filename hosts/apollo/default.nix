@@ -41,7 +41,7 @@
   networking.hostName = "rnixbased";
   networking.networkmanager = {
     enable = true;
-    backend = "iwd"; # is better than the default 'wpa_supplicant'
+    wifi.backend = "iwd"; # is better than the default 'wpa_supplicant'
   };
 
   # Touchpad support
