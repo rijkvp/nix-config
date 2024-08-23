@@ -17,6 +17,14 @@
     '';
   };
 
+  # include systemd in initial ram disk
+  boot.initrd.systemd.enable = true;
+  services.irqbalance.enable = true; # deamon to balance interrupts across CPUs, can help to avoid freezing DE
+  services.dbus = {
+    enable = true;
+    implementation = "broker"; # use dbus-broker, a high performance implementation of dbus
+  };
+
   # Time/locale
   time.timeZone = "Europe/Amsterdam";
   i18n.defaultLocale = "en_US.UTF-8";
@@ -24,6 +32,12 @@
     font = "Lat2-Terminus16";
     useXkbConfig = true; # use xkbOptions in tty.
   };
+
+  # Networking
+  networking.nftables.enable = true; # use nftables instead of iptables
+  # syncthing ports
+  networking.firewall.allowedTCPPorts = [ 22000 ];
+  networking.firewall.allowedUDPPorts = [ 22000 21027 ];
 
   # ADB
   programs.adb.enable = true;
@@ -45,9 +59,6 @@
   services.movebeam.enable = true;
 
   services.tailscale.enable = true;
-  # syncthing ports
-  networking.firewall.allowedTCPPorts = [ 22000 ];
-  networking.firewall.allowedUDPPorts = [ 22000 21027 ];
 
   # Sytem Packages
   environment.systemPackages = with pkgs; [
@@ -124,7 +135,6 @@
   hardware.pulseaudio.enable = false;
 
   services = {
-    dbus.enable = true;
     resolved.enable = true;
     openssh = {
       enable = true;

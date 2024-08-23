@@ -16,6 +16,10 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.supportedFilesystems = [ "btrfs" ];
 
+  # Regularly trim SSD
+  services.fstrim.enable = true;
+  boot.initrd.luks.devices."cryptroot".allowDiscards = true;
+
   # Network
   networking = {
     hostName = "rnixpc";

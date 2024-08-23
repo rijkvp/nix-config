@@ -39,7 +39,10 @@
 
   # Networking: NetworkManager
   networking.hostName = "rnixbased";
-  networking.networkmanager.enable = true;
+  networking.networkmanager = {
+    enable = true;
+    backend = "iwd"; # is better than the default 'wpa_supplicant'
+  };
 
   # Touchpad support
   services.libinput.enable = true;
