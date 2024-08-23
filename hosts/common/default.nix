@@ -15,6 +15,11 @@
     extraOptions = ''
       use-xdg-base-directories = true
     '';
+    gc = {
+      automatic = true;
+      randomizedDelaySec = "14m";
+      options = "--delete-older-than 30d";
+    };
   };
 
   # include systemd in initial ram disk
