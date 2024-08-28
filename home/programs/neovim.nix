@@ -258,8 +258,8 @@
             -- LSP configuration
             server = {
               on_attach = function(client, bufnr)
-                -- Inlay hints
-                vim.lsp.inlay_hint.enable(bufnr, true)
+                -- Enable inlay hints
+                vim.lsp.inlay_hint.enable(true)
               end,
               settings = {
                 -- rust-analyzer language server configuration
