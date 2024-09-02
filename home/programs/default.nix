@@ -61,6 +61,7 @@
     # Spell checker
     hunspell
     hunspellDicts.en_US
+    hunspellDicts.en_UK
     hunspellDicts.nl_NL
 
     # Audio Management

@@ -103,7 +103,7 @@
         plugin = telescope-file-browser-nvim;
         type = "lua";
         config = ''
-          vim.api.nvim_set_keymap("n", "<leader>o", ":Telescope file_browser path=%:p:h select_buffer=true<CR>", { noremap = true })
+          vim.api.nvim_set_keymap("n", "<leader>k", ":Telescope file_browser path=%:p:h select_buffer=true<CR>", { noremap = true })
           vim.api.nvim_set_keymap("n", "<leader>f", ":Telescope file_browser<CR>", { noremap = true })
         '';
       }
