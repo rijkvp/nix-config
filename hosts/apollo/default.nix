@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }: {
+{ inputs, ... }: {
   imports = [
     ./hardware-configuration.nix
     ../common
@@ -41,7 +41,8 @@
   networking.hostName = "rnixbased";
   networking.networkmanager = {
     enable = true;
-    wifi.backend = "iwd"; # is better than the default 'wpa_supplicant'
+    # disabled since this does not work with eduroam
+    # wifi.backend = "iwd"; # is better than the default 'wpa_supplicant'
   };
 
   # Touchpad support
