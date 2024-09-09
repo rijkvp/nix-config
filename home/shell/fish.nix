@@ -28,8 +28,8 @@
       "gds" = "GIT_EXTERNAL_DIFF=difft git diff --staged";
       # AI
       "ai" = "ollama run llama3.1";
-      # To-Do
-      "todo" = "nvim $XDG_DOCUMENTS_DIR/org/todo.org";
+      # Org mode
+      "org" = "cd $XDG_DOCUMENTS_DIR/org && nvim todo.org";
       # Zellij main session
       "zj" = "zellij attach main --create";
     };
