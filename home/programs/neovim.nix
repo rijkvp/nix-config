@@ -1,11 +1,7 @@
-{ unstable-pkgs, ... }: 
-# let
-#   unstable-pkgs = inputs.nixpkgs-unstable.legacyPackages."${pkgs.system}";
-# in
-{
+{ unstable-pkgs, ... }: {
   programs.neovim = {
     enable = true;
-    package = unstable-pkgs.neovim-unwrapped;
+    package = unstable-pkgs.neovim-unwrapped; # use unstable Neovim to get new features from 0.10
     defaultEditor = true;
     extraLuaConfig = ''
       vim.opt.number = true
