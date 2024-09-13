@@ -17,7 +17,7 @@
     '';
     gc = {
       automatic = true;
-      randomizedDelaySec = "14m";
+      dates = "weekly";
       options = "--delete-older-than 30d";
     };
   };

@@ -90,11 +90,12 @@
     "image/jpg" = [ "org.gnome.gThumb.desktop" "gimp.desktop" ];
     # Thunar file manager
     "inode/directory" = [ "thunar.desktop" ];
+    # LibreOffice 
+    "application/vnd.oasis.opendocument.text" = [ "writer.desktop" ];
+    "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = [ "writer.desktop" ];
+    "application/vnd.oasis.opendocument.spreadsheet" = [ "calc.desktop" ];
     # Zathura pdf reader
     "application/pdf" = [ "org.pwmt.zathura-pdf-mupdf.desktop" ];
     "application/epub+zip" = [ "org.pwmt.zathura-pdf-mupdf.desktop" ];
-    # LibreOffice 
-    "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = [ "writer.desktop" ];
-    "application/vnd.oasis.opendocument.spreadsheet" = [ "calc.desktop" ];
   };
 }
