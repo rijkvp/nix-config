@@ -74,8 +74,7 @@
         type = "lua";
         config = ''
           local builtin = require('telescope.builtin')
-          -- vim.keymap.set('n', '<leader>p', builtin.find_files, {}) -- Replaced by clipboard paste
-          vim.keymap.set('n', '<C-p>', builtin.git_files, {})
+          vim.keymap.set('n', '<C-p>', builtin.find_files, {})
           vim.keymap.set('n', '<leader>g', builtin.live_grep, {})
           vim.keymap.set('n', '<leader>b', builtin.buffers, {})
           vim.keymap.set('n', '<leader>h', builtin.help_tags, {})
@@ -230,7 +229,7 @@
               vim.keymap.set("n", "gi", require('telescope.builtin').lsp_implementations, opts)
               vim.keymap.set("n", "go", vim.lsp.buf.type_definition, opts)
               vim.keymap.set("n", "gr", require('telescope.builtin').lsp_references, opts)
-              vim.keymap.set("n", "<leader>sf", require('telescope.builtin').lsp_document_symbols, opts)
+              vim.keymap.set("n", "<leader>sf", require('telescope.builtin').lsp_workspace_symbols, opts)
 
               -- Actions
               vim.keymap.set("n", "<leader>c", vim.lsp.buf.code_action, opts)
