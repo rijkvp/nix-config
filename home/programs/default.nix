@@ -26,6 +26,7 @@
     inotify-tools
     xdg-utils
     zip
+    yazi
 
     ffmpeg # Swiss knife for videos
     imagemagick # Swiss knife for images

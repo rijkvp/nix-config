@@ -8,7 +8,7 @@
       "....." = "cd ../../../..";
       "......" = "cd ../../../../..";
       "v" = "nvim";
-      "fm" = "joshuto";
+      "fm" = "yazi";
       "nb" = "newsboat";
       "mp" = "ncmpcpp";
       "ns" = ''nix-shell --command "fish"'';
