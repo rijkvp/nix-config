@@ -8,6 +8,34 @@
     executable = true;
   };
 
+  home.file."${config.home.homeDirectory}/.local/bin/togglefancy" = {
+    text = ''
+      #!/bin/sh
+      if hyprctl getoption animations:enabled | grep -q "0"; then
+        echo "Enabling fancy stuff"
+        hyprctl keyword animations:enabled true
+        hyprctl keyword decoration:blur:enabled true
+        hyprctl keyword decoration:drop_shadow true
+      else
+        echo "Disabling fancy stuff"
+        hyprctl keyword animations:enabled false
+        hyprctl keyword decoration:blur:enabled false
+        hyprctl keyword decoration:drop_shadow false
+      fi
+    '';
+    executable = true;
+  };
+
+  home.file."${config.home.homeDirectory}/.local/bin/fancyoff" = {
+    text = ''
+      #!/bin/sh
+      hyprctl keyword animations:enabled false
+      hyprctl keyword decoration:blur:enabled false
+      keyword decoration:drop_shadow false
+    '';
+    executable = true;
+  };
+
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland = {
@@ -69,22 +97,23 @@
       }
 
       decoration {
-        rounding = 4
+        rounding = 8
 
         blur {
           # saves battery
           enabled = false
-          size = 8
-          passes = 3
+          size = 4
+          passes = 1
+          vibrancy = 0.1696
         }
 
         # saves battery
         drop_shadow = false
         shadow_ignore_window = true
         shadow_offset = 3 6
-        shadow_range = 30
+        shadow_range = 4
         shadow_render_power = 3
-        col.shadow = rgba(00000099)
+        col.shadow = rgba(1a1a1aee)
       }
 
       animations {
@@ -206,6 +235,7 @@
       # dmenu menus (using rofi)
       bind = SUPER, D, exec, launcher -m apps
       bind = SUPER SHIFT, p, exec, ~/.local/bin/powermenu
+      bind = SUPER CONTROL, l, exec, ~/.local/bin/lockscreen
       bind = SUPER, p, exec, xdg-open "$(fd | launcher -d)"
       bind = SUPER, grave, exec, ~/.local/bin/emojipicker
       bind = SUPER, C, exec, alacritty -e 
@@ -240,9 +270,8 @@
       binde =  SUPER,i,resizeactive,-16 0
       binde =  SUPER,o,resizeactive,16 0
 
-      # Toggle animations
-      bind = SUPER, A, exec, hyprctl keyword animations:enabled true 
-      bind = SUPER SHIFT, A, exec, hyprctl keyword animations:enabled false 
+      # Enable/disable animations/decorations
+      bind = SUPER, A, exec, ${config.home.homeDirectory}/.local/bin/togglefancy
     '';
   };
 }

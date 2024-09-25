@@ -58,6 +58,7 @@
     appimage-run
     keepassxc
     gimp
+    gthumb
 
     # Spell checker
     hunspell

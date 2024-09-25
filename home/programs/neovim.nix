@@ -368,9 +368,16 @@
         config = ''
           require('orgmode').setup{
             org_agenda_files = {'~/docs/org/**/*'},
+            org_todo_keywords = {'TODO', 'PROGRESS', '|', 'DONE'},
+            org_todo_keyword_faces = {
+              TODO = ':foreground red',
+              PROGRESS = ':foreground blue',
+              DONE = ':foreground green',
+            },
             org_default_notes_file = '~/docs/org/notes.org',
             org_startup_indented = true,
             org_hide_leading_stars = true,
+            org_deadline_warning_days = 5,
           }
         '';
       }
