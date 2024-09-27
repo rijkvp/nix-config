@@ -202,9 +202,17 @@
 
           -- Language servers
           -- lspconfig.rust_analyzer.setup{} -- handled by rustaceanvim
-          lspconfig.tsserver.setup{}
+          lspconfig.ts_ls.setup{}
           lspconfig.clangd.setup{}
-          lspconfig.nil_ls.setup{}
+          lspconfig.nil_ls.setup({
+            settings = {
+              ['nil'] = {
+                formatting = {
+                  command = { "nixfmt" },
+                },
+              },
+            },
+          })
           lspconfig.texlab.setup{}
           lspconfig.ruff_lsp.setup{}
           lspconfig.hls.setup{}
@@ -389,6 +397,7 @@
       tree-sitter
       # Nix
       nil
+      nixfmt-rfc-style
       # C
       clang-tools
       # Rust
