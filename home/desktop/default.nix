@@ -4,7 +4,7 @@ let
 in
 {
   imports = [
-    ./rofi
+    ./launcher
     ./hyprland.nix
     ./waybar.nix
   ];

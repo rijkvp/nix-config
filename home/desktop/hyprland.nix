@@ -26,16 +26,6 @@
     executable = true;
   };
 
-  home.file."${config.home.homeDirectory}/.local/bin/fancyoff" = {
-    text = ''
-      #!/bin/sh
-      hyprctl keyword animations:enabled false
-      hyprctl keyword decoration:blur:enabled false
-      keyword decoration:drop_shadow false
-    '';
-    executable = true;
-  };
-
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland = {
@@ -97,7 +87,7 @@
       }
 
       decoration {
-        rounding = 8
+        rounding = 6
 
         blur {
           # saves battery
@@ -110,8 +100,8 @@
         # saves battery
         drop_shadow = false
         shadow_ignore_window = true
-        shadow_offset = 3 6
-        shadow_range = 4
+        shadow_offset = 2 4
+        shadow_range = 16
         shadow_render_power = 3
         col.shadow = rgba(1a1a1aee)
       }
@@ -163,6 +153,7 @@
       windowrule = opacity 0.87 override 0.8 override,thunar
       windowrule = opacity 0.8 override 0.8 override,keepassxc
       windowrule = opacity 0.86 override 0.86 override,Signal
+      windowrule = opacity 0.8 override 0.8 override,launcher
 
       # Applications
       bind = SUPER, RETURN, exec, alacritty
@@ -232,11 +223,11 @@
       bind = SUPER, s, exec, grim - | tee "${config.xdg.userDirs.pictures}/desktop-screenshots/$(date +"%Y-%m-%d-%H:%M:%S")-screenshot.png" | wl-copy -t image/png
       bind = SUPER SHIFT, s, exec, grim -g "$(slurp)" - | tee "${config.xdg.userDirs.pictures}/desktop-screenshots/$(date +"%Y-%m-%d-%H:%M:%S")-screenshot.png" | wl-copy -t image/png
 
-      # dmenu menus (using rofi)
+      # Launcher menus
       bind = SUPER, D, exec, launcher -m apps
       bind = SUPER SHIFT, p, exec, ~/.local/bin/powermenu
       bind = SUPER CONTROL, l, exec, ~/.local/bin/lockscreen
-      bind = SUPER, p, exec, xdg-open "$(fd | launcher -d)"
+      bind = SUPER, p, exec, launcher -m files
       bind = SUPER, grave, exec, ~/.local/bin/emojipicker
       bind = SUPER, C, exec, alacritty -e 
       bind = SUPER, V, exec, alacritty -e nvim 

@@ -56,6 +56,12 @@
           pandoc --pdf-engine tectonic -f markdown -o $out $argv[1]
         end
       end
+      function orgw
+        pandoc -f org -o index.html "$argv[1]"
+        while inotifywait -q "$argv[1]"
+          pandoc -f org -o index.html "$argv[1]"
+        end
+      end
       function has_flake
           set dir (pwd)
           while test $dir != "/"
