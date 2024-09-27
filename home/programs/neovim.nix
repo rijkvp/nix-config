@@ -401,7 +401,7 @@
       # LaTeX
       texlab
       # Python
-      python3Packages.ruff-lsp
+      ruff-lsp
       # Haskell
       haskell-language-server
     ];
