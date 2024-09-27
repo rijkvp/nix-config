@@ -43,6 +43,9 @@
         nix shell $pkgs
       end
       function tecw
+        set out "$(basename $argv[1] .tex).pdf"
+        xdg-open "$out" &
+        tectonic -c minimal "$argv[1]"
         while inotifywait -q "$argv[1]"
           tectonic -c minimal "$argv[1]"
         end
