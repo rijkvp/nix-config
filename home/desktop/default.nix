@@ -1,4 +1,10 @@
-{ config, pkgs, settings, inputs, ... }:
+{
+  config,
+  pkgs,
+  settings,
+  inputs,
+  ...
+}:
 let
   launcher-pkg = inputs.launcher.packages.${pkgs.system}.default;
 in
@@ -27,9 +33,7 @@ in
   ];
 
   # Make scripts in ~/.local/bin executable form PATH
-  home.sessionPath = [
-    "$HOME/.local/bin"
-  ];
+  home.sessionPath = [ "$HOME/.local/bin" ];
 
   # Lockscreen script using swaylock
   home.file."${config.home.homeDirectory}/.local/bin/lockscreen" = {

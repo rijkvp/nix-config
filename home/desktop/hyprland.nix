@@ -1,4 +1,5 @@
-{ config, settings, ... }: {
+{ config, settings, ... }:
+{
 
   home.file."${config.home.homeDirectory}/.local/bin/nextwallpaper" = {
     text = ''
@@ -215,7 +216,7 @@
       bind = SUPER CONTROL, r, movetoworkspacesilent, 6
       bind = SUPER CONTROL, t, movetoworkspacesilent, 7
       bind = SUPER CONTROL, y, movetoworkspacesilent, 8
-  
+
       # Next wallpaper
       bind = SUPER_CTRL,V, exec, nextwallpaper
 

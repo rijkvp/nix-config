@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   services.xserver = {
     enable = true;
     desktopManager.gnome.enable = true;
@@ -9,15 +10,17 @@
     gnome-extension-manager
     gnomeExtensions.burn-my-windows
   ];
-  environment.gnome.excludePackages = (with pkgs; [
-    gnome-photos
-    gnome-tour
-  ]) ++ (with pkgs.gnome; [
-    gnome-terminal
-    epiphany
-    geary
-    gnome-calendar
-  ]);
+  environment.gnome.excludePackages =
+    (with pkgs; [
+      gnome-photos
+      gnome-tour
+    ])
+    ++ (with pkgs.gnome; [
+      gnome-terminal
+      epiphany
+      geary
+      gnome-calendar
+    ]);
 
   environment.etc = {
     "greetd/sessions/gnome.desktop" = {

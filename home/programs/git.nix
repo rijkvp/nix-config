@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   programs.git = {
     enable = true;
     userName = "Rijk van Putten";
@@ -29,4 +30,3 @@
     };
   };
 }
-

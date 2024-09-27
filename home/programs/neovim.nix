@@ -1,4 +1,5 @@
-{ unstable-pkgs, config, ... }: {
+{ unstable-pkgs, config, ... }:
+{
   programs.neovim = {
     enable = true;
     package = unstable-pkgs.neovim-unwrapped; # use unstable Neovim to get new features from 0.10
@@ -376,21 +377,22 @@
         config =
           let
             palette = config.colorScheme.palette;
-          in ''
-          require('orgmode').setup{
-            org_agenda_files = {'~/docs/org/**/*'},
-            org_todo_keywords = {'TODO', 'PROGRESS', '|', 'DONE'},
-            org_todo_keyword_faces = {
-              TODO = ':foreground #${palette.base08} :weight bold',
-              PROGRESS = ':foreground #${palette.base09} :weight bold',
-              DONE = ':foreground #${palette.base0B} :weight bold',
-            },
-            org_default_notes_file = '~/docs/org/notes.org',
-            org_startup_indented = true,
-            org_hide_leading_stars = true,
-            org_deadline_warning_days = 5,
-          }
-        '';
+          in
+          ''
+            require('orgmode').setup{
+              org_agenda_files = {'~/docs/org/**/*'},
+              org_todo_keywords = {'TODO', 'PROGRESS', '|', 'DONE'},
+              org_todo_keyword_faces = {
+                TODO = ':foreground #${palette.base08} :weight bold',
+                PROGRESS = ':foreground #${palette.base09} :weight bold',
+                DONE = ':foreground #${palette.base0B} :weight bold',
+              },
+              org_default_notes_file = '~/docs/org/notes.org',
+              org_startup_indented = true,
+              org_hide_leading_stars = true,
+              org_deadline_warning_days = 5,
+            }
+          '';
       }
     ];
     extraPackages = with unstable-pkgs; [

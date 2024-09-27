@@ -15,7 +15,13 @@
     launcher.url = "git+ssh://git@github.com/rijkvp/launcher?ref=main";
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      ...
+    }@inputs:
     let
       inherit (self) outputs;
       system = "x86_64-linux";
@@ -25,8 +31,8 @@
         scratchpadMargin = 64;
       };
       unstable-pkgs = import inputs.nixpkgs-unstable {
-         inherit system;
-         config.allowUnfree = true;
+        inherit system;
+        config.allowUnfree = true;
       };
     in
     {
@@ -35,58 +41,75 @@
       nixosModules = import ./modules;
 
       nixosConfigurations = {
-        zeus = nixpkgs.lib.nixosSystem
-          {
-            inherit system;
-            specialArgs = { inherit inputs outputs; };
-            modules = [
-              ./hosts/zeus
-              home-manager.nixosModules.home-manager
-              {
-                home-manager.useGlobalPkgs = true;
-                home-manager.useUserPackages = true;
-                home-manager.users.rijk = import ./home/zeus.nix;
-                home-manager.extraSpecialArgs = {
-                  inherit inputs outputs unstable-pkgs;
-                  settings = {
-                    font = "Iosevka Nerd Font";
-                    screenMargin = 20;
-                    scratchpadMargin = 256;
-                  };
+        zeus = nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = {
+            inherit inputs outputs;
+          };
+          modules = [
+            ./hosts/zeus
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.rijk = import ./home/zeus.nix;
+              home-manager.extraSpecialArgs = {
+                inherit inputs outputs unstable-pkgs;
+                settings = {
+                  font = "Iosevka Nerd Font";
+                  screenMargin = 20;
+                  scratchpadMargin = 256;
                 };
-              }
-            ];
+              };
+            }
+          ];
+        };
+        poseidon = nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = {
+            inherit inputs outputs;
           };
-        poseidon = nixpkgs.lib.nixosSystem
-          {
-            inherit system;
-            specialArgs = { inherit inputs outputs; };
-            modules = [
-              ./hosts/poseidon
-              home-manager.nixosModules.home-manager
-              {
-                home-manager.useGlobalPkgs = true;
-                home-manager.useUserPackages = true;
-                home-manager.users.rijk = import ./home/poseidon.nix;
-                home-manager.extraSpecialArgs = { inherit inputs outputs settings unstable-pkgs; };
-              }
-            ];
+          modules = [
+            ./hosts/poseidon
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.rijk = import ./home/poseidon.nix;
+              home-manager.extraSpecialArgs = {
+                inherit
+                  inputs
+                  outputs
+                  settings
+                  unstable-pkgs
+                  ;
+              };
+            }
+          ];
+        };
+        apollo = nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = {
+            inherit inputs outputs;
           };
-        apollo = nixpkgs.lib.nixosSystem
-          {
-            inherit system;
-            specialArgs = { inherit inputs outputs; };
-            modules = [
-              ./hosts/apollo
-              home-manager.nixosModules.home-manager
-              {
-                home-manager.useGlobalPkgs = true;
-                home-manager.useUserPackages = true;
-                home-manager.users.rijk = import ./home/apollo.nix;
-                home-manager.extraSpecialArgs = { inherit inputs outputs settings unstable-pkgs; };
-              }
-            ];
-          };
+          modules = [
+            ./hosts/apollo
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.rijk = import ./home/apollo.nix;
+              home-manager.extraSpecialArgs = {
+                inherit
+                  inputs
+                  outputs
+                  settings
+                  unstable-pkgs
+                  ;
+              };
+            }
+          ];
+        };
       };
     };
 }

@@ -1,4 +1,5 @@
-{ config, ... }: {
+{ config, ... }:
+{
   home.file."${config.home.homeDirectory}/.local/bin/powermenu" = {
     text = ''
       #!/bin/sh

@@ -1,4 +1,5 @@
-{ pkgs, unstable-pkgs, ... }: {
+{ pkgs, unstable-pkgs, ... }:
+{
   imports = [
     ./alacritty.nix
     ./beets.nix
@@ -87,9 +88,18 @@
     "x-scheme-handler/https" = [ "firefox.desktop" ];
     "x-scheme-handler/obsidian" = [ "obsidian.desktop" ];
     # gThumb image viewer
-    "image/png" = [ "org.gnome.gThumb.desktop" "gimp.desktop" ];
-    "image/jpeg" = [ "org.gnome.gThumb.desktop" "gimp.desktop" ];
-    "image/jpg" = [ "org.gnome.gThumb.desktop" "gimp.desktop" ];
+    "image/png" = [
+      "org.gnome.gThumb.desktop"
+      "gimp.desktop"
+    ];
+    "image/jpeg" = [
+      "org.gnome.gThumb.desktop"
+      "gimp.desktop"
+    ];
+    "image/jpg" = [
+      "org.gnome.gThumb.desktop"
+      "gimp.desktop"
+    ];
     # Thunar file manager
     "inode/directory" = [ "thunar.desktop" ];
     # LibreOffice 

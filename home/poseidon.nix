@@ -1,7 +1,6 @@
-{ ... }: {
-  imports = [
-    ./common.nix
-  ];
+{ ... }:
+{
+  imports = [ ./common.nix ];
 
   wayland.windowManager.hyprland = {
     extraConfig = ''

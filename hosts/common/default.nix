@@ -1,4 +1,5 @@
-{ pkgs, outputs, ... }: {
+{ pkgs, outputs, ... }:
+{
   imports = [
     ./greetd.nix
     ./hyprland.nix
@@ -42,7 +43,10 @@
   networking.nftables.enable = true; # use nftables instead of iptables
   # syncthing ports
   networking.firewall.allowedTCPPorts = [ 22000 ];
-  networking.firewall.allowedUDPPorts = [ 22000 21027 ];
+  networking.firewall.allowedUDPPorts = [
+    22000
+    21027
+  ];
 
   # ADB
   programs.adb.enable = true;
@@ -54,11 +58,23 @@
     users.rijk = {
       isNormalUser = true;
       hashedPassword = "$y$j9T$e68AODd7XbX6pmjHKlAMT1$bwaqLqGPX72/S8zMoThqEFX0fZ6T/h8cRiY0vUlFQY1";
-      extraGroups = [ "wheel" "video" "audio" "lp" "scanner" "docker" "libvirtd" "kvm" "network" "lxd" "plugdev" "adbusers"];
+      extraGroups = [
+        "wheel"
+        "video"
+        "audio"
+        "lp"
+        "scanner"
+        "docker"
+        "libvirtd"
+        "kvm"
+        "network"
+        "lxd"
+        "plugdev"
+        "adbusers"
+      ];
       shell = pkgs.fish;
     };
   };
-
 
   # Movebeam service
   services.movebeam.enable = true;
@@ -86,7 +102,10 @@
     ((vim_configurable.override { }).customize {
       name = "vim";
       vimrcConfig.packages.myplugins = with pkgs.vimPlugins; {
-        start = [ vim-nix vim-lastplace ];
+        start = [
+          vim-nix
+          vim-lastplace
+        ];
         opt = [ ];
       };
       vimrcConfig.customRC = ''
@@ -111,11 +130,8 @@
   # (The Hyprland module adds the hyprland portal to the list)
   xdg.portal = {
     enable = true;
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-gtk
-    ];
+    extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
   };
-
 
   # Fonts
   fonts.fontDir.enable = true;
@@ -127,7 +143,14 @@
     open-sans
     noto-fonts
     noto-fonts-emoji
-    (nerdfonts.override { fonts = [ "Iosevka" "JetBrainsMono" "FiraCode" "CascadiaCode" ]; })
+    (nerdfonts.override {
+      fonts = [
+        "Iosevka"
+        "JetBrainsMono"
+        "FiraCode"
+        "CascadiaCode"
+      ];
+    })
   ];
 
   programs = {

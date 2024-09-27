@@ -1,4 +1,5 @@
-{ config, settings, ... }: {
+{ config, settings, ... }:
+{
   programs.alacritty = {
     enable = true;
     settings = {

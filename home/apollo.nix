@@ -1,7 +1,6 @@
-{ pkgs, ... }: {
-  imports = [
-    ./common.nix
-  ];
+{ pkgs, ... }:
+{
+  imports = [ ./common.nix ];
 
   wayland.windowManager.hyprland = {
     extraConfig = ''
@@ -14,7 +13,5 @@
     '';
   };
 
-  home.packages = with pkgs; [
-    blueman
-  ];
+  home.packages = with pkgs; [ blueman ];
 }

@@ -1,7 +1,6 @@
-{ inputs, ... }: {
-  imports = [
-    inputs.niri.nixosModules.niri
-  ];
+{ inputs, ... }:
+{
+  imports = [ inputs.niri.nixosModules.niri ];
 
   nixpkgs.overlays = [ inputs.niri.overlays.niri ];
   programs.niri.enable = true;

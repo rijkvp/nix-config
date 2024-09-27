@@ -1,4 +1,5 @@
-{ config, settings, ... }: {
+{ config, settings, ... }:
+{
   programs.waybar = {
     enable = true;
     settings = {
@@ -6,9 +7,22 @@
         layer = "top";
         position = "top";
         spacing = 8;
-        modules-left = [ "hyprland/workspaces" "hyprland/window" "mpd" ];
+        modules-left = [
+          "hyprland/workspaces"
+          "hyprland/window"
+          "mpd"
+        ];
         modules-center = [ ];
-        modules-right = [ "tray" "wireplumber" "cpu" "memory" "network" "backlight" "battery" "clock" ];
+        modules-right = [
+          "tray"
+          "wireplumber"
+          "cpu"
+          "memory"
+          "network"
+          "backlight"
+          "battery"
+          "clock"
+        ];
         "hyprland/workspaces" = {
           format = "{icon}";
           on-click = "activate";
@@ -34,12 +48,19 @@
         };
         "backlight" = {
           format = "{icon} {percent}%";
-          format-icons = [ "" "" ];
+          format-icons = [
+            ""
+            ""
+          ];
         };
         "wireplumber" = {
           format = "{icon} {volume}%";
           format-muted = "󰝟 ";
-          format-icons = [ " " " " " " ];
+          format-icons = [
+            " "
+            " "
+            " "
+          ];
         };
         "cpu" = {
           interval = 1;
@@ -52,7 +73,13 @@
         };
         "battery" = {
           format = "{icon} {capacity}%";
-          format-icons = [ "" "" "" "" "" ];
+          format-icons = [
+            ""
+            ""
+            ""
+            ""
+            ""
+          ];
           format-charging = "󰂄  {capacity}%";
         };
         "network" = {

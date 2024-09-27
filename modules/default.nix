@@ -1,3 +1,1 @@
-{
-  movebeam = import ./movebeam.nix;
-}
+{ movebeam = import ./movebeam.nix; }

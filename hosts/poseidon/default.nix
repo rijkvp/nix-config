@@ -8,7 +8,7 @@
   # BIOS boot with GRUB
   boot.loader.grub = {
     enable = true;
-    device = "/dev/sda"; 
+    device = "/dev/sda";
   };
 
   # LUKS encryption

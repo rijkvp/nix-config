@@ -1,4 +1,5 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }:
+{
   imports = [
     ./hardware-configuration.nix
     ../common
@@ -6,9 +7,9 @@
     ../common/steam.nix
     ../common/backup.nix
     ../common/podman.nix
-#    ../common/kde.nix
-#    ../common/niri.nix
-#    ../common/gnome.nix
+    #    ../common/kde.nix
+    #    ../common/niri.nix
+    #    ../common/gnome.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -45,13 +46,11 @@
       openSha256 = "sha256-8hyRiGB+m2hL3c9MDA/Pon+Xl6E788MZ50WrrAGUVuY=";
       settingsSha256 = "sha256-ZpuVZybW6CFN/gz9rx+UJvQ715FZnAOYfHn5jt5Z2C8=";
       persistencedSha256 = "sha256-a1D7ZZmcKFWfPjjH1REqPM5j/YLWKnbkP9qfRyIyxAw=";
-   };
+    };
   };
   services.xserver.videoDrivers = [ "nvidia" ];
   boot.kernelParams = [ "nvidia.NVreg_PreserveVideoMemoryAllocations=1" ];
-  environment.systemPackages = with pkgs; [
-    egl-wayland
-  ];
+  environment.systemPackages = with pkgs; [ egl-wayland ];
 
   # Internal Hard Drive
   boot.initrd.luks.devices."crypthdint".device = "/dev/disk/by-uuid/57038b2d-ddf7-47b2-b253-7fd30605f4bf";
@@ -59,6 +58,9 @@
     device = "/dev/mapper/crypthdint";
     mountPoint = "/mnt/hdint";
     fsType = "btrfs";
-    options = [ "autodefrag" "compress=zstd" ];
+    options = [
+      "autodefrag"
+      "compress=zstd"
+    ];
   };
 }

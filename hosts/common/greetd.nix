@@ -1,9 +1,10 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   # Greeter: greetd + tuigreet
- environment.systemPackages = [
+  environment.systemPackages = [
     pkgs.greetd.tuigreet
     pkgs.cage
- ];
+  ];
   services.greetd = {
     enable = true;
     settings = {
