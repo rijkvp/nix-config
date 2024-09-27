@@ -15,6 +15,7 @@
       "/etc/NetworkManager/system-connections"
       "/var/log"
       "/var/lib/cups"
+      "/var/lib/nixos" # required for permanent uids/gids
       "/var/lib/fprint"
       "/var/lib/flatpak"
       "/var/lib/libvirt"
