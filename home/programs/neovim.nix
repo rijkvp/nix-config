@@ -1,4 +1,4 @@
-{ unstable-pkgs, ... }: {
+{ unstable-pkgs, config, ... }: {
   programs.neovim = {
     enable = true;
     package = unstable-pkgs.neovim-unwrapped; # use unstable Neovim to get new features from 0.10
@@ -365,14 +365,17 @@
       {
         plugin = orgmode;
         type = "lua";
-        config = ''
+        config =
+          let
+            palette = config.colorScheme.palette;
+          in ''
           require('orgmode').setup{
             org_agenda_files = {'~/docs/org/**/*'},
             org_todo_keywords = {'TODO', 'PROGRESS', '|', 'DONE'},
             org_todo_keyword_faces = {
-              TODO = ':foreground red',
-              PROGRESS = ':foreground blue',
-              DONE = ':foreground green',
+              TODO = ':foreground #${palette.base08} :weight bold',
+              PROGRESS = ':foreground #${palette.base09} :weight bold',
+              DONE = ':foreground #${palette.base0B} :weight bold',
             },
             org_default_notes_file = '~/docs/org/notes.org',
             org_startup_indented = true,
