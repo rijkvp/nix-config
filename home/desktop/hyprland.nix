@@ -79,7 +79,7 @@
           gaps_in = ${toString (settings.screenMargin / 2)}
           gaps_out = ${toString settings.screenMargin}
           border_size = 2
-          col.inactive_border = rgb(${config.colorScheme.palette.base04})
+          col.inactive_border = rgb(${config.colorScheme.palette.base01})
           col.active_border = rgb(${config.colorScheme.palette.base0C})
           layout = master
       }
