@@ -10,8 +10,6 @@
       selection-clipboard = "clipboard";
     };
     mappings = {
-      p = "navigate previous";
-      n = "navigate next";
       u = "scroll half-up";
       d = "scroll half-down";
       D = "toggle_page_mode";
@@ -19,7 +17,6 @@
       R = "rotate";
       O = "zoom in";
       I = "zoom out";
-      i = "recolor";
       "<C-p>" = "print";
     };
   };

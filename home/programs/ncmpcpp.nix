@@ -6,7 +6,7 @@
       user_interface = "alternative";
     };
     bindings = [
-      # Vim-like keybindings for ncmpcpp
+      # Vim-like keybindings for ncmpcpp, see https://github.com/ncmpcpp/ncmpcpp/blob/master/doc/bindings for defaults
       {
         key = "j";
         command = "scroll_down";
