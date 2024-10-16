@@ -40,7 +40,9 @@
   };
 
   # Networking
-  networking.nftables.enable = true; # use nftables instead of iptables
+  # this does not work with libvirtd so stay on iptables for now
+  # networking.nftables.enable = true; # use nftables instead of iptables
+
   # syncthing ports
   networking.firewall.allowedTCPPorts = [ 22000 ];
   networking.firewall.allowedUDPPorts = [
