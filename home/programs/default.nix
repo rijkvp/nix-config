@@ -11,6 +11,7 @@
     ./neovim.nix
     ./newsboat.nix
     ./zathura.nix
+    ./devenv.nix
   ];
 
   home.packages = with pkgs; [

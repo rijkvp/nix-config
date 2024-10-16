@@ -1,12 +1,4 @@
 {
-  inputs,
-  outputs,
-  lib,
-  config,
-  pkgs,
-  ...
-}:
-{
   programs.newsboat = {
     enable = true;
     extraConfig = ''
