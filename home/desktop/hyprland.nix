@@ -54,7 +54,6 @@
       exec-once = hyprctl setcursor Quintom_Ink 20
       exec-once = waybar
       exec-once = nm-applet
-      exec-once = beeper --hidden
       exec-once = ollama serve
 
       debug {
