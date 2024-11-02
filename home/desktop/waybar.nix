@@ -8,11 +8,12 @@
         position = "top";
         spacing = 8;
         modules-left = [
-          "hyprland/workspaces"
           "hyprland/window"
           "mpd"
         ];
-        modules-center = [ ];
+        modules-center = [
+          "hyprland/workspaces"
+        ];
         modules-right = [
           "tray"
           "wireplumber"
@@ -141,10 +142,10 @@
 
         #workspaces button {
           padding: 2px 5px;
-          border-radius: 0;
+          border-radius: 4px;
           background: #${palette.base00};
           color: #${palette.base05};
-          border-bottom: 2px solid transparent;
+          border: 2px solid transparent;
         }
         #workspaces button:hover {
           background: #${palette.base01};
@@ -152,12 +153,12 @@
 
         #workspaces button.focused {
           background: #${palette.base00};
-          border-bottom: 2px solid #${palette.base0D};
+          border: 2px solid #${palette.base0D};
         }
 
         #workspaces button.active {
           background: #${palette.base01};
-          border-bottom: 2px solid #${palette.base0D};
+          border: 2px solid #${palette.base0D};
         }
         #workspaces button.urgent {
           background: #${palette.base0B};

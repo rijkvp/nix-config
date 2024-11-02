@@ -108,6 +108,7 @@
       bind \ce 'nvim'
       bind --erase \cm
       bind \cm 'mp'
+      bind \co 'org'
     '';
   };
 }
