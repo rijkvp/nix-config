@@ -1,8 +1,4 @@
 {
-  inputs,
-  outputs,
-  lib,
-  config,
   pkgs,
   ...
 }:
@@ -38,6 +34,8 @@ in
           "Nix Packages"
           "Nix Options"
           "NixOS Wiki"
+          "ChatGPT"
+          "Claude"
         ];
         engines = {
           "Brave Search" = {
@@ -104,10 +102,27 @@ in
             definedAliases = [ "@no" ];
           };
           "NixOS Wiki" = {
-            urls = [ { template = "https://nixos.wiki/index.php?search={searchTerms}"; } ];
-            iconUpdateURL = "https://nixos.wiki/favicon.png";
-            updateInterval = 24 * 60 * 60 * 1000; # every day
+            urls = [ { template = "https://wiki.nixos.org/w/index.php?search={searchTerms}"; } ];
+            icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
             definedAliases = [ "@nw" ];
+          };
+          "ChatGPT" = {
+            urls = [ { template = "https://chatgpt.com/?q={searchTerms}"; } ];
+            iconUpdateURL = "https://cdn.oaistatic.com/assets/favicon-dark-32x32-gt5kfzyp.webp";
+            updateInterval = 24 * 60 * 60 * 1000;
+            definedAliases = [
+              "@c"
+              "@chatgpt"
+            ];
+          };
+          "Claude" = {
+            urls = [ { template = "https://claude.ai/new?q={searchTerms}"; } ];
+            iconUpdateURL = "https://claude.ai/favicon.ico";
+            updateInterval = 24 * 60 * 60 * 1000;
+            definedAliases = [
+              "@cl"
+              "@claude"
+            ];
           };
           # Unwanted search engines
           "Amazon".metaData.hidden = true;
