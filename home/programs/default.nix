@@ -61,6 +61,7 @@
     keepassxc
     gimp
     gthumb
+    libreoffice
 
     # Spell checker
     hunspell
