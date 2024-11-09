@@ -33,6 +33,8 @@
       "org" = "cd $XDG_DOCUMENTS_DIR/org && nvim todo.org";
       # Zellij main session
       "zj" = "zellij attach main --create";
+      # Lazygit
+      "lg" = "lazygit";
     };
     shellInit = ''
       set -U fish_greeting
