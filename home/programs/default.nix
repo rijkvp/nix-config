@@ -45,6 +45,7 @@
     tokei
     zola
     onefetch
+    lazygit
 
     sshfs
     btop

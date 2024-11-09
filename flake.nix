@@ -12,7 +12,9 @@
     nix-colors.url = "github:misterio77/nix-colors";
 
     movebeam.url = "github:rijkvp/movebeam";
+    movebeam.inputs.nixpkgs.follows = "nixpkgs";
     launcher.url = "git+ssh://git@github.com/rijkvp/launcher?ref=main";
+    launcher.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
