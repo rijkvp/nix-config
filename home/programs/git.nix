@@ -2,6 +2,12 @@
 {
   programs.git = {
     enable = true;
+    delta = {
+      enable = true; # syntax highlighting
+      options = {
+        syntax-theme = "base16";
+      };
+    };
     userName = "Rijk van Putten";
     userEmail = "rijk@rijkvp.nl";
     signing = {
