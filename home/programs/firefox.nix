@@ -6,7 +6,7 @@ let
   # Lepton theme https://github.com/black7375/Firefox-UI-Fix
   theme-dir = builtins.fetchGit {
     url = "https://github.com/black7375/Firefox-UI-Fix.git";
-    rev = "d91f2822b4b9f71d6fc7f7d870526fcf56719348"; # must be updated for newer versions
+    rev = "530b283da01d898d75909385afffacef89ecaa19"; # must be updated for newer versions
   };
   user-js = theme-dir.outPath + "/user.js";
 
