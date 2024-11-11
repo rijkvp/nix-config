@@ -181,6 +181,13 @@
           }
         '';
       }
+      {
+        plugin = nvim-treesitter-context;
+        type = "lua";
+        config = ''
+          require('treesitter-context').setup()
+        '';
+      }
 
       # Syntaxes
       {
