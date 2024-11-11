@@ -61,7 +61,9 @@
       }
 
       input {
-          kb_layout = us
+          kb_layout = us,us
+          kb_variant = ,workman
+          kb_options = grp:alt_shift_toggle, caps:swapescape
 
           follow_mouse = 1
 
