@@ -96,6 +96,13 @@
         '';
       }
       {
+        plugin = telescope-fzf-native-nvim;
+        type = "lua";
+        config = ''
+          require('telescope').load_extension('fzf')
+        '';
+      }
+      {
         plugin = telescope-file-browser-nvim;
         type = "lua";
         config = ''
