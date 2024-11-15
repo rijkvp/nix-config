@@ -15,8 +15,8 @@
       "ns" = ''nix-shell --command "fish"'';
       "nd" = ''nix develop --command "fish"'';
       "g" = "git";
-      "gc" = "ssh-add -l > /dev/null || ssh-add && git commit";
-      "gp" = "ssh-add -l > /dev/null || ssh-add && git commit && git push";
+      "gc" = "ssh-add -l > /dev/null || ssh-add && git add . && git commit";
+      "gp" = "ssh-add -l > /dev/null || ssh-add && git add . && git commit && git push";
       "tm" = "tmux new-session -A -D -s main";
       # Duplicate folder
       "dupl" = "rsync -rlptDhP --delete-after --stats";

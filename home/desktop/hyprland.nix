@@ -55,6 +55,7 @@
       exec-once = waybar
       exec-once = nm-applet
       exec-once = ollama serve
+      exec-once = beeper --hidden
 
       debug {
         disable_logs = false
