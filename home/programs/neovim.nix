@@ -295,6 +295,22 @@
           }
         '';
       }
+      {
+        plugin = nvim-jdtls;
+        type = "lua";
+        config = ''
+          vim.api.nvim_create_autocmd("FileType", {
+            pattern = "java",
+            callback = function()
+              local config = {
+                  cmd = {'${unstable-pkgs.jdt-language-server}/bin/jdtls'},
+                  root_dir = vim.fs.dirname(vim.fs.find({'gradlew', '.git', 'mvnw'}, { upward = true })[1]),
+              }
+              require('jdtls').start_or_attach(config)
+            end,
+          })
+        '';
+      }
 
       # Completion plugins
       cmp-nvim-lsp
@@ -429,6 +445,8 @@
       ruff-lsp
       # Haskell
       haskell-language-server
+      # Java
+      jdt-language-server
     ];
   };
 }
