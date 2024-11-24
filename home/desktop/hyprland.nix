@@ -223,8 +223,8 @@
       bind = SUPER_CTRL,V, exec, nextwallpaper
 
       # Screenshot
-      bind = SUPER, s, exec, grim - | tee "${config.xdg.userDirs.pictures}/desktop-screenshots/$(date +"%Y-%m-%d-%H:%M:%S")-screenshot.png" | wl-copy -t image/png
-      bind = SUPER SHIFT, s, exec, grim -g "$(slurp)" - | tee "${config.xdg.userDirs.pictures}/desktop-screenshots/$(date +"%Y-%m-%d-%H:%M:%S")-screenshot.png" | wl-copy -t image/png
+      bind = SUPER, s, exec, grim - | tee "${config.xdg.userDirs.pictures}/desktop-screenshots/$(date +"%Y-%m-%d-%H-%M-%S")-screenshot.png" | wl-copy -t image/png
+      bind = SUPER SHIFT, s, exec, grim -g "$(slurp)" - | tee "${config.xdg.userDirs.pictures}/desktop-screenshots/$(date +"%Y-%m-%d-%H-%M-%S")-screenshot.png" | wl-copy -t image/png
 
       # Launcher menus
       bind = SUPER, D, exec, launcher -m apps
