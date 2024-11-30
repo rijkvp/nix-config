@@ -112,13 +112,13 @@
       animations {
           enabled = no
 
-          animation = windows, 1, 7, default,
-          animation = windowsOut, 1, 7, default, slide
-          animation = border, 1, 6, default
-          animation = borderangle, 1, 6, default
+          animation = windows, 1, 3, default,
+          animation = windowsOut, 1, 3, default, slide
+          animation = border, 1, 3, default
+          animation = borderangle, 1, 3, default
           animation = fade, 1, 3, default
-          animation = workspaces, 1, 4, default
-          animation = specialWorkspace, 1, 4,default, slidevert
+          animation = workspaces, 1, 2, default
+          animation = specialWorkspace, 1, 2, default, slidevert
       }
 
       dwindle {
