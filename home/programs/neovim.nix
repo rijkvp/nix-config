@@ -232,6 +232,7 @@
           lspconfig.ruff_lsp.setup{}
           lspconfig.hls.setup{}
           lspconfig.svelte.setup{}
+          lspconfig.zls.setup{}
 
           -- Diagnostics
           vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Previous diagnostic" })
@@ -447,6 +448,8 @@
       haskell-language-server
       # Java
       jdt-language-server
+      # Zig
+      zls
     ];
   };
 }
