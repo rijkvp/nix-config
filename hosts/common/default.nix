@@ -1,9 +1,8 @@
-{ pkgs, outputs, ... }:
+{ pkgs, ... }:
 {
   imports = [
     ./greetd.nix
     ./hyprland.nix
-    outputs.nixosModules.movebeam
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -84,19 +83,13 @@
     };
   };
 
-  # Movebeam service
-  services.movebeam.enable = true;
-
   services.tailscale.enable = true;
 
   # Sytem Packages
   environment.systemPackages = with pkgs; [
-    cage
     # A few essential pacakges
     wget
     git
-    gnupg
-    macchina
     freshfetch
     htop
     fish
@@ -189,32 +182,6 @@
 
     # Flatpak
     flatpak.enable = true;
-  };
-
-  # Key remaps daemon
-  services.keyd = {
-    enable = true;
-    keyboards.default = {
-      ids = [ "*" ];
-      settings = {
-        main = {
-          capslock = "overload(control, esc)";
-          rightalt = "layer(rightalt)";
-        };
-        rightalt = {
-          h = "left";
-          j = "down";
-          k = "up";
-          l = "right";
-        };
-      };
-    };
-  };
-
-  # Printing/scanning services
-  services.printing = {
-    enable = true;
-    drivers = [ pkgs.hplip ];
   };
 
   # Boot animation

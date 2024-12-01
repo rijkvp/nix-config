@@ -1,1 +1,1 @@
-{ movebeam = import ./movebeam.nix; }
+{ }

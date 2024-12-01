@@ -51,10 +51,7 @@
   services.libinput.enable = true;
 
   # OpenGL
-  hardware.opengl = {
-    enable = true;
-    driSupport = true;
-  };
+  hardware.graphics.enable = true;
 
   # Bluetooth
   hardware.bluetooth.enable = true;

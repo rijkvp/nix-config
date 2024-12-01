@@ -1,18 +1,16 @@
 {
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-24.05";
+    nixpkgs.url = "nixpkgs/nixos-24.11";
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.05";
+      url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     impermanence.url = "github:nix-community/impermanence";
     nix-colors.url = "github:misterio77/nix-colors";
 
-    movebeam.url = "github:rijkvp/movebeam";
-    movebeam.inputs.nixpkgs.follows = "nixpkgs";
     launcher.url = "git+ssh://git@github.com/rijkvp/launcher?ref=main";
     launcher.inputs.nixpkgs.follows = "nixpkgs";
   };
@@ -28,7 +26,7 @@
       inherit (self) outputs;
       system = "x86_64-linux";
       settings = {
-        font = "Iosevka Nerd Font";
+        font = "Fira Code Nerd Font";
         screenMargin = 12;
         scratchpadMargin = 64;
       };
@@ -57,34 +55,10 @@
               home-manager.users.rijk = import ./home/zeus.nix;
               home-manager.extraSpecialArgs = {
                 inherit inputs outputs unstable-pkgs;
-                settings = {
-                  font = "Iosevka Nerd Font";
+                settings = settings // {
                   screenMargin = 20;
                   scratchpadMargin = 256;
                 };
-              };
-            }
-          ];
-        };
-        poseidon = nixpkgs.lib.nixosSystem {
-          inherit system;
-          specialArgs = {
-            inherit inputs outputs;
-          };
-          modules = [
-            ./hosts/poseidon
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.rijk = import ./home/poseidon.nix;
-              home-manager.extraSpecialArgs = {
-                inherit
-                  inputs
-                  outputs
-                  settings
-                  unstable-pkgs
-                  ;
               };
             }
           ];

@@ -100,13 +100,15 @@
           vibrancy = 0.1696
         }
 
-        # saves battery
-        drop_shadow = false
-        shadow_ignore_window = true
-        shadow_offset = 2 4
-        shadow_range = 16
-        shadow_render_power = 3
-        col.shadow = rgba(1a1a1aee)
+        shadow {
+          # saves battery
+          enabled = false
+          range = 16
+          render_power = 3
+          ignore_window = true
+          offset = 2 4
+          color = rgba(1a1a1aee)
+        }
       }
 
       animations {
@@ -126,7 +128,6 @@
       }
 
       master {
-          no_gaps_when_only = false
       }
 
       gestures {

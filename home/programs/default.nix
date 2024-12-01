@@ -1,4 +1,4 @@
-{ pkgs, unstable-pkgs, ... }:
+{ pkgs, ... }:
 {
   imports = [
     ./alacritty.nix
@@ -53,6 +53,7 @@
     # Media
     yt-dlp
     mpc-cli
+    bluetui
 
     # Backup
     borgbackup
@@ -80,7 +81,7 @@
     w3m # HTML viewer
 
     # AI
-    unstable-pkgs.ollama
+    ollama
   ];
 
   # Default programs
