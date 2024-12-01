@@ -412,10 +412,8 @@
           ''
             require('orgmode').setup{
               org_agenda_files = {'~/docs/org/**/*'},
-              org_todo_keywords = {'TODO', 'PROGRESS', '|', 'DONE'},
               org_todo_keyword_faces = {
                 TODO = ':foreground #${palette.base08} :weight bold',
-                PROGRESS = ':foreground #${palette.base09} :weight bold',
                 DONE = ':foreground #${palette.base0B} :weight bold',
               },
               org_default_notes_file = '~/docs/org/notes.org',
