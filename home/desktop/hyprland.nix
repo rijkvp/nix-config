@@ -16,12 +16,12 @@
         echo "Enabling fancy stuff"
         hyprctl keyword animations:enabled true
         hyprctl keyword decoration:blur:enabled true
-        hyprctl keyword decoration:drop_shadow true
+        hyprctl keyword decoration:shadow:enabled true
       else
         echo "Disabling fancy stuff"
         hyprctl keyword animations:enabled false
         hyprctl keyword decoration:blur:enabled false
-        hyprctl keyword decoration:drop_shadow false
+        hyprctl keyword decoration:shadow:enabled false
       fi
     '';
     executable = true;
@@ -93,16 +93,14 @@
         rounding = 6
 
         blur {
-          # saves battery
-          enabled = false
+          enabled = true # saves battery if disabled
           size = 4
           passes = 1
           vibrancy = 0.1696
         }
 
         shadow {
-          # saves battery
-          enabled = false
+          enabled = true # saves battery if disabled
           range = 16
           render_power = 3
           ignore_window = true
@@ -112,7 +110,7 @@
       }
 
       animations {
-          enabled = no
+          enabled = yes
 
           animation = windows, 1, 3, default,
           animation = windowsOut, 1, 3, default, slide
