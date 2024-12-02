@@ -28,7 +28,6 @@
       }
     ];
     files = [
-      "/etc/machine-id"
       "/etc/nix/id_rsa"
       "/var/lib/cups/printers.conf"
       "/var/lib/logrotate.status"
