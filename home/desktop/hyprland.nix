@@ -62,9 +62,10 @@
       }
 
       input {
-          kb_layout = us,us
-          kb_variant = ,colemak_dh
-          kb_options = grp:win_space_toggle, caps:escape
+          # For some reason does not work anymore??
+          # kb_layout = us,us
+          # kb_variant = ,colemak_dh
+          # kb_options = grp:win_space_toggle, caps:escape
 
           follow_mouse = 1
 

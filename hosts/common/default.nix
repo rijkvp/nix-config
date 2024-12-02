@@ -184,6 +184,19 @@
     flatpak.enable = true;
   };
 
+  # Key remaps
+  services.keyd = {
+    enable = true;
+    keyboards.default = {
+      ids = [ "*" ];
+      settings = {
+        main = {
+          capslock = "esc"; # remap capslock to escape
+        };
+      };
+    };
+  };
+
   # Boot animation
   boot.plymouth = {
     enable = true;
