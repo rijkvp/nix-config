@@ -253,10 +253,10 @@
               vim.keymap.set("n", "gi", require('telescope.builtin').lsp_implementations, opts)
               vim.keymap.set("n", "go", vim.lsp.buf.type_definition, opts)
               vim.keymap.set("n", "gr", require('telescope.builtin').lsp_references, opts)
-              vim.keymap.set("n", "<leader>sf", require('telescope.builtin').lsp_workspace_symbols, opts)
+              vim.keymap.set("n", "gs", require('telescope.builtin').lsp_document_symbols, opts)
+              vim.keymap.set("n", "gS", require('telescope.builtin').lsp_workspace_symbols, opts)
 
-              -- Actions
-              vim.keymap.set("n", "<leader>c", vim.lsp.buf.code_action, opts)
+              vim.keymap.set("n", "g.", vim.lsp.buf.code_action, opts)
               vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, opts)
               vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, opts)
             end,
