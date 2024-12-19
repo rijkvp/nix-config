@@ -9,7 +9,6 @@
       "....." = "cd ../../../..";
       "......" = "cd ../../../../..";
       "v" = "nvim";
-      "fm" = "yazi";
       "nb" = "newsboat";
       "mp" = "ncmpcpp";
       "ns" = ''nix-shell --command "fish"'';
@@ -103,14 +102,30 @@
         cd "$dev_dir"
         td
       end
+      # switch directory using yazi
+      function yy
+          set -l tmp (mktemp -t "yazi-cwd.XXXXXX")
+          yazi $argv --cwd-file=$tmp
+          set cwd (cat -- $tmp)
+          if test -s $tmp
+              set cwd (cat -- $tmp)
+              if test -n "$cwd" -a "$cwd" != "$PWD"
+                  cd -- $cwd
+                  commandline -f repaint # update prompt
+              end
+          end
+          rm -f -- $tmp
+      end
 
       # Keybindings
-      bind \cf 'fm'
+      bind \cf 'yy'
       bind \cg 'devopen'
       bind \ce 'nvim'
-      bind --erase \cm
-      bind \cm 'mp'
+      bind \cn 'mp'
       bind \co 'org'
+
+      # Less direnv output
+      set -gx DIRENV_LOG_FORMAT ""
     '';
   };
 }

@@ -3,14 +3,10 @@
   programs.starship = {
     enable = true;
     enableFishIntegration = true;
-    enableTransience = true;
     settings = {
       add_newline = false;
       nix_shell = {
         format = "in [❄️ Nix ](bold blue)";
-      };
-      line_break = {
-        disabled = true;
       };
       # Nerd font symbols (https://starship.rs/presets/nerd-font.html)
       aws.symbol = "  ";
