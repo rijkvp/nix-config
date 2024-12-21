@@ -106,13 +106,9 @@
       function yy
           set -l tmp (mktemp -t "yazi-cwd.XXXXXX")
           yazi $argv --cwd-file=$tmp
-          set cwd (cat -- $tmp)
-          if test -s $tmp
-              set cwd (cat -- $tmp)
-              if test -n "$cwd" -a "$cwd" != "$PWD"
-                  cd -- $cwd
-                  commandline -f repaint # update prompt
-              end
+	      if set cwd (command cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
+              builtin cd -- $cwd
+              commandline -f repaint # update prompt
           end
           rm -f -- $tmp
       end
