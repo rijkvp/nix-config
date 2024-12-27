@@ -229,7 +229,7 @@
             },
           })
           lspconfig.texlab.setup{}
-          lspconfig.ruff_lsp.setup{}
+          lspconfig.ruff.setup{}
           lspconfig.hls.setup{}
           lspconfig.svelte.setup{}
           lspconfig.zls.setup{}
@@ -422,6 +422,18 @@
               org_deadline_warning_days = 5,
             }
           '';
+      }
+      {
+        plugin = neorg;
+        type = "lua";
+        config = ''
+          require("neorg").setup({
+            load = {
+              ["core.defaults"] = {},
+              ["core.concealer"] = {},
+            }
+          })
+        '';
       }
     ];
     extraPackages = with unstable-pkgs; [

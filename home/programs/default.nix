@@ -1,8 +1,8 @@
 { pkgs, ... }:
 {
   imports = [
-    ./alacritty.nix
     ./beets.nix
+    ./devenv.nix
     ./firefox.nix
     ./foot.nix
     ./git.nix
@@ -10,8 +10,8 @@
     ./ncmpcpp.nix
     ./neovim.nix
     ./newsboat.nix
+    ./terminal.nix
     ./zathura.nix
-    ./devenv.nix
   ];
 
   home.packages = with pkgs; [
@@ -106,7 +106,7 @@
     ];
     # Thunar file manager
     "inode/directory" = [ "thunar.desktop" ];
-    # LibreOffice 
+    # LibreOffice
     "application/vnd.oasis.opendocument.text" = [ "writer.desktop" ];
     "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = [ "writer.desktop" ];
     "application/vnd.oasis.opendocument.spreadsheet" = [ "calc.desktop" ];

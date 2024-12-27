@@ -57,6 +57,8 @@
       exec-once = ollama serve
       exec-once = beeper --hidden
 
+      $terminal = kitty
+
       debug {
         disable_logs = false
       }
@@ -146,7 +148,7 @@
       # Scratchpad (special workspace)
       bind = SUPER,B, togglespecialworkspace, sp
       bind = SUPER_SHIFT,B, movetoworkspace, special:sp
-      workspace = special:sp, on-created-empty:alacritty, gapsout:${toString settings.scratchpadMargin}
+      workspace = special:sp, on-created-empty:$terminal, gapsout:${toString settings.scratchpadMargin}
 
       windowrule=float,title:^debug
       windowrulev2=float,class:launcher
@@ -159,11 +161,11 @@
       windowrule = opacity 0.8 override 0.8 override,launcher
 
       # Applications
-      bind = SUPER, RETURN, exec, alacritty
+      bind = SUPER, RETURN, exec, $terminal
       bind = SUPER_CTRL,W, exec, firefox
       bind = SUPER_CTRL,F, exec, thunar
       bind = SUPER_CTRL,N, exec, keepassxc
-      bind = SUPER_CTRL,M, exec, alacritty -e ncmpcpp
+      bind = SUPER_CTRL,M, exec, $terminal -e ncmpcpp
       bind = SUPER_CTRL,K, exec, beeper
       bind = SUPER_CTRL,O, exec, obsidian
 
@@ -232,8 +234,8 @@
       bind = SUPER CONTROL, l, exec, ~/.local/bin/lockscreen
       bind = SUPER, p, exec, launcher -m files
       bind = SUPER, grave, exec, ~/.local/bin/emojipicker
-      bind = SUPER, C, exec, alacritty -e 
-      bind = SUPER, V, exec, alacritty -e nvim 
+      bind = SUPER, C, exec, $terminal -e 
+      bind = SUPER, V, exec, $terminal -e nvim 
       bind = SUPER, M, exec, ~/.local/bin/bookmarkmenu
 
       # Monitor backlight (make sure light is installed)

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, unstable-pkgs, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -10,7 +10,7 @@
   ];
 
   # Zen kernel with full preemption
-  boot.kernelPackages = pkgs.linuxPackages_zen;
+  boot.kernelPackages = unstable-pkgs.linuxPackages_zen;
   boot.kernelParams = [
     "preempt=full"
     "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
