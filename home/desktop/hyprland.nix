@@ -27,6 +27,16 @@
     executable = true;
   };
 
+  home.file."${config.home.homeDirectory}/.local/bin/randterm" = {
+    text = ''
+      #!/bin/sh
+      terms=("alacritty" "kitty" "ghostty")
+      random_term=$(shuf -n 1 -e "''${terms[@]}")
+      exec "$random_term" "$@"
+    '';
+    executable = true;
+  };
+
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland = {
@@ -57,7 +67,7 @@
       exec-once = ollama serve
       exec-once = beeper --hidden
 
-      $terminal = kitty
+      $terminal = ~/.local/bin/randterm
 
       debug {
         disable_logs = false
@@ -155,6 +165,8 @@
 
       # Transparent windows
       windowrule = opacity 0.9 override 0.86 override,Alacritty
+      windowrule = opacity 0.9 override 0.86 override,ghostty
+      windowrule = opacity 0.9 override 0.86 override,kitty
       windowrule = opacity 0.87 override 0.8 override,thunar
       windowrule = opacity 0.8 override 0.8 override,keepassxc
       windowrule = opacity 0.86 override 0.86 override,Signal

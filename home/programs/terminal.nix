@@ -1,4 +1,8 @@
-{ config, settings, ... }:
+{
+  settings,
+  unstable-pkgs,
+  ...
+}:
 {
   programs.alacritty = {
     enable = true;
@@ -11,7 +15,6 @@
           instance = "Alacritty";
           general = "Alacritty";
         };
-        opacity = 0.8;
         padding = {
           x = 12;
           y = 6;
@@ -28,107 +31,220 @@
         };
         size = 12.0;
       };
+      cursor.style = "Beam";
       mouse = {
         hide_when_typing = true;
       };
-      colors =
-        let
-          palette = config.colorScheme.palette;
-        in
-        {
-          primary = {
-            background = "#${palette.base00}";
-            foreground = "#${palette.base05}";
-            dim_foreground = "#${palette.base03}";
-            bright_foreground = "#${palette.base05}";
+      # Based on: https://raw.githubusercontent.com/edeneast/nightfox.nvim/main/extra/nightfox/alacritty.toml
+      # converted using: https://github.com/erooke/toml2nix/
+      colors = {
+        primary = {
+          background = "#192330";
+          foreground = "#cdcecf";
+          dim_foreground = "#aeafb0";
+          bright_foreground = "#d6d6d7";
+        };
+        cursor = {
+          text = "#cdcecf";
+          cursor = "#aeafb0";
+        };
+        vi_mode_cursor = {
+          text = "#cdcecf";
+          cursor = "#63cdcf";
+        };
+        search = {
+          matches = {
+            foreground = "#cdcecf";
+            background = "#3c5372";
           };
-          normal = {
-            black = "#${palette.base00}";
-            red = "#${palette.base08}";
-            green = "#${palette.base0B}";
-            yellow = "#${palette.base0A}";
-            blue = "#${palette.base0D}";
-            magenta = "#${palette.base0E}";
-            cyan = "#${palette.base0C}";
-            white = "#${palette.base05}";
-          };
-          bright = {
-            black = "#${palette.base03}";
-            red = "#${palette.base08}";
-            green = "#${palette.base0B}";
-            yellow = "#${palette.base0A}";
-            blue = "#${palette.base0D}";
-            magenta = "#${palette.base0E}";
-            cyan = "#${palette.base0C}";
-            white = "#${palette.base05}";
+          focused_match = {
+            foreground = "#cdcecf";
+            background = "#81b29a";
           };
         };
+        footer_bar = {
+          foreground = "#cdcecf";
+          background = "#29394f";
+        };
+        hints = {
+          start = {
+            foreground = "#cdcecf";
+            background = "#f4a261";
+          };
+          end = {
+            foreground = "#cdcecf";
+            background = "#29394f";
+          };
+        };
+        selection = {
+          text = "#cdcecf";
+          background = "#2b3b51";
+        };
+        normal = {
+          black = "#393b44";
+          red = "#c94f6d";
+          green = "#81b29a";
+          yellow = "#dbc074";
+          blue = "#719cd6";
+          magenta = "#9d79d6";
+          cyan = "#63cdcf";
+          white = "#dfdfe0";
+        };
+        bright = {
+          black = "#575860";
+          red = "#d16983";
+          green = "#8ebaa4";
+          yellow = "#e0c989";
+          blue = "#86abdc";
+          magenta = "#baa1e2";
+          cyan = "#7ad5d6";
+          white = "#e4e4e5";
+        };
+        dim = {
+          black = "#30323a";
+          red = "#ab435d";
+          green = "#6e9783";
+          yellow = "#baa363";
+          blue = "#6085b6";
+          magenta = "#8567b6";
+          cyan = "#54aeb0";
+          white = "#bebebe";
+        };
+        indexed_colors = [
+          {
+            index = 16;
+            color = "#f4a261";
+          }
+          {
+            index = 17;
+            color = "#d67ad2";
+          }
+        ];
+      };
+
     };
   };
 
   programs.kitty = {
     enable = true;
     font = {
-      name = "${settings.font}";
+      name = "Fira Code"; # don't use nerd font here
       size = 12;
     };
-    settings =
-      let
-        palette = config.colorScheme.palette;
-      in
-      {
-        enable_audio_bell = false;
-        update_check_interval = 0;
-        hide_window_decorations = true;
-        background_opacity = 0.8;
+    extraConfig = ''
+      # from: kitten choose-fonts
+      font_family      family="Fira Code"
+      bold_font        auto
+      italic_font      auto
+      bold_italic_font auto
 
-        window_padding_width = 8;
+      # from: kitten themes
 
-        # https://sw.kovidgoyal.net/kitty/performance/
+      ## name: Nightfox
+      ## author: EdenEast
+      ## license: MIT
+      ## upstream: https://github.com/EdenEast/nightfox.nvim/blob/main/extra/nightfox/nightfox_kitty.conf
 
-        input_delay = 0;
-        repaint_delay = 2;
-        sync_to_monitor = false;
-        wayland_enable_ime = false;
+      background #192330
+      foreground #cdcecf
+      selection_background #2b3b51
+      selection_foreground #cdcecf
+      url_color #81b29a
 
-        # Based on: https://github.com/kdrag0n/base16-kitty/blob/master/templates/default.mustache
+      # Cursor
+      # uncomment for reverse background
+      # cursor none
+      cursor #cdcecf
 
-        background = "#${palette.base00}";
-        foreground = "#${palette.base05}";
-        selection_background = "#${palette.base05}";
-        selection_foreground = "#${palette.base00}";
+      # Border
+      active_border_color #719cd6
+      inactive_border_color #39506d
+      bell_border_color #f4a261
 
-        url_color = "#${palette.base04}";
-        cursor = "#${palette.base05}";
-        cursor_text_color = "#${palette.base00}";
-        active_border_color = "#${palette.base03}";
-        inactive_border_color = "#${palette.base01}";
-        active_tab_background = "#${palette.base00}";
-        active_tab_foreground = "#${palette.base05}";
-        inactive_tab_background = "#${palette.base01}";
-        inactive_tab_foreground = "#${palette.base04}";
-        tab_bar_background = "#${palette.base01}";
-        wayland_titlebar_color = "#${palette.base00}";
-        macos_titlebar_color = "#${palette.base00}";
+      # Tabs
+      active_tab_background #719cd6
+      active_tab_foreground #131a24
+      inactive_tab_background #2b3b51
+      inactive_tab_foreground #738091
 
-        color0 = "#${palette.base00}";
-        color1 = "#${palette.base08}";
-        color2 = "#${palette.base0B}";
-        color3 = "#${palette.base0A}";
-        color4 = "#${palette.base0D}";
-        color5 = "#${palette.base0E}";
-        color6 = "#${palette.base0C}";
-        color7 = "#${palette.base05}";
+      # normal
+      color0 #393b44
+      color1 #c94f6d
+      color2 #81b29a
+      color3 #dbc074
+      color4 #719cd6
+      color5 #9d79d6
+      color6 #63cdcf
+      color7 #dfdfe0
 
-        color8 = "#${palette.base03}";
-        color9 = "#${palette.base09}";
-        color10 = "#${palette.base01}";
-        color11 = "#${palette.base02}";
-        color12 = "#${palette.base04}";
-        color13 = "#${palette.base06}";
-        color14 = "#${palette.base0F}";
-        color15 = "#${palette.base07}";
-      };
+      # bright
+      color8 #575860
+      color9 #d16983
+      color10 #8ebaa4
+      color11 #e0c989
+      color12 #86abdc
+      color13 #baa1e2
+      color14 #7ad5d6
+      color15 #e4e4e5
+
+      # extended colors
+      color16 #f4a261
+      color17 #d67ad2
+
+    '';
+    settings = {
+      enable_audio_bell = false;
+      update_check_interval = 0;
+      hide_window_decorations = true;
+
+      window_padding_width = 8;
+
+      # https://sw.kovidgoyal.net/kitty/performance/
+
+      input_delay = 0;
+      repaint_delay = 2;
+      sync_to_monitor = false;
+      wayland_enable_ime = false;
+    };
     shellIntegration.enableFishIntegration = true;
   };
+
+  home.packages = [
+    unstable-pkgs.ghostty
+  ];
+
+  xdg.configFile."ghostty/config".text = ''
+    font-family = "Fira Code Nerd Font"
+    gtk-titlebar = false
+    font-feature = calt
+    font-feature = liga
+    font-feature = dlig
+    font-size = 12
+
+    window-padding-x = 8
+    window-padding-y = 6
+
+    # theme from: https://github.com/mbadolato/iTerm2-Color-Schemes
+    palette = 0=#393b44
+    palette = 1=#c94f6d
+    palette = 2=#81b29a
+    palette = 3=#dbc074
+    palette = 4=#719cd6
+    palette = 5=#9d79d6
+    palette = 6=#63cdcf
+    palette = 7=#dfdfe0
+    palette = 8=#575860
+    palette = 9=#d16983
+    palette = 10=#8ebaa4
+    palette = 11=#e0c989
+    palette = 12=#86abdc
+    palette = 13=#baa1e2
+    palette = 14=#7ad5d6
+    palette = 15=#e4e4e5
+    background = #192330
+    foreground = #cdcecf
+    cursor-color = #cdcecf
+    selection-background = #2b3b51
+    selection-foreground = #cdcecf
+  '';
 }
