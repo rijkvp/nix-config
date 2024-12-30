@@ -30,8 +30,8 @@
       "ai" = "ollama run llama3.1";
       # Org mode
       "org" = "cd $XDG_DOCUMENTS_DIR/org && nvim todo.org";
-      # Zellij main session
-      "zj" = "zellij attach main --create";
+      # Zellij
+      "zj" = "zellij";
       # Lazygit
       "lg" = "lazygit";
     };
