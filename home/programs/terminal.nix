@@ -1,6 +1,5 @@
 {
   settings,
-  unstable-pkgs,
   ...
 }:
 {
@@ -208,43 +207,4 @@
     };
     shellIntegration.enableFishIntegration = true;
   };
-
-  home.packages = [
-    unstable-pkgs.ghostty
-  ];
-
-  xdg.configFile."ghostty/config".text = ''
-    font-family = "Fira Code Nerd Font"
-    gtk-titlebar = false
-    font-feature = calt
-    font-feature = liga
-    font-feature = dlig
-    font-size = 12
-
-    window-padding-x = 8
-    window-padding-y = 6
-
-    # theme from: https://github.com/mbadolato/iTerm2-Color-Schemes
-    palette = 0=#393b44
-    palette = 1=#c94f6d
-    palette = 2=#81b29a
-    palette = 3=#dbc074
-    palette = 4=#719cd6
-    palette = 5=#9d79d6
-    palette = 6=#63cdcf
-    palette = 7=#dfdfe0
-    palette = 8=#575860
-    palette = 9=#d16983
-    palette = 10=#8ebaa4
-    palette = 11=#e0c989
-    palette = 12=#86abdc
-    palette = 13=#baa1e2
-    palette = 14=#7ad5d6
-    palette = 15=#e4e4e5
-    background = #192330
-    foreground = #cdcecf
-    cursor-color = #cdcecf
-    selection-background = #2b3b51
-    selection-foreground = #cdcecf
-  '';
 }

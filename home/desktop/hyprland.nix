@@ -30,7 +30,7 @@
   home.file."${config.home.homeDirectory}/.local/bin/randterm" = {
     text = ''
       #!/bin/sh
-      terms=("alacritty" "kitty" "ghostty")
+      terms=("alacritty" "kitty")
       random_term=$(shuf -n 1 -e "''${terms[@]}")
       exec "$random_term" "$@"
     '';
@@ -165,7 +165,6 @@
 
       # Transparent windows
       windowrule = opacity 0.9 override 0.86 override,Alacritty
-      windowrule = opacity 0.9 override 0.86 override,ghostty
       windowrule = opacity 0.9 override 0.86 override,kitty
       windowrule = opacity 0.87 override 0.8 override,thunar
       windowrule = opacity 0.8 override 0.8 override,keepassxc
