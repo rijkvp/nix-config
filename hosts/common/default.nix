@@ -135,24 +135,28 @@
   };
 
   # Fonts
-  fonts.fontDir.enable = true;
+  fonts.fontDir.enable = true; # for flatpak
   fonts.packages = with pkgs; [
     liberation_ttf
     fira
-    fira-code
     vistafonts
     open-sans
     noto-fonts
-    noto-fonts-emoji
+    noto-fonts-cjk-sans
+    noto-fonts-color-emoji
+    noto-fonts-monochrome-emoji
     (nerdfonts.override {
       fonts = [
         "Iosevka"
         "JetBrainsMono"
         "FiraCode"
-        "CascadiaCode"
       ];
     })
   ];
+  fonts.fontconfig.defaultFonts = {
+    sansSerif = [ "Fira Sans" ];
+    monospace = [ "Fira Code Nerd Font" ];
+  };
 
   programs = {
     fish.enable = true;
