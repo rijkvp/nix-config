@@ -198,6 +198,8 @@
 
       window_padding_width = 8;
 
+      confirm_os_window_close = 0; # no confirmation on close
+
       # https://sw.kovidgoyal.net/kitty/performance/
 
       input_delay = 0;
