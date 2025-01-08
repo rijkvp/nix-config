@@ -139,6 +139,7 @@
   fonts.packages = with pkgs; [
     liberation_ttf
     fira
+    fira-code
     vistafonts
     open-sans
     noto-fonts
