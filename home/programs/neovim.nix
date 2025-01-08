@@ -218,7 +218,12 @@
           -- Language servers
           -- lspconfig.rust_analyzer.setup{} -- handled by rustaceanvim
           lspconfig.ts_ls.setup{}
-          lspconfig.clangd.setup{}
+          lspconfig.clangd.setup{
+            cmd = { "clangd", "--background-index", "--clang-tidy" },
+            init_options = {
+              fallbackFlags = { "-std=c++26" },
+            },
+          }
           lspconfig.nil_ls.setup({
             settings = {
               ['nil'] = {
