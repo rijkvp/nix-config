@@ -1,4 +1,4 @@
-{ pkgs, unstable-pkgs, ... }:
+{ pkgs, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -10,9 +10,8 @@
   ];
 
   # Zen kernel with full preemption
-  boot.kernelPackages = unstable-pkgs.linuxPackages_zen;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernelParams = [
-    "preempt=full"
     "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
   ];
 
@@ -34,13 +33,13 @@
   # Hardware
   hardware.enableAllFirmware = true;
 
-  # Bluetooth
-  hardware.bluetooth.enable = true;
-  services.blueman.enable = true;
-  boot.kernelModules = [
-    "btusb"
-    "bluetooth"
-  ];
+  # Bluetooth - disabled for now
+  #  hardware.bluetooth.enable = true;
+  #  services.blueman.enable = true;
+  #  boot.kernelModules = [
+  #    "btusb"
+  #    "bluetooth"
+  #  ];
 
   # Nvidia graphics
   hardware.graphics.enable = true;
@@ -54,7 +53,8 @@
   environment.systemPackages = with pkgs; [ egl-wayland ];
 
   # Internal Hard Drive
-  boot.initrd.luks.devices."crypthdint".device = "/dev/disk/by-uuid/57038b2d-ddf7-47b2-b253-7fd30605f4bf";
+  boot.initrd.luks.devices."crypthdint".device =
+    "/dev/disk/by-uuid/57038b2d-ddf7-47b2-b253-7fd30605f4bf";
   fileSystems."/mnt/hdint" = {
     device = "/dev/mapper/crypthdint";
     mountPoint = "/mnt/hdint";

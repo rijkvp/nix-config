@@ -122,7 +122,29 @@
 
       # Tree sitter
       {
-        plugin = nvim-treesitter.withAllGrammars;
+        plugin = (
+          unstable-pkgs.vimPlugins.nvim-treesitter.withPlugins (p: [
+            p.c
+            p.cpp
+            p.css
+            p.haskell
+            p.html
+            p.java
+            p.javascript
+            p.json
+            p.latex
+            p.lua
+            p.markdown
+            p.nix
+            p.org
+            p.org
+            p.rust
+            p.svelte
+            p.toml
+            p.typescript
+            p.xml
+          ])
+        );
         type = "lua";
         config = ''
           require'nvim-treesitter.configs'.setup {
@@ -428,6 +450,14 @@
             }
           '';
       }
+
+      {
+        plugin = image-nvim; # required for latex rendering
+        type = "lua";
+        config = ''
+          require('image').setup()
+        '';
+      }
       {
         plugin = neorg;
         type = "lua";
@@ -436,17 +466,28 @@
             load = {
               ["core.defaults"] = {},
               ["core.concealer"] = {},
+              ["core.export"] = {},
+              ["core.export.markdown"] = {},
+              ["core.integrations.image"] = {},
+              ["core.autocommands"] = {},
+              ["core.highlights"] = {},
+              ["core.integrations.treesitter"] = {},
+              ["core.neorgcmd"] = {},
+              ["core.latex.renderer"] = {},
             }
           })
+          vim.keymap.set('n', '<leader>e', ':w | :Neorg export to-file out.md<CR>', { noremap = true })
         '';
       }
     ];
+    extraLuaPackages = ps: [ ps.magick ];
     extraPackages = with unstable-pkgs; [
       tree-sitter
+      imagemagick # for image.nvim
       # Nix
       nil
       nixfmt-rfc-style
-      # C
+      # C/C++
       clang-tools
       # Rust
       rust-analyzer
@@ -465,6 +506,15 @@
       jdt-language-server
       # Zig
       zls
+      # Latex
+      (texlive.combine {
+        inherit (texlive)
+          scheme-basic
+          amsmath
+          dvipng
+          hyperref
+          ;
+      })
     ];
   };
 }
