@@ -65,7 +65,7 @@
         end
       end
       function orgtopdf
-        set out "$(basename $argv[1] .md).pdf"
+        set out "$(basename $argv[1] .org).pdf"
         pandoc --pdf-engine tectonic -f org -o "$out" "$argv[1]"
         while inotifywait -q "$argv[1]"
           pandoc --pdf-engine tectonic -f org -o "$out" "$argv[1]"
