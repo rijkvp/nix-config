@@ -64,7 +64,8 @@
     mutableUsers = false;
     users.rijk = {
       isNormalUser = true;
-      hashedPassword = "$y$j9T$e68AODd7XbX6pmjHKlAMT1$bwaqLqGPX72/S8zMoThqEFX0fZ6T/h8cRiY0vUlFQY1";
+      # generated using `mkpasswd`
+      hashedPassword = "$y$j9T$U88RVLweMcIL8RI6YkS./.$uceVRBP.9XZVAPZ2xITok7tr4x1uDbVgtQwADjSJRxC";
       extraGroups = [
         "wheel"
         "video"

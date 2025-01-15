@@ -58,10 +58,17 @@
           pandoc --pdf-engine tectonic -f markdown -o $out $argv[1]
         end
       end
-      function orgw
+      function orgtohtml
         pandoc -f org -o index.html "$argv[1]"
         while inotifywait -q "$argv[1]"
           pandoc -f org -o index.html "$argv[1]"
+        end
+      end
+      function orgtopdf
+        set out "$(basename $argv[1] .md).pdf"
+        pandoc --pdf-engine tectonic -f org -o "$out" "$argv[1]"
+        while inotifywait -q "$argv[1]"
+          pandoc --pdf-engine tectonic -f org -o "$out" "$argv[1]"
         end
       end
       function has_flake
