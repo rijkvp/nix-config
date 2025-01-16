@@ -44,18 +44,18 @@
         end
         nix shell $pkgs
       end
-      function tecw
+      function latexw
         set out "$(basename $argv[1] .tex).pdf"
         xdg-open "$out" &
-        tectonic -c minimal "$argv[1]"
+        pdflatex "$argv[1]"
         while inotifywait -q "$argv[1]"
-          tectonic -c minimal "$argv[1]"
+          pdflatex "$argv[1]"
         end
       end
       function mdw
         set out "$(basename $argv[1] .md).pdf"
         while inotifywait -q "$argv[1]"
-          pandoc --pdf-engine tectonic -f markdown -o $out $argv[1]
+          pandoc -f markdown -o $out $argv[1]
         end
       end
       function orgtohtml
@@ -66,9 +66,9 @@
       end
       function orgtopdf
         set out "$(basename $argv[1] .org).pdf"
-        pandoc --pdf-engine tectonic -f org -o "$out" "$argv[1]"
+        pandoc -f org -o "$out" "$argv[1]"
         while inotifywait -q "$argv[1]"
-          pandoc --pdf-engine tectonic -f org -o "$out" "$argv[1]"
+          pandoc -f org -o "$out" "$argv[1]"
         end
       end
       function has_flake

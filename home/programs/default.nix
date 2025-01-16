@@ -35,7 +35,7 @@
 
     # Document editing / LaTeX
     pandoc
-    tectonic
+    texlive.combined.scheme-medium
 
     # Dev
     difftastic
