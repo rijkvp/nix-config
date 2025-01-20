@@ -29,6 +29,7 @@
     xdg-utils
     zip
     yazi
+    libqalculate # calculator
 
     ffmpeg # Swiss knife for videos
     imagemagick # Swiss knife for images
