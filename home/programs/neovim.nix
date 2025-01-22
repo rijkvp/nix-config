@@ -124,25 +124,32 @@
       {
         plugin = (
           unstable-pkgs.vimPlugins.nvim-treesitter.withPlugins (p: [
+            p.bash
             p.c
             p.cpp
             p.css
+            p.gitcommit
             p.haskell
             p.html
+            p.ini
             p.java
             p.javascript
             p.json
+            p.kdl
             p.latex
             p.lua
             p.markdown
             p.nix
             p.org
             p.org
+            p.python
             p.rust
+            p.sql
             p.svelte
             p.toml
             p.typescript
             p.xml
+            p.zig
           ])
         );
         type = "lua";
