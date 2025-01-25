@@ -147,6 +147,9 @@
     noto-fonts-cjk-sans
     noto-fonts-color-emoji
     noto-fonts-monochrome-emoji
+    roboto
+    roboto-mono
+    ubuntu-sans
     (nerdfonts.override {
       fonts = [
         "Iosevka"
