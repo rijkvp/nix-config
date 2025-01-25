@@ -27,16 +27,6 @@
     executable = true;
   };
 
-  home.file."${config.home.homeDirectory}/.local/bin/randterm" = {
-    text = ''
-      #!/bin/sh
-      terms=("alacritty" "kitty")
-      random_term=$(shuf -n 1 -e "''${terms[@]}")
-      exec "$random_term" "$@"
-    '';
-    executable = true;
-  };
-
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland = {
@@ -67,7 +57,7 @@
       exec-once = ollama serve
       exec-once = beeper --hidden
 
-      $terminal = ~/.local/bin/randterm
+      $terminal = alacritty
 
       debug {
         disable_logs = false
