@@ -457,40 +457,10 @@
             }
           '';
       }
-
-      {
-        plugin = image-nvim; # required for latex rendering
-        type = "lua";
-        config = ''
-          require('image').setup()
-        '';
-      }
-      {
-        plugin = neorg;
-        type = "lua";
-        config = ''
-          require("neorg").setup({
-            load = {
-              ["core.defaults"] = {},
-              ["core.concealer"] = {},
-              ["core.export"] = {},
-              ["core.export.markdown"] = {},
-              ["core.integrations.image"] = {},
-              ["core.autocommands"] = {},
-              ["core.highlights"] = {},
-              ["core.integrations.treesitter"] = {},
-              ["core.neorgcmd"] = {},
-              ["core.latex.renderer"] = {},
-            }
-          })
-          vim.keymap.set('n', '<leader>e', ':w | :Neorg export to-file out.md<CR>', { noremap = true })
-        '';
-      }
     ];
     extraLuaPackages = ps: [ ps.magick ];
     extraPackages = with unstable-pkgs; [
       tree-sitter
-      imagemagick # for image.nvim
       # Nix
       nil
       nixfmt-rfc-style
@@ -513,15 +483,6 @@
       jdt-language-server
       # Zig
       zls
-      # Latex
-      (texlive.combine {
-        inherit (texlive)
-          scheme-basic
-          amsmath
-          dvipng
-          hyperref
-          ;
-      })
     ];
   };
 }
