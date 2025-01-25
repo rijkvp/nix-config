@@ -11,16 +11,18 @@
       choice="$(echo -e "$lock\n$suspend\n$hibernate\n$poweroff\n$reboot" | launcher -d -p 'Power menu  ')"
       if [ "$choice" = "$lock" ]
       then
-          ~/.local/bin/lockscreen
+          ~/.local/bin/lockscreen & disown
           exit 0
       fi
       if [ "$choice" = "$suspend" ]
       then
+          ~/.local/bin/lockscreen & disown
           systemctl suspend
           exit 0
       fi
       if [ "$choice" = "$hibernate" ]
       then
+          ~/.local/bin/lockscreen & disown
           systemctl hibernate
           exit 0
       fi
