@@ -444,6 +444,7 @@
             palette = config.colorScheme.palette;
           in
           ''
+            vim.opt.conceallevel = 3
             require('orgmode').setup{
               org_agenda_files = {'~/docs/org/**/*'},
               org_todo_keyword_faces = {
@@ -454,6 +455,7 @@
               org_startup_indented = true,
               org_hide_leading_stars = true,
               org_deadline_warning_days = 5,
+              org_hide_emphasis_markers = true,
             }
           '';
       }
