@@ -65,6 +65,7 @@
     gimp
     gthumb
     libreoffice
+    transmission-gtk
 
     # Spell checker
     hunspell
