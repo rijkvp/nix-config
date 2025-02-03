@@ -42,10 +42,23 @@
   #  ];
 
   # Nvidia graphics
-  hardware.graphics.enable = true;
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+    extraPackages = [
+      pkgs.nvidia-vaapi-driver
+    ];
+  };
+  boot.kernelModules = [
+    "nvidia"
+    "nvidia_modeset"
+    "nvidia_uvm"
+    "nvidia_drm"
+    "i2c-nvidia_gpu"
+  ];
   hardware.nvidia = {
     modesetting.enable = true;
-    open = true;
+    open = false; # can be buggy
     powerManagement.enable = true;
   };
   services.xserver.videoDrivers = [ "nvidia" ];
