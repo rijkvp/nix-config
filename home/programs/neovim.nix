@@ -129,6 +129,7 @@
             p.cpp
             p.css
             p.gitcommit
+            p.glsl
             p.haskell
             p.html
             p.ini
@@ -250,7 +251,7 @@
           lspconfig.clangd.setup{
             cmd = { "clangd", "--background-index", "--clang-tidy" },
             init_options = {
-              fallbackFlags = { "-std=c++26" },
+              fallbackFlags = { "-std=c++17" },
             },
           }
           lspconfig.nil_ls.setup({
