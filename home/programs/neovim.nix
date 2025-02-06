@@ -294,6 +294,11 @@
               vim.keymap.set("n", "g.", vim.lsp.buf.code_action, opts)
               vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, opts)
               vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, opts)
+
+              -- Toggle LSP inlay hints
+              vim.keymap.set("n", "<leader>i", function()
+                  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+              end, { desc = "Toggle LSP inlay hints" })
             end,
           })
         '';
