@@ -21,6 +21,7 @@
       vim.opt.signcolumn = "yes"
 
       vim.opt.spelllang = { 'en', 'nl' }
+      vim.opt.spellcapcheck = ""
 
       vim.opt.swapfile = false
       vim.opt.backup = false

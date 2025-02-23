@@ -95,11 +95,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1736366932,
-        "narHash": "sha256-GbDAvOvON7hI/dZnszIu6QuaxIbJedukvdW1c5+O7PQ=",
+        "lastModified": 1737204610,
+        "narHash": "sha256-Iz9X8tJPWtoVNaacfF6zMZ2Y/1uYvQHWi1bWSm3HLB8=",
         "ref": "main",
-        "rev": "78e124b55934fde43cb07577378102448837ef02",
-        "revCount": 50,
+        "rev": "806e4e1d8e74f96eb9e31ca27e4ebdd27ec7b343",
+        "revCount": 54,
         "type": "git",
         "url": "ssh://git@github.com/rijkvp/launcher"
       },

@@ -28,6 +28,7 @@ in
     # Screenshots
     grim
     slurp
+    wf-recorder
     # Applets
     networkmanagerapplet
   ];
