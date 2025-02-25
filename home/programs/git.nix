@@ -16,23 +16,54 @@
     };
     extraConfig = {
       gpg.format = "ssh";
-      pull.rebase = "true";
+      pull.rebase = true;
       init.defaultBranch = "main";
-      rebase.autoStash = "true";
+      rebase = {
+        autoSquash = true;
+        autoStash = true;
+        updateRefs = true;
+      };
+      credential.helper = "store"; # unsafe, but convenient
+
+      # https://blog.gitbutler.com/how-git-core-devs-configure-git/
+      column.ui = "auto";
+      branch.sort = "-committerdate";
+      tag.sort = "-taggerdate";
+      diff = {
+        algorithm = "histogram";
+        colorMoved = "plain";
+        mnemonicPrefix = true;
+        renames = true;
+      };
+      fetch = {
+        prune = true;
+        pruneTags = true;
+        all = true;
+      };
+
+      help.autocorrect = "prompt";
+      commit.verbose = true;
+      rerere = {
+        enabled = true;
+        autoupdate = true;
+      };
+
+      merge.conflictStyle = "zdiff3"; # also shows the original version
     };
     aliases = {
-      s = "status";
-      st = "status";
+      a = "add";
+      c = "commit";
       ch = "checkout";
       d = "diff";
       df = "diff";
-      a = "add";
-      c = "commit";
+      m = "merge";
       p = "push";
       pl = "pull";
-      rt = "restore";
       rs = "reset";
-      m = "merge";
+      rt = "restore";
+      s = "status";
+      st = "status";
+      sw = "switch";
     };
   };
 }
