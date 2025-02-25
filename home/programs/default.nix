@@ -36,7 +36,18 @@
 
     # Document editing / LaTeX
     pandoc
-    texlive.combined.scheme-medium
+    (texlive.combine {
+      inherit (texlive)
+        scheme-medium
+        xifthen
+        ifmtarg
+        framed
+        paralist
+        titlesec
+        biblatex
+        blindtext
+        ;
+    })
 
     # Dev
     difftastic
