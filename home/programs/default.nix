@@ -48,6 +48,7 @@
         blindtext
         ;
     })
+    biber
 
     # Dev
     difftastic

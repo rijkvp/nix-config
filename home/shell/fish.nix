@@ -45,11 +45,15 @@
         nix shell $pkgs
       end
       function latexw
+        set build_dir $(mktemp -d)
+        mkdir -p "$build_dir"
+        echo "Compiling $argv[1] to $build_dir"
+        set latexcmd "latexmk -pdf -halt-on-error -quiet -output-directory=$build_dir"
         set out "$(basename $argv[1] .tex).pdf"
         xdg-open "$out" &
-        pdflatex "$argv[1]"
+        eval $latexcmd "$argv[1]" && cp "$build_dir/$out" .
         while inotifywait -q "$argv[1]"
-          pdflatex "$argv[1]"
+          eval $latexcmd "$argv[1]" && cp "$build_dir/$out" .
         end
       end
       function mdw
