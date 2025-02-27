@@ -1,6 +1,7 @@
 { pkgs, ... }:
 {
   imports = [
+    ./beeper.nix
     ./beets.nix
     ./devenv.nix
     ./firefox.nix
