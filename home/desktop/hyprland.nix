@@ -97,8 +97,8 @@
 
         blur {
           enabled = true # saves battery if disabled
-          size = 4
-          passes = 1
+          size = 16
+          passes = 3
           vibrancy = 0.1696
         }
 
@@ -120,7 +120,7 @@
           animation = border, 1, 3, default
           animation = borderangle, 1, 3, default
           animation = fade, 1, 3, default
-          animation = workspaces, 1, 2, default
+          animation = workspaces, 1, 2, default, fade
           animation = specialWorkspace, 1, 2, default, slidevert
       }
 
@@ -145,6 +145,11 @@
       windowrule = workspace special:kp,keepassxc
       workspace = special:kp, on-created-empty:keepassxc, gapsout:${toString settings.scratchpadMargin}
 
+      # Beeper (special workspace)
+      bind = SUPER,C,togglespecialworkspace,bp
+      windowrule = workspace special:bp,Beeper
+      workspace = special:bp, on-created-empty:beeper, gapsout:${toString settings.scratchpadMargin}
+
       # Scratchpad (special workspace)
       bind = SUPER,B, togglespecialworkspace, sp
       bind = SUPER_SHIFT,B, movetoworkspace, special:sp
@@ -160,24 +165,16 @@
       windowrule = opacity 0.8 override 0.8 override,keepassxc
       windowrule = opacity 0.86 override 0.86 override,Signal
       windowrule = opacity 0.8 override 0.8 override,launcher
+      windowrule = opacity 0.86 override 0.8 override,Beeper
 
       # Applications
       bind = SUPER, RETURN, exec, $terminal
       bind = SUPER_CTRL,W, exec, firefox
       bind = SUPER_CTRL,F, exec, thunar
-      bind = SUPER_CTRL,N, exec, keepassxc
       bind = SUPER_CTRL,M, exec, $terminal -e ncmpcpp
-      bind = SUPER_CTRL,K, exec, beeper
-      bind = SUPER_CTRL,O, exec, obsidian
 
-      # Application worokspaces
+      # Application worokspaces ???
       windowrule = workspace 1, firefox
-      windowrule = workspace 3, obsidian
-      windowrule = workspace 5, Signal
-      windowrule = workspace 5, Element
-      windowrule = workspace 5, Beeper
-      windowrule = workspace 5, whatsapp
-      windowrule = workspace 6, thunderbird
 
       bind = SUPER, Q, killactive,
       bind = SUPER_SHIFT, X, exit,
