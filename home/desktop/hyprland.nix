@@ -97,9 +97,10 @@
 
         blur {
           enabled = true # saves battery if disabled
-          size = 16
+          xray = false
+          size = 8
           passes = 3
-          vibrancy = 0.1696
+          vibrancy = 0
         }
 
         shadow {
