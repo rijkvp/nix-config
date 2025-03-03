@@ -44,6 +44,10 @@
     useXkbConfig = true; # use xkbOptions in tty.
   };
 
+  # Make non-NixOS programs work
+  programs.nix-ld.enable = true;
+  services.envfs.enable = true;
+
   # Networking
   # this does not work with libvirtd so stay on iptables for now
   # networking.nftables.enable = true; # use nftables instead of iptables
