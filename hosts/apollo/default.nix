@@ -22,6 +22,7 @@
       "/var/lib/tailscale"
       "/var/db/sudo/lectured"
       "/var/lib/docker"
+      "/var/lib/bluetooth"
       {
         directory = "/var/cache/tuigreet";
         user = "greeter";
