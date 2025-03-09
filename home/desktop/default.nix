@@ -10,8 +10,9 @@ let
 in
 {
   imports = [
-    ./launcher
     ./hyprland.nix
+    ./launcher
+    ./notifier.nix
     ./waybar.nix
   ];
 
