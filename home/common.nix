@@ -16,9 +16,6 @@
 
   systemd.user.startServices = "sd-switch";
 
-  nixpkgs.config = import ./nixpkgs-config.nix;
-  xdg.configFile."nixpkgs/config.nix".source = ./nixpkgs-config.nix;
-
   # Nix Colors
   # https://github.com/EdenEast/nightfox.nvim
   colorScheme = {
