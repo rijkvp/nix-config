@@ -27,5 +27,12 @@
         Exec=Hyprland
       '';
     };
+    "greetd/sessions/niri.desktop" = {
+      text = ''
+        [Desktop Entry]
+        Name=niri
+        Exec=niri-session
+      '';
+    };
   };
 }

@@ -11,7 +11,8 @@
     modesetting.enable = true;
     open = false; # can be buggy
     powerManagement.enable = true;
-    # temporary fix: https://github.com/NixOS/nixpkgs/issues/375730
+    # package = config.boot.kernelPackages.nvidiaPackages.stable;
+    # temporary fix: https://github.com/NixOS/nixpkgs/issues/375730 TOUPDATE
     package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
       version = "570.86.16"; # use new 570 drivers
       sha256_64bit = "sha256-RWPqS7ZUJH9JEAWlfHLGdqrNlavhaR1xMyzs8lJhy9U=";
@@ -22,9 +23,9 @@
   };
   boot.kernelModules = [
     "nvidia"
-    "nvidia_modeset"
-    "nvidia_uvm"
-    "nvidia_drm"
+    "nvidia-modeset"
+    "nvidia-uvm"
+    "nvidia-drm"
     "i2c-nvidia_gpu"
   ];
   boot.kernelParams = [ "nvidia.NVreg_PreserveVideoMemoryAllocations=1" ];

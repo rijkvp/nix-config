@@ -3,7 +3,6 @@
   imports = [
     ./alacritty.nix
     ./beeper.nix
-    ./beets.nix
     ./devenv.nix
     ./firefox.nix
     ./git.nix
