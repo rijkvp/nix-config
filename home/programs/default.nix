@@ -1,17 +1,16 @@
 { pkgs, ... }:
 {
   imports = [
+    ./alacritty.nix
     ./beeper.nix
     ./beets.nix
     ./devenv.nix
     ./firefox.nix
-    ./foot.nix
     ./git.nix
     ./mpv.nix
     ./ncmpcpp.nix
     ./neovim.nix
     ./newsboat.nix
-    ./terminal.nix
     ./zathura.nix
   ];
 

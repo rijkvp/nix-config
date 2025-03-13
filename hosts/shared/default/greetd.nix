@@ -27,19 +27,5 @@
         Exec=Hyprland
       '';
     };
-    "greetd/sessions/sway.desktop" = {
-      text = ''
-        [Desktop Entry]
-        Name=Sway
-        Exec=sway
-      '';
-    };
-    "greetd/sessions/sway-unsupported-gpu.desktop" = {
-      text = ''
-        [Desktop Entry]
-        Name=Sway (unsupported GPU)
-        Exec=sway --unsupported-gpu
-      '';
-    };
   };
 }

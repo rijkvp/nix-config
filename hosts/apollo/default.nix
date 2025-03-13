@@ -2,9 +2,11 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../common
-    ../common/virt-manager.nix
-    ../common/podman.nix
+    ../shared
+    ../shared/bluetooth.nix
+    ../shared/distrobox.nix
+    ../shared/podman.nix
+    ../shared/virt-manager.nix
     inputs.impermanence.nixosModules.impermanence
   ];
 
@@ -50,15 +52,7 @@
   # Touchpad support
   services.libinput.enable = true;
 
-  # OpenGL
-  hardware.graphics.enable = true;
-
-  # Bluetooth
-  hardware.bluetooth.enable = true;
-  services.blueman.enable = true;
-
   # Laptop power management
   powerManagement.enable = true;
-  # Use power-profiles-daemon to be compatible with GNOME
-  services.power-profiles-daemon.enable = true;
+  services.power-profiles-daemon.enable = true; # power-profiles-daemon is compatible with GNOME
 }

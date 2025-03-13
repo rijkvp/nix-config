@@ -1,17 +1,14 @@
 { pkgs, ... }:
 {
   imports = [
-    ./greetd.nix
-    ./hyprland.nix
+    ./default/fonts.nix
+    ./default/greetd.nix
+    ./default/hyprland.nix
   ];
-
-  nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.allowUnfreePredicate = _: true;
 
   nix = {
     settings = {
       experimental-features = "nix-command flakes";
-      auto-optimise-store = true;
       trusted-users = [
         "root"
         "rijk"
@@ -27,10 +24,19 @@
       dates = "weekly";
       options = "--delete-older-than 30d";
     };
+    optimise.automatic = true; # periodic optimisation of the nix store
+  };
+
+  nixpkgs.config = {
+    allowUnfree = true;
+    allowUnfreePredicate = _: true;
   };
 
   # include systemd in initial ram disk
   boot.initrd.systemd.enable = true;
+  # boot animation
+  boot.plymouth.enable = true;
+
   services.irqbalance.enable = true; # deamon to balance interrupts across CPUs, can help to avoid freezing DE
   services.dbus = {
     enable = true;
@@ -50,18 +56,8 @@
   services.envfs.enable = true;
 
   # Networking
-  # this does not work with libvirtd so stay on iptables for now
-  # networking.nftables.enable = true; # use nftables instead of iptables
-
-  # syncthing ports
-  networking.firewall.allowedTCPPorts = [ 22000 ];
-  networking.firewall.allowedUDPPorts = [
-    22000
-    21027
-  ];
-
-  # ADB
-  programs.adb.enable = true;
+  networking.nftables.enable = true; # use nftables instead of iptables
+  services.tailscale.enable = true;
 
   # Users
   users = {
@@ -89,16 +85,14 @@
     };
   };
 
-  services.tailscale.enable = true;
-
   # Sytem Packages
   environment.systemPackages = with pkgs; [
     # A few essential pacakges
+    curl
     wget
     git
     freshfetch
     htop
-    fish
     wireguard-tools
 
     # Man pages
@@ -108,13 +102,6 @@
     # Customized vim
     ((vim_configurable.override { }).customize {
       name = "vim";
-      vimrcConfig.packages.myplugins = with pkgs.vimPlugins; {
-        start = [
-          vim-nix
-          vim-lastplace
-        ];
-        opt = [ ];
-      };
       vimrcConfig.customRC = ''
         set nocompatible
         set backspace=indent,eol,start
@@ -133,49 +120,13 @@
     "ff" = "freshfetch";
   };
 
-  # Desktop portal
-  # (The Hyprland module adds the hyprland portal to the list)
-  xdg.portal = {
-    enable = true;
-    extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
-  };
-
-  # Fonts
-  fonts.fontDir.enable = true; # for flatpak
-  fonts.packages = with pkgs; [
-    liberation_ttf
-    fira
-    fira-code
-    vistafonts
-    open-sans
-    noto-fonts
-    noto-fonts-cjk-sans
-    noto-fonts-color-emoji
-    noto-fonts-monochrome-emoji
-    roboto
-    roboto-mono
-    ubuntu-sans
-    (nerdfonts.override {
-      fonts = [
-        "Iosevka"
-        "JetBrainsMono"
-        "FiraCode"
-      ];
-    })
-  ];
-  fonts.fontconfig.defaultFonts = {
-    sansSerif = [ "Fira Sans" ];
-    monospace = [ "Fira Code Nerd Font" ];
-  };
+  programs.fish.enable = true; # fish shell
 
   programs = {
-    fish.enable = true;
     light.enable = true;
     dconf.enable = true;
     thunar.enable = true;
   };
-
-  hardware.pulseaudio.enable = false;
 
   services = {
     resolved.enable = true;
@@ -187,15 +138,14 @@
       };
     };
     gvfs.enable = true;
-    # PipeWire Audio
-    pipewire = {
-      enable = true;
-      alsa.enable = true;
-      pulse.enable = true;
-    };
+  };
 
-    # Flatpak
-    flatpak.enable = true;
+  # PipeWire Audio
+  hardware.pulseaudio.enable = false;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    pulse.enable = true;
   };
 
   # Key remaps
@@ -209,11 +159,6 @@
         };
       };
     };
-  };
-
-  # Boot animation
-  boot.plymouth = {
-    enable = true;
   };
 
   # Security

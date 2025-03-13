@@ -6,7 +6,7 @@ let
   # Lepton theme https://github.com/black7375/Firefox-UI-Fix
   theme-dir = builtins.fetchGit {
     url = "https://github.com/black7375/Firefox-UI-Fix.git";
-    rev = "530b283da01d898d75909385afffacef89ecaa19"; # must be updated for newer versions
+    rev = "d46476ce72ecf236389c568742a2c8ad68dab771"; # TOUPDATE: must be manually updated for newer versions
   };
   user-js = theme-dir.outPath + "/user.js";
 
@@ -132,62 +132,36 @@ in
       };
       # See ArkenFox: https://github.com/arkenfox/user.js/blob/master/user.js
       settings = {
+        # startup debloat
         "browser.newtabpage.enabled" = false;
         "browser.newtabpage.activity-stream.showSponsored" = false;
         "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
-        # Disable telemetery
-        "datareporting.policy.dataSubmissionEnabled" = false;
-        "datareporting.healthreport.uploadEnabled" = false;
-        "toolkit.telemetry.unified" = false;
-        "toolkit.telemetry.enabled" = false;
-        "toolkit.telemetry.server" = "data:,";
-        "toolkit.telemetry.archive.enabled" = false;
-        "toolkit.telemetry.newProfilePing.enabled" = false;
-        "toolkit.telemetry.shutdownPingSender.enabled" = false;
-        "toolkit.telemetry.updatePing.enabled" = false;
-        "toolkit.telemetry.bhrPing.enabled" = false;
-        "toolkit.telemetry.firstShutdownPing.enabled" = false;
-        "toolkit.telemetry.coverage.opt-out" = true;
-        "toolkit.telemetry.hybridContent.enabled" = false;
-        "toolkit.telemetry.reportingpolicy.firstRun" = false;
-        "toolkit.coverage.opt-out" = true;
-        "toolkit.coverage.endpoint.base" = "";
-        "browser.ping-centre.telemetry" = false;
+        "browser.newtabpage.activity-stream.default.sites" = "";
+        # more debloat
+        "extensions.getAddons.showPane" = false;
+        "extensions.htmlaboutaddons.recommendations.enabled" = false;
+        "browser.discovery.enabled" = false;
+        "browser.shopping.experience2023.enabled" = false;
+        # disable telemetry, studies, crash reports
         "browser.newtabpage.activity-stream.feeds.telemetry" = false;
         "browser.newtabpage.activity-stream.telemetry" = false;
         "app.shield.optoutstudies.enabled" = false;
+        "app.normandy.first_run" = false;
         "app.normandy.enabled" = false;
         "app.normandy.api_url" = "";
         "breakpad.reportURL" = "";
         "browser.tabs.crashReporting.sendReport" = false;
-        "browser.crashReports.unsubmittedCheck.enabled" = false;
-        "browser.crashReports.unsubmittedCheck.autoSubmit2" = false;
-        "captivedetect.canonicalURL" = "";
-        "network.captive-portal-service.enabled" = false;
-        "network.connectivity-service.enabled" = false;
-        # Disable experiments
-        "experiments.activeExperiment" = false;
-        "experiments.enabled" = false;
-        "experiments.supported" = false;
-        "network.allow-experiments" = false;
-        # Disable FormFill
+        # disable FormFill
         "browser.formfill.enable" = false;
-        # Don't ask for saving passwords
+        # disable password manager
         "signon.rememberSignons" = false;
-        # Disable Pocket
+        # disable Pocket
         "browser.newtabpage.activity-stream.section.highlights.includePocket" = false;
         "extensions.pocket.enabled" = false;
         "extensions.pocket.api" = "";
         "extensions.pocket.oAuthConsumerKey" = "";
         "extensions.pocket.showHome" = false;
         "extensions.pocket.site" = "";
-        # Hide 'Firefox View'
-        "browser.tabs.firefox-view" = false;
-        # Compact mode
-        "browser.compactmode.show" = true;
-        # Strict headers
-        "network.http.referer.XOriginPolicy" = 2;
-        "network.http.referer.XOriginTrimmingPolicy" = 2;
         # Privacy
         "browser.contentblocking.category" = "strict";
         "privacy.trackingprotection.enabled" = true;
@@ -196,23 +170,18 @@ in
         "privacy.partition.serviceWorkers" = true;
         "privacy.partition.always_partition_third_party_non_cookie_storage" = true;
         "privacy.partition.always_partition_third_party_non_cookie_storage.exempt_sessionstorage" = false;
-        # Clear cookies on shutdown, add exception for ther sizes
-        "privacy.sanitize.sanitizeOnShutdown" = true;
-        "privacy.clearOnShutdown.cache" = true;
-        "privacy.clearOnShutdown.downloads" = true;
-        "privacy.clearOnShutdown.formdata" = true;
-        "privacy.clearOnShutdown.history" = true;
-        "privacy.clearOnShutdown.sessions" = true; # only HTTP basic auth
-        "privacy.clearOnShutdown.cookies" = true; # logs out of sites
-        "privacy.clearOnShutdown.offlineApps" = true;
-        # The tems that are selected automatically when you bring up the Clear Browsing Data dialog
-        "privacy.cpd.cache" = true;
-        "privacy.cpd.formdata" = true;
-        "privacy.cpd.history" = true;
-        "privacy.cpd.sessions" = true;
-        "privacy.cpd.offlineApps" = false;
-        "privacy.cpd.cookies" = false;
-        # Dark theme
+        # compact mode
+        "browser.compactmode.show" = true;
+        # strict headers
+        "network.http.referer.XOriginPolicy" = 2;
+        "network.http.referer.XOriginTrimmingPolicy" = 2;
+        # disable captive portal
+        "captivedetect.canonicalURL" = "";
+        "network.captive-portal-service.enabled" = false;
+        "network.connectivity-service.enabled" = false;
+        # download dir
+        "browser.download.useDownloadDir" = true;
+        # dark theme
         "extensions.activeThemeID" = "firefox-compact-dark@mozilla.org";
       };
     };
