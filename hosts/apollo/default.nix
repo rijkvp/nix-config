@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ inputs, pkgs, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -36,6 +36,9 @@
       "/var/lib/logrotate.status"
     ];
   };
+
+  # Latest kernel
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # EFI bootloader: systemd-boot
   boot.loader.systemd-boot.enable = true;
