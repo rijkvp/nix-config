@@ -6,7 +6,7 @@
   ...
 }:
 let
-  launcher-pkg = inputs.launcher.packages.${pkgs.system}.default;
+  launchr = inputs.launchr.packages.${pkgs.system}.default;
 in
 {
   imports = [
@@ -18,7 +18,7 @@ in
   ];
 
   home.packages = with pkgs; [
-    launcher-pkg
+    launchr
     # Desktop
     glib # GTK
     wayland

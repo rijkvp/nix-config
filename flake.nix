@@ -9,8 +9,8 @@
     impermanence.url = "github:nix-community/impermanence";
     nix-colors.url = "github:misterio77/nix-colors";
 
-    launcher.url = "git+ssh://git@github.com/rijkvp/launcher?ref=main";
-    launcher.inputs.nixpkgs.follows = "nixpkgs";
+    launchr.url = "git+ssh://git@github.com/rijkvp/launchr?ref=main";
+    launchr.inputs.nixpkgs.follows = "nixpkgs";
 
     niri.url = "github:sodiboo/niri-flake";
     niri.inputs.nixpkgs.follows = "nixpkgs";

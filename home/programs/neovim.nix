@@ -54,18 +54,18 @@
     '';
     plugins =
       with unstable-pkgs.vimPlugins;
-      assert orgmode.version == "0.4.32-1-unstable-0.4.32-1"; # fix only tested for this version
-      let
-        # this removes the line from the orgmode plugin that causes an error on NixOS since it tries to write to the Nix store
-        fixedOrgmode = orgmode.overrideAttrs (oldAttrs: {
-          src = unstable-pkgs.runCommand "modified-orgmode-src" { } ''
-            mkdir -p $out
-            cp -r ${oldAttrs.src}/. $out/
-            chmod -R u+w $out
-            sed -i '43d' $out/lua/orgmode/utils/treesitter/install.lua
-          '';
-        });
-      in
+      # assert orgmode.version == "0.4.32-1-unstable-0.4.32-1"; # fix only tested for this version
+      # let
+      #   # this removes the line from the orgmode plugin that causes an error on NixOS since it tries to write to the Nix store
+      #   fixedOrgmode = orgmode.overrideAttrs (oldAttrs: {
+      #     src = unstable-pkgs.runCommand "modified-orgmode-src" { } ''
+      #       mkdir -p $out
+      #       cp -r ${oldAttrs.src}/. $out/
+      #       chmod -R u+w $out
+      #       sed -i '43d' $out/lua/orgmode/utils/treesitter/install.lua
+      #     '';
+      #   });
+      # in
       [
         {
           plugin = nightfox-nvim;
@@ -455,7 +455,7 @@
           '';
         }
         {
-          plugin = fixedOrgmode;
+          plugin = orgmode;
           type = "lua";
           config =
             let
