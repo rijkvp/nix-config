@@ -8,7 +8,7 @@
       hibernate="󰤄 Hibernate"
       poweroff=" Power off"
       reboot=" Reboot"
-      choice="$(echo -e "$lock\n$suspend\n$hibernate\n$poweroff\n$reboot" | launcher -d -p 'Power menu  ')"
+      choice="$(echo -e "$lock\n$suspend\n$hibernate\n$poweroff\n$reboot" | launchr -d -p 'Power menu  ')"
       if [ "$choice" = "$lock" ]
       then
           ~/.local/bin/lockscreen & disown
@@ -45,7 +45,7 @@
   home.file."${config.home.homeDirectory}/.local/bin/emojipicker" = {
     text = ''
       #!/bin/sh
-      chosen=$(cut -d ';' -f1 ~/.local/share/emoji | launcher -d -p "Emojis" | sed "s/ .*//")
+      chosen=$(cut -d ';' -f1 ~/.local/share/emoji | launchr -d -p "Emojis" | sed "s/ .*//")
       [ -z "$chosen" ] && exit
       wtype "$chosen"
     '';
@@ -56,7 +56,7 @@
   home.file."${config.home.homeDirectory}/.local/bin/bookmarkmenu" = {
     text = ''
       #!/bin/sh
-      grep -vE '^(#|$)' ~/docs/BOOKMARKS | launcher -d -p "Bookmarks" | grep -oE '[^ ]+$' | wtype -
+      grep -vE '^(#|$)' ~/docs/BOOKMARKS | launchr -d -p "Bookmarks" | grep -oE '[^ ]+$' | wtype -
     '';
     executable = true;
   };

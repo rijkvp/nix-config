@@ -11,7 +11,7 @@ in
 {
   imports = [
     ./hyprland.nix
-    ./launcher
+    ./launchr
     ./niri.nix
     ./notifier.nix
     ./waybar.nix

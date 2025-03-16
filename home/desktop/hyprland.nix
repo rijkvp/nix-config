@@ -157,7 +157,7 @@
       workspace = special:sp, on-created-empty:$terminal, gapsout:${toString settings.scratchpadMargin}
 
       windowrule=float,title:^debug
-      windowrulev2=float,class:launcher
+      windowrulev2=float,class:launchr
 
       # Transparent windows
       windowrule = opacity 0.9 override 0.86 override,Alacritty
@@ -165,7 +165,7 @@
       windowrule = opacity 0.87 override 0.8 override,thunar
       windowrule = opacity 0.8 override 0.8 override,keepassxc
       windowrule = opacity 0.86 override 0.86 override,Signal
-      windowrule = opacity 0.8 override 0.8 override,launcher
+      windowrule = opacity 0.8 override 0.8 override,launchr
       windowrule = opacity 0.86 override 0.8 override,Beeper
 
       # Applications
@@ -227,11 +227,11 @@
       bind = SUPER, s, exec, grim - | tee "${config.xdg.userDirs.pictures}/desktop-screenshots/$(date +"%Y-%m-%d-%H-%M-%S")-screenshot.png" | wl-copy -t image/png
       bind = SUPER SHIFT, s, exec, grim -g "$(slurp)" - | tee "${config.xdg.userDirs.pictures}/desktop-screenshots/$(date +"%Y-%m-%d-%H-%M-%S")-screenshot.png" | wl-copy -t image/png
 
-      # Launcher menus
-      bind = SUPER, D, exec, launcher -m apps
+      # launchr menus
+      bind = SUPER, D, exec, launchr -m apps
       bind = SUPER SHIFT, p, exec, ~/.local/bin/powermenu
       bind = SUPER CONTROL, l, exec, ~/.local/bin/lockscreen
-      bind = SUPER, p, exec, launcher -m files
+      bind = SUPER, p, exec, launchr -m files
       bind = SUPER, grave, exec, ~/.local/bin/emojipicker
       bind = SUPER, C, exec, $terminal -e 
       bind = SUPER, V, exec, $terminal -e nvim 
