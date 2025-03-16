@@ -12,7 +12,7 @@ in
   imports = [
     ./hyprland.nix
     ./launchr
-    ./niri.nix
+    ./niri
     ./notifier.nix
     ./waybar.nix
   ];
