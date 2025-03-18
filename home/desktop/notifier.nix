@@ -9,11 +9,8 @@
       Description = "Notifier service";
     };
     Service = {
-      Type = "simple";
+      Type = "oneshot";
       ExecStart = "${pkgs.libnotify}/bin/notify-send -u critical -a \"Notifier\" \"TIME TO TAKE A BREAK\"";
-    };
-    Install = {
-      WantedBy = [ "default.target" ];
     };
   };
 

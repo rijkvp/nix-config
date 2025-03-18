@@ -9,6 +9,7 @@
     ./desktop
     ./shell
     ./programs
+    ./backup.nix
     inputs.nix-colors.homeManagerModules.default
   ];
 

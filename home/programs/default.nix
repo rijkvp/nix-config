@@ -69,6 +69,7 @@
 
     # Backup
     borgbackup
+    rclone
 
     # GUI Programs
     appimage-run
