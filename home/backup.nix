@@ -1,6 +1,6 @@
 { pkgs, config, ... }:
 let
-  filtersFile = "${config.home.homeDirectory}/.state/rclone-backup-filters";
+  filtersFile = "${config.home.homeDirectory}/.local/share/rclone-backup-filters";
 in
 {
   home.packages = with pkgs; [
@@ -8,15 +8,29 @@ in
   ];
 
   home.file."${filtersFile}".text = ''
-    # directories to exclude
+    # directories to alwasys exclude
     - **/.stfolder*/**
     - **/.git/**
     - **/.cache/**
     - **/.thumbnails/**
+    - **/.direnv/**
+    - **/.devenv/**
+    # cache dirs in repos
+    - /repos/**/.gradle/**
+    - /repos/**/.idea/**
+    - /repos/**/.sqlx/**
+    - /repos/**/.svelte-kit/**
+    - /repos/**/.vscode/**
+    - /repos/**/build/**
+    - /repos/**/node_modules/**
+    - /repos/**/obj/**
+    - /repos/**/target/**
     # directories to include
+    + /archive/**
     + /music/**
     + /docs/**
     + /pics/**
+    + /repos/**
     # exclude everything else
     - **
   '';
