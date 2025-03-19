@@ -8,11 +8,13 @@
         position = "top";
         spacing = 8;
         modules-left = [
-          "hyprland/window"
+          "hyprland/workspaces"
+          "niri/workspaces"
           "mpd"
+          "hyprland/window"
+          "niri/window"
         ];
         modules-center = [
-          "hyprland/workspaces"
         ];
         modules-right = [
           "tray"

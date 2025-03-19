@@ -12,9 +12,9 @@
         command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --remember-session --sessions /etc/greetd/sessions";
         user = "greeter";
       };
-      # First session autologins to Hyprland
+      # First session autologins to Niri
       initial_session = {
-        command = "Hyprland";
+        command = "niri-session";
         user = "rijk";
       };
     };
