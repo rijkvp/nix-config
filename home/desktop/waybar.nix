@@ -35,6 +35,16 @@
         "hyprland/window" = {
           separate-outputs = true;
         };
+        "niri/workspaces" = {
+          format = "{icon}";
+          format-icons = {
+            active = "";
+            default = " ";
+
+            chat = " ";
+            pass = " ";
+          };
+        };
         "mpd" = {
           format = "{stateIcon} {artist} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S} {songPosition}|{queueLength})";
           format-disconnected = "  Disconnected";
@@ -112,7 +122,7 @@
           border: none;
           font-family: ${settings.font};
           min-height: 0;
-          font-size: 13px;
+          font-size: 14px;
         }
         window#waybar {
            color: #${palette.base05};
