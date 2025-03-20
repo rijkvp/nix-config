@@ -14,7 +14,7 @@ in
     - **/.cache/**
     - **/.thumbnails/**
     - **/.direnv/**
-    - **/.devenv/**
+    - **/.devenv*/**
     # cache dirs in repos
     - /repos/**/.gradle/**
     - /repos/**/.idea/**
@@ -42,7 +42,7 @@ in
     };
     Service = {
       Type = "oneshot";
-      ExecStart = "${pkgs.rclone}/bin/rclone sync -vv --ignore-case --filter-from ${filtersFile} --exclude-if-present=\"CACHEDIR.TAG\" --protondrive-replace-existing-draft=true --protondrive-enable-caching \"${config.home.homeDirectory}/\" \"protondrive:backup/\"";
+      ExecStart = "${pkgs.rclone}/bin/rclone sync -v --ignore-case --filter-from ${filtersFile} --exclude-if-present=\"CACHEDIR.TAG\" --protondrive-replace-existing-draft=true --protondrive-enable-caching \"${config.home.homeDirectory}/\" \"protondrive:backup/\"";
     };
   };
 
