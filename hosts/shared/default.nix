@@ -80,6 +80,8 @@
         "lxd"
         "plugdev"
         "adbusers"
+        "docker"
+        "podman"
       ];
       shell = pkgs.fish;
     };
