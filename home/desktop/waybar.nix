@@ -38,9 +38,8 @@
         "niri/workspaces" = {
           format = "{icon}";
           format-icons = {
-            active = "";
+            active = " ";
             default = " ";
-
             chat = " ";
             pass = " ";
           };
@@ -157,7 +156,6 @@
           border-radius: 4px;
           background: #${palette.base00};
           color: #${palette.base05};
-          border: 2px solid transparent;
         }
         #workspaces button:hover {
           background: #${palette.base01};
@@ -165,12 +163,11 @@
 
         #workspaces button.focused {
           background: #${palette.base00};
-          border: 2px solid #${palette.base0D};
+          color: #${palette.base0D};
         }
 
         #workspaces button.active {
           background: #${palette.base01};
-          border: 2px solid #${palette.base0D};
         }
         #workspaces button.urgent {
           background: #${palette.base0B};
