@@ -13,7 +13,6 @@ in
     ./hyprland.nix
     ./launchr
     ./niri
-    ./notifier.nix
     ./waybar.nix
   ];
 

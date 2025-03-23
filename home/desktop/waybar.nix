@@ -7,6 +7,7 @@
         layer = "top";
         position = "top";
         spacing = 8;
+        reload_style_on_change = true;
         modules-left = [
           "hyprland/workspaces"
           "niri/workspaces"
@@ -38,10 +39,8 @@
         "niri/workspaces" = {
           format = "{icon}";
           format-icons = {
-            active = " ";
-            default = " ";
-            chat = " ";
-            pass = " ";
+            active = "";
+            default = "";
           };
         };
         "mpd" = {
@@ -124,9 +123,8 @@
           font-size: 14px;
         }
         window#waybar {
-           color: #${palette.base05};
-           background: #${palette.base00};
-           opacity: 0.85;
+           all:unset;
+           margin: 8px 0;
         }
         .modules-left {
           margin: 0 ${toString settings.screenMargin}px;
@@ -152,24 +150,24 @@
         }
 
         #workspaces button {
-          padding: 2px 5px;
-          border-radius: 4px;
-          background: #${palette.base00};
+          all: unset;
+          padding: 0px 5px;
           color: #${palette.base05};
         }
         #workspaces button:hover {
+          border: none;
           background: #${palette.base01};
         }
-
         #workspaces button.focused {
-          background: #${palette.base00};
+          border: none;
           color: #${palette.base0D};
         }
-
         #workspaces button.active {
+          border: none;
           background: #${palette.base01};
         }
         #workspaces button.urgent {
+          border: none;
           background: #${palette.base0B};
         }
       '';
