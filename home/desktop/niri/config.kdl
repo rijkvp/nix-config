@@ -373,6 +373,7 @@ binds {
     // Mod+Shift+P { power-off-monitors; }
     //
     Mod+P { spawn "launchr" "-m" "apps"; }
+    Mod+Shift+P { spawn "launchr" "-m" "files"; }
     Mod+Alt+P { spawn "~/.local/bin/powermenu"; }
     Mod+grave { spawn "~/.local/bin/emojipicker"; }
 }
