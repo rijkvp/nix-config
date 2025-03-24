@@ -18,6 +18,7 @@
         modules-center = [
         ];
         modules-right = [
+          "custom/ttd"
           "tray"
           "wireplumber"
           "cpu"
@@ -106,6 +107,10 @@
         };
         "tray" = {
           spacing = 10;
+        };
+        "custom/ttd" = {
+          exec = "~/.local/bin/ttd-status";
+          interval = 1;
         };
       };
     };

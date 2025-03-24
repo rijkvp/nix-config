@@ -376,6 +376,8 @@ binds {
     Mod+Shift+P { spawn "launchr" "-m" "files"; }
     Mod+Alt+P { spawn "~/.local/bin/powermenu"; }
     Mod+grave { spawn "~/.local/bin/emojipicker"; }
+    Mod+T { spawn "~/.local/bin/ttd-switch"; }
+    Mod+Alt+T { spawn "~/.local/bin/ttd-stop"; }
 }
 
 layer-rule {
