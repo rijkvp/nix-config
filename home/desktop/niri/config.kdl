@@ -232,14 +232,18 @@ binds {
     Super+Alt+L { spawn "~/.local/bin/lockscreen"; }
 
     // PipeWire & WirePlumber. volume control
-    XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
-    XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
+    XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "2%-"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "2%+"; }
     XF86AudioMute        allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
     XF86AudioMicMute     allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
 
     Shift+F2 { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "2%-"; }
     Shift+F3   { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "2%+"; }
     Shift+F4   { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggl"; }
+
+    // Backlight control
+    XF86MonBrightnessUp allow-when-locked=true { spawn "light" "-A" "5"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "light" "-U" "5"; }
 
     Mod+Q { close-window; }
 
