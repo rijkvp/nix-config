@@ -25,7 +25,7 @@
           family = "${settings.font}";
           style = "bold";
         };
-        size = 12.0;
+        size = 13.0;
       };
       cursor.style = "Beam";
       mouse = {
