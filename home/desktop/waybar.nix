@@ -114,66 +114,138 @@
         };
       };
     };
+    # based on: https://github.com/elifouts/Dotfiles/blob/09f2315ca81e6dc991b0e9d2f8c0c20db47d1a7e/.config/waybar/themes/default/style-default.css
     style =
       let
         palette = config.colorScheme.palette;
       in
       ''
         * {
-          margin: 0;
-          padding: 0;
-          border: none;
-          font-family: ${settings.font};
-          min-height: 0;
-          font-size: 14px;
+            font-size: 15px;
+            min-height: 0;
+            font-family: ${settings.font};
         }
         window#waybar {
-           all:unset;
-           margin: 8px 0;
+            all:unset;
         }
         .modules-left {
-          margin: 0 ${toString settings.screenMargin}px;
+            padding: 6px;
+            margin: 10 0 0 10;
+            border-radius:10px;
+            background: alpha(#${palette.base01},.6);
+            box-shadow: 0px 0px 2px rgba(0, 0, 0, .6);
+        }
+        .modules-center {
+            padding: 6px;
+            margin: 10 0 0 0;
+            border-radius:10px;
+            background: alpha(#${palette.base01},.6);
+            box-shadow: 0px 0px 2px rgba(0, 0, 0, .6);
         }
         .modules-right {
-          margin: 0 ${toString settings.screenMargin}px;
+            padding: 6px;
+            margin: 10 10 0 0;
+            border-radius:10px;
+            background: alpha(#${palette.base01},.6);
+            box-shadow: 0px 0px 2px rgba(0, 0, 0, .6);
         }
         tooltip {
-          background: #${palette.base01};
-          border-radius: 4px;
+            background:#${palette.base01};
+            color: #${palette.base05};
         }
-        tooltip label {
-          color: #${palette.base05};
+        #clock:hover, #custom-pacman:hover, #custom-notification:hover,#bluetooth:hover,#network:hover,#battery:hover, #cpu:hover,#memory:hover,#temperature:hover{
+            transition: all .3s ease;
+            color: #${palette.base0D};
         }
-        #mpd, #clock, #backlight, #battery, #cpu, #memory, #network, #wireplumber, #tray, #mode {
-          color: #${palette.base05};
-          margin: 0px 4px;
-          padding: 2px 5px;
+        #custom-notification {
+            padding: 0px 5px;
+            transition: all .3s ease;
+            color: #${palette.base05};
         }
-
-        button, button:hover, button.focused {
-          box-shadow: none;
+        #clock{
+            padding: 0px 5px;
+            color: #${palette.base05};
+            transition: all .3s ease;
         }
-
+        #workspaces {
+            padding: 0px 5px;
+        }
         #workspaces button {
-          all: unset;
-          padding: 0px 5px;
-          color: #${palette.base05};
+            all:unset;
+            padding: 0px 5px;
+            color: alpha(#${palette.base05},.4);
+            transition: all .2s ease;
         }
         #workspaces button:hover {
-          border: none;
-          background: #${palette.base01};
+            color: #${palette.base0D};
+            border: none;
+            transition: all 0.5s ease;
         }
-        #workspaces button.focused {
-          border: none;
-          color: #${palette.base0D};
+        #workspaces button.active, #workspaces button.empty.active
+        {
+            color: #${palette.base05};
+            border: none;
         }
-        #workspaces button.active {
-          border: none;
-          background: #${palette.base01};
+        #workspaces button.empty {
+            color: rgba(0,0,0,0);
+            border: none;
         }
-        #workspaces button.urgent {
-          border: none;
-          background: #${palette.base0B};
+        #bluetooth{
+            padding: 0px 5px;
+            transition: all .3s ease;
+            color: #${palette.base05};
+        }
+        #network{
+            padding: 0px 5px;
+            transition: all .3s ease;
+            color: #${palette.base05};
+        }
+        #battery{
+            padding: 0px 5px;
+            transition: all .3s ease;
+            color: #${palette.base05};
+        }
+        #battery.charging {
+            color: #26A65B;
+        }
+
+        #battery.warning:not(.charging) {
+            color: #ffbe61;
+        }
+
+        #battery.critical:not(.charging) {
+            color: #f53c3c;
+            animation-name: blink;
+            animation-duration: 0.5s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+        }
+        #group-expand{
+            padding: 0px 5px;
+            transition: all .3s ease; 
+        }
+        #cpu,#memory,#temperature{
+            padding: 0px 5px;
+            transition: all .3s ease; 
+            color: #${palette.base05};
+        }
+        #custom-endpoint{
+            color:transparent;
+            text-shadow: 0px 0px 1.5px rgba(0, 0, 0, 1);
+        }
+        #tray{
+            padding: 0px 2px;
+            transition: all .3s ease; 
+        }
+        #tray menu * {
+            padding: 0px 2px;
+            transition: all .3s ease; 
+        }
+
+        #tray menu separator {
+            padding: 0px 2px;
+            transition: all .3s ease; 
         }
       '';
   };
