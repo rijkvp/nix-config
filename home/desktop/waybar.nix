@@ -130,22 +130,15 @@
         }
         .modules-left {
             padding: 6px;
-            margin: 10 0 0 10;
-            border-radius:10px;
-            background: alpha(#${palette.base01},.6);
-            box-shadow: 0px 0px 2px rgba(0, 0, 0, .6);
-        }
-        .modules-center {
-            padding: 6px;
-            margin: 10 0 0 0;
-            border-radius:10px;
+            margin: 8 0 0 16;
+            border-radius: 8px;
             background: alpha(#${palette.base01},.6);
             box-shadow: 0px 0px 2px rgba(0, 0, 0, .6);
         }
         .modules-right {
             padding: 6px;
-            margin: 10 10 0 0;
-            border-radius:10px;
+            margin: 8 16 0 0;
+            border-radius: 8px;
             background: alpha(#${palette.base01},.6);
             box-shadow: 0px 0px 2px rgba(0, 0, 0, .6);
         }
