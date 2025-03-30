@@ -23,12 +23,10 @@ environment {
 input {
     keyboard {
         xkb {
-            // You can set rules, model, layout, variant and options.
-            // For more information, see xkeyboard-config(7).
-
-            // For example:
-            // layout "us,ru"
-            // options "grp:win_space_toggle,compose:ralt,ctrl:nocaps"
+            // keyboard rules, model, layout, variant and options, see xkeyboard-config(7)
+            layout "us,us"
+            variant ",colemak_dh"
+            options "grp:win_space_toggle"
         }
 
         repeat-rate 50
