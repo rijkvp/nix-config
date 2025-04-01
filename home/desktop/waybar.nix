@@ -60,10 +60,7 @@
         };
         "backlight" = {
           format = "{icon} {percent}%";
-          format-icons = [
-            ""
-            ""
-          ];
+          format-icons = [ "󰃚" "󰃛" "󰃜" "󰃝" "󰃞" "󰃟" "󰃠" ];
         };
         "wireplumber" = {
           format = "{icon} {volume}%";
@@ -92,10 +89,10 @@
             ""
             ""
           ];
-          format-charging = "󰂄  {capacity}%";
+          format-charging = "󰂄 {capacity}%";
         };
         "network" = {
-          format-wifi = " {essid} {signalStrength}%";
+          format-wifi = "  {essid} {signalStrength}%";
           format-ethernet = "";
           format-disconnected = "  Disconnected";
           format = "  Disabled";
