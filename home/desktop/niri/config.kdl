@@ -50,8 +50,8 @@ input {
         // accel-profile "flat"
     }
 
-    warp-mouse-to-focus // makes mouse warp to center of focused window
-    focus-follows-mouse // focus follows mouse
+    // warp-mouse-to-focus // makes mouse warp to center of focused window
+    // focus-follows-mouse // focus follows mouse
 }
 
 
@@ -59,7 +59,8 @@ cursor {
     xcursor-theme "Quintom_Ink"
     xcursor-size 20
 
-    hide-when-typing
+    // disabled as it causes issues in games
+    // hide-when-typing
     hide-after-inactive-ms 3000
 }
 

@@ -17,6 +17,7 @@
     extraConfig = {
       gpg.format = "ssh";
       pull.rebase = true;
+      push.autoSetupRemote = true;
       init.defaultBranch = "main";
       rebase = {
         autoSquash = true;
