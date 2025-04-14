@@ -1,6 +1,9 @@
 { ... }:
 {
-  imports = [ ./shared.nix ];
+  imports = [
+    ./shared.nix
+    ./auto-shutdown.nix
+  ];
 
   wayland.windowManager.hyprland = {
     extraConfig = ''
