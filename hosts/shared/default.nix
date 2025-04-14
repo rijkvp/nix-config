@@ -98,9 +98,8 @@
     htop
     wireguard-tools
 
-    # Man pages
-    man-pages
-    man-pages-posix
+    # adb
+    android-tools
 
     # Customized vim
     ((vim_configurable.override { }).customize {
@@ -130,6 +129,8 @@
     dconf.enable = true;
     thunar.enable = true;
   };
+
+  programs.adb.enable = true;
 
   services = {
     resolved.enable = true;
