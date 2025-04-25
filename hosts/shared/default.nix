@@ -57,6 +57,13 @@
   services.envfs.enable = true;
 
   # Networking
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [
+      2992
+      5000
+    ];
+  };
   networking.nftables.enable = true; # use nftables instead of iptables
   services.tailscale.enable = true;
 

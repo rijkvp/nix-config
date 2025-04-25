@@ -478,7 +478,6 @@
             '';
         }
       ];
-    extraLuaPackages = ps: [ ps.magick ];
     extraPackages = with unstable-pkgs; [
       tree-sitter
       # Nix
@@ -496,7 +495,7 @@
       # LaTeX
       texlab
       # Python
-      ruff-lsp
+      ruff
       # Haskell
       haskell-language-server
       # Java
