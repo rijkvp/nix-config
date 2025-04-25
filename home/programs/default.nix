@@ -1,8 +1,7 @@
-{ pkgs, ... }:
+{ pkgs, unstable-pkgs, ... }:
 {
   imports = [
     ./alacritty.nix
-    ./beeper.nix
     ./devenv.nix
     ./firefox.nix
     ./git.nix
@@ -78,6 +77,7 @@
     gthumb
     libreoffice
     transmission_4-gtk
+    unstable-pkgs.beeper
 
     # Spell checker
     hunspell
