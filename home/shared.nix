@@ -12,9 +12,6 @@
     ./backup.nix
     inputs.nix-colors.homeManagerModules.default
   ];
-  nix = {
-    settings.substituters = [ "http://nixvps/" ];
-  };
 
   programs.home-manager.enable = true;
 

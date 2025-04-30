@@ -13,7 +13,6 @@
         "root"
         "rijk"
       ];
-      substituters = [ "http://nixvps/" ];
     };
     extraOptions = ''
       use-xdg-base-directories = true
