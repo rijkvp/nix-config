@@ -381,6 +381,18 @@ binds {
     Mod+grave { spawn "~/.local/bin/emojipicker"; }
     Mod+T { spawn "~/.local/bin/ttd-switch"; }
     Mod+Alt+T { spawn "~/.local/bin/ttd-stop"; }
+
+
+    // monitor
+    Mod+Shift+H     { focus-monitor-left; }
+    Mod+Shift+J     { focus-monitor-down; }
+    Mod+Shift+K     { focus-monitor-up; }
+    Mod+Shift+L     { focus-monitor-right; }
+
+    Mod+Shift+Alt+H     { move-column-to-monitor-left; }
+    Mod+Shift+Alt+J     { move-column-to-monitor-down; }
+    Mod+Shift+Alt+K     { move-column-to-monitor-up; }
+    Mod+Shift+Alt+L     { move-column-to-monitor-right; }
 }
 
 layer-rule {
