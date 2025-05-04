@@ -30,6 +30,8 @@
     yazi
     libqalculate # calculator
 
+    unstable-pkgs.ragenix
+
     ffmpeg # Swiss knife for videos
     imagemagick # Swiss knife for images
 
