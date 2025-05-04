@@ -127,17 +127,15 @@
         }
         .modules-left {
             padding: 6px;
-            margin: 8 0 0 16;
-            border-radius: 8px;
-            background: alpha(#${palette.base01},.6);
-            box-shadow: 0px 0px 2px rgba(0, 0, 0, .6);
+            margin: 6 0 0 6;
+            border-radius: 0px;
+            background: alpha(#${palette.base01},.8);
         }
         .modules-right {
             padding: 6px;
-            margin: 8 16 0 0;
-            border-radius: 8px;
-            background: alpha(#${palette.base01},.6);
-            box-shadow: 0px 0px 2px rgba(0, 0, 0, .6);
+            margin: 6 6 0 0;
+            border-radius: 0px;
+            background: alpha(#${palette.base01},.8);
         }
         tooltip {
             background:#${palette.base01};
@@ -163,7 +161,7 @@
         #workspaces button {
             all:unset;
             padding: 0px 5px;
-            color: alpha(#${palette.base05},.4);
+            color: alpha(#${palette.base05},.6);
             transition: all .2s ease;
         }
         #workspaces button:hover {
@@ -219,10 +217,6 @@
             padding: 0px 5px;
             transition: all .3s ease; 
             color: #${palette.base05};
-        }
-        #custom-endpoint{
-            color:transparent;
-            text-shadow: 0px 0px 1.5px rgba(0, 0, 0, 1);
         }
         #tray{
             padding: 0px 2px;

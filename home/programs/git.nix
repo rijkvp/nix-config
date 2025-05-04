@@ -43,7 +43,6 @@
       };
 
       help.autocorrect = "prompt";
-      commit.verbose = true;
       rerere = {
         enabled = true;
         autoupdate = true;

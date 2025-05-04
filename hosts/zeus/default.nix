@@ -34,6 +34,7 @@
   # Internal Hard Drive
   boot.initrd.luks.devices."crypthdint".device =
     "/dev/disk/by-uuid/57038b2d-ddf7-47b2-b253-7fd30605f4bf";
+  boot.initrd.compressor = "zstd";
   fileSystems."/mnt/hdint" = {
     device = "/dev/mapper/crypthdint";
     mountPoint = "/mnt/hdint";

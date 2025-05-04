@@ -73,7 +73,7 @@ workspace "pass"
 
 // see: https://github.com/YaLTeR/niri/wiki/Configuration:-Layout
 layout {
-    gaps 16
+    gaps 0
     center-focused-column "never"
 
     preset-column-widths {
@@ -138,10 +138,10 @@ layout {
     // Top and bottom struts will simply add outer gaps in addition to the area occupied by
     // layer-shell panels and regular gaps.
     struts {
-        // left 64
-        // right 64
-        // top 64
-        // bottom 64
+        left 6
+        right 6
+        top 6
+        bottom 6
     }
 
     shadow {
@@ -163,17 +163,54 @@ screenshot-path "~/pics/screenshots/%Y-%m-%d-%H-%M-%S-screenshot.png"
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Animations
 animations {
     // Uncomment to turn off all animations.
+    // You can also put "off" into each individual animation to disable it.
     // off
 
     // Slow down all animations by this factor. Values below 1 speed them up instead.
-    // slowdown 3.0
+    slowdown 0.5
+
+    // Individual animations.
+
+    workspace-switch {
+        off
+    }
+
+    window-open {
+        duration-ms 150
+        curve "ease-out-expo"
+    }
+
+    window-close {
+        duration-ms 150
+        curve "ease-out-quad"
+    }
+
+    horizontal-view-movement {
+        spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
+    }
+
+    window-movement {
+        spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
+    }
+
+    window-resize {
+        spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
+    }
+
+    config-notification-open-close {
+        off
+    }
+
+    screenshot-ui-open {
+        off
+    }
 }
 
 // all windows
 window-rule {
-    geometry-corner-radius 8
-    clip-to-geometry true
-
+    // no corners
+    geometry-corner-radius 0
+    clip-to-geometry false
 }
 
 window-rule {
@@ -193,6 +230,7 @@ window-rule {
     match app-id="Beeper"
     open-on-workspace "chat"
     block-out-from "screen-capture"
+    open-maximized true
 }
 
 window-rule {
@@ -200,23 +238,12 @@ window-rule {
     open-on-workspace "pass"
     opacity 0.9
     block-out-from "screen-capture"
+    open-maximized true
 }
 
 window-rule {
     match app-id="thunar"
     opacity 0.9
-}
-
-// Example: block out two password managers from screen capture.
-// (This example rule is commented out with a "/-" in front.)
-window-rule {
-    match app-id=r#"^org\.keepassxc\.KeePassXC$"#
-    match app-id=r#"^org\.gnome\.World\.Secrets$"#
-
-    block-out-from "screen-capture"
-
-    // Use this instead if you want them visible on third-party screenshot tools.
-    // block-out-from "screencast"
 }
 
 
@@ -350,6 +377,9 @@ binds {
     Mod+Equal { set-column-width "+10%"; }
     Mod+I { set-column-width "-10%"; }
     Mod+O { set-column-width "+10%"; }
+
+    Mod+G { toggle-window-floating; }
+    Mod+Shift+G { switch-focus-between-floating-and-tiling; }
 
     // Finer height adjustments when in column with other windows.
     Mod+Shift+Minus { set-window-height "-10%"; }
