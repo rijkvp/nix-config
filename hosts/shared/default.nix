@@ -176,12 +176,10 @@
     pam.services.swaylock = {
       text = "auth include login";
     };
+    pam.services.sudo.nodelay = true;
+    pam.services.su.nodelay = true;
     rtkit.enable = true;
     polkit.enable = true;
-    sudo.extraConfig = ''
-      Defaults timestamp_timeout=0
-      Defaults passwd_timeout=0
-    '';
   };
 
   system.stateVersion = "23.05"; # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion

@@ -174,10 +174,6 @@
             color: #${palette.base05};
             border: none;
         }
-        #workspaces button.empty {
-            color: rgba(0,0,0,0);
-            border: none;
-        }
         #bluetooth{
             padding: 0px 5px;
             transition: all .3s ease;
