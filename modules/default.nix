@@ -1,0 +1,3 @@
+{
+  ttd = import ./ttd.nix;
+}

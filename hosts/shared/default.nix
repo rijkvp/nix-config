@@ -32,6 +32,9 @@
     allowUnfreePredicate = _: true;
   };
 
+  # custom modules
+  services.ttd.enable = true;
+
   # include systemd in initial ram disk
   boot.initrd.systemd.enable = true;
   # boot animation

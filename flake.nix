@@ -12,6 +12,9 @@
     launchr.url = "git+ssh://git@github.com/rijkvp/launchr?ref=main";
     launchr.inputs.nixpkgs.follows = "nixpkgs";
 
+    ttd.url = "github:rijkvp/ttd";
+    ttd.inputs.nixpkgs.follows = "nixpkgs";
+
     niri.url = "github:sodiboo/niri-flake";
     niri.inputs.nixpkgs.follows = "nixpkgs";
   };
@@ -61,6 +64,7 @@
                 inherit inputs pkgs unstable-pkgs;
               };
               modules = [
+                self.nixosModules.ttd
                 ./hosts/${hostname}
                 home-manager.nixosModules.home-manager
                 {
