@@ -29,7 +29,7 @@
       # AI
       "ai" = "ollama run llama3.1";
       # Org mode
-      "org" = "cd $XDG_DOCUMENTS_DIR/org && nvim todo.org";
+      "org" = "cd $XDG_DOCUMENTS_DIR/org && commandline -f repaint && nvim todo.org";
       # Zellij
       "zj" = "zellij";
       # Lazygit
@@ -75,44 +75,6 @@
           pandoc -f org -o "$out" "$argv[1]"
         end
       end
-      function has_flake
-          set dir (pwd)
-          while test $dir != "/"
-              if test -e $dir/flake.nix
-                  set -g FLAKE_DIR (realpath $dir)
-                  return 0
-              end
-              set dir (dirname $dir)
-          end
-          return 1
-      end
-      function tm
-        tmux new-session -A -c $HOME -s main
-      end
-      function td
-        set dev_dir $(realpath "$PWD")
-        set session_name "$(basename $dev_dir)"
-        set start_cmd "fish"
-        echo "Starting session '$shell_name' on $dev_dir"
-        if has_flake
-          echo "Entering Nix dev shell '$FLAKE_DIR'"
-          set start_cmd "nix develop "$FLAKE_DIR" --command fish"
-        end
-        if set -q ZELLIJ
-          # Detach & switch if already in tmux
-          # tmux attach -AD -s "$session_name" -c "$dev_dir" -d "$start_cmd"
-          # zellij switch -t "$session_name"
-          echo "Already in session!"
-        else
-          tmux new -AD -s "$session_name" -c "$dev_dir" "$start_cmd"
-        end
-        # tmux send-keys -t "$session_name" "nvim" C-m
-      end
-      function devopen
-        set dev_dir "./$(fd -t d . | fzf)"
-        cd "$dev_dir"
-        td
-      end
       # switch directory using yazi
       function yy
           set -l tmp (mktemp -t "yazi-cwd.XXXXXX")
@@ -126,10 +88,10 @@
 
       # Keybindings
       bind \cf 'yy'
-      bind \cg 'devopen'
       bind \ce 'nvim'
       bind \cn 'mp'
       bind \co 'org'
+      bind \cw 'zi'
 
       # Less direnv output
       set -gx DIRENV_LOG_FORMAT ""

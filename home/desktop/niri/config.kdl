@@ -16,6 +16,10 @@ spawn-at-startup "keepassxc"
 
 prefer-no-csd // no client-side decorations
 
+hotkey-overlay {
+    skip-at-startup
+}
+
 environment {
     DISPLAY ":0" // xwayland-satellite
 }
