@@ -13,6 +13,12 @@
         "root"
         "rijk"
       ];
+      substituters = [
+        "http://homelab"
+      ];
+      trusted-public-keys = [
+        "homelab.local:Sz5DXRmCh/fvYtWB+JAWbudFkKdhUqv14d2Enh/06cg="
+      ];
     };
     extraOptions = ''
       use-xdg-base-directories = true
