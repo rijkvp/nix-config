@@ -71,6 +71,12 @@
       2992
       5000
     ];
+    allowedTCPPortRanges = [
+      {
+        from = 50000;
+        to = 51000;
+      } # testing range 50xxx
+    ];
   };
   networking.nftables.enable = true; # use nftables instead of iptables
   services.tailscale.enable = true;
