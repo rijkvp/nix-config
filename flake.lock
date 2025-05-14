@@ -128,18 +128,17 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1742155069,
-        "narHash": "sha256-T11ZhygErlIxcRFoSdLZ9xcGmhZLoVUyuhHcOAH+Umk=",
-        "ref": "main",
-        "rev": "5acdeca745e849ef6300134d54f9e6811999baf2",
-        "revCount": 62,
-        "type": "git",
-        "url": "ssh://git@github.com/rijkvp/launchr"
+        "lastModified": 1746691896,
+        "narHash": "sha256-w8wmU4o92jnHIXuh0x/8puPI7OZl4a8H0go617vK15o=",
+        "owner": "rijkvp",
+        "repo": "launchr",
+        "rev": "169fe79f9d79f39b13a470a5b1d7b7eb13f2fd22",
+        "type": "github"
       },
       "original": {
-        "ref": "main",
-        "type": "git",
-        "url": "ssh://git@github.com/rijkvp/launchr"
+        "owner": "rijkvp",
+        "repo": "launchr",
+        "type": "github"
       }
     },
     "niri": {

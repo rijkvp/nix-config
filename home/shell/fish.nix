@@ -91,7 +91,7 @@
       bind \ce 'nvim'
       bind \cn 'mp'
       bind \co 'org'
-      bind \cw 'zi'
+      bind \cw 'zi; commandline -f repaint'
 
       # Less direnv output
       set -gx DIRENV_LOG_FORMAT ""

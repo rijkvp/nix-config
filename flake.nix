@@ -9,7 +9,7 @@
     impermanence.url = "github:nix-community/impermanence";
     nix-colors.url = "github:misterio77/nix-colors";
 
-    launchr.url = "git+ssh://git@github.com/rijkvp/launchr?ref=main";
+    launchr.url = "github:rijkvp/launchr";
     launchr.inputs.nixpkgs.follows = "nixpkgs";
 
     ttd.url = "github:rijkvp/ttd";

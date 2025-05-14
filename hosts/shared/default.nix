@@ -14,10 +14,10 @@
         "rijk"
       ];
       substituters = [
-        "http://homelab"
+        "http://100.78.183.61/"
       ];
       trusted-public-keys = [
-        "homelab.local:Sz5DXRmCh/fvYtWB+JAWbudFkKdhUqv14d2Enh/06cg="
+        "100.78.183.61:qI/7JbMU9qkZegbx8g1/c/WxM3vcwGJvcKKcurhL+3k="
       ];
     };
     extraOptions = ''
