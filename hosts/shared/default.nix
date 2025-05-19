@@ -13,11 +13,12 @@
         "root"
         "rijk"
       ];
-      substituters = [
-        "http://100.78.183.61/"
+      # nix cache
+      extra-substituters = [
+        "http://100.78.183.61/" # magic DNS name does not work :(
       ];
-      trusted-public-keys = [
-        "100.78.183.61:qI/7JbMU9qkZegbx8g1/c/WxM3vcwGJvcKKcurhL+3k="
+      extra-trusted-public-keys = [
+        "homelab:qI/7JbMU9qkZegbx8g1/c/WxM3vcwGJvcKKcurhL+3k="
       ];
     };
     extraOptions = ''
