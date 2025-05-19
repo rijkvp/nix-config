@@ -415,6 +415,7 @@ binds {
     Mod+grave { spawn "~/.local/bin/emojipicker"; }
     Mod+T { spawn "~/.local/bin/ttd-switch"; }
     Mod+Alt+T { spawn "~/.local/bin/ttd-stop"; }
+    Mod+V { spawn "sh" "-c" "wl-paste | wtype -"; }
 
 
     // monitor
