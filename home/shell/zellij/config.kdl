@@ -241,6 +241,8 @@ plugins {
 // eg. "https://example.com/my-plugin.wasm"
 load_plugins {
 }
+
+show_startup_tips false
  
 // Use a simplified UI without special fonts (arrow glyphs)
 // Options:
@@ -252,7 +254,7 @@ load_plugins {
 // Choose the theme that is specified in the themes section.
 // Default: default
 // 
-theme "tokyo-night-dark"
+theme "tokyo-night"
  
 // Choose the base input mode of zellij.
 // Default: normal
