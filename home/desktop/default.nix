@@ -51,10 +51,12 @@ in
     ssh-agent.enable = true;
     mako = {
       enable = true;
-      defaultTimeout = 10000;
-      borderRadius = 4;
-      backgroundColor = "#${config.colorScheme.palette.base00}60";
-      font = "${settings.font}";
+      settings = {
+        default-timeout = 10000;
+        border-radius = 4;
+        background-color = "#${config.colorScheme.palette.base00}60";
+        font = "${settings.font}";
+      };
     };
     mpd = {
       enable = true;

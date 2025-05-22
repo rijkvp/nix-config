@@ -14,13 +14,9 @@
     roboto
     roboto-mono
     ubuntu-sans
-    (nerdfonts.override {
-      fonts = [
-        "Iosevka"
-        "JetBrainsMono"
-        "FiraCode"
-      ];
-    })
+    nerd-fonts.iosevka
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.fira-code
   ];
   fonts.fontconfig.defaultFonts = {
     sansSerif = [ "Fira Sans" ];

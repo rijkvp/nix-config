@@ -7,7 +7,6 @@
     ../shared/distrobox.nix
     ../shared/nvidia.nix
     ../shared/podman.nix
-    ../shared/steam.nix
     ../shared/virt-manager.nix
   ];
 

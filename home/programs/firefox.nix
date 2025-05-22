@@ -26,10 +26,10 @@ in
       extraConfig = builtins.readFile user-js;
       name = "Default";
       search = {
-        default = "DuckDuckGo";
+        default = "ddg";
         force = true;
         order = [
-          "DuckDuckGo"
+          "ddg"
           "Brave Search"
           "Nix Packages"
           "Nix Options"
@@ -50,11 +50,11 @@ in
                 ];
               }
             ];
-            iconUpdateURL = "https://cdn.search.brave.com/serp/v1/static/brand/eebf5f2ce06b0b0ee6bbd72d7e18621d4618b9663471d42463c692d019068072-brave-lion-favicon.png";
+            icon = "https://cdn.search.brave.com/serp/v1/static/brand/eebf5f2ce06b0b0ee6bbd72d7e18621d4618b9663471d42463c692d019068072-brave-lion-favicon.png";
             updateInterval = 24 * 60 * 60 * 1000; # every day
             definedAliases = [ "@b" ];
           };
-          "DuckDuckGo".metaData.alias = "@d";
+          "ddg".metaData.alias = "@d";
           "Nix Packages" = {
             urls = [
               {
@@ -108,7 +108,7 @@ in
           };
           "ChatGPT" = {
             urls = [ { template = "https://chatgpt.com/?q={searchTerms}"; } ];
-            iconUpdateURL = "https://cdn.oaistatic.com/assets/favicon-dark-32x32-gt5kfzyp.webp";
+            icon = "https://cdn.oaistatic.com/assets/favicon-dark-32x32-gt5kfzyp.webp";
             updateInterval = 24 * 60 * 60 * 1000;
             definedAliases = [
               "@c"
@@ -117,7 +117,7 @@ in
           };
           "Claude" = {
             urls = [ { template = "https://claude.ai/new?q={searchTerms}"; } ];
-            iconUpdateURL = "https://claude.ai/favicon.ico";
+            icon = "https://claude.ai/favicon.ico";
             updateInterval = 24 * 60 * 60 * 1000;
             definedAliases = [
               "@cl"
@@ -127,7 +127,7 @@ in
           # Unwanted search engines
           "Amazon".metaData.hidden = true;
           "Amazon.nl".metaData.hidden = true;
-          "eBay".metaData.hidden = true;
+          "ebay".metaData.hidden = true;
         };
       };
       # See ArkenFox: https://github.com/arkenfox/user.js/blob/master/user.js
